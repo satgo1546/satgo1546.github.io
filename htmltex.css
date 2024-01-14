@@ -1,0 +1,158 @@
+@import "base.css";
+
+@font-face {
+	font-family: TeX;
+	src: local("Latin Modern Roman 10"), local("LMRoman10-Regular");
+}
+@font-face {
+	font-family: TeX;
+	src: local("FandolSong");
+	unicode-range: U+2E80-9FFF, U+F900-FAFF, U+FE10-FE1F, U+FE30-FE6F, U+FF00-FFEF, U+20000-31FFF;
+}
+@font-face {
+	font-family: TeX;
+	font-weight: bold;
+	src: local("Latin Modern Roman 10 Bold"), local("LMRoman10-Bold");
+}
+@font-face {
+	font-family: TeX;
+	font-weight: bold;
+	src: local("FandolSong Bold"), local("FandolSong-Bold");
+	unicode-range: U+2E80-9FFF, U+F900-FAFF, U+FE10-FE1F, U+FE30-FE6F, U+FF00-FFEF, U+20000-31FFF;
+}
+@font-face {
+	font-family: TeX;
+	font-style: italic;
+	src: local("Latin Modern Roman 10 Italic"), local("LMRoman10-Italic");
+}
+@font-face {
+	font-family: TeX;
+	font-style: italic;
+	src: local("FandolKai");
+	unicode-range: U+2E80-9FFF, U+F900-FAFF, U+FE10-FE1F, U+FE30-FE6F, U+FF00-FFEF, U+20000-31FFF;
+}
+
+@font-face {
+	font-family: Code;
+	src: local("Latin Modern Mono 10"), local("LMMono10-Regular");
+}
+
+main {
+	font-family: MiaoLanguage2023, TeX, serif;
+	text-underline-position: under;
+	* {
+		text-decoration-thickness: .4pt;
+	}
+	code {
+		font-family: Code, monospace, monospace;
+	}
+	> dl {
+		border: .4pt solid;
+		padding: 6pt;
+		margin-inline: 2em;
+	}
+}
+
+@layer reset {
+	* {
+		box-sizing: border-box;
+		min-width: 0;
+		min-height: 0;
+		margin: 0;
+		border: none;
+		padding: 0;
+		text-overflow: ellipsis;
+		flex: none;
+		background: none;
+		transform-origin: top left;
+	}
+	table {
+		border-spacing: 0;
+	}
+	button, input, select, img, video, audio { /* todo: exhaust the list */
+		display: block;
+	}
+	div {
+		display: flex;
+		flex-direction: column;
+	}
+	span {
+		display: flex;
+	}
+}
+@layer article {
+	article {
+		margin: 1pc auto;
+		max-width: 42pc;
+		font: 12pt/1.2 serif;
+		font-synthesis: small-caps;
+		> * {
+			margin-inline: auto;
+			margin-block-end: 6pt;
+		}
+		p:lang(zh) {
+			text-indent: 2em;
+		}
+		p:lang(ja) {
+			text-indent: 1em;
+		}
+		> img {
+			max-width: 100%;
+		}
+		dl {
+			display: grid;
+			align-items: baseline;
+			grid-template-columns: fit-content(6em) 1fr;
+			column-gap: 1em;
+		}
+		dt {
+			grid-column: 1;
+			font-weight: bold;
+		}
+		dd {
+			grid-column: 2;
+		}
+		blockquote {
+			font-style: italic;
+			margin-inline: 2em;
+		}
+		table.booktabs {
+			border-block: .08em solid;
+			padding-block: 3pt;
+			td, th {
+				padding: 0 .5em;
+				text-align: left;
+				vertical-align: baseline;
+			}
+			> thead th {
+				border-block-end: .05em solid;
+				vertical-align: bottom;
+			}
+		}
+		table.spreadsheet {
+			th {
+				border: medium outset;
+				min-width: 6ch;
+			}
+			td {
+				border-block-end: thin inset;
+				border-inline-end: thin inset;
+			}
+		}
+		hr {
+			height: 1em;
+			text-align: center;
+			opacity: .5;
+			word-spacing: 1em;
+			overflow: visible;
+			&::before {
+				content: "❄ ❄ ❄";
+			}
+		}
+	}
+	@media print {
+		a:visited {
+			color: blue;
+		}
+	}
+}
