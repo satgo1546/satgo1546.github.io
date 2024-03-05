@@ -280,10 +280,15 @@ if os.path.isdir("_site"):
 pages = {
     page.path: page
     for page in sorted(
-        map(read_page, glob.iglob("**/*.html", recursive=True)), reverse=True
+        (
+            read_page(filename)
+            for filename in glob.iglob("**/*.html", recursive=True)
+            if filename not in ("2014.html",)
+        ),
+        reverse=True,
     )
 }
-shutil.copytree(".", "_site")
+shutil.copytree(".", "_site", ignore=shutil.ignore_patterns(".*"))
 make_keywords()
 make_indices()
 for page in pages.values():
