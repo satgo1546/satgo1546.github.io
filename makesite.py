@@ -40,7 +40,8 @@ from dataclasses import dataclass, field
 from collections import defaultdict
 from collections.abc import Iterable
 import bs4
-import pygments
+import pygments.lexers
+import pygments.token
 
 
 def h(name: str, /, *children: bs4.PageElement | str, **attrs: str) -> bs4.Tag:
@@ -199,16 +200,91 @@ def make_indices() -> None:
         append_list(path, f"{path} 的子页面", descendant)
 
 
+HIGHLIGHT_MAP = {
+    None: "",
+    pygments.token.Text: "",
+    pygments.token.Whitespace: "whitespace",
+    pygments.token.Error: "error",
+    pygments.token.Other: "lowlighted",
+    pygments.token.Keyword: "keyword",
+    pygments.token.Name: "identifier",
+    pygments.token.Name.Attribute: "property",
+    pygments.token.Name.Builtin: "builtin",
+    pygments.token.Name.Builtin.Pseudo: "keyword",
+    pygments.token.Name.Class: "class-name",
+    pygments.token.Name.Constant: "constant",
+    pygments.token.Name.Decorator: "special",
+    pygments.token.Name.Entity: "special",
+    pygments.token.Name.Exception: "class-name",
+    pygments.token.Name.Function: "function",
+    pygments.token.Name.Function.Magic: "keyword",
+    pygments.token.Name.Property: "property",
+    pygments.token.Name.Namespace: "namespace",
+    pygments.token.Name.Tag: "tag",
+    pygments.token.Name.Variable: "variable",
+    pygments.token.Name.Variable.Magic: "keyword",
+    pygments.token.Literal: "literal",
+    pygments.token.String: "string",
+    pygments.token.String.Char: "char",
+    pygments.token.String.Doc: "comment",
+    pygments.token.String.Escape: "special",
+    pygments.token.String.Interpol: "operator",
+    pygments.token.String.Regex: "regex",
+    pygments.token.String.Symbol: "symbol",
+    pygments.token.Number: "number",
+    pygments.token.Operator: "operator",
+    pygments.token.Operator.Word: "keyword",
+    pygments.token.Punctuation: "punctuation",
+    pygments.token.Comment: "comment",
+    pygments.token.Comment.Preproc: "special",
+    pygments.token.Comment.PreprocFile: "special",
+    pygments.token.Comment.Special: "special",
+    pygments.token.Generic.Output: "<output>",
+    pygments.token.Generic.Prompt: "prompt",
+    pygments.token.Generic.Strong: "<strong>",
+    pygments.token.Generic.Emph: "<em>",
+    pygments.token.Generic.Inserted: "<ins>",
+    pygments.token.Generic.Deleted: "<del>",
+    "console": "samp",
+    "doscon": "samp",
+    "pwsh-session": "samp",
+    "pycon": "samp",
+    "rbcon": "samp",
+    "nodejsrepl": "samp",
+}
+
+
+def highlight_code(code: str, language: str) -> bs4.Tag:
+    """Highlight code with Pygments, returning a <code> or <samp> tag.
+
+    A formatter is not needed if we already work in DOM trees and also take care of our own styling.
+    """
+    span = h(HIGHLIGHT_MAP.get(language, "code"), class_=f"language-{language}")
+    for token_type, value in pygments.lexers.get_lexer_by_name(language).get_tokens(
+        code
+    ):
+        if not token_type:
+            span.append(value)
+        elif token_type == pygments.token.Generic.EmphStrong:
+            span.append(h("em", h("strong", value), class_="token"))
+        else:
+            while token_type and token_type not in HIGHLIGHT_MAP:
+                token_type = token_type.parent
+            span.append(
+                h(HIGHLIGHT_MAP[token_type][1:-1], value, class_="token")
+                if HIGHLIGHT_MAP[token_type].startswith("<")
+                else h("span", value, class_=f"token {HIGHLIGHT_MAP[token_type]}")
+            )
+    return span
+
+
 def hydrate_page(page: Page) -> None:
     """Highlight code in the page."""
     for xmp in page.soup.find_all("xmp"):
         assert isinstance(xmp, bs4.Tag)
         if language := xmp.get("language"):
-            # TODO
-            xmp.string
-            pygments.highlight
-            # if shell session then change to samp
-            xmp.replace_with(h("pre", h("code", class_=f"language-{language}")))
+            assert isinstance(language, str)
+            xmp.replace_with(h("pre", highlight_code(xmp.string or "", language)))
         else:
             xmp.name = "pre"
 
