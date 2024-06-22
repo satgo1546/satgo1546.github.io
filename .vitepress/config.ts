@@ -26,5 +26,11 @@ export default {
 	],
 	async transformPageData(pageData) {
 		pageData.frontmatter.head ??= []
+		if (pageData.frontmatter.tags) {
+			pageData.frontmatter.head.push(['meta', {
+				name: 'keywords',
+				content: pageData.frontmatter.tags.join()
+			}])
+		}
 	},
 } satisfies UserConfig<never>
