@@ -1,3 +1,6 @@
 # [satgo1546.github.io](https://satgo1546.github.io/)
 
-Let me try GitHub Pages.
+```sh
+npm i
+npx vitepress
+```

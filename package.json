@@ -1,0 +1,8 @@
+{
+  "type": "module",
+  "dependencies": {
+    "markdown-it-deflist": "^3.0.0",
+    "vitepress": "^1.2.3",
+    "vue": "^3.4.29"
+  }
+}
