@@ -1,0 +1,329 @@
+html, body, main {
+	margin: 0;
+	height: 100%;
+}
+main {
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+iframe {
+	flex: 1;
+}
+
+.cm-editor {
+	flex: 1;
+}
+
+
+
+/*
+	CodeMirror injects its own CSS, not only for layout, but also for colors.
+	I don't want the colors.
+	It is possible to disable styles provided by the extensions.
+	However, one hard-coded style module in @codemirror/view must be overridden by resetting each offending property.
+*/
+
+.cm-editor.cm-focused {
+	outline: auto;
+}
+
+.cm-editor .cm-panels, .cm-editor .cm-gutters, .cm-editor .cm-specialChar, .cm-editor .cm-trailingSpace {
+	background: none;
+	border: none;
+	color: inherit;
+}
+
+.cm-editor .cm-scroller {
+	line-height: inherit;
+}
+
+/* .cm-line::selection, .cm-line ::selection {
+	background-color: transparent;
+} */
+
+.cm-editor .cm-line {
+	padding: 0;
+}
+
+.cm-editor .cm-content {
+	caret-color: inherit;
+}
+
+
+
+
+.cm-editor .cm-button.cm-button,.cm-editor .cm-textfield.cm-textfield {
+	border: none;
+	padding: 0;
+	vertical-align: inherit;
+	border-radius: 0;
+	font: inherit;
+	background: none;
+}
+
+
+/*
+	The following layout rules are taken from CodeMirror extensions otherwise deprived of styling.
+*/
+
+
+
+.cm-focused .cm-cursorMarker {
+	border-left: 1px solid;
+	margin-left: -.5px;
+	pointer-events: none;
+}
+
+.cm-selectionMark {
+	background: highlight;
+	color: highlighttext;
+}
+
+.cm-matchingBracket {
+	text-decoration: underline;
+}
+.cm-nonmatchingBracket {
+	text-decoration:line-through;
+}
+.cm-tooltip {
+	z-index: 100;
+}
+
+.cm-foldPlaceholder, .cm-foldGutter span, .cm-tooltip-autocomplete>ul>li {
+	cursor: pointer;
+}
+
+
+
+
+
+/* Add space around the hr to make clicking it easier */
+
+.ProseMirror-example-setup-style hr {
+  padding: 2px 10px;
+  border: none;
+  margin: 1em 0;
+}
+
+.ProseMirror-example-setup-style hr:after {
+  content: "";
+  display: block;
+  height: 1px;
+  background-color: silver;
+  line-height: 2px;
+}
+
+.ProseMirror ul, .ProseMirror ol {
+  padding-left: 30px;
+}
+
+.ProseMirror blockquote {
+  padding-left: 1em;
+  border-left: 3px solid #eee;
+  margin-left: 0; margin-right: 0;
+}
+
+.ProseMirror-example-setup-style img {
+  cursor: default;
+}
+
+.ProseMirror-prompt {
+  background: white;
+  padding: 5px 10px 5px 15px;
+  border: 1px solid silver;
+  position: fixed;
+  border-radius: 3px;
+  z-index: 11;
+  box-shadow: -.5px 2px 5px rgba(0, 0, 0, .2);
+}
+
+.ProseMirror-prompt h5 {
+  margin: 0;
+  font-weight: normal;
+  font-size: 100%;
+  color: #444;
+}
+
+.ProseMirror-prompt input[type="text"],
+.ProseMirror-prompt textarea {
+  background: #eee;
+  border: none;
+  outline: none;
+}
+
+.ProseMirror-prompt input[type="text"] {
+  padding: 0 4px;
+}
+
+.ProseMirror-prompt-close {
+  position: absolute;
+  left: 2px; top: 1px;
+  color: #666;
+  border: none; background: transparent; padding: 0;
+}
+
+.ProseMirror-prompt-close:after {
+  content: "✕";
+  font-size: 12px;
+}
+
+.ProseMirror-invalid {
+  background: #ffc;
+  border: 1px solid #cc7;
+  border-radius: 4px;
+  padding: 5px 10px;
+  position: absolute;
+  min-width: 10em;
+}
+
+.ProseMirror-prompt-buttons {
+  margin-top: 5px;
+  display: none;
+}
+
+
+
+/*********************************************************************/
+
+.cm-panel.cm-search {
+	padding: 2px 6px 4px;
+	position: relative;
+
+	& [name=close] {
+		position: absolute;
+		top: 0;
+		right: 4px;
+		background-color: inherit;
+		border: none;
+		font: inherit;
+	}
+
+	& label {
+		font-size: 80%;
+		white-space: pre;
+	}
+}
+
+
+.cm-tooltip.cm-tooltip-autocomplete {
+	&>ul {
+		font-family: monospace;
+		white-space: nowrap;
+		overflow: hidden auto;
+		max-width: min(700px, 95vw);
+		min-width: 250px;
+		max-height: 10em;
+		height: 100%;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+
+		&>li,
+		&>completion-section {
+			padding: 1px 3px;
+			line-height: 1.2;
+		}
+
+		&>li {
+			overflow-x: hidden;
+			text-overflow: ellipsis;
+		}
+
+		&>completion-section {
+			display: list-item;
+			border-bottom: 1px solid silver;
+			padding-left: 0.5em;
+			opacity: 0.7;
+		}
+	}
+}
+
+.cm-completionListIncompleteTop::before,
+.cm-completionListIncompleteBottom::after {
+	content: "···";
+	opacity: 0.5;
+	display: block;
+	text-align: center;
+}
+
+.cm-tooltip.cm-completionInfo {
+	position: absolute;
+	padding: 3px 9px;
+	width: max-content;
+	max-width: 400px;
+}
+
+.cm-snippetFieldPosition {
+	vertical-align: text-top;
+	width: 0;
+	height: 1.15em;
+	display: inline-block;
+	margin: 0 -0.7px -.7em;
+}
+
+.cm-completionMatchedText {
+	text-decoration: underline;
+}
+
+.cm-completionDetail {
+	margin-left: 0.5em;
+	font-style: italic;
+}
+
+.cm-completionIcon {
+	font-size: 90%;
+	width: .8em;
+	display: inline-block;
+	text-align: center;
+	padding-right: .6em;
+	opacity: 0.6;
+	box-sizing: content-box;
+}
+
+.cm-completionIcon-function::after,
+.cm-completionIcon-method::after {
+	content: 'ƒ';
+}
+
+.cm-completionIcon-class::after {
+	content: '○';
+}
+
+.cm-completionIcon-interface::after {
+	content: '◌';
+}
+
+.cm-completionIcon-variable::after {
+	content: '𝑥';
+}
+
+.cm-completionIcon-constant::after {
+	content: '𝐶';
+}
+
+.cm-completionIcon-type::after {
+	content: '𝑡';
+}
+
+.cm-completionIcon-enum::after {
+	content: '∪';
+}
+
+.cm-completionIcon-property::after {
+	content: '□';
+}
+
+.cm-completionIcon-keyword::after {
+	content: '🔑︎';
+}
+
+.cm-completionIcon-namespace::after {
+	content: '▢';
+}
+
+.cm-completionIcon-text::after {
+	content: 'abc';
+	font-size: 50%;
+	vertical-align: middle;
+}

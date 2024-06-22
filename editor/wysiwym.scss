@@ -1,0 +1,25 @@
+[contenteditable=true] {
+	::before {
+		all: initial;
+		content: '<>';
+		font: 1rem monospace, monospace;
+	}
+	%block-before {
+		color: #123456;
+	}
+	@each $element in div, p, ul, ol, dl, menu {
+		#{$element}::before {
+			@extend %block-before;
+			content: quote($element) "." attr(class);
+		}
+	}
+	%inline-before {
+		color:red;
+	}
+	@each $element in a, abbr, b, i, em {
+		#{$element}::before {
+			@extend %inline-before;
+			content: quote($element);
+		}
+	}
+}

@@ -1,0 +1,325 @@
+.cm-tooltip {
+	z-index: 100;
+}
+
+&light .cm-tooltip {
+	border: 1px solid #bbb;
+	background-color: #f5f5f5;
+}
+
+&light .cm-tooltip-section:not(:first-child) {
+	border-top: 1px solid #bbb;
+}
+
+&dark .cm-tooltip {
+	background-color: #333338;
+	color: white;
+}
+
+.cm-tooltip-arrow {
+	height: 7px;
+	width: 14px;
+	position: absolute;
+	z-index: -1;
+	overflow: hidden;
+
+	&:before,
+	&:after {
+		content: '';
+		position: absolute;
+		width: 0;
+		height: 0;
+		border-left: 7px solid transparent;
+		border-right: 7px solid transparent;
+	}
+
+	.cm-tooltip-above & {
+		bottom: -7px;
+
+		&:before {
+			border-top: 7px solid #bbb;
+		}
+
+		&:after {
+			border-top: 7px solid #f5f5f5;
+			bottom: 1px;
+		}
+	}
+
+	.cm-tooltip-below & {
+		top: -7px;
+
+		&:before {
+			border-bottom: 7px solid #bbb;
+		}
+
+		&:after {
+			border-bottom: 7px solid #f5f5f5;
+			top: 1px
+		}
+	}
+}
+
+&dark .cm-tooltip .cm-tooltip-arrow {
+	&:before {
+		border-top-color: #333338;
+		border-bottom-color: #333338;
+	}
+
+	&:after {
+		border-top-color: transparent;
+		border-bottom-color: transparent;
+	}
+}
+
+.cm-foldPlaceholder {
+	background-color: #eee;
+	border: 1px solid #ddd;
+	color: #888;
+	border-radius: .2em;
+	margin: 0 1px;
+	padding: 0 1px;
+	cursor: pointer;
+}
+
+.cm-foldGutter span {
+	padding: 0 1px;
+	cursor: pointer;
+}
+
+&.cm-focused .cm-matchingBracket {
+	background-color: #328c8252;
+}
+
+&.cm-focused .cm-nonmatchingBracket {
+	background-color: #bb555544;
+}
+
+.cm-panel.cm-gotoLine {
+	padding: 2px 6px 4px;
+
+	& label {
+		font-size: 80%;
+	}
+}
+
+.cm-selectionMatch {
+	background-color: #99ff7780;
+}
+
+.cm-searchMatch .cm-selectionMatch {
+	background-color: transparent;
+}
+
+.cm-panel.cm-search {
+	padding: 2px 6px 4px;
+	position: relative;
+
+	& [name=close] {
+		position: absolute;
+		top: 0;
+		right: 4px;
+		background-color: inherit;
+		border: none;
+		font: inherit;
+		padding: 0;
+		margin: 0;
+	}
+
+	& input,
+	& button,
+	& label {
+		margin: .2em .6em .2em 0;
+	}
+
+	& input[type=checkbox] {
+		margin-right: .2em;
+	}
+
+	& label {
+		font-size: 80%;
+		white-space: pre;
+	}
+}
+
+&light .cm-searchMatch {
+	background-color: #ffff0054;
+}
+
+&dark .cm-searchMatch {
+	background-color: #00ffff8a;
+}
+
+&light .cm-searchMatch-selected {
+	background-color: #ff6a0054;
+}
+
+&dark .cm-searchMatch-selected {
+	background-color: #ff00ff8a;
+}
+
+.cm-tooltip.cm-tooltip-autocomplete {
+	&>ul {
+		font-family: monospace;
+		white-space: nowrap;
+		overflow: hidden auto;
+		max-width: min(700px, 95vw);
+		min-width: 250px;
+		max-height: 10em;
+		height: 100%;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+
+		&>li,
+		&>completion-section {
+			padding: 1px 3px;
+			line-height: 1.2;
+		}
+
+		&>li {
+			overflow-x: hidden;
+			text-overflow: ellipsis;
+			cursor: pointer;
+		}
+
+		&>completion-section {
+			display: list-item;
+			border-bottom: 1px solid silver;
+			padding-left: 0.5em;
+			opacity: 0.7;
+		}
+	}
+}
+
+&light .cm-tooltip-autocomplete ul li[aria-selected] {
+	background: #17c;
+	color: white;
+}
+
+&light .cm-tooltip-autocomplete-disabled ul li[aria-selected] {
+	background: #777;
+}
+
+&dark .cm-tooltip-autocomplete ul li[aria-selected] {
+	background: #347;
+	color: white;
+}
+
+&dark .cm-tooltip-autocomplete-disabled ul li[aria-selected] {
+	background: #444
+}
+
+.cm-completionListIncompleteTop:before,
+.cm-completionListIncompleteBottom:after {
+	content: "···";
+	opacity: 0.5;
+	display: block;
+	text-align: center;
+}
+
+.cm-tooltip.cm-completionInfo {
+	position: absolute;
+	padding: 3px 9px;
+	width: max-content;
+	max-width: 400px;
+}
+
+.cm-completionInfo.cm-completionInfo-left {
+	right: 100%;
+}
+
+.cm-completionInfo.cm-completionInfo-right {
+	left: 100%;
+}
+
+.cm-completionInfo.cm-completionInfo-left-narrow {
+	right: 30px;
+}
+
+.cm-completionInfo.cm-completionInfo-right-narrow {
+	left: 30px;
+}
+
+&light .cm-snippetField {
+	background-color: #00000022;
+}
+
+&dark .cm-snippetField {
+	background-color: #ffffff22;
+}
+
+.cm-snippetFieldPosition {
+	vertical-align: text-top;
+	width: 0;
+	height: 1.15em;
+	display: inline-block;
+	margin: 0 -0.7px -.7em;
+	border-left: 1.4px dotted #888;
+}
+
+.cm-completionMatchedText {
+	text-decoration: underline;
+}
+
+.cm-completionDetail {
+	margin-left: 0.5em;
+	font-style: italic;
+}
+
+.cm-completionIcon {
+	font-size: 90%;
+	width: .8em;
+	display: inline-block;
+	text-align: center;
+	padding-right: .6em;
+	opacity: 0.6;
+	box-sizing: content-box;
+}
+
+.cm-completionIcon-function::after,
+.cm-completionIcon-method::after {
+	content: 'ƒ';
+}
+
+.cm-completionIcon-class::after {
+	content: '○';
+}
+
+.cm-completionIcon-interface::after {
+	content: '◌';
+}
+
+.cm-completionIcon-variable::after {
+	content: '𝑥';
+}
+
+.cm-completionIcon-constant::after {
+	content: '𝐶';
+}
+
+.cm-completionIcon-type::after {
+	content: '𝑡';
+}
+
+.cm-completionIcon-enum::after {
+	content: '∪';
+}
+
+.cm-completionIcon-property::after {
+	content: '□';
+}
+
+.cm-completionIcon-keyword::after {
+	content: '🔑︎';
+}
+
+.cm-completionIcon-namespace::after {
+	content: '▢';
+}
+
+.cm-completionIcon-text::after {
+	content: 'abc';
+	font-size: 50%;
+	vertical-align: middle;
+}
