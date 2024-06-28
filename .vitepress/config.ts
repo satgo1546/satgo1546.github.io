@@ -16,8 +16,8 @@ export default {
 			warningLabel: ' ',
 			dangerLabel: ' ',
 		},
-		emoji: { defs: {} },
 		config(md) {
+			md.disable(['emoji'])
 			md.use(mdDeflist)
 		},
 	},

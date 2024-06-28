@@ -1,14 +1,18 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useData } from 'vitepress'
+import { selectedLayout } from './LayoutSelector.vue'
 const { frontmatter } = useData()
+const layouts = import.meta.glob(['./Layout_*.vue', './Layout_*/index.vue'], { import: 'default', eager: true })
+const layout = computed(() => selectedLayout.value || frontmatter.value.layout || 'TwentyTwelve')
+const layoutComponent = computed(() => layouts[`./Layout_${layout.value}.vue`] ?? layouts[`./Layout_${layout.value}/index.vue`])
 </script>
 
 <template>
-	<a href="/">Home</a>
-	<Content :lang="frontmatter.lang" :class="frontmatter.class" />
+	<component :is="layoutComponent" />
 </template>
 
-<style>
+<style lang="scss">
 * {
 	box-sizing: border-box;
 	margin: 0;
@@ -19,27 +23,12 @@ const { frontmatter } = useData()
 	min-height: 0;
 }
 
+ul,
+ol {
+	list-style: none;
+}
+
 :root {
 	text-decoration-skip-ink: none;
-}
-
-body {
-	display: grid;
-}
-
-header {
-	grid-area: "head";
-}
-
-main {
-	grid-area: "main";
-}
-
-aside {
-	grid-area: "side";
-}
-
-footer {
-	grid-area: "foot";
 }
 </style>
