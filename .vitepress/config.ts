@@ -1,5 +1,7 @@
 import { type UserConfig } from 'vitepress'
+import type { ThemeRegistrationAny, BundledTheme } from 'shiki'
 import mdDeflist from 'markdown-it-deflist'
+import tmTomorrow from '../components/Layout_TwentyTwelve/tomorrow'
 
 export default {
 	title: 'satgo1546’s ocean',
@@ -16,6 +18,19 @@ export default {
 			warningLabel: ' ',
 			dangerLabel: ' ',
 		},
+		async shikiSetup(shiki) {
+			await shiki.loadTheme('ayu-dark')
+		},
+		theme: {
+			light: tmTomorrow,
+			dark: 'material-theme-ocean',
+			more: 'ayu-dark',
+		} as Record<string, ThemeRegistrationAny | BundledTheme>,
+		languageAlias: {
+			webc: 'html',
+		},
+		codeTransformers: [],
+		codeCopyButtonTitle: '复制代码',
 		config(md) {
 			md.disable(['emoji'])
 			md.use(mdDeflist)

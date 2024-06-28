@@ -4,7 +4,7 @@ import { useData } from 'vitepress'
 import { selectedLayout } from './LayoutSelector.vue'
 const { frontmatter } = useData()
 const layouts = import.meta.glob(['./Layout_*.vue', './Layout_*/index.vue'], { import: 'default', eager: true })
-const layout = computed(() => selectedLayout.value || frontmatter.value.layout || 'TwentyTwelve')
+const layout = computed(() => selectedLayout.value || frontmatter.value.layout || 'ModernMagicLight')
 const layoutComponent = computed(() => layouts[`./Layout_${layout.value}.vue`] ?? layouts[`./Layout_${layout.value}/index.vue`])
 </script>
 

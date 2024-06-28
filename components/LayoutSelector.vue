@@ -12,5 +12,7 @@ defineExpose({ selectedLayout })
 	<select v-model="selectedLayout">
 		<option value="">页面主题</option>
 		<option value="TwentyTwelve">2012</option>
+		<option value="ModernMagicLight">现代魔法手记·白</option>
+		<option value="ModernMagicDark">现代魔法手记·黑</option>
 	</select>
 </template>
