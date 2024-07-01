@@ -1,0 +1,25 @@
+---js
+{
+	pagination: {
+		data: 'collections',
+		size: 1,
+		alias: 'tag',
+	},
+	permalink({ tag }) {
+		return `/tags/${this.slugify(tag)}/`
+	},
+	title: '标签',
+	tagDescriptions: {
+		post: '所有博文的列表。'
+	},
+}
+---
+
+<h2 @text="tag"></h2>
+<template webc:if="tagDescriptions[tag]" @html="markdown(tagDescriptions[tag])" webc:nokeep></template>
+<ul>
+	<li webc:for="item of collections[tag].toReversed()">
+		<a :href="item.url" @html="markdownInline(item.data.title)"></a>
+		<time datetime=""></time>
+	</li>
+</ul>

@@ -1,6 +1,4 @@
-<template>
-	<span class="bypostauthor">文章作者</span>
-</template>
+<span class="bypostauthor">文章作者</span>
 
 <style lang="scss" scoped>
 .bypostauthor {

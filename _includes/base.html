@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-Hans" :class="theme">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<template webc:if="page.url === '/'" webc:nokeep>
+	<title>satgo1546’s ocean</title>
+</template>
+<template webc:else webc:nokeep>
+	<title @text="`${title} · satgo1546’s ocean`"></title>
+	<meta name="keywords" :content="''">
+	<meta name="description" :content="1+1">
+</template>
+<meta name="generator" :content="eleventy.generator">
+<link rel="shortcut icon" type="image/svg" href="/style/favicon.svg">
+<link rel="stylesheet" href="/style/index.css" webc:keep>
+<style @raw="getBundle('css')" webc:keep></style>
+<script @raw="getBundle('js')" defer webc:keep></script>
+<body @raw="content">

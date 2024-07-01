@@ -1,9 +1,13 @@
 {
-  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "npx @11ty/eleventy --serve"
+  },
   "dependencies": {
+    "@11ty/eleventy": "^3.0.0-alpha.14",
+    "@11ty/eleventy-plugin-rss": "^2.0.1",
+    "@11ty/eleventy-plugin-webc": "^0.11.2",
     "markdown-it-deflist": "^3.0.0",
-    "sass": "^1.77.6",
-    "vitepress": "^1.2.3",
-    "vue": "^3.4.29"
+    "sass": "^1.77.6"
   }
 }

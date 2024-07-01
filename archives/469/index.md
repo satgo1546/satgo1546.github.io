@@ -1,14 +1,16 @@
 ---
-date: 2024-06-26
+title: 世界，您好！
+tags:
+- 闲聊
+- Eleventy
+#date: 2024-06-26, 2024-06-30
 ---
 
-# 世界，您好！
+欢迎使用 Eleventy。这是您的第一篇文章。编辑或删除它，然后开始写作吧！
 
-欢迎使用 VitePress。这是您的第一篇文章。编辑或删除它，然后开始写作吧！
-
-:::info 😾
-这是调试VitePress时手动创建的无意义文章。VitePress并不会自动生成这篇文章，但WordPress会。
-:::
+<div class="admonition">
+这是调试Eleventy时手动创建的无意义文章。Eleventy并不会自动生成这篇文章，但WordPress会。
+</div>
 
 ---
 
@@ -22,4 +24,4 @@ date: 2024-06-26
 
 > XYZ Doohickey 公司成立于 1971 年，自从建立以来，我们一直向社会贡献着优秀 doohickies。我们的公司总部位于天朝魔都，有着超过两千名员工，对魔都政府税收有着巨大贡献。
 
-而您，作为一位 VitePress 新用户，我们建议您转到[您站点的代码库](https://github.com/satgo1546/satgo1546.github.io)，删除本页面，然后创建包含您自己内容的新页面。祝您使用愉快！
+而您，作为一位 Eleventy 新用户，我们建议您转到[您站点的代码库](https://github.com/satgo1546/satgo1546.github.io)，删除本页面，然后创建包含您自己内容的新页面。祝您使用愉快！
