@@ -31,7 +31,12 @@ body>aside {
 
 body>footer {
 	grid-area: foot;
-}	
+}
+
+img,
+video {
+	max-width: 100%;
+}
 
 // Sat's 黑幕
 .spoiler {
@@ -41,6 +46,13 @@ body>footer {
 	&:hover {
 		color: white;
 	}
+}
+
+// 双栏对照
+.paracol {
+	display: grid;
+	grid: 1fr 1fr / auto-flow;
+	column-gap: 1em;
 }
 
 .theme-twenty-twelve {
@@ -1275,9 +1287,9 @@ body>footer {
 			/ minmax(auto, 160px) 1fr;
 		gap: 8px;
 	}
-	
+
 	body>* {
 		border: 3px solid;
 	}
-	
+
 }
