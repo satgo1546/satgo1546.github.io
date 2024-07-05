@@ -1,0 +1,11 @@
+---
+title: 标签
+---
+
+<ul>
+	<li webc:for="tag of Object.keys(collections).sort()">
+		<a :href="`${this.slugify(tag)}/`" @text="tag"></a>
+		<small @text="collections[tag].length"></small>
+		<template webc:if="tagDescriptions[tag]" @html="markdown(tagDescriptions[tag])" webc:nokeep></template>
+	</li>
+</ul>

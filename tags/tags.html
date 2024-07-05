@@ -8,14 +8,12 @@
 	permalink({ tag }) {
 		return `/tags/${this.slugify(tag)}/`
 	},
-	title: '标签',
-	tagDescriptions: {
-		post: '所有博文的列表。'
+	eleventyComputed: {
+		title: ({ tag }) => `标签：${tag}`,
 	},
 }
 ---
 
-<h2 @text="tag"></h2>
 <template webc:if="tagDescriptions[tag]" @html="markdown(tagDescriptions[tag])" webc:nokeep></template>
 <ul>
 	<li webc:for="item of collections[tag].toReversed()">
