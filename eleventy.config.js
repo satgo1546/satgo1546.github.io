@@ -11,9 +11,10 @@ module.exports = eleventyConfig => {
 		components: ['_components/**/*.html'],
 	})
 	eleventyConfig.addTemplateFormats([
-		'jpg', 'png', 'webp', 'svg',
-		'woff2',
+		'jpg', 'png', 'gif', 'bmp', 'svg', 'webp', 'avif',
+		'ttf', 'otf', 'woff', 'woff2',
 		'scss',
+		'pdf',
 	])
 	eleventyConfig.addExtension('scss', {
 		outputFileExtension: 'css',
