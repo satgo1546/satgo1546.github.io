@@ -54,6 +54,103 @@ body>footer {
 	grid-area: foot;
 }
 
+article {
+	margin: 1pc auto;
+	max-width: 42pc;
+
+	>*,
+	p {
+		margin-inline: auto;
+		margin-block-end: 6pt;
+	}
+
+	p:lang(zh) {
+		text-indent: 2em;
+	}
+
+	p:lang(ja) {
+		text-indent: 1em;
+	}
+
+	em:lang(zh) {
+		font-style: inherit;
+		text-emphasis-style: dot;
+		text-emphasis-position: under right;
+	}
+
+	em:lang(ja) {
+		font-style: inherit;
+		text-emphasis-style: sesame;
+	}
+
+	ul:lang(zh-Hans) {
+		padding-inline-start: 4em;
+		list-style: "——";
+	}
+
+	dl {
+		display: grid;
+		align-items: baseline;
+		grid-template-columns: fit-content(6em) 1fr;
+		column-gap: 1em;
+	}
+
+	dt {
+		grid-column: 1;
+		font-weight: bold;
+	}
+
+	dd {
+		grid-column: 2;
+	}
+
+	blockquote {
+		font-style: italic;
+		margin-inline: 2em;
+	}
+
+	table.booktabs {
+		border-block: .08em solid;
+		padding-block: 3pt;
+
+		td,
+		th {
+			padding: 0 .5em;
+			text-align: left;
+			vertical-align: baseline;
+		}
+
+		>thead th {
+			border-block-end: .05em solid;
+			vertical-align: bottom;
+		}
+	}
+
+	table.spreadsheet {
+		th {
+			border: medium outset;
+			min-width: 6ch;
+		}
+
+		td {
+			border-block-end: thin inset;
+			border-inline-end: thin inset;
+		}
+	}
+
+	hr {
+		height: 1em;
+		text-align: center;
+		opacity: .5;
+		word-spacing: 1em;
+		overflow: visible;
+
+		&::before {
+			content: "❄ ❄ ❄";
+		}
+	}
+}
+
 // Sat's 黑幕
 .spoiler {
 	color: black;
@@ -1375,96 +1472,6 @@ body>footer {
 
 	code {
 		font-family: sats-symbol, TeXCode, monospace, monospace;
-	}
-
-	>dl {
-		border: .4pt solid;
-		padding: 6pt;
-		margin-inline: 2em;
-	}
-
-	article {
-		margin: 1pc auto;
-		max-width: 42pc;
-
-		>* {
-			margin-inline: auto;
-			margin-block-end: 6pt;
-		}
-
-		p:lang(zh) {
-			text-indent: 2em;
-		}
-
-		p:lang(ja) {
-			text-indent: 1em;
-		}
-
-		>img {
-			max-width: 100%;
-		}
-
-		dl {
-			display: grid;
-			align-items: baseline;
-			grid-template-columns: fit-content(6em) 1fr;
-			column-gap: 1em;
-		}
-
-		dt {
-			grid-column: 1;
-			font-weight: bold;
-		}
-
-		dd {
-			grid-column: 2;
-		}
-
-		blockquote {
-			font-style: italic;
-			margin-inline: 2em;
-		}
-
-		table.booktabs {
-			border-block: .08em solid;
-			padding-block: 3pt;
-
-			td,
-			th {
-				padding: 0 .5em;
-				text-align: left;
-				vertical-align: baseline;
-			}
-
-			>thead th {
-				border-block-end: .05em solid;
-				vertical-align: bottom;
-			}
-		}
-
-		table.spreadsheet {
-			th {
-				border: medium outset;
-				min-width: 6ch;
-			}
-
-			td {
-				border-block-end: thin inset;
-				border-inline-end: thin inset;
-			}
-		}
-
-		hr {
-			height: 1em;
-			text-align: center;
-			opacity: .5;
-			word-spacing: 1em;
-			overflow: visible;
-
-			&::before {
-				content: "❄ ❄ ❄";
-			}
-		}
 	}
 
 	@media print {
