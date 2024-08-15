@@ -33,6 +33,8 @@
 	audio {
 		// todo: exhaust the list
 		display: block;
+		margin: auto;
+		max-width: 100%;
 	}
 }
 
@@ -1293,6 +1295,17 @@ body>footer {
 }
 
 .theme-modern-magic {
+	--fg0: black;
+	--bg0: #fff3e0;
+	--fg1: #b53d00;
+	--bg1: #ffcc80;
+	--red: #b71c1c;
+	--yellow: #827717;
+	--green: #33691e;
+	--cyan: #009095;
+	--blue: #0d47a1;
+	--violet: #4a148c;
+
 	body {
 		display: grid;
 		grid:

@@ -12,6 +12,7 @@ module.exports = eleventyConfig => {
 	})
 	eleventyConfig.addTemplateFormats([
 		'jpg', 'png', 'gif', 'bmp', 'svg', 'webp', 'avif',
+		'mp3', 'ogg',
 		'ttf', 'otf', 'woff', 'woff2',
 		'scss',
 		'pdf',
