@@ -109,6 +109,19 @@ article {
 		margin-inline: 2em;
 	}
 
+	blockquote+figcaption {
+		text-align: right;
+		font: inherit;
+
+		&::before {
+			content: "— ";
+		}
+
+		&:lang(zh)::before {
+			content: "——";
+		}
+	}
+
 	table.booktabs {
 		border-block: .08em solid;
 		padding-block: 3pt;
@@ -136,6 +149,11 @@ article {
 			border-block-end: thin inset;
 			border-inline-end: thin inset;
 		}
+	}
+
+	figcaption {
+		text-align: center;
+		font-size: .75em;
 	}
 
 	hr {
