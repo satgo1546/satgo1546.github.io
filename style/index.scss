@@ -157,12 +157,22 @@ p img {
 	vertical-align: middle;
 }
 
-blockquote+figcaption::before {
-	content: "— ";
+figcaption {
+	text-align: center;
+	font-size: .75em;
 }
 
-blockquote+figcaption:lang(zh)::before {
-	content: "——";
+blockquote+figcaption {
+	text-align: right;
+	font: inherit;
+
+	&::before {
+		content: "— ";
+	}
+
+	&:lang(zh)::before {
+		content: "——";
+	}
 }
 
 table.settabs {
