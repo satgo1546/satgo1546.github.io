@@ -104,4 +104,19 @@ CyberChef是真没用吧，Base91也没有，uuencode也没有。手动给文件
 
 除了meta指定的编码不同，CCBC版的页面还少了字阵中的三个字，以及底部可刮开的文本被替换了。
 
-除了顶级域名，<https://ccbc15.cipherpuzzles.com/endoftime/>也返回同一页面，而存档站/endoftime返回404。可CCBC15的观莲游戏的主题与endoftime页面的文字格格不入，与P&KU3（上）间可能仅存在时间相邻的关系。
+除了顶级域名，<https://ccbc15.cipherpuzzles.com/endoftime/>也返回同一页面，而存档站/endoftime返回404。可CCBC 15的观莲游戏的主题与endoftime页面的文字格格不入，与P&KU3（上）间可能仅存在时间相邻的关系。
+
+CCBC 15开赛后，终于得知endoftime出现在CCBC网站的原因：观莲游戏与折纸幼儿园只是幌子，真正主题又是时空错乱。诶，我为什么要说又？一道名为[《囚于？？？的七日谈》](https://archive.cipherpuzzles.com/index.html#/problem?c=ccbc15/problems/6/57)（其中？？？ = 麦当劳）的题目虽然标题、题图、答案无所不neta P&KU3，但是题目本身跟P&KU3毫无关系。提交此题的中间答案之一“时间的尽头”后会得到：
+
+> 你解出了一张奖券，并额外发现了一段来自另一个宇宙的消息！它对你解题没有影响：
+>
+> > 时间正在流逝。在各处不同的宇宙和时间线，与你再见。
+> >
+> > 请将？？？替换为ccbc15.cipherpuzzles.com
+
+想不到吧，开赛前一周就有人把这个页面挖出来了。
+
+<figure>
+	<img src="9.png">
+	<figcaption>观测者猫猫与金毛猫猫</figcaption>
+</figure>
