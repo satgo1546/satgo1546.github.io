@@ -1,0 +1,25 @@
+<svg viewBox="0 0 256 120" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="image-rendering: pixelated;">
+  <rect x="0" y="0" width="256" height="120" fill="white" />
+  <image id="a" x="32" y="16" width="32" height="32"
+    xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAFVBMVEUAAACjdTtXOh2IYjHEjktvTyU7KxfKhRh/AAAAAXRSTlMAQObYZgAAADlJREFUeF5jYBBiYAATzM4iIi6Ozg4MrKaqoaFBpgEMDGoMDECCAaGGxVnERUSQsBqgOQZ41eC0CwAc1g8MVjSyYAAAAABJRU5ErkJggg==" />
+  <use xlink:href="#a" x="0" y="64" />
+  <use xlink:href="#a" x="64" y="0" />
+  <use xlink:href="#a" x="64" y="32" />
+  <use xlink:href="#a" x="64" y="64" />
+  <use xlink:href="#a" x="128" y="0" />
+  <use xlink:href="#a" x="128" y="32" />
+  <use xlink:href="#a" x="192" y="0" />
+  <image x="8" y="96" width="16" height="16"
+    xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAMAAADz0U65AAAAgVBMVEUvIA0rHg2qfWYoHAu0hG27iXL///+BUzl6TjNqQDCcaUyDVTu9jnLGloC9i3K9jnSsdlo0JRIvHw8mGgqtgG2cclwqHQ0zJBFCKhK1e2ecY0aze2K3gnK+iGyiakeAUzSQXkOWX0CPXj4/KhVvRSxtQyokGAhSPYm2iWx3QjUsHg4jFjyWAAAAR0lEQVR4Xg3AhQGDQBAEwL13wd3dkv4LhAEo41dOFYiobvY/Bz1BGMVJCiZYUUrnINTdylsxdP1g7TjNWNbfZ9M4Tq2N9+YFjZoEeUonqgsAAAAASUVORK5CYII=" />
+  <path d="M0,16h256M0,48h256M0,80h256M0,112h256" stroke="black" />
+  <path d="M107.5,21.5l4.5,-13.5l4.5,13.5h-9z" fill="green" />
+  <path d="M28,104l84,0l0,-85.2" fill="none" stroke="green" stroke-width="3" />
+  <path d="M52.5,26.5l-4.5,13.5l-4.5,-13.5h9z" fill="green" />
+  <path d="M104,8l-56,0l0,21.2" fill="none" stroke="green" stroke-width="3" />
+  <path d="M235.5,21.5l4.5,-13.5l4.5,13.5h-9z" fill="green" />
+  <path d="M56,40l184,0l0,-21.2" fill="none" stroke="green" stroke-width="3" />
+  <path d="M180.5,58.5l-4.5,13.5l-4.5,-13.5h9z" fill="green" />
+  <path d="M232,8l-56,0l0,53.2" fill="none" stroke="green" stroke-width="3" />
+  <path d="M52.5,82.5l-4.5,13.5l-4.5,-13.5h9z" fill="green" />
+  <path d="M168,72l-120,0l0,13.2" fill="none" stroke="green" stroke-width="3" />
+</svg>

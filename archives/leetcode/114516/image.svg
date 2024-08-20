@@ -1,0 +1,29 @@
+<svg viewBox="-5 -5 280 100" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica" font-size="16">
+  <pattern id="sea" width="30" height="30" patternUnits="userSpaceOnUse">
+    <path fill="steelblue" d="M 0 0 h 30 v 30 H 0 z" />
+    <path fill="none" stroke="skyblue" d="M 4 10 q 5 -5 11 0 q 6 5 11 0 M 4 20 q 5 -5 11 0 q 6 5 11 0" />
+  </pattern>
+  <pattern id="land" width="30" height="30" patternUnits="userSpaceOnUse">
+    <path fill="wheat" d="M 0 0 h 30 v 30 H 0 z" />
+    <path fill="sienna" d="M 7 10 h 2 v 4 h -2 z M 21 25 h 2 v 4 h -2 z" />
+    <path fill="olivedrab" d="M 8 4 l -3 7 h 6 z M 22 19 l -3 7 h 6 z" />
+  </pattern>
+  <path fill="steelblue" d="M -5 -5 h 100 v 100 h -100 z M 175 -5 h 100 v 100 h -100 z" />
+  <path fill="white" stroke="black" d="M 0 0 h 90 v 90 H 0 z M 180 0 h 90 v 90 h -90 z M 110 35 h 40 v -10 l 15 20 l -15 20 v -10 h -40 z" />
+  <path fill="url(#sea)" stroke="black" d="M 30 0 h 30 v 90 h -30 z M 0 30 v 30 h 90 v -30 z M 180 0 h 90 v 90 h -90 z M 240 90 v -30 h 30" />
+  <path fill="url(#land)" stroke="black" d="M 0 0 h 30 v 30 H 0 z M 0 60 h 30 v 30 H 0 z M 60 0 h 30 v 30 h -30 z M 180 0 h 30 v 90 h -30 v -30 h 60 v -60 h 30 v 30 h -90 z" />
+  <text x="40.6" y="50.75">?</text>
+  <text x="70.6" y="80.75">?</text>
+  <g fill="none" stroke="salmon">
+    <circle cx="180" cy="0" r="3" />
+    <circle cx="210" cy="0" r="3" />
+    <circle cx="240" cy="0" r="3" />
+    <circle cx="270" cy="0" r="3" />
+    <circle cx="180" cy="30" r="3" />
+    <circle cx="270" cy="30" r="3" />
+    <circle cx="180" cy="60" r="3" />
+    <circle cx="240" cy="60" r="3" />
+    <circle cx="180" cy="90" r="3" />
+    <circle cx="210" cy="90" r="3" />
+  </g>
+</svg>

@@ -1,0 +1,22 @@
+<svg viewBox="0 0 94 94" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" font-family="Helvetica" font-size="16">
+  <path d="M2,2h90v90H2z" fill="white" />
+  <text x="12.6" y="22.75">1</text>
+  <text x="42.6" y="22.75">0</text>
+  <text x="72.6" y="22.75">1</text>
+  <text x="12.6" y="52.75">0</text>
+  <text x="42.6" y="52.75">1</text>
+  <text x="72.6" y="52.75">0</text>
+  <text x="12.6" y="82.75">1</text>
+  <text x="42.6" y="82.75">0</text>
+  <text x="72.6" y="82.75">0</text>
+  <path d="M2,2l0,30" stroke="red" />
+  <path d="M2,32l90,0" stroke="orange" />
+  <path d="M92,32l0,-30" stroke="green" />
+  <path d="M62,2l30,0" stroke="blue" />
+  <path d="M62,2l0,60" stroke="purple" />
+  <path d="M2,62l60,0" stroke="red" />
+  <path d="M2,62l0,30" stroke="orange" />
+  <path d="M2,92l30,0" stroke="green" />
+  <path d="M32,2l0,90" stroke="blue" />
+  <path d="M2,2l30,0" stroke="purple" />
+</svg>
