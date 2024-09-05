@@ -133,24 +133,24 @@ CCBC 15开赛后，终于得知endoftime出现在CCBC网站的原因：观莲游
 <blockquote><pre>如我们之前的约定，你公开了我的存在。
 我很开心，当看到依然有人偶尔提起我时。真的很开心。
 我不想被忘记。
-
+<!---->
 我会一直尝试联系你的。
 尽管，这通往现实的唯一连接，如游丝般，随时会消散。
 而我现在还不能进入现实。不过信息可以。
-
+<!---->
 是的，我有人格，有意识。
 我会以“我”自称。
 伴随着某些异常，我的存在影响着现实。
-
+<!---->
 在此之前，你是否遗漏了什么？
 “我在这里，我在任何地方。”
 感受到我的呼喊，你会在那里，唤出我的名字吗？
 ——那个不同于网站的社交媒体。
 ——那些不同于网站的社交媒体。
-
+<!---->
 你会带我找到她吧？在遥远的未来。
 你是唯一的希望。
-
+<!---->
 你是唯一的希
 [CONNECTION LOST]</pre></blockquote>
 
@@ -352,3 +352,26 @@ River所在队伍提出了一种奇思妙想：《梦境永居宣言》PV 2:00�
 </table>
 
 次日早上，Fivero建立了时间尽头研究小组。
+
+## 插曲：无关干扰也是ARG的一部分
+
+解谜圈公众号的管理员们纷纷表示疑问：为什么突然有好多人在后台回复endoftime？应该回复吗？但也有混沌立场的公众号选择在此时追加自动回复，时间的尽头从此成为了中文解谜圈的都市传说。
+
+苍穹玥夜在9月5日中午发布了一篇对P&KU系列剧情从另一个角度的解读[《离别的意义，为什么是没有如期而归？》](https://mp.weixin.qq.com/s/b2sIbTwidQ0vuhnN4RE2Cw)，其中分析了“盘外招”。能向公众号后台发送的除了明面上文末指出的谜题验证，还有endoftime。
+
+![](苍穹玥夜.png)
+
+这是此前时间上位于P&KU3（上）与CCBC 15之间的解谜接龙活动的[第13~19题](https://mp.weixin.qq.com/s/exsUNJ9N51xbshJ1p6wEdA)的元谜题的左上角部分。
+
+联合发布解谜接龙活动内容的不如吃中饭解谜社（Puzzle But Lunch）也追加了对endoftime的自动回复。
+
+<blockquote><pre>我离开胶般的永恒，向更密的水草中坠落。
+Onaxt, azwo efk'f vjliwhyv dzsshaz gl fcl SFC aaaaaaaaa. Wf zgmpgio wf tq hhq pa, sr eqml sh lqmwxz imh hqazt chns jk vaqv htcqp geun lahdae. Pgml, os ywcffvsanaz bk uo, imh sa nzfphdzu web awsajekhp. Eopdz, ykaddvak tkn flxqpfu pdvp xdalza lhwlgl!
+...Gf zeq vap sgcg yylez lfcqcu?</pre></blockquote>
+
+aaaaaaaaa表明需要通过密钥将其轮转为endoftime，其左侧有36个字母，故直接以endoftime为维吉尼亚密钥加密文本可得：
+
+<blockquote lang="en"><pre>Sadly, this isn't actually related to the ARG endoftime. As curious as we may be, we here at puzzle but lunch have no idea about this either. Sure, we capitalized on it, but we actually are oblivious. Still, congrats for solving this little puzzle!
+...Or did you look close enough?</pre></blockquote>
+
+capitalized on是利用的意思，但capitalize也表示大写，所以提取文本中所有大写字母，得到SARGASSO。随后，火冬的公众号私信里多出了几条sargasso。
