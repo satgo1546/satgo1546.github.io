@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<title>nX-U8/100 core opcode map</title>
+<style>
+table{white-space:nowrap;font:12px sans-serif}
+td{vertical-align:top}
+table div{font-size:.8em}
+.movadd{background:linear-gradient(135deg,lavender 50%,peachpuff 0)}
+</style>
+<table align=center border=1 style="position:relative"><tr>
+<th><var>y</var> &rtrif;<br>&dtrif; <var>x</var>
+<th>0
+<th>1
+<th>2
+<th>3
+<th>4
+<th>5
+<th>6
+<th>7
+<th>8
+<th>9
+<th>A
+<th>B
+<th>C
+<th>D
+<th>E
+<th>F
+<tr>
+<th>0
+<td colspan=16 bgcolor=lavender>MOV<div>R<var>n</var>, #<var>imm8</var>
+<tr>
+<th>1
+<td colspan=16 bgcolor=peachpuff>ADD<div>R<var>n</var>, #<var>imm8</var>
+<tr>
+<th>2
+<td colspan=16 bgcolor=khaki>AND<div>R<var>n</var>, #<var>imm8</var>
+<tr>
+<th>3
+<td colspan=16 bgcolor=khaki>OR<div>R<var>n</var>, #<var>imm8</var>
+<tr>
+<th>4
+<td colspan=16 bgcolor=khaki>XOR<div>R<var>n</var>, #<var>imm8</var>
+<tr>
+<th>5
+<td colspan=16 bgcolor=peachpuff>CMPC<div>R<var>n</var>, #<var>imm8</var>
+<tr>
+<th>6
+<td colspan=16 bgcolor=peachpuff>ADDC<div>R<var>n</var>, #<var>imm8</var>
+<tr>
+<th>7
+<td colspan=16 bgcolor=peachpuff>CMP<div>R<var>n</var>, #<var>imm8</var>
+<tr>
+<th>8
+<td bgcolor=lavender>MOV<div>R<var>n</var>, R<var>m</var>
+<td bgcolor=peachpuff>ADD<div>R<var>n</var>, R<var>m</var>
+<td bgcolor=khaki>AND<div>R<var>n</var>, R<var>m</var>
+<td bgcolor=khaki>OR<div>R<var>n</var>, R<var>m</var>
+<td bgcolor=khaki>XOR<div>R<var>n</var>, R<var>m</var>
+<td bgcolor=peachpuff>CMPC<div>R<var>n</var>, R<var>m</var>
+<td bgcolor=peachpuff>ADDC<div>R<var>n</var>, R<var>m</var>
+<td bgcolor=peachpuff>CMP<div>R<var>n</var>, R<var>m</var>
+<td bgcolor=peachpuff>SUB<div>R<var>n</var>, R<var>m</var>
+<td bgcolor=peachpuff>SUBC<div>R<var>n</var>, R<var>m</var>
+<td bgcolor=wheat>SLL<div>R<var>n</var>, R<var>m</var>
+<td bgcolor=wheat>SLLC<div>R<var>n</var>, R<var>m</var>
+<td bgcolor=wheat>SRL<div>R<var>n</var>, R<var>m</var>
+<td bgcolor=wheat>SRLC<div>R<var>n</var>, R<var>m</var>
+<td bgcolor=wheat>SRA<div>R<var>n</var>, R<var>m</var>
+<td bgcolor=peachpuff>EXTBW*<div>ER<var>m</var>
+<tr>
+<th>9
+<td bgcolor=lavender>L<div><var>Dadr</var><br>R<var>n</var>, [EA]<br>R<var>n</var>, [EA+]<br>R<var>n</var>, [ER<var>m</var>]
+<td bgcolor=lavender>ST<div><var>Dadr</var><br>R<var>n</var>, [EA]<br>R<var>n</var>, [EA+]<br>R<var>n</var>, [ER<var>m</var>]
+<td bgcolor=lavender>L<div><var>Dadr</var><br>ER<var>n</var>, [EA]<br>ER<var>n</var>, [EA+]<br>ER<var>n</var>, [ER<var>m</var>]
+<td bgcolor=lavender>ST<div><var>Dadr</var><br>ER<var>n</var>, [EA]<br>ER<var>n</var>, [EA+]<br>ER<var>n</var>, [ER<var>m</var>]
+<td bgcolor=lavender>L<div>XR<var>n</var>, [EA]<br>XR<var>n</var>, [EA+]
+<td bgcolor=lavender>ST<div>XR<var>n</var>, [EA]<br>XR<var>n</var>, [EA+]
+<td bgcolor=lavender>L<div>QR<var>n</var>, [EA]<br>QR<var>n</var>, [EA+]
+<td bgcolor=lavender>ST<div>QR<var>n</var>, [EA]<br>QR<var>n</var>, [EA+]
+<td bgcolor=lavender>L<div>R<var>n</var>, <var>Disp16</var>[ER<var>m</var>]
+<td bgcolor=lavender>ST<div>R<var>n</var>, <var>Disp16</var>[ER<var>m</var>]
+<td bgcolor=wheat>SLL<div>R<var>n</var>, #<var>width</var>
+<td bgcolor=wheat>SLLC<div>R<var>n</var>, #<var>width</var>
+<td bgcolor=wheat>SRL<div>R<var>n</var>, #<var>width</var>
+<td bgcolor=wheat>SRLC<div>R<var>n</var>, #<var>width</var>
+<td bgcolor=wheat>SRA<div>R<var>n</var>, #<var>width</var>
+<td bgcolor=whitesmoke>DSR<div>R<var>m</var>:
+<tr>
+<th>A
+<td bgcolor=khaki>SB<div><var>Dbitadr</var><br>R<var>n</var>.<var>bit_offset</var>
+<td bgcolor=khaki>TB<div><var>Dbitadr</var><br>R<var>n</var>.<var>bit_offset</var>
+<td bgcolor=khaki>RB<div><var>Dbitadr</var><br>R<var>n</var>.<var>bit_offset</var>
+<td bgcolor=burlywood>MOV<div>R<var>n</var>, PSW
+<td bgcolor=burlywood>MOV<div>R<var>n</var>, EPSW
+<td bgcolor=lightgray>
+<td bgcolor=lavender>MOV<div>R<var>n</var>, CR<var>m</var>
+<td bgcolor=burlywood>MOV<div>R<var>n</var>, ECSR
+<td bgcolor=lavender>L<div>ER<var>n</var>, <var>Disp16</var>[ER<var>m</var>]
+<td bgcolor=lavender>ST<div>ER<var>n</var>, <var>Disp16</var>[ER<var>m</var>]
+<td bgcolor=lavender>MOV<div>ER<var>n</var>, SP<br>SP, ER<var>m</var>
+<td bgcolor=burlywood>MOV<div>PSW, R<var>m</var>
+<td bgcolor=burlywood>MOV<div>EPSW, R<var>m</var>
+<td bgcolor=burlywood>MOV<div>ELR, ER<var>n</var>
+<td bgcolor=lavender>MOV<div>CR<var>n</var>, R<var>m</var>
+<td bgcolor=burlywood>MOV<div>ECSR, R<var>m</var>
+<tr>
+<th><var>m</var> &rtrif;
+<th>0
+<th>1
+<th>2
+<th>3
+<th>4
+<th>5
+<th>6
+<th>7
+<th>8
+<th>9
+<th>A
+<th>B
+<th>C
+<th>D
+<th>E
+<th>F
+<tr>
+<th>B
+<td colspan=4 bgcolor=lavender>L<div>ER<var>n</var>, <var>Disp6</var>[BP]
+<td colspan=4 bgcolor=lavender>L<div>ER<var>n</var>, <var>Disp6</var>[FP]
+<td colspan=4 bgcolor=lavender>ST<div>ER<var>n</var>, <var>Disp6</var>[BP]
+<td colspan=4 bgcolor=lavender>ST<div>ER<var>n</var>, <var>Disp6</var>[FP]
+<tr>
+<th><var>n</var> &rtrif;
+<th>0
+<th>1
+<th>2
+<th>3
+<th>4
+<th>5
+<th>6
+<th>7
+<th>8
+<th>9
+<th>A
+<th>B
+<th>C
+<th>D
+<th>E
+<th>F
+<tr>
+<th>C
+<td bgcolor=lightyellow>BGE<div><var>Radr</var>
+<td bgcolor=lightyellow>BLT<div><var>Radr</var>
+<td bgcolor=lightyellow>BGT<div><var>Radr</var>
+<td bgcolor=lightyellow>BLE<div><var>Radr</var>
+<td bgcolor=lightyellow>BGES<div><var>Radr</var>
+<td bgcolor=lightyellow>BLTS<div><var>Radr</var>
+<td bgcolor=lightyellow>BGTS<div><var>Radr</var>
+<td bgcolor=lightyellow>BLES<div><var>Radr</var>
+<td bgcolor=lightyellow>BNE<div><var>Radr</var>
+<td bgcolor=lightyellow>BEQ<div><var>Radr</var>
+<td bgcolor=lightyellow>BNV<div><var>Radr</var>
+<td bgcolor=lightyellow>BOV<div><var>Radr</var>
+<td bgcolor=lightyellow>BPS<div><var>Radr</var>
+<td bgcolor=lightyellow>BNS<div><var>Radr</var>
+<td bgcolor=lightyellow>BAL<div><var>Radr</var>
+<td bgcolor=lightgray>
+<tr>
+<th><var>m</var> &rtrif;
+<th>0
+<th>1
+<th>2
+<th>3
+<th>4
+<th>5
+<th>6
+<th>7
+<th>8
+<th>9
+<th>A
+<th>B
+<th>C
+<th>D
+<th>E
+<th>F
+<tr>
+<th>D
+<td colspan=4 bgcolor=lavender>L<div>R<var>n</var>, <var>Disp6</var>[BP]
+<td colspan=4 bgcolor=lavender>L<div>R<var>n</var>, <var>Disp6</var>[FP]
+<td colspan=4 bgcolor=lavender>ST<div>R<var>n</var>, <var>Disp6</var>[BP]
+<td colspan=4 bgcolor=lavender>ST<div>R<var>n</var>, <var>Disp6</var>[FP]
+<tr>
+<th><var>n</var> &rtrif;
+<th>0
+<th>1
+<th>2
+<th>3
+<th>4
+<th>5
+<th>6
+<th>7
+<th>8
+<th>9
+<th>A
+<th>B
+<th>C
+<th>D
+<th>E
+<th>F
+<tr>
+<th>E
+<td class=movadd>MOV/ADD<div>ER0, #<var>imm7</var>
+<td bgcolor=peachpuff>ADD<div>SP, #<var>signed8</var>
+<td class=movadd>MOV/ADD<div>ER2, #<var>imm7</var>
+<td bgcolor=whitesmoke>DSR<div><var>pseg_addr</var>:
+<td class=movadd>MOV/ADD<div>ER4, #<var>imm7</var>
+<td bgcolor=lightyellow>SWI<div>#<var>snum</var>
+<td class=movadd>MOV/ADD<div>ER6, #<var>imm7</var>
+<td bgcolor=lightgray>
+<td class=movadd>MOV/ADD<div>ER8, #<var>imm7</var>
+<td bgcolor=burlywood>MOV<div>PSW, #<var>unsigned8</var>
+<td class=movadd>MOV/ADD<div>ER10, #<var>imm7</var>
+<td bgcolor=beige>AND&dagger;<div>PSW, #<var>unsigned8</var>
+<td class=movadd>MOV/ADD<div>BP, #<var>imm7</var>
+<td bgcolor=beige>OR&dagger;<div>PSW, #<var>unsigned8</var>
+<td class=movadd>MOV/ADD<div>FP, #<var>imm7</var>
+<td bgcolor=lightgray>
+<tr>
+<th><var>y</var> &rtrif;
+<th>0
+<th>1
+<th>2
+<th>3
+<th>4
+<th>5
+<th>6
+<th>7
+<th>8
+<th>9
+<th>A
+<th>B
+<th>C
+<th>D
+<th>E
+<th>F
+<tr>
+<th>F
+<td bgcolor=lightyellow>B<div><var>Cadr</var>
+<td bgcolor=lightyellow>BL<div><var>Cadr</var>
+<td bgcolor=lightyellow>B<div>ER<var>m</var>
+<td bgcolor=lightyellow>BL<div>ER<var>m</var>
+<td bgcolor=peachpuff>MUL<div>ER<var>n</var>, R<var>m</var>
+<td bgcolor=lavender>MOV<div>ER<var>n</var>, ER<var>m</var>
+<td bgcolor=peachpuff>ADD<div>ER<var>n</var>, ER<var>m</var>
+<td bgcolor=peachpuff>CMP<div>ER<var>n</var>, ER<var>m</var>
+<td bgcolor=lightgray>
+<td bgcolor=peachpuff>DIV<div>ER<var>n</var>, R<var>m</var>
+<td bgcolor=peachpuff>LEA<div>[ER<var>m</var>]
+<td bgcolor=peachpuff>LEA<div><var>Disp16</var>[ER<var>m</var>]
+<td bgcolor=peachpuff>LEA<div><var>Dadr</var>
+<td bgcolor=peachpuff>MOV<div><var>obj</var>, CR<var>n</var><br>CR<var>n</var>, <var>obj</var>
+<td bgcolor=antiquewhite>PUSH/POP<div>register list<br><var>obj</var>
+<td>*
+
+<table border=1 style="position:absolute;right:1em;top:7ex;background:white">
+<tr>
+<th>Legend
+<td bgcolor=whitesmoke>Prefix
+<td bgcolor=peachpuff>Arithmetic
+<td bgcolor=wheat>Shift
+<td bgcolor=khaki>Logic
+<tr>
+<td bgcolor=burlywood>Special
+<td bgcolor=beige>Miscellaneous
+<td bgcolor=antiquewhite>Arithmetic and data transfer
+<td bgcolor=lavender>Data transfer
+<td bgcolor=lightyellow>Control flow
+<tr>
+<td colspan=5>
+<hgroup style="float:right;text-align:right;margin:4px 8px">
+	<h1 style="font:italic 20px sans-serif;margin:0 0 8px">nX-U8/100<br>core<br>opcode<br>map</h1>
+	<div>by satgo1546<br>Jun 19, 2022</div>
+</hgroup>
+<div>* Opcodes determined by 3+ nibbles:</div>
+<table border=1>
+<tr>
+<th>
+<th><var>x</var>
+<th><var>n</var>
+<th><var>m</var>
+<th><var>y</var>
+<th>
+<th><var>x</var>
+<th><var>n</var>
+<th><var>m</var>
+<th><var>y</var>
+<th>
+<th><var>x</var>
+<th><var>n</var>
+<th><var>m</var>
+<th><var>y</var>
+<tr>
+<td bgcolor=lightyellow>RTI
+<td>F
+<td>E
+<td>0
+<td>F
+<td bgcolor=beige>NOP
+<td>F
+<td>E
+<td>8
+<td>F
+<td bgcolor=peachpuff>DAA<div>R<var>n</var>
+<td>8
+<td><var>n</var>
+<td>1
+<td>F
+<tr>
+<td bgcolor=lightyellow>RT
+<td>F
+<td>E
+<td>1
+<td>F
+<td bgcolor=whitesmoke>DSR<div>DSR:
+<td>F
+<td>E
+<td>9
+<td>F
+<td bgcolor=peachpuff>DAS<div>R<var>n</var>
+<td>8
+<td><var>n</var>
+<td>3
+<td>F
+<tr>
+<td bgcolor=antiquewhite>INC<div>[EA]
+<td>F
+<td>E
+<td>2
+<td>F
+<td bgcolor=beige>CPLC
+<td>F
+<td>E
+<td>C
+<td>F
+<td bgcolor=peachpuff>NEG<div>R<var>n</var>
+<td>8
+<td><var>n</var>
+<td>5
+<td>F
+<tr>
+<td bgcolor=antiquewhite>DEC<div>[EA]
+<td>F
+<td>E
+<td>3
+<td>F
+<td bgcolor=lightyellow>BRK
+<td>F
+<td>F
+<td>F
+<td>F
+</table>
+<div>&dagger; Inferred from the instruction encoding.<br>
+The only documented AND/OR PSW instructions are EI, DI, SC and RC.</div>
+</table>
+
+</tr>
+</table>
