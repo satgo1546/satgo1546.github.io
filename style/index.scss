@@ -84,8 +84,8 @@ article {
 	}
 
 	ul:lang(zh-Hans) {
-		padding-inline-start: 4em;
-		list-style: "——";
+		padding-inline-start: 2em;
+		list-style: circle;
 	}
 
 	dl {
@@ -1459,6 +1459,12 @@ article {
 	@font-face {
 		font-family: TeXCode;
 		src: local("Latin Modern Mono 10"), local("LMMono10-Regular");
+	}
+
+	@font-face {
+		font-family: TeXCode;
+		src: local("FandolFang"), local("FandolFang R");
+		unicode-range: U+2E80-9FFF, U+F900-FAFF, U+FE10-FE1F, U+FE30-FE6F, U+FF00-FFEF, U+20000-31FFF;
 	}
 
 	&:root {
