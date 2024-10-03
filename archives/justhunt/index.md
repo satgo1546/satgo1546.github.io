@@ -7,6 +7,10 @@ tags:
 theme: theme-htmltex
 ---
 
+<div class="admonition">
+本文也有<a href="index.pdf">PDF版本</a>，但其中没有完整列出所有代码。
+</div>
+
 <div>队伍：😾建一个Just队伍！<br>
 解题：piscesciurus</div>
 
