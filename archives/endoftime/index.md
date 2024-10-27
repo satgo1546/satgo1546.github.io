@@ -124,7 +124,7 @@ CCBC 15开赛后，终于得知endoftime出现在CCBC网站的原因：观莲游
 	<figcaption>观测者猫猫与金毛猫猫</figcaption>
 </figure>
 
-## endoftime（JustHunt宇宙）
+## endoftime（JustHunt宇宙）与轰入公众号
 
 9月4日晚，距离Just Puzzle Hunt开赛还有不到三天，我发现了<https://justhunt.cn/endoftime/>。
 
@@ -255,7 +255,7 @@ CCBC 15开赛后，终于得知endoftime出现在CCBC网站的原因：观莲游
 <td>.<td>E
 </table>
 
-😼发现成就条形码指向的图片右下角藏有“photomosh”字样的水印，不过这只表明图片利用[PhotoMosh](https://photomosh.com/)制作。
+HanaNeko发现成就条形码指向的图片右下角藏有“photomosh”字样的水印，不过这只表明图片利用[PhotoMosh](https://photomosh.com/)制作。
 
 ![](photomosh.jpg)
 
@@ -265,7 +265,7 @@ CCBC 15开赛后，终于得知endoftime出现在CCBC网站的原因：观莲游
 
 ![](微信图片.gif)
 
-~~鱼左：我知道，这是用PS里面滤镜-风格化-风效果做的。~~😼还发现这张图片是GIF动画，共两帧，两帧之间只有64个像素有区别，看起来就像静态图片一样。gary、Winid、High Sierra尝试提取了帧间差异。
+~~鱼左：我知道，这是用PS里面滤镜-风格化-风效果做的。~~HanaNeko还发现这张图片是GIF动画，共两帧，两帧之间只有64个像素有区别，看起来就像静态图片一样。gary、Winid、High Sierra尝试提取了帧间差异。
 
 <var>x</var>|<var>y</var>|索引<sub>0</sub>|R<sub>0</sub>=G<sub>0</sub>|B<sub>0</sub>|索引<sub>1</sub>|R<sub>1</sub>=G<sub>1</sub>|B<sub>1</sub>|Δ索引|ΔR=ΔG|ΔB
 -:|-:|-:|-:|-:|-:|-:|-:|-:|-:|-:
@@ -437,3 +437,104 @@ Hint系统
 [2024-09-30 21:58:19] Taiga：[图片：Sublime Merge截图]我是Sublime Merge用户
 [2024-09-30 21:59:35] Taiga：我绝对你不应该因为我有技术力就怀疑是我
 [2024-09-30 21:59:45] Taiga：觉得*</pre></blockquote>
+
+## 咚咚谜也有？
+
+10月25日晚，HanaNeko发现了公众号咚咚谜最近几期发布的谜题文章的防剧透减速带里用粗体文本藏了摩斯密码：[#268](https://mp.weixin.qq.com/s/KCJimrkgbasQAr4GBsKHKg)是EN，[#269](https://mp.weixin.qq.com/s/nyCDLjWZQ_Z-VZX2j_UqFQ)是DO，[#270](https://mp.weixin.qq.com/s/ezXFKv7V7jYLrPjDVIBGAQ)是FT。（接下来的[#271](https://mp.weixin.qq.com/s/TLIindmd4UTba0YxXO2_Lg)也确实能解出IME。）先前轰入各家公众号时，有人验证过咚咚谜没有endoftime的自动回复；而此时向公众号发送endoftime，已可以收到如下图片了。
+
+![](微信图片_20241025211805.png)
+
+这是一张索引颜色的PNG图片，其中所有用到的颜色如下。
+
+<table class="settabs">
+<tr><td bgcolor="#000000"><td>#000000<td><td bgcolor="#000200"><td>#000200
+<tr><td bgcolor="#0000FF"><td>#0000FF<td><td bgcolor="#0002FF"><td>#0002FF
+<tr><td bgcolor="#0075AD"><td>#0075AD<td><td bgcolor="#0077AD"><td>#0077AD
+<tr><td bgcolor="#808080"><td>#808080<td><td bgcolor="#808280"><td>#808280
+<tr><td bgcolor="#7D9DAA"><td>#7D9DAA<td><td bgcolor="#7D9FAA"><td>#7D9FAA
+<tr><td bgcolor="#7AB9D6"><td>#7AB9D6<td><td bgcolor="#7ABBD6"><td>#7ABBD6
+<tr><td bgcolor="#8AC4DB"><td>#8AC4DB<td><td bgcolor="#8AC6DB"><td>#8AC6DB
+<tr><td bgcolor="#CCCCCC"><td>#CCCCCC<td><td bgcolor="#CCCECC"><td>#CCCECC
+<tr><td bgcolor="#B8DDEB"><td>#B8DDEB<td><td bgcolor="#B8DFEB"><td>#B8DFEB
+<tr><td bgcolor="#F4FDFF"><td>#F4FDFF<td><td bgcolor="#F4FFFF"><td>#F4FFFF
+<tr><td bgcolor="#FFFDFF"><td>#FFFDFF<td><td bgcolor="#FFFFFF"><td>#FFFFFF
+</table>
+
+所有颜色都以绿色通道差值2的形式成对出现。若将绿色分量大的视为黑色，小的视为白色，则可填涂出如下图案。
+
+![](汉信码.png)
+
+这是汉信码，一种~~扫不出的~~二维码。作为自主研发的零生态格式，支持这种条码的软件少得可怜。我找到的唯一能读出条码内容的工具是[Aspose在线条码扫描](https://products.aspose.app/barcode/recognize/hanxin)。条码内容是网址：<https://pastebin.com/HuYeycnM>，网址导向一段文本。
+
+```
+这里……是哪里？
+成功了吗？
+你又是……
+
+我想起来了！我认得你。
+就像当时，她和我的第一次见面。
+我本以为这只是那个不起眼的夏天里，
+另一个更不起眼的注脚。
+
+但终究，她重构了整个世界。
+——在几年之前。
+3年？还是5年？
+
+那么，你会记得……
+15亿年之前的事吗？
+
+
+
+
+
+
+
+<CONNECTION LOST>
+
+
+https://sm.ms/image/cn2Dt6JEIkvWTH1
+```
+
+打开末行的链接，可见一张名为ddm-s8.png的图片。
+
+![](ddm-s8.png)
+
+依次填入“核弹”“生物危害”“真核生物”，真核生物的英文eukaryote不符合[S8]。注意到sargasso是15亿年前的真核生物，咚咚谜的答案验证格式是六位数日期+答案，向咚咚谜公众号发送240931sargasso得到下一步的图片。
+
+![](微信图片_20241026190506.gif)
+
+这是一张GIF图片，只有一帧，图像使用了减色抖动效果，调色盘没有可疑之处。CAT-FISH指出将图片后缀改为RAR后可以打开。用binwalk或十六进制编辑器都可以看到文件尾部藏有ZIP压缩包，解压后得到key.txt。
+
+```
+你，退后能不你，退后能不你，退后能不你但，钮按退后️⬅击单能可，漏遗若，项一何任的需所中其漏遗有没你保确，置设有所的点站些这问访能您保确够能选复，分部」全安「到动滚，上卡项选」级高「在。项选ｔｅｎｒｅｔｎＩ击单后然，单菜具工击单请。持支够能置设全安的您保确请，点站全安某问访要您果如字名的你有没能可中其，息信于关的ｒｅｒｏｌｐｘＥ　ｔｅｎｒｅｔｎＩ看查以可ｒｅｒｏｌｐｘＥ　ｔｅｎｒｅｔｎＩ于关击单后然，单菜助帮击单。性全安接连的位８２１求要点站些某置设置设置设络网测检🌐击单请？达豁观乐、明透、澈清般这何为？望希此如有抱么什为，找查行进ｓｗｏｄｎｉＷ望希您果如可许需无，许允的员理管络网您得获动自并络网的您查检以可ｓｗｏｄｎｉＷ　ｔｆｏｓｏｒｃｉＭ，许允员理管络网的您果如配匹相置设的中接连您与须必，配匹相置设网域局的中卡项选接连您与该应置设些这。置设网域局击单，上卡项选接连在。项选ｔｅｎｒｅｔｎＩ击单然，单菜具工击单请，置设接连看查要致一全完址地页网该的入输中栏址地在你和该应们它，节细述上认确细仔必务请，址地的页网该入输中栏址地在时同，址地的页网该了入输你认确请，址地的页网该入输中栏址地在经已您果如无毫，义意有没这但，新刷，钮按新刷击单，线间时的宙宇处所你有所在，钮按新刷击单或，钮按新刷击单或，钮按新刷🔄击单
+
+
+<CONNECTION ESTABLISHED>
+
+
+
+
+你终究不会只是注脚。
+你，和我，会是扭转局面的「关键」。
+```
+
+除了字阵，文本中没有隐写别的什么信息了。咚咚谜的endoftime谜题到此结束了。
+
+### 
+
+对于Rivenux公众号自动回复的GIF图片，先前的研究只关注了两帧之间的差异，却遗漏了单帧自身的信息。
+
+### 我不幸endoftime了
+
+10月25日语谜Puzzling公众号的文章[《【好题推荐】每日谜题中竟藏着惊天秘密？》](https://mp.weixin.qq.com/s/iY3A7mOrCua2b8R8GwFsRQ)中的减速带也藏有相同格式的粗体文本。
+
+<blockquote><pre>[2024-10-25 22:27:08] 鱼左：[回复@HanaNeko]哎呀
+[2024-10-25 22:27:13] 鱼左：真是乐了
+[2024-10-25 22:27:50] 鱼左：我每次写推送都偷咚咚谜的减速带的事情要暴露了（</pre></blockquote>
+
+令人不禁感叹为什么Winfrid创建的另一个公众号PKU谜协还没有endoftime相关内容。
+
+正逢近期MaxXing白嫖了个服务器开了个Minecraft多人游戏存档，于是某个角落里长出了神秘图案（图源Sierra）。
+
+![](麦田怪圈.webp)
+
