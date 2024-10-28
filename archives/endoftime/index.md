@@ -374,7 +374,15 @@ aaaaaaaaa表明需要通过密钥将其轮转为endoftime，其左侧有36个字
 <blockquote lang="en"><pre>Sadly, this isn't actually related to the ARG endoftime. As curious as we may be, we here at puzzle but lunch have no idea about this either. Sure, we capitalized on it, but we actually are oblivious. Still, congrats for solving this little puzzle!
 ...Or did you look close enough?</pre></blockquote>
 
-capitalized on是利用的意思，但capitalize也表示大写，所以提取文本中所有大写字母，得到SARGASSO。随后，火冬的公众号私信里多出了几条sargasso。
+capitalized on是利用的意思，但capitalize也表示大写，所以提取文本中所有大写字母，得到SARGASSO，但公众号对此答案没有自动回复。随后，火冬的公众号私信里多出了几条sargasso。
+
+9月5日晚，花落星飞发现不如吃中饭解谜社公众号加上了对sargasso的自动回复。
+
+<blockquote><pre>nTcAXsaA
+来自一种&lt;最好的痛苦&gt;。
+（重申此题与endoftime无实际关联）</pre></blockquote>
+
+这个谜题直到一个多月后才被解开。
 
 ## 【TODO：这个到底是不是无关干扰？】
 
@@ -444,7 +452,7 @@ Hint系统
 
 ![](微信图片_20241025211805.png)
 
-这是一张索引颜色的PNG图片，其中所有用到的颜色如下。
+第二天晚上，这张图片的谜题被解开了。这是一张索引颜色的PNG图片，其中所有用到的颜色如下。
 
 <table class="settabs">
 <tr><td bgcolor="#000000"><td>#000000<td><td bgcolor="#000200"><td>#000200
@@ -523,6 +531,27 @@ https://sm.ms/image/cn2Dt6JEIkvWTH1
 ### 
 
 对于Rivenux公众号自动回复的GIF图片，先前的研究只关注了两帧之间的差异，却遗漏了单帧自身的信息。
+【TODO：是吗？】
+
+咚咚谜的谜题被解开之后，CAT-FISH发现这张图中用同样的套路隐藏了信息。
+
+### 不如吃中饭解谜社谜题再开
+
+在[S8]填入sargasso的原因仅仅是先前在哪里见过。这不像是一个常用于答案的单词，所以应该不是巧合。我没能通过关键词“15亿年前”和“真核生物”搜索到它。Sargasso是海域的名称，真核生物马尾藻属名实为Sargassum。尽管不如吃中饭解谜社多次强调自己不是endoftime的一环，种种疑点还是刺激了好奇。
+
+我先前不明白下一步谜题中随机字符串和“<最好的痛苦>”的含义。在又一次接触了Pastebin之后，忽然发现随机字符串与Pastebin地址中的字符串格式相同（8位大小写字母），访问<https://pastebin.com/nTcAXsaA>确实到达了存在的页面，这才明白“<最好的痛苦>”是指将“best pain”字母重组。
+
+页面需求密码，上一步中的密钥endoftime被自然填入。文本内容如下：
+
+```
+我望向海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的海底的那片海，鱼鳞在深空中熠熠生辉。
+```
+
+文本中有两种“海”字：标准字符U+6D77和兼容字符U+2F901，后者可拆解为U+6D77 + VS2，是另一种字形。绝大部分字体都没有提供基本平面外的汉字，但正因为这种等价性，渲染时自动用标准字形代替了，所以不管用什么字体，这两个字符看起来都完全相同，也被浏览器Unicode-aware的搜索功能视为等价的字符。
+
+WYXkk考虑了下一步：第1个兼容字符是第7个海，第2个兼容字符是在此之后第15个海……按A1Z26可提取GOLDENRECORD。向不如吃中饭解谜社公众号发送之，没有收到自动回复。
+
+golden record和“深空”指向旅行者号携带的金唱片。鱼鳞的英文scale同时有标度和比例的意思。【TODO】
 
 ### 我不幸endoftime了
 
