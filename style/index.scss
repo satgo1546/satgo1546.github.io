@@ -83,6 +83,11 @@ article {
 		text-emphasis-style: sesame;
 	}
 
+	pre,
+	code {
+		white-space: pre-wrap;
+	}
+	
 	ul:lang(zh-Hans) {
 		padding-inline-start: 2em;
 		list-style: circle;

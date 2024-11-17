@@ -1,0 +1,162 @@
+---
+title: 如果有得选，别选Markdown
+date: 2024-11-17
+dates: 2024-11-14 ~ 2024-11-17
+tags:
+- 闲聊
+- Markdown
+---
+
+<p>今天我要来好好地喷一下Markdown。让我们来看看为什么不管从哪个角度看，Markdown都是错误的选择。
+
+<h2>语法怪异</h2>
+
+<p>只有开发人员痴迷于纯文本和DSL，而普通用户长久受到所见即所得编辑器的熏陶，明晰地认识到通过特殊语法实现文字效果是一种时代的倒退，即使这种语法看上去人畜无害。因为需要付出努力记忆，因为在遇到问题时无助，因为符号一点也不直观。
+
+<p>快问快答：请用Markdown打出下列文稿片段。
+
+<blockquote>
+<p>反斜杠<code>\</code>用于转义符号，使其不被视作Markdown特殊语法。被<code>`</code>环绕的文字通常视作代码，但在<code>`</code>前加上<code>\</code>，写成<code>\`</code>，就能原样输出反引号“`”；而要原样输出反斜杠“\”，就要写成<code>\\</code>。如果要打出包含单个<code>`</code>的代码，需要用<code>`` ` ``</code>这种特殊的转义方法，而不是<code>`\``</code>，后者被识别为包含单个<code>\</code>的代码和一个孤立的反引号，因为<code>\</code>在代码中不是转义符号。被多个连续的<code>`</code>（例如<code>``</code>、<code>```</code>）环绕的文字也被视作代码，这样就能在代码中包含少量<code>`</code>。代码内两侧皆有的空格<strong>（各一）</strong>会被剥除，以便表示以<code>`</code>开头或结尾的代码。例如，在AutoHotkey脚本语言中，<code>`</code>被用作转义字符，字符串中的<code>`n</code>表示换行符。除此之外，额外插入的空格会被保留，例如换行符和空格<code>`n </code>。如果代码中只有空格，可以直接输入。例如，在Markdown中，一行文字以<code>  </code>结尾，表示插入硬换行<code>&lt;br&gt;</code>，这里的代码用<code>`  `</code>输入。但是，代码同时以空格开头和结尾的场合，例如<code> x </code>，需要多插入两个空格来补偿被剥除的两个空格。由于Discourse Markdown实现问题，在输入大于两个纯空格代码（如本应通过<code>`   `</code>打出的<code>   </code>）时，也必须追加两个空格，写成<code>`     `</code>，这不符合CommonMark规范。
+<p>这是一幅20×20像素的怒猫的图片：<img src="pouting_cat.png" alt=":pouting_cat:" width="20" height="20">，这幅图片的原始尺寸是72×72。<strong>注意：</strong>表示尺寸的乘号应该写成<strong>“×”</strong>，但因为乘号较难打出，不少用户会用<strong>“*”</strong>代替，写成像20*20、72*72这样，在Markdown中会导致星号丢失，其间文字被视作强调。与之类似，形如“&lt;x&gt;”和“&lt;x y&gt;”的文字也要特别注意，没有转义的话，会被识别成HTML标记，最终消失。
+</blockquote>
+
+<p>Markdown拥趸可能已经汗流浃背了。对HTML和Word用户而言，这不过是一段稍长一点的技术说明，和一般的网页内容没什么两样；对Markdown而言，每一个富文本标记都是一场灾难。就像外壳脚本，语法看似简洁又合理，实际却是一场彻头彻尾的灾难。
+
+<h2>段落开头空两格</h2>
+
+<p><a href="https://commonmark.org/">CommonMark</a>描述Markdown为“一种用于编写结构化文档的纯文本格式，取材于电子邮件和新闻组的格式惯例”。
+
+<p>中文自古以来就是纯文本，【标题】和《书名》通过标点即可表达，所以即使是纯文本邮件，也未见额外添加格式记号的需求。Markdown中的斜体格式记号在中文没有使用场景，而粗体则存在巨大缺陷：<strong>本文中的所有粗体字（包括这句话）都无法用<code>**</code>或<code>__</code>语法实现。</strong>注意加粗的部分包含标点。这是CommonMark规范定义的预期行为，是无空格语言特有的问题，四年前的<a href="https://github.com/commonmark/commonmark-spec/issues/650">工单</a>至今尚未解决。
+
+<p>倒是中文的对齐方式很有讲究。小学就学过：全文标题要居中，段落开头空两格。结果开头的空格在Markdown中被翻译为代码块，而真正的居中和空两格则很难实现。我见了太多没有经验的用户为段落缩成一行感到困惑。缩进 = 代码块的设计不仅困扰中文用户，也同样困扰着开发人员。因为程序自动插入的Markdown文本容易误带缩进，<a href="https://github.com/11ty/eleventy/issues/2438">Eleventy默认禁用了缩进代码块</a>。
+
+<p>中国人爱写诗，换行尤为重要。Markdown既没有提供非代码块的<code>&lt;pre&gt;</code>，又没有提供直观的换行方式，必须在每行行末追加<code>  </code>（两个空格，很容易丢失）或<code>\</code>，或者回到HTML的<code>&lt;br&gt;</code>。不专门查阅资料，都不知道怎么换行。
+
+<h2>兼容的HTML：不可能的任务</h2>
+
+<p>Markdown支持嵌入HTML。理论上，100%兼容任意HTML片段是不可能完成的目标，因为HTML和Markdown的解析都绝不会报错，所以没有兼容的余地。而在实际使用中，也确实有不少问题，导致外部粘贴进来的HTML代码无法正确原样输出。HTML的语法十分复杂，简单的启发式识别算法遇到复杂的块结构，输出就会错乱。
+
+<pre><code class="language-markdown">&lt;blockquote&gt;&lt;pre&gt;比如说
+像这样
+
+这是一首
+现代诗吗
+
+我觉得我是😾&lt;/pre&gt;&lt;/blockquote&gt;</code></pre>
+
+<p>CommonMark只考虑了直接以<code>&lt;pre</code>开头块需要原样输出，但没有考虑嵌套的<code>&lt;pre&gt;</code>，导致空行被识别为HTML块的结束、段落的开始，最终输出标记嵌套错乱的HTML。
+
+<pre><code class="language-html">&lt;blockquote&gt;&lt;pre&gt;比如说
+像这样
+&lt;p&gt;这是一首
+现代诗吗&lt;/p&gt;
+&lt;p&gt;我觉得我是😾&lt;/pre&gt;&lt;/blockquote&gt;&lt;/p&gt;</code></pre>
+
+<p>这个问题的<a href="https://github.com/commonmark/commonmark-spec/issues/597">工单</a>更加久远。
+
+<p>行间HTML块会原样输出，但行内HTML元素中的符号却会被Markdown识别。<code>&lt;code&gt;`&lt;/code&gt;&lt;code&gt;`&lt;/code&gt;</code>会被转换为嵌套的<code>&lt;code&gt;</code>标记，于是不得不把<code>`</code>写成<code>\`</code>或<code>&amp;grave;</code>。Markdown总会在意想不到之处搞事，最终把文档源码演化成比纯粹写HTML还丑陋的样子。<a href="https://github.com/commonmark/commonmark-spec/issues/711">工单</a>。
+
+<h2>正则表达式堆砌的坟场</h2>
+
+<p>尽情地尝试任何转换工具吧，它们也无能为力。我尝试过的工具中，没有一个能从本文的HTML转换出正确的Markdown。
+
+<p>程序很难正确识别人类觉得自然的语言，程序也很难正确从数据源生成符合语法的内容。由于人类觉得自然的语言总是有着许多语义模糊的边界场景，要正确使用就需要仔细对照，小心处理。多数Markdown编辑器提供的行内代码按钮只会在选中文本两侧加上<code>`</code>，在代码中含有反引号时就会错乱，而没有做错任何事的用户只能对着错乱的渲染结果倍感疑惑。
+
+<p>初版的Markdown.pl就是一堆正则表达式，这也不能怪作者。在CommonMark规范制定期间，发现原先有许多远处记号影响含义的例子，导致解析很慢。经过对语法调整和妥协后，才有了一遍解析就可完成渲染的CommonMark。
+
+<p>因为语法实际复杂，解析必须使用专门的库，然而语法看起来欺骗性地简单，库生态亦欺骗性地繁荣。不需要专门设计编辑工具，只需要处理和存储纯文本，引用库来渲染，就能有富文本的效果，如此捷径催促着Markdown的蔓延。但这更多表明的是程序员逃避而非面对富文本，是一种让人看上去没有偷懒的捷径，掩盖问题带来的是更多的问题。
+
+<p>验证渲染正确性和数据的迁移比单纯的解析和渲染更加困难。<a href="https://github.blog/engineering/user-experience/a-formal-spec-for-github-markdown/">GitHub接轨CommonMark时</a>，花了一番功夫清洗原有数据，这样的投入绝非每个选择Markdown的网站都能承担。
+
+<h2>不富的富文本和不是Markdown的Markdown</h2>
+
+<p>Markdown是各种标记语言中功能最弱的语言。原味的功能少得可怜，即使算上已成为事实上的标准的GitHub风味，也远远比不上同行。图片尺寸、定义列表、锚点、上下标、合并单元格、目录、脚注、文字高亮……常用但欠缺的功能要多少有多少。Markdown的解决方案，要么退回HTML，要么扩展语法。
+
+<p>前文已经提到在Markdown里写HTML本来就有问题。若如此多的功能都不支持，还不如直接写HTML算了！HTML本身就不怎么方便写，Markdown还瞎掺和。如果一开始写了Markdown语法，后来想要修改，加入一些不支持的元素，就必须推翻重写为HTML。这时的Markdown不仅没有简化输入，还增添了麻烦，在编辑流程中插入了巨大的割裂感。所以大部分开发者和用户都选择扩展语法，催生了数不尽的方言。
+
+<p>每个库都扩展了常用功能的语法，各自为营，各不相同，千奇百怪，看似共通，实不兼容，不兼容之处又相当微妙。据我所知，指定图片大小的扩展语法至少有五种：</p>
+
+<table>
+<thead><tr><th>Flavor<th>语法<tbody>
+<tr><td>原味<td><code>&lt;img src="pouting_cat.png" width="20" height="20"&gt;</code>
+<tr><td>Discourse<td><code>![alt|20x20](pouting_cat.png)</code>
+<tr><td>MultiMarkdown<td><code>![alt](pouting_cat.png width="20" height="20")</code>
+<tr><td>PHP Markdown Extra<td><code>![alt](pouting_cat.png){width=20 height=20}</code>
+<tr><td>Pandoc<td><code>![alt](pouting_cat.png){width="20" height="20"}</code>
+<tr><td>Kramdown<td><code>![alt](pouting_cat.png){: width="20" height="20"}</code>
+</table>
+
+<p>许多标记语言都支持定义列表，只有Markdown用户在问：什么是定义列表？定义列表的用途可能比想象中更多。在MDN上随机访问一个页面，有相当的概率其中就有定义列表，如标记的属性、属性的取值、函数的参数、对象的方法。MDN在<a href="https://openwebdocs.org/content/posts/markdown-conversion/">从HTML迁移到Markdown</a>时必须面对的问题便是如何处理这种Markdown不支持的格式。尽管许多库都支持一种扩展语法以生成定义列表，出于编辑工具兼容性的考虑，他们选择了基于已有的项目符号列表语法自己搓一个扩展。
+
+<p>原版Markdown只支持基于缩进的代码块，上文提到这很不好用。前CommonMark时期，代码块的语法也分裂为<code>```</code>和<code>~~~</code>两种，直到CommonMark统一局面，才有了今天随处可用的代码块。
+
+<p>被迫进行的随意扩展带来的是实现的分裂，进而导致各家软件间文稿数据不可交换。CommonMark紧盯最小公约数不放，虽然统一了基本语法，但并没有试图统一常用扩展。各家Markdown都称自己为Markdown，常用功能的语法却各不相同。编辑器中看到的Markdown渲染结果根本不作数，因为用于网站展示的管线采用的是别的库。
+
+<h2>良莠不齐的扩展</h2>
+
+<p>然而这些扩展也只能涵盖常用文档部件。不同类型的文档需要不同类型的文档部件。译文和原文对应的双语文章需要双栏对照的文本段落，帮助开发者迁移的指南需要双栏对照的代码块；指导按键顺序的说明手册需要穿插特殊符号字体，以两个视角叙述的小说则需要为不同章节使用不同的正文字体；数学笔记需要公式、流程图和坐标轴，历史笔记需要地图、关系网和时间线；wiki需要基于文档标题的站内链接，教科书需要标出定理和习题。
+
+<p>得益于其一看就懂（存疑）的语法，Markdown已经出现在了所有它该出现和不该出现的地方：博客、笔记、说明书、书籍、信件、幻灯片……似乎有一种不知从何而来的倾向，只要是有字的地方，加上Markdown就会成为卖点。可是，每一种文档类型都有着微妙的差异，无脑选择Markdown势必产生需求缺口。
+
+<p>GitHub追加了删除线、高亮块；Reddit追加了剧透模糊；Discourse追加了引用帖子；就连CommonMark规范自身，都采用了扩展的语法来标记双栏对照代码块。Markdown笔记软件往往为各领域的用户添加了几十种扩展语法。想要什么功能，就添加，但名义上，仍然称呼其为Markdown。结果，世界上没有两个Markdown实现是相同的。
+
+<p>原本的Markdown精神在扩展的压力之下消散了。这些扩展有的融合进了现有语法，有的创造了新的语法，有的破坏了兼容性，有的扩展间甚至有冲突。插入公式的首选方案是LaTeX，插入绘图的方案有Mermaid和PlantUML等，它们无一例外需要用户学习另一种与Markdown毫不相关的语法，增加文档渲染的复杂度，还可能令渲染产生错误。这些错误可能并非文档作者的疏忽，平台的一次升级就可能破坏原本正常渲染的组件。与Markdown宽容的渲染策略不同，这些组件遇到错误就只会显示干巴巴的错误信息，看不见文字，读者也无法猜测作者的原意。
+
+<p>LaTeX和Typst等出版工具提供用户自定义部件的能力，Web上可以采用Vue等UI组件框架。Markdown？每有个新组件，就要写个解析器插件。即使每个Markdown库都有一大堆插件，用户的需求还是得不到满足。直至最近MDX把React搬了进来，才开始向统一的扩展框架迈进。
+
+<h2>不结构化的结构化文档</h2>
+
+<p>Markdown所谓的“结构化”就是有六级标题。拜托，六级标题根本不是什么新鲜事。由于可用格式标记过少，标题以外的有用的结构无法表达，用户不得不滥用可用格式创造效果。
+
+<p>原版Markdown太过古早，就连HTML今天支持的结构化能力，Markdown也不具备。LaTeX自古支持的<code>&lt;figure&gt;</code>，没有对应物。对<code>&lt;small&gt;</code>、<code>&lt;mark&gt;</code>、<code>&lt;b&gt;</code>等语义化标记没有支持，用户便认为Markdown是个表达样式而非结构的语言。我见过不少用户，竟然用行内代码<code>``</code>代替高亮文字<code>&lt;mark&gt;</code>，仅仅是因为在许多平台上，行内代码有特殊的背景色！
+
+<p>HTML中的六种斜体<code>&lt;i&gt;</code>、<code>&lt;em&gt;</code>、<code>&lt;var&gt;</code>、<code>&lt;dfn&gt;</code>、<code>&lt;cite&gt;</code>、<code>&lt;address&gt;</code>，Markdown只有一种。因为没有附加语义，工具也只好将其简单处理为某种斜体标记。可是，这六种标记在中文中的表现形式完全不同：
+
+<table>
+<thead><tr><th>HTML<th>英文<th>简体中文<tbody>
+<tr><td><code>&lt;i&gt;</code><td>斜体<td>多种
+<tr><td><code>&lt;em&gt;</code><td>斜体<td>着重号
+<tr><td><code>&lt;var&gt;</code><td>斜体<td>斜体
+<tr><td><code>&lt;dfn&gt;</code><td>斜体<td>黑体
+<tr><td><code>&lt;cite&gt;</code><td>斜体<td>书名号
+<tr><td><code>&lt;address&gt;</code><td>斜体<td>无样式
+</table>
+
+<h2>与HTML深度绑定</h2>
+
+<p>Markdown从最初就没有想过要输出到HTML以外的格式。富文本和结构化能力弱、支持嵌入HTML、全面面向Web的库生态，注定了输出到其他格式将会是灾难，灾难程度就跟LaTeX转换到HTML一样。
+
+<p>网页是一种呈现效果相当糟糕的媒介，极难保证各端渲染效果一致，高级排版特性可说是没有，只适合屏幕阅读而不适应纸张。以之为目标，意味着事后转换也不可挽回了。
+
+<p>脱离Web平台后，HTML不再是万能钥匙，表现只能依靠Markdown原生的结构。数不尽的平台和工具挣扎着帮助Markdown与Web解耦，Markdown弱小的表达力却是个怎么也挥之不去的问题。语法扩展成了唯一选项，随之丢失的便是数据共通性，文稿从写下的那刻起就锁死平台出不去了，最初选择Markdown可有可无的那点优势终归荡然无存。
+
+<h2>永远裂开的图片</h2>
+
+<p>我初学HTML时也曾疑惑：插入图片时要怎么填地址？我按最合理的想法，填入了<code>file://</code> URL，然后上传。打开网页，看起来没有问题。当然，其他人访问时，看到的只剩裂图。
+
+<p>发送Markdown附件时，很可能忘记连同资源一起发送。对于压缩包内的Markdown文件，预览工具找不到图片，图片就看不到了，取而代之的是裂开的图。
+
+<p>为了编写，一些用户开始使用图床存放图片，这样就只需要管理Markdown文件。那么，代价是什么？还没几年，图床挂了，图片全裂。
+
+<p>插入图片带来文件管理上的麻烦，令人逃避插入图片这种本不应困难的操作。或许我们可以向奇怪的HTML实践学习，把所有图片都Base64编码进源码里。
+
+
+<h2>前路漫漫</h2>
+
+<p>Markdown原始的定位在浪涛之下淡化，时至今日，已不管做什么都做不好。它既不便于用户编写，又不便于程序识别；既不安全，又不高效；既缺乏表现力，又缺乏扩展能力；既不够统一以用于数据交换，又不够独立以备文件归档。它的文化根基来自英文互联网，没有一条语法符合中文习惯；它的设计根基源于一个简单的小工具，无法为多样的用例作准备；它的技术根基在Web平台，丝毫没有可移植性。
+
+<p>所以，如果没有人强迫你用Markdown，请停止无脑选择它，三思而后行。
+
+<p>想要方便用户编写，就老老实实部署所见即所得编辑器。想要方便程序识别，就用JSON而非HTML描述文章结构。想要安全高效得兼，就回退到纯文本。想要Web平台上的表达能力，就用HTML和组件框架。想要印刷品的表达能力，就用TeX或Typst。念念不忘Markdown，就溯回它的本源，把它作为HTML的缩写来用，就像Emmet那样，缩写只存在于输入期间。坚持使用Markdown，就要做好接受难以表达、处理、传输、归档、迁移、出版的准备。
+
+<h2>编写本文时的参考资料</h2>
+
+<p>通过搜索“markdown is bad”找到。
+
+<ul>
+<li><a href="https://www.smashingmagazine.com/2022/02/thoughts-on-markdown/">Thoughts On Markdown</a>
+<li><a href="https://ignore.pl/markdown_is_bad_for_you.html">Markdown Is Bad for You</a>
+<li><a href="https://ericholscher.com/blog/2016/mar/15/dont-use-markdown-for-technical-docs/">Why You Shouldn’t Use “Markdown” for Documentation</a>
+<li><a href="https://www.adamhyde.net/whats-wrong-with-markdown/">What’s Wrong with Markdown?</a>
+<li><a href="http://schwarze.bsd.lv/1703_mandoc_markdown.7">1703_mandoc_markdown.7</a>
+</ul>
