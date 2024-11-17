@@ -1,7 +1,7 @@
 import path from 'node:path'
 import sass from 'sass'
 import eleventyWebcPlugin from '@11ty/eleventy-plugin-webc'
-import eleventyRssPlugin from '@11ty/eleventy-plugin-rss'
+import { feedPlugin } from '@11ty/eleventy-plugin-rss'
 import markdownIt from 'markdown-it'
 import markdownItDeflist from 'markdown-it-deflist'
 
@@ -45,12 +45,12 @@ export default eleventyConfig => {
 	eleventyConfig.addFilter('markdown', content => md.render(content))
 	eleventyConfig.addFilter('markdownInline', content => md.renderInline(content))
 	eleventyConfig.addFilter('slugify', content => content.replace(/[\\\/:*?"<>| !@#$%^&`'{}-]+/g, '-').replace(/^-|-$/g, ''))
-	eleventyConfig.addPlugin(eleventyRssPlugin, {
+	eleventyConfig.addPlugin(feedPlugin, {
 		type: 'atom',
 		outputPath: '/feed.xml',
 		collection: {
 			name: 'post',
-			limit: 10,
+			limit: 8,
 		},
 		metadata: {
 			language: 'zh-Hans',
