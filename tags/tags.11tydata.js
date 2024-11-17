@@ -1,4 +1,4 @@
-module.exports = {
+export default {
 	eleventyExcludeFromCollections: true,
 	tagDescriptions: {
 		all: '所有页面的列表。',
