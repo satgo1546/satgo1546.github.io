@@ -1,10 +1,13 @@
+// @ts-check
 import path from 'node:path'
 import sass from 'sass'
 import eleventyWebcPlugin from '@11ty/eleventy-plugin-webc'
 import { feedPlugin } from '@11ty/eleventy-plugin-rss'
+import syntaxHighlightPlugin from '@11ty/eleventy-plugin-syntaxhighlight'
 import markdownIt from 'markdown-it'
 import markdownItDeflist from 'markdown-it-deflist'
 
+/** @param {import('@11ty/eleventy').UserConfig} eleventyConfig */
 export default eleventyConfig => {
 	eleventyConfig.setServerPassthroughCopyBehavior('passthrough')
 	eleventyConfig.addGlobalData('layout', 'layout')
@@ -13,7 +16,10 @@ export default eleventyConfig => {
 	eleventyConfig.addGlobalData('class', '')
 	eleventyConfig.addGlobalData('lang', 'zh-Hans')
 	eleventyConfig.addPlugin(eleventyWebcPlugin, {
-		components: ['_components/**/*.html'],
+		components: [
+			'_components/**/*.html',
+			'npm:@11ty/eleventy-plugin-syntaxhighlight/*.webc',
+		],
 	})
 	eleventyConfig.addTemplateFormats([
 		'jpg', 'png', 'gif', 'bmp', 'svg', 'webp', 'avif',
@@ -42,6 +48,12 @@ export default eleventyConfig => {
 		linkify: true,
 	}).use(markdownItDeflist)
 	eleventyConfig.setLibrary('md', md)
+	eleventyConfig.addPlugin(syntaxHighlightPlugin, {
+    init: function({ Prism }) {
+      // Prism.languages.myCustomLanguage = { /* … */ };
+    },
+    // errorOnInvalidLanguage: true,
+  })
 	eleventyConfig.addFilter('markdown', content => md.render(content))
 	eleventyConfig.addFilter('markdownInline', content => md.renderInline(content))
 	eleventyConfig.addFilter('slugify', content => content.replace(/[\\\/:*?"<>| !@#$%^&`'{}-]+/g, '-').replace(/^-|-$/g, ''))

@@ -1,3 +1,7 @@
+//=============================================================================
+// ■ Reset
+//=============================================================================
+
 @layer reset {
 	* {
 		box-sizing: border-box;
@@ -36,6 +40,15 @@
 		margin: auto;
 		max-width: 100%;
 	}
+}
+
+//=============================================================================
+// ■ Theme-agnostic styles,
+//   including language-specific styles for article building blocks
+//=============================================================================
+
+:root {
+	--monospace: sats-symbol, monospace, monospace;
 }
 
 body>header {
@@ -82,11 +95,6 @@ article {
 		font-style: inherit;
 		text-emphasis-style: sesame;
 	}
-
-	pre,
-	code {
-		white-space: pre-wrap;
-	}
 	
 	ul:lang(zh-Hans) {
 		padding-inline-start: 2em;
@@ -114,35 +122,6 @@ article {
 		margin-inline: 2em;
 	}
 
-	table.booktabs {
-		border-block: .08em solid;
-		padding-block: 3pt;
-
-		td,
-		th {
-			padding: 0 .5em;
-			text-align: left;
-			vertical-align: baseline;
-		}
-
-		>thead th {
-			border-block-end: .05em solid;
-			vertical-align: bottom;
-		}
-	}
-
-	table.spreadsheet {
-		th {
-			border: medium outset;
-			min-width: 6ch;
-		}
-
-		td {
-			border-block-end: thin inset;
-			border-inline-end: thin inset;
-		}
-	}
-
 	hr {
 		height: 1em;
 		text-align: center;
@@ -154,6 +133,127 @@ article {
 			content: "❄ ❄ ❄";
 		}
 	}
+}
+
+table.booktabs {
+	border-block: .08em solid;
+	padding-block: 3pt;
+
+	td,
+	th {
+		padding: 0 .5em;
+		text-align: left;
+		vertical-align: baseline;
+	}
+
+	>thead th {
+		border-block-end: .05em solid;
+		vertical-align: bottom;
+	}
+}
+
+table.spreadsheet {
+	th {
+		border: medium outset;
+		min-width: 6ch;
+	}
+
+	td {
+		border-block-end: thin inset;
+		border-inline-end: thin inset;
+	}
+}
+
+pre,
+code {
+	font: inherit;
+	white-space: pre-wrap;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  tab-size: 2em;
+  hyphens: none;
+	// It seems highly questionable to style everything as italic.
+	// However, the style is immediately reset on every token (see below), leaving only non-tokens italic.
+	// These non-tokens are almost always identifiers that Prism don't bother to highlight.
+  font-style: italic;
+}
+
+.language-css,
+.language-less,
+.language-sass,
+.language-scss,
+.token {
+  font-style: normal;
+}
+
+code:not([class*="language-"]),
+.language-markup,
+.language-html,
+.language-xml,
+.language-svg,
+.language-mathml,
+.language-ssml,
+.language-atom,
+.language-rss,
+.language-tex,
+.language-md,
+.language-markdown,
+/* Operators get monospace because monospace fonts usually come with centered asterisks… */
+// .token.operator,
+.token.char,
+.token.string,
+.language-json>.token.property,
+.token.regex,
+.token.url,
+.token.indentation,
+[mathvariant="monospace"] {
+  font-family: var(--monospace);
+  font-style: normal;
+}
+
+.token.atrule>.token.rule,
+.token.keyword,
+.token.boolean,
+.token.important,
+.token.tag,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.constant,
+.token.variable,
+.token.parameter,
+.token.lambda-parameter,
+.token.function,
+.token.class-name,
+.token.content,
+.token.italic {
+  font-style: italic;
+}
+
+.token.attr-name,
+.token.attr-value {
+  font-weight: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype {
+  color: #888;
+}
+
+.token.inserted {
+  color: #690;
+}
+
+.token.deleted {
+  color: #b05;
+}
+
+.token.entity {
+  text-decoration: dotted underline;
+  cursor: help;
 }
 
 // Sat's 黑幕
@@ -172,6 +272,10 @@ article {
 	grid: 1fr 1fr / auto-flow;
 	column-gap: 1em;
 }
+
+//=============================================================================
+// ■ Themes
+//=============================================================================
 
 .theme-twenty-twelve {
 	// This style is mostly copied from Twenty Twelve WordPress theme.
@@ -429,6 +533,7 @@ article {
 	/* Body, links, basics */
 	&:root {
 		font-family: "Open Sans", Helvetica, Arial, sans-serif;
+		--monospace: sats-symbol, Consolas, Monaco, "Lucida Console", monospace;
 		font-size: 14px;
 		text-rendering: optimizeLegibility;
 		color: black;
@@ -725,7 +830,7 @@ article {
 
 	.entry-content code,
 	.comment-content code {
-		font-family: sats-symbol, Consolas, Monaco, Lucida Console, monospace;
+		font-family: var(--monospace);
 		font-size: 12px;
 		line-height: 2;
 	}
@@ -734,7 +839,7 @@ article {
 	.comment-content pre {
 		border: 1px solid #ededed;
 		color: #666;
-		font-family: sats-symbol, Consolas, Monaco, Lucida Console, monospace;
+		font-family: var(--monospace);
 		font-size: 12px;
 		line-height: 1.714285714;
 		margin: 24px 0;
@@ -1476,14 +1581,10 @@ article {
 		font: 12pt/1.2 sats-symbol, TeX, serif;
 		font-synthesis: small-caps;
 		text-underline-position: under;
-
+		--monospace: sats-symbol, TeXCode, monospace, monospace;
 	}
 
 	text-decoration-thickness: .4pt;
-
-	code {
-		font-family: sats-symbol, TeXCode, monospace, monospace;
-	}
 
 	@media print {
 		a:visited {

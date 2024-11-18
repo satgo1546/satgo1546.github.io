@@ -34,23 +34,23 @@ tags:
 
 <h2>兼容的HTML：不可能的任务</h2>
 
-<p>Markdown支持嵌入HTML。理论上，100%兼容任意HTML片段是不可能完成的目标，因为HTML和Markdown的解析都绝不会报错，所以没有兼容的余地。而在实际使用中，也确实有不少问题，导致外部粘贴进来的HTML代码无法正确原样输出。HTML的语法十分复杂，简单的启发式识别算法遇到复杂的块结构，输出就会错乱。
+<p>Markdown支持嵌入HTML。理论上，100%兼容任意HTML片段是不可能完成的目标，因为HTML和Markdown的解析都绝不会报错，所以没有兼容的余地。而在实际使用中，也确实有不少问题，导致外部粘贴进来的HTML代码无法正确原样输出。HTML的语法十分复杂，简单的启发式识别算法遇到复杂的块结构，输出就会错乱。</p>
 
-<pre><code class="language-markdown">&lt;blockquote&gt;&lt;pre&gt;比如说
+<syntax-highlight language="md"><blockquote><pre>比如说
 像这样
 
 这是一首
 现代诗吗
 
-我觉得我是😾&lt;/pre&gt;&lt;/blockquote&gt;</code></pre>
+我觉得我是😾</pre></blockquote></syntax-highlight>
 
-<p>CommonMark只考虑了直接以<code>&lt;pre</code>开头块需要原样输出，但没有考虑嵌套的<code>&lt;pre&gt;</code>，导致空行被识别为HTML块的结束、段落的开始，最终输出标记嵌套错乱的HTML。
+<p>CommonMark只考虑了直接以<code>&lt;pre</code>开头块需要原样输出，但没有考虑嵌套的<code>&lt;pre&gt;</code>，导致空行被识别为HTML块的结束、段落的开始，最终输出标记嵌套错乱的HTML。</p>
 
-<pre><code class="language-html">&lt;blockquote&gt;&lt;pre&gt;比如说
+<syntax-highlight language="html"><blockquote><pre>比如说
 像这样
-&lt;p&gt;这是一首
-现代诗吗&lt;/p&gt;
-&lt;p&gt;我觉得我是😾&lt;/pre&gt;&lt;/blockquote&gt;&lt;/p&gt;</code></pre>
+<p>这是一首111
+现代诗吗</p>
+<p>我觉得我是😾</pre></blockquote></p></syntax-highlight>
 
 <p>这个问题的<a href="https://github.com/commonmark/commonmark-spec/issues/597">工单</a>更加久远。
 
