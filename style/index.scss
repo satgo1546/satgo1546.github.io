@@ -197,8 +197,11 @@ code:not([class*="language-"]),
 .language-atom,
 .language-rss,
 .language-tex,
-.language-md,
 .language-markdown,
+.language-shell,
+.language-sh-session,
+.language-batch,
+.language-cmd-session,
 /* Operators get monospace because monospace fonts usually come with centered asterisks… */
 // .token.operator,
 .token.char,
@@ -206,8 +209,7 @@ code:not([class*="language-"]),
 .language-json>.token.property,
 .token.regex,
 .token.url,
-.token.indentation,
-[mathvariant="monospace"] {
+.token.indentation {
   font-family: var(--monospace);
   font-style: normal;
 }

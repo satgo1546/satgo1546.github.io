@@ -3,15 +3,36 @@ import Prism from 'prismjs'
 import loadLanguages from 'prismjs/components/index.js'
 import { escapeUTF8, decodeHTML } from 'entities'
 
-	loadLanguages()
-	// Languages have aliases.
-	// Aliases are created by having multiple language names pointing to the same grammar object.
-	// They make trouble regarding language-specific styling and such, so normalize them.
-	const reverseMap = new Map
-	for (const language in Prism.languages) {
-		reverseMap.set(Prism.languages[language],
-			(reverseMap.get(Prism.languages[language]) ?? '') + ' language-' + language)
-	}
+loadLanguages()
+
+// Add custom languages.
+Prism.languages['cmd-session'] = {
+	command: {
+		pattern: /^>(.|\^\n)+/m,
+		inside: {
+			'batch': {
+				pattern: /(^>\s*)\S.*/s,
+				lookbehind: true,
+				alias: 'language-batch',
+				inside: Prism.languages.batch,
+			},
+			'shell-symbol': {
+				pattern: /^>/,
+				alias: 'important',
+			},
+		},
+	},
+	output: /.+/s,
+}
+
+// Languages have aliases.
+// Aliases are created by having multiple language names pointing to the same grammar object.
+// They make trouble regarding language-specific styling and such, so normalize them.
+const reverseMap = new Map
+for (const language in Prism.languages) {
+	reverseMap.set(Prism.languages[language],
+		(reverseMap.get(Prism.languages[language]) ?? '') + ' language-' + language)
+}
 
 function tokensToSpans(o) {
 	if (typeof o == 'string') {
