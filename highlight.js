@@ -1,10 +1,8 @@
 // @ts-check
 import Prism from 'prismjs'
 import loadLanguages from 'prismjs/components/index.js'
-import { decodeHTML } from 'entities'
+import { escapeUTF8, decodeHTML } from 'entities'
 
-/** @param {import('@11ty/eleventy').UserConfig} eleventyConfig */
-export default function (eleventyConfig) {
 	loadLanguages()
 	// Languages have aliases.
 	// Aliases are created by having multiple language names pointing to the same grammar object.
@@ -14,6 +12,32 @@ export default function (eleventyConfig) {
 		reverseMap.set(Prism.languages[language],
 			(reverseMap.get(Prism.languages[language]) ?? '') + ' language-' + language)
 	}
+
+function tokensToSpans(o) {
+	if (typeof o == 'string') {
+		return escapeUTF8(o)
+	} else if (Array.isArray(o)) {
+		return o.map(tokensToSpans)
+	}
+	// o is Prism.Token.
+	let classes = `token ${o.type} `
+	if (Array.isArray(o.alias)) {
+		classes += o.alias.join(' ')
+	} else if (o.alias) {
+		classes += o.alias
+	}
+
+	return {
+		tag: 'span',
+		attrs: {
+			class: classes,
+		},
+		content: tokensToSpans(o.content),
+	}
+}
+
+/** @param {import('@11ty/eleventy').UserConfig} eleventyConfig */
+export default function (eleventyConfig) {
 	// Whoa, what a problematic leaking interface.
 	// With it enabled, my pages die, so no-go.
 	//eleventyConfig.htmlTransformer.setPosthtmlProcessOptions({ decodeEntities: true })
@@ -38,8 +62,8 @@ export default function (eleventyConfig) {
 						} else {
 							source = decodeHTML(source)
 						}
-						const highlighted = Prism.highlight(source, Prism.languages[language], language)
-						node.content = tree.parser(highlighted)
+						const tokens = Prism.tokenize(source, Prism.languages[language])
+						node.content = tokensToSpans(tokens)
 						node.attrs.class += reverseMap.get(Prism.languages[language])
 					} else {
 						console.warn('unknown language ', language)
