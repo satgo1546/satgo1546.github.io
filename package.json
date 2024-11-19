@@ -7,9 +7,10 @@
   "dependencies": {
     "@11ty/eleventy": "^3.0.0",
     "@11ty/eleventy-plugin-rss": "^2.0.2",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
     "@11ty/eleventy-plugin-webc": "^0.11.2",
+    "entities": "^5.0.0",
     "markdown-it-deflist": "^3.0.0",
+    "prismjs": "^1.29.0",
     "sass": "^1.81.0"
   }
 }
