@@ -202,8 +202,6 @@ code:not([class*="language-"]),
 .language-sh-session,
 .language-batch,
 .language-cmd-session,
-/* Operators get monospace because monospace fonts usually come with centered asterisks… */
-// .token.operator,
 .token.char,
 .token.string,
 .language-json>.token.property,
@@ -1579,6 +1577,11 @@ code:not([class*="language-"]),
 		unicode-range: U+2E80-9FFF, U+F900-FAFF, U+FE10-FE1F, U+FE30-FE6F, U+FF00-FFEF, U+20000-31FFF;
 	}
 
+	@font-face {
+		font-family: TeXSymbol;
+		src: url("LMMathLigatures-Regular.otf") format("opentype");
+	}
+
 	&:root {
 		font: 12pt/1.2 sats-symbol, TeX, serif;
 		font-synthesis: small-caps;
@@ -1587,6 +1590,15 @@ code:not([class*="language-"]),
 	}
 
 	text-decoration-thickness: .4pt;
+
+	.token.operator,
+	.token.punctuation {
+		font-family: sats-symbol, TeXSymbol, TeX, serif;
+	}
+
+	.token.punctuation {
+		font-feature-settings: "ss01";
+	}
 
 	@media print {
 		a:visited {
