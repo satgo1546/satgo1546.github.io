@@ -1,6 +1,7 @@
 ---
-title: Hypertext specimen
+title: Hypertext Specimen
 lang: en
+theme: theme-htmltex
 ---
 
 > # HTML Standard
@@ -108,4 +109,15 @@ function f<T extends {}[] = []>(x?: T): boolean {
 <any>console.log(f([0x0n, obj0, obj1]),
 	Math.min(...Array(9).fill(new class extends class {} {})
 		.map((x, i) => x.toString().length ^ i << i)));
+```
+
+```python
+from typing import Any, Never
+type NDPoint = tuple[float, ...]
+@lambda x: {(x, x): [str(b) for _, b in ((x, x),) if True]}
+async def f(x: Any | Never) -> None:
+	match int.from_bytes(rb'\114514' + x@x):
+		case [_, _] | _ as a if z := -0x19_19 ** 81.e0j:
+			f"""{{{await a # comment with symbols, e.g., }"""
+			=!r:#8s}}}{z}"""
 ```

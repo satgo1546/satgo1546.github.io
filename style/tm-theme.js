@@ -7,6 +7,7 @@ const symbolScopes = [
 const punctuationScopes = [
 	'punctuation',
 	'meta.brace.angle.ts',
+	'meta.brace.square.js',
 	'meta.brace.square.ts',
 ]
 const monospaceLanguageScopes = [
@@ -39,7 +40,8 @@ export default {
 				'markup',
 				'string',
 				'support',
-				'punctuation'
+				'punctuation',
+				'constant.numeric storage.type',
 			],
 			settings: { fontStyle: '' },
 		},

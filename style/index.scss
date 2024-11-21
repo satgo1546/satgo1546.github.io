@@ -95,7 +95,7 @@ article {
 		font-style: inherit;
 		text-emphasis-style: sesame;
 	}
-	
+
 	ul:lang(zh-Hans) {
 		padding-inline-start: 2em;
 		list-style: circle;
@@ -133,6 +133,19 @@ article {
 			content: "❄ ❄ ❄";
 		}
 	}
+}
+
+p img {
+	display: inline;
+	vertical-align: middle;
+}
+
+blockquote+figcaption::before {
+	content: "— ";
+}
+
+blockquote+figcaption:lang(zh)::before {
+	content: "——";
 }
 
 table.booktabs {
@@ -181,6 +194,7 @@ code {
 
 .token.italic {
 	font-style: italic;
+	margin-right: .1em;
 }
 
 .token.underline {
