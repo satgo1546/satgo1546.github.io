@@ -173,87 +173,36 @@ code {
   word-wrap: normal;
   tab-size: 2em;
   hyphens: none;
-	// It seems highly questionable to style everything as italic.
-	// However, the style is immediately reset on every token (see below), leaving only non-tokens italic.
-	// These non-tokens are almost always identifiers that Prism don't bother to highlight.
-  font-style: italic;
 }
 
-.language-css,
-.language-less,
-.language-sass,
-.language-scss,
-.token {
-  font-style: normal;
+.token.bold {
+	font-weight: bold;
+}
+
+.token.italic {
+	font-style: italic;
+}
+
+.token.underline {
+	text-decoration: underline;
+}
+
+.token.faint {
+	opacity: .5;
 }
 
 code:not([class*="language-"]),
-.language-markup,
 .language-html,
+.language-vue-html,
 .language-xml,
-.language-svg,
-.language-mathml,
-.language-ssml,
-.language-atom,
-.language-rss,
 .language-tex,
+.language-latex,
 .language-markdown,
+.language-bat,
 .language-shell,
-.language-sh-session,
-.language-batch,
-.language-cmd-session,
-.token.char,
-.token.string,
-.language-json>.token.property,
-.token.regex,
-.token.url,
-.token.indentation {
-  font-family: var(--monospace);
-  font-style: normal;
-}
-
-.token.atrule>.token.rule,
-.token.keyword,
-.token.boolean,
-.token.important,
-.token.tag,
-.token.bold {
-  font-weight: bold;
-}
-
-.token.constant,
-.token.variable,
-.token.parameter,
-.token.lambda-parameter,
-.token.function,
-.token.class-name,
-.token.content,
-.token.italic {
-  font-style: italic;
-}
-
-.token.attr-name,
-.token.attr-value {
-  font-weight: normal;
-}
-
-.token.comment,
-.token.prolog,
-.token.doctype {
-  color: #888;
-}
-
-.token.inserted {
-  color: #690;
-}
-
-.token.deleted {
-  color: #b05;
-}
-
-.token.entity {
-  text-decoration: dotted underline;
-  cursor: help;
+.language-shellsession,
+.token.monospace {
+	font-family: var(--monospace);
 }
 
 // Sat's 黑幕
@@ -1591,7 +1540,7 @@ code:not([class*="language-"]),
 
 	text-decoration-thickness: .4pt;
 
-	.token.operator,
+	.token.symbol,
 	.token.punctuation {
 		font-family: sats-symbol, TeXSymbol, TeX, serif;
 	}

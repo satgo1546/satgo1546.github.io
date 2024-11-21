@@ -1,61 +1,6 @@
-// @ts-check
-import Prism from 'prismjs'
-import loadLanguages from 'prismjs/components/index.js'
+import { codeToTokens, bundledLanguages, bundledLanguagesInfo } from 'shiki'
 import { escapeUTF8, decodeHTML } from 'entities'
-
-loadLanguages()
-
-// Add custom languages.
-Prism.languages['cmd-session'] = {
-	command: {
-		pattern: /^>(.|\^\n)+/m,
-		inside: {
-			'batch': {
-				pattern: /(^>\s*)\S.*/s,
-				lookbehind: true,
-				alias: 'language-batch',
-				inside: Prism.languages.batch,
-			},
-			'shell-symbol': {
-				pattern: /^>/,
-				alias: 'important',
-			},
-		},
-	},
-	output: /.+/s,
-}
-
-// Languages have aliases.
-// Aliases are created by having multiple language names pointing to the same grammar object.
-// They make trouble regarding language-specific styling and such, so normalize them.
-const reverseMap = new Map
-for (const language in Prism.languages) {
-	reverseMap.set(Prism.languages[language],
-		(reverseMap.get(Prism.languages[language]) ?? '') + ' language-' + language)
-}
-
-function tokensToSpans(o) {
-	if (typeof o == 'string') {
-		return escapeUTF8(o)
-	} else if (Array.isArray(o)) {
-		return o.map(tokensToSpans)
-	}
-	// o is Prism.Token.
-	let classes = `token ${o.type} `
-	if (Array.isArray(o.alias)) {
-		classes += o.alias.join(' ')
-	} else if (o.alias) {
-		classes += o.alias
-	}
-
-	return {
-		tag: 'span',
-		attrs: {
-			class: classes,
-		},
-		content: tokensToSpans(o.content),
-	}
-}
+import theme from './style/tm-theme.js'
 
 /** @param {import('@11ty/eleventy').UserConfig} eleventyConfig */
 export default function (eleventyConfig) {
@@ -63,36 +8,61 @@ export default function (eleventyConfig) {
 	// With it enabled, my pages die, so no-go.
 	//eleventyConfig.htmlTransformer.setPosthtmlProcessOptions({ decodeEntities: true })
 	// @ts-expect-error htmlTransformer API is not yet published, but used in eleventy-image.
-	eleventyConfig.htmlTransformer.addPosthtmlPlugin('html', context => tree => {
+	eleventyConfig.htmlTransformer.addPosthtmlPlugin('html', context => async tree => {
 		// The docs for PostHTML is horrible. Just read the source.
 		// PostHTML does only minimal parsing. Entities in text nodes are left untouched.
 		// walk, match - https://github.com/posthtml/posthtml/blob/master/lib/api.js
 		// https://github.com/posthtml/posthtml-parser/blob/master/src/index.ts
+		const tasks = []
 		tree.walk(node => {
 			if (node.tag === 'code' && node.attrs?.class) {
-				const language = /(?:^|\s)language-(\S*)/.exec(node.attrs.class)?.[1]
-				if (language) {
+				const lang = /(?:^|\s)language-(\S*)/.exec(node.attrs.class)?.[1]
+				if (lang) {
 					if (node.content.length > 1 || typeof node.content[0] !== 'string') {
 						console.warn('non-plaintext code span')
 					}
-					if (Object.hasOwn(Prism.languages, language)) {
-						let source = node.content[0]
-						// https://prismjs.com/plugins/unescaped-markup/
-						if (source.startsWith('<!--') && source.endsWith('-->')) {
-							source = source.slice(4, -3)
-						} else {
-							source = decodeHTML(source)
-						}
-						const tokens = Prism.tokenize(source, Prism.languages[language])
-						node.content = tokensToSpans(tokens)
-						node.attrs.class += reverseMap.get(Prism.languages[language])
+					if (Object.hasOwn(bundledLanguages, lang)) {
+						tasks.push({ node, lang })
 					} else {
-						console.warn('unknown language ', language)
+						console.warn('unknown language ', lang)
 					}
 				}
 			}
 			return node
 		})
+		for (const { node, lang } of tasks) {
+			let source = node.content[0]
+			// https://prismjs.com/plugins/unescaped-markup/
+			if (source.startsWith('<!--') && source.endsWith('-->')) {
+				source = source.slice(4, -3)
+			} else {
+				source = decodeHTML(source)
+			}
+			const {
+				tokens,
+				grammarState: { lang: resolvedLang },
+			} = await codeToTokens(source, { lang, theme })
+			node.content = tokens.flatMap((line, i, { length }) => {
+				const spans = line.map(token => {
+					let className = token.color
+					if (token.fontStyle & 1) className += ' italic'
+					if (token.fontStyle & 2) className += ' bold'
+					if (token.fontStyle & 4) className += ' underline'
+					if (token.fontStyle & 8) className += ' faint'
+					const content = escapeUTF8(token.content)
+					return className ? {
+						tag: 'span',
+						attrs: { class: className },
+						content: [content],
+					} : content
+				})
+				if (i < length - 1) spans.push('\n')
+				return spans
+			})
+			if (lang !== resolvedLang) {
+				node.attrs.class += ` language-${resolvedLang}`
+			}
+		}
 		return tree
 	}, {
 		priority: 114514,
