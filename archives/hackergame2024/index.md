@@ -310,7 +310,7 @@ BF FF FF FF FF FF 0A
 
 但实际使用会发现，这个函数面对大系数时会卡死！但sqrt_mod面对大数不会卡死，还是得自己实现求根公式，我谔谔，反手打开Mathematica，直接Solve就能出结果。
 
-```mathematica
+```wolfram
 ka = {16^^Cb4EcdfD0A9F, 16^^a9dec1C1b7A3, 16^^60c4B0aAB4Bf};
 kb = {16^^dbeEaed4cF43, 16^^FDFECeBdeeD9, 16^^B7E85A4E5Dcd};
 kc = {16^^DFFFFFFFFFFF, 16^^FFFFFFFFFFFF, 16^^FFFFFFFFFFFF};
@@ -1190,7 +1190,7 @@ cat /tmp/flag2
 
 关灯问题的标准解法是化成模2意义下的线性方程组，要对<var>n</var><sup>3</sup> × <var>n</var><sup>3</sup>的矩阵求解，复杂度O(<var>n</var><sup>9</sup>)，太炸裂了。
 
-```mathematica
+```wolfram
 convertSwitchArrayToLightsArray[switchArray_] :=
  Module[{lightsArray = switchArray},
   lightsArray[[1 ;; -2, All, All]] =
@@ -1225,7 +1225,7 @@ FromCharacterCode[48 + LinearSolve[
 
 看到群里提起“稀\*\*\*”，方才恍然大悟：用稀疏矩阵存系数就不需要那么大容量了。
 
-```mathematica
+```wolfram
 coefficients[n_] := SparseArray[{
   {i_, i_} -> 1,
   {i_, j_} /;
