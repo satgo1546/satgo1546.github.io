@@ -192,15 +192,6 @@ code {
 }
 
 code:not([class*="language-"]),
-.language-html,
-.language-vue-html,
-.language-xml,
-.language-tex,
-.language-latex,
-.language-markdown,
-.language-bat,
-.language-shell,
-.language-shellsession,
 .token.monospace {
 	font-family: var(--monospace);
 }
