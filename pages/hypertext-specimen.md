@@ -73,3 +73,39 @@ end
 ]>
 <lol lol="&lol;">&lol;</lol>
 ```
+
+```cpp
+#include <iostream>
+#define UNICODE 1
+using namespace std;
+template <class T> class K {
+	T field; // private field
+public: /* public members onwards */
+	enum F : unsigned short { PP, MM = 1 };
+	bool f(T x, void (*fp)(int arg) = nullptr) {
+		auto v = reinterpret_cast<K<int>>(114514);
+		K<double> *u = (K<double> *) 0x1919810;
+		volatile long double *p = new long double;
+		cout << "PP = " << F::PP << endl;
+		return x <= 0x1.5p8f && x >= 1ULL ||
+			static_cast<decltype('C')>(L"Hi");
+	}
+};
+```
+
+```ts
+const obj0 = { name: "A0", value: -0, null: null };
+type Prop = Awaited<Partial<typeof obj0>> | undefined;
+let obj1 = { name: 'B1', value: 114.514 } satisfies Prop;
+/**
+ * @template T - The generic parameter.
+ * @param {T} x - The argument.
+ * @returns {boolean} The return value.
+ */
+function f<T extends {}[] = []>(x?: T): boolean {
+	return +(arguments[+false] instanceof Object) === 1;
+}/i/i // stray regular expression, hard to parse correctly
+<any>console.log(f([0x0n, obj0, obj1]),
+	Math.min(...Array(9).fill(new class extends class {} {})
+		.map((x, i) => x.toString().length ^ i << i)));
+```
