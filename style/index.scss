@@ -38,7 +38,7 @@
 		// todo: exhaust the list
 		display: block;
 		margin: auto;
-		max-width: 100%;
+		max-inline-size: 100%;
 	}
 }
 
@@ -68,8 +68,9 @@ body>footer {
 }
 
 article {
-	margin: 1pc auto;
-	max-width: 42pc;
+	margin-block: 1pc;
+	margin-inline: auto;
+	max-inline-size: 42pc;
 
 	>*,
 	p {
@@ -164,13 +165,22 @@ blockquote+figcaption:lang(zh)::before {
 	content: "——";
 }
 
+table.settabs {
+	table-layout: fixed;
+
+	td,
+	th {
+		padding-inline: .5em;
+	}
+}
+
 table.booktabs {
 	border-block: .08em solid;
 	padding-block: 3pt;
 
 	td,
 	th {
-		padding: 0 .5em;
+		padding-inline: .5em;
 		text-align: left;
 		vertical-align: baseline;
 	}
