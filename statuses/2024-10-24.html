@@ -1,0 +1,25 @@
+---
+title: 编程语言品鉴中心
+dates: 2024-10-24 ~ 2024-10-25
+---
+
+<p>程序员有三大欲望：编写，调试，重构。中略。而会员制餐厅，则专门为那些厌倦世间主流语言的人，量体裁衣，提供符合他们身份的编程语言。
+
+<h2>《函数式语言的实现》（1987）</h2>
+
+<p>想要实现函数式语言的话，众多链接指向下面两个主要由Simon Peyton Jones编写的书和教程。
+
+<ul>
+<li><a href="https://www.microsoft.com/en-us/research/publication/the-implementation-of-functional-programming-languages-2/">The Implementation of Functional Programming Languages</a> (1987)
+<li><a href="https://www.microsoft.com/en-us/research/publication/implementing-functional-languages-a-tutorial/">Implementing functional languages: a tutorial</a> (1992)
+</ul>
+
+<p>书涵盖了中端和后端，教程则专注于后端（为了完整性，也实现了一个简易前端）。书中没有代码，虽然不严格但也偏理论。教程有完整代码，更加实践。教程因为较新，追加了书中没有的内容。书和教程分析和编写的媒介都是Miranda语言，但正如书中所说，ML系语言基本功能和语法都大差不差，有一门的基础就足够理解了。
+
+<p>1980年代是函数式编程语言井喷式爆发时期，不同的语言正在探索不同的方面。这时期研究用语言的名字时至今日已无人听闻，有的创新被合并到Haskell中，有的就这样死掉了。Miranda当然也位列其中，没听说过是正常的。
+
+<p>当时的语言相当重视惰性求值。因为非必要不计算，能够避免执行多余的构造和计算步骤，甚至能够实现像是自动优化算法的效果。惰性求值规则下，排序再取首元素是O(n)，无穷列表可以只取所需。因为副作用需要依序执行，简单加入副作用的话就会依赖于计算顺序，而惰性求值的计算顺序任由编译器摆布，迫使程序采用其他手段描述副作用，达到真正的纯函数式。书和教程都仅讨论惰性求值的语言。
+
+<p>今天的函数式语言鲜有惰性求值的了。Simon Peyton Jones在2007年的演讲<a href="https://simon.peytonjones.org/history-of-haskell/">A History of Haskell: Being Lazy with Class</a>中说：“如果还有下一个Haskell，我个人不再注重惰性（laziness），现在我想要的是纯度（purity）。”（录像24:44，亦见论文§3.1末段）虽然惰性求值有不少令人惊叹的应用和效果，但反过来，如若程序编写不当，求列表元素之和反而需要O(<var>n</var>)额外空间（参照<a href="https://wiki.haskell.org/Foldr_Foldl_Foldl%27">对Haskell标准库中三种fold函数的讨论</a>），大量递归展开式可能在内存中长久驻留。这些问题很难从代码的表面上看出，乃至有经验的程序员也会不小心写出运行效率离谱的代码，而且编译器优化的细微变化也都有可能导致程序运行效率大幅变化。
+
+<p>惰性求值的实现方法特殊，书和教程中大篇幅讨论的图归约策略在及早求值中没有意义。由于缺乏背景知识和实践经验，我也无法理解书中对编译器中端部分的讨论，于是我寻找其他材料。

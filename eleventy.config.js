@@ -27,6 +27,7 @@ export default eleventyConfig => {
 		'scss',
 		'pdf',
 	])
+	eleventyConfig.addPassthroughCopy('archives/**/*.{js,ts}')
 	eleventyConfig.addExtension('scss', {
 		outputFileExtension: 'css',
 		compile(inputContent, inputPath) {
@@ -62,7 +63,7 @@ export default eleventyConfig => {
 		metadata: {
 			language: 'zh-Hans',
 			title: 'satgo1546’s ocean',
-			subtitle: '',
+			subtitle: '任何足够落后的魔法，都与科技无异。',
 			base: 'https://satgo1546.github.io/',
 			author: {
 				name: 'Frog Chen',
