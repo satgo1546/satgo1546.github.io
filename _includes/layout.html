@@ -22,13 +22,13 @@ layout: base
 	</nav>
 </header>
 
-<main>	
+<main>
 	<article :lang="lang" :class="this.class">
 		<h1 webc:if="title" @html="markdownInline(title)"></h1>
 		<template @raw="content" webc:nokeep></template>
 	</article>
 	<footer class="entry-meta">
-		<a href="." title="链向本文的固定链接" rel="bookmark">1919-08-10</a>
+		<a href="." title="链向本文的固定链接" rel="bookmark" @text="page.date.toISOString().slice(0, 10)"></a>
 		<a class="comments-link" href="https://satgo1546.mist.so/archives/462#respond">发表评论</a>
 	</footer>
 	<div class="comments-area">
