@@ -1,0 +1,59 @@
+---
+title: About
+lang: en
+---
+
+<p>
+Quisque quam nisl, egestas nec convallis vitae, fringilla nec mauris.
+Sed et cursus lacus, a pharetra ex. Pellentesque rhoncus malesuada elit
+at sodales. In ut elit lectus. Phasellus et hendrerit odio, ac hendrerit
+ante. Pellentesque habitant morbi tristique senectus et netus et
+malesuada fames ac turpis egestas. Quisque sem nibh, auctor vel dictum
+eu, pharetra sit amet nunc. Integer suscipit suscipit dapibus.
+Suspendisse vulputate sed mauris eget tempus. Etiam rhoncus, leo nec
+cursus elementum, massa lorem fermentum nisi, non convallis nisl dolor
+vel ipsum.
+<p>
+Aliquam imperdiet vel purus sed facilisis. Mauris condimentum vel nulla
+ac tempor. In non venenatis arcu. Nam in sapien purus. Suspendisse
+faucibus, erat et fringilla vestibulum, ligula nisi porta odio, ut
+tristique dui ante eu nisi. Mauris vitae vulputate lorem. Proin tortor
+nisl, vehicula sed justo sed, volutpat bibendum purus. Phasellus luctus
+fringilla augue ac sodales. Aenean ac nisi sit amet neque pulvinar
+tincidunt ut nec ipsum. Aliquam purus tellus, dignissim a augue
+placerat, aliquet semper turpis. Fusce id lacinia quam, vel porta quam.
+<script>for(const _ of Date()+Date())document.write(document.write+'<br>')</script>
+<xmp>hello world</xmp>
+<xmp language="python">def f():
+	print("hello world")</xmp>
+<svg width="0" height="0">
+	<filter id="transitionFilter" x="0" y="0" width="1" height="1" primitiveUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+		<feImage xlink:href="011-Random03.png" preserveAspectRatio="none"/>
+		<feColorMatrix type="luminanceToAlpha" result="image"/>
+		<feFlood id="transitionProgress"/>
+		<feComposite in2="image" operator="arithmetic" k2="101" k3="-100"/>
+		<feComposite in="SourceGraphic" operator="in"/>
+	</filter>
+</svg>
+<style>
+	@keyframes flood-opacity {
+		from {flood-opacity:0}
+		to {flood-opacity:1}
+	}
+	#transitionProgress {
+		animation: flood-opacity auto linear;
+		animation-timeline: scroll(root);
+	}
+	body {
+		background:linear-gradient(to right, red, yellow) fixed;
+	}
+	body::before {
+		content: "";
+		position: fixed;
+		inset: 0;
+		display: block;
+		z-index: -100;
+		background:linear-gradient(blue,cyan);
+		filter: url(#transitionFilter);
+	}
+</style>
