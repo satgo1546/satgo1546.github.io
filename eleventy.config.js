@@ -10,6 +10,7 @@ import highlightPlugin from './highlight.js'
 /** @param {import('@11ty/eleventy').UserConfig} eleventyConfig */
 export default eleventyConfig => {
 	eleventyConfig.setServerPassthroughCopyBehavior('passthrough')
+	eleventyConfig.setDataFileBaseName('index')
 	eleventyConfig.addGlobalData('layout', 'layout')
 	eleventyConfig.addGlobalData('title', '<i>无标题</i>')
 	eleventyConfig.addGlobalData('theme', 'theme-modern-magic light')
