@@ -23,7 +23,7 @@ layout: base
 </header>
 
 <main>
-	<article :lang="lang" :class="this.class">
+	<article :lang="lang">
 		<h1 webc:if="title" @html="markdownInline(title)"></h1>
 		<template @raw="content" webc:nokeep></template>
 	</article>

@@ -14,7 +14,6 @@ export default eleventyConfig => {
 	eleventyConfig.addGlobalData('layout', 'layout')
 	eleventyConfig.addGlobalData('title', '<i>无标题</i>')
 	eleventyConfig.addGlobalData('theme', 'theme-modern-magic light')
-	eleventyConfig.addGlobalData('class', '')
 	eleventyConfig.addGlobalData('lang', 'zh-Hans')
 	eleventyConfig.addPlugin(eleventyWebcPlugin, {
 		components: [
