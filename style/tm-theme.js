@@ -1,23 +1,7 @@
 // @ts-check
 
-const symbolScopes = [
-	'keyword.operator',
-	'storage.type.function.arrow',
-]
-const punctuationScopes = [
-	'punctuation',
-	'meta.brace.angle.ts',
-	'meta.brace.square.js',
-	'meta.brace.square.ts',
-]
-const monospaceLanguageScopes = [
-	'text',
-	'source.batchfile',
-	'source.shell',
-]
-
-/** @type {import('@shikijs/types').ThemeRegistration} */
-export default {
+/** @satisfies {import('@shikijs/types').ThemeRegistration} */
+const theme = {
 	name: 'web',
 	displayName: 'WEB-like',
 	type: 'light',
@@ -32,7 +16,6 @@ export default {
 				'keyword.other.unit',
 				'variable.other.enummember',
 				'variable.other.constant',
-				'comment',
 				'constant',
 				'entity',
 				'invalid',
@@ -73,7 +56,6 @@ export default {
 		},
 		{
 			scope: [
-				'variable.parameter.function.language',
 			],
 			settings: { fontStyle: 'bold italic' },
 		},
@@ -90,19 +72,40 @@ export default {
 			scope: [
 				'string',
 				'punctuation.definition.string',
-				...monospaceLanguageScopes,
-				...[...symbolScopes, ...punctuationScopes].flatMap(subScope =>
-					monospaceLanguageScopes.map(scope => `${scope} ${subScope}`))
 			],
 			settings: { foreground: 'token monospace' },
 		},
 		{
-			scope: symbolScopes,
+			scope: [
+				'keyword.operator',
+				'storage.type.function.arrow',
+			],
 			settings: { foreground: 'token symbol', fontStyle: '' },
 		},
 		{
-			scope: punctuationScopes,
+			scope: [
+				'punctuation',
+				'meta.brace.angle.ts',
+				'meta.brace.square.js',
+				'meta.brace.square.ts',
+			],
 			settings: { foreground: 'token punctuation' },
 		},
 	],
 }
+
+// Monospace has the highest priority.
+// We don't have !important in TextMate, so we generate every possible overriding declaration.
+const subscopes = theme.tokenColors.flatMap(({ scope }) => scope)
+for (const monospaceLanguageScope of [
+	'text',
+	'source.batchfile',
+	'source.shell',
+]) {
+	theme.tokenColors[5].scope.push(monospaceLanguageScope)
+	for (const subscope of subscopes) {
+		theme.tokenColors[5].scope.push(`${monospaceLanguageScope} ${subscope}`)
+	}
+}
+
+export default theme
