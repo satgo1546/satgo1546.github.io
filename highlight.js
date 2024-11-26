@@ -36,7 +36,7 @@ export default function (eleventyConfig) {
 			if (source.startsWith('<!--') && source.endsWith('-->')) {
 				source = source.slice(4, -3)
 			} else {
-				source = decodeHTML(source)
+				source = decodeHTML(source.replace(/^\n|\n[ \t]*$/g, ''))
 			}
 			const {
 				tokens,

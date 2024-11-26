@@ -19,7 +19,6 @@ const theme = {
 				'constant',
 				'entity',
 				'invalid',
-				'keyword',
 				'markup',
 				'string',
 				'support',
@@ -32,8 +31,7 @@ const theme = {
 			scope: [
 				'markup.bold',
 				'markup.heading',
-				'keyword.control',
-				'keyword.other',
+				'keyword',
 				'keyword.operator.wordlike',
 				'keyword.operator.expression',
 				'storage',
