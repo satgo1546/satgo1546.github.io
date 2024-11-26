@@ -2,6 +2,7 @@
 title: Just Puzzle Hunt解题报告
 date: 2024-09-11
 dates: 2024-09-11, 2024-09-18
+excerpt: 这回，我必须立刻开爆！
 tags:
 - puzzle hunt
 theme: theme-htmltex

@@ -15,9 +15,10 @@
 ---
 
 <template webc:if="tagDescriptions[tag]" @html="markdown(tagDescriptions[tag])" webc:nokeep></template>
-<ul>
-	<li webc:for="item of collections[tag].toReversed()">
-		<a :href="item.url" @html="markdownInline(item.data.title)"></a>
-		<time datetime=""></time>
+<ul class="articles">
+	<li webc:for="item of collections[tag].toReversed()" :lang="item.data.lang">
+		<a :href="item.url" @html="item.data.title"></a>
+		<time :datetime="item.page.date.toISOString().slice(0, 10)" @text="item.data.dates ?? item.page.date.toISOString().slice(0, 10)"></time>
+		<blockquote @html="item.data.excerpt"></blockquote>
 	</li>
 </ul>

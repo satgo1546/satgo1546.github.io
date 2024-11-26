@@ -2,18 +2,19 @@
 title: Hackergame 2023 解题报告 by piscesciurus
 date: 2023-11-05
 dates: 2023-11-04 ~ 2023-11-05
+excerpt: 这样的爆破题不管在哪个比赛里都是相当炸裂的存在。
 tags:
 - CTF
 ---
 
-*及格喵！*
+<i>及格喵！</i>
 
 [也发表在GitHub。](https://github.com/USTC-Hackergame/hackergame2023-writeups/blob/master/players/piscesciurus/README.md)
 
 # 第1天
 ## Hackergame启动
 
-*那么就发出很大的声音掩盖过去吧！*
+<i>那么就发出很大的声音掩盖过去吧！</i>
 
 https://cnhktrz3k5nc.hack-challenge.lug.ustc.edu.cn:13202/?similarity=114514
 
@@ -23,7 +24,7 @@ https://cnhktrz3k5nc.hack-challenge.lug.ustc.edu.cn:13202/?similarity=114514
 
 ## 更深更暗
 
-*这么重要的端口号，用在这么简单的题目上真的好吗？*
+<i>这么重要的端口号，用在这么简单的题目上真的好吗？</i>
 
 啊这，原来只要全选复制就能拿到，我滚了好久，扒了源码才做出来。
 
@@ -33,7 +34,7 @@ https://cnhktrz3k5nc.hack-challenge.lug.ustc.edu.cn:13202/?similarity=114514
 
 ## Git? Git!
 
-*Git好兄弟，有隐私信息它是真泄露，有重要文件它是真删除。*
+<i>Git好兄弟，有隐私信息它是真泄露，有重要文件它是真删除。</i>
 
 以为会更难一些，所以直接遍历了所有存在于仓库中的文件。
 
@@ -43,7 +44,7 @@ git cat-file --batch --batch-all-objects | grep --text flag
 
 ## 组委会模拟器
 
-*高频率星球近期频发外星人绑架事件，各位有什么头猪吗？*
+<i>高频率星球近期频发外星人绑架事件，各位有什么头猪吗？</i>
 
 可能是最短的脚本？
 
@@ -63,24 +64,24 @@ setInterval(() => find('hack[', 1, 0, 1) && getSelection().focusNode.parentEleme
 
 ## 🪐 小型大语言模型星球 / You Are Smart
 
-*🐮, hackergame accepted, you are smart!*
+<i>🐮, hackergame accepted, you are smart!</i>
 
 > You are smart. You are smart. You are smart.
 
 ## 奶奶的睡前flag故事
 
-*相信的心就是你的魔法！*
+<i>相信的心就是你的魔法！</i>
 
 https://acropalypse.app/
 ## 惜字如金2.0
 
-*这就是~~何日君再来~~puzzle hunt给我的自信。*
+<i>这就是~~何日君再来~~puzzle hunt给我的自信。</i>
 
 手工推理的。
 
 ## 虫
 
-*我觉得还是当昆虫轻松一些。*
+<i>我觉得还是当昆虫轻松一些。</i>
 
 找到MMSSTV，上古时代的界面难用得要死，居然只能录音而不能读取WAV。不过搜到MMSSTV使用的MMV格式其实就是单声道、11025Hz的WAV，所以重采样并改扩展名就可以避免社死了。
 
@@ -93,7 +94,7 @@ board.map(x => x.fill(0))
 ```
 
 ## HTTP集邮册
-*现在，闭上眼睛，想象小狐狸在HTTP世界里寻找能让nginx返回任意状态码的请求头……*
+<i>现在，闭上眼睛，想象小狐狸在HTTP世界里寻找能让nginx返回任意状态码的请求头……</i>
 
 无状态码：
 ```
@@ -212,7 +213,7 @@ open("asciinema_restore.js", "w").write(s)
 
 ## 为什么要打开/flag 😡 / LD_PRELOAD, love!
 
-*为什么要参加Hackergame😡为什么要打开题目😡为什么要下载附件😡为什么要提交flag😡*
+<i>为什么要参加Hackergame😡为什么要打开题目😡为什么要下载附件😡为什么要提交flag😡</i>
 
 ```sh
 musl-gcc -static 😡.c
@@ -220,7 +221,7 @@ musl-gcc -static 😡.c
 
 ## Docker for Everyone
 
-*Google is all you need.*
+<i>Google is all you need.</i>
 
 ```sh
 docker run -itv /:/a alpine cat /a$(readlink /flag)
@@ -271,7 +272,7 @@ while True:
 
 ## 微积分计算小练习2.0
 
-*毕竟正常人怎么可能留 `<img src=a onerror="alert(1)">` 这种评论嘛！*
+<i>毕竟正常人怎么可能留 `<img src=a onerror="alert(1)">` 这种评论嘛！</i>
 
 我是谁？我在哪？要干嘛？然后发现`"+114514+"`成功了，难绷。
 
@@ -299,7 +300,7 @@ fx-999CN CW精度更高，不过老机型精度也够用了。新机型连ln都�
 
 ## 异星歧途
 
-*这样的爆破题不管在哪个比赛里都是相当炸裂的存在。*
+<i>这样的爆破题不管在哪个比赛里都是相当炸裂的存在。</i>
 
 玩了一小时，发现题目给出的地图里没有任何东西是见过的，开摆，直接做吧。
 
@@ -317,7 +318,7 @@ game已经结束了，剩下的全是坐牢。
 
 ## Komm, süsser Flagge / 我的POST & 我的P
 
-*如果你不知道`nc`是什么，或者在解上面的题目时遇到了困难，可以参考我们编写的[萌新入门手册：如何使用nc/ncat偷到flag？](https://lug.ustc.edu.cn/planet/2019/09/how-to-use-nc/#%E7%A4%BA%E4%BE%8B)*
+<i>如果你不知道`nc`是什么，或者在解上面的题目时遇到了困难，可以参考我们编写的[萌新入门手册：如何使用nc/ncat偷到flag？](https://lug.ustc.edu.cn/planet/2019/09/how-to-use-nc/#%E7%A4%BA%E4%BE%8B)</i>
 
 第一小题以为如网上所说是靠iptables的BM算法有漏洞，但顾名思义，iptables只在IP包层面上处理，只要把POST拆开来就行。手头没有任何专业网络工具的我想出了一种天才般的解法：
 
@@ -342,7 +343,7 @@ Content-Length: 15
 
 ## O(1)用户登录系统
 
-*为什么要登录😡*
+<i>为什么要登录😡</i>
 
 睡前载入一道数学题，就可以在梦中打CTF了。
 
@@ -385,7 +386,7 @@ print(pwnlib.util.iters.mbruteforce(g, string.ascii_letters + string.digits, 8))
 早上把O(1)用户登录系统的解法实现并提交了。
 ## 🪐 小型大语言模型星球 / Accepted
 
-*虚假的算力题撞散列，真正的算力题跑模型。*
+<i>虚假的算力题撞散列，真正的算力题跑模型。</i>
 
 将TinyStories数据集全部拖下来，搜索“ accepted”，能找到近一万个，取前七个字符挨个试过去，可得两解：“Apology”和“atively”。Apology很能解释得通，因为“Apology accepted”在数据集中出现了四次。
 
@@ -393,7 +394,7 @@ print(pwnlib.util.iters.mbruteforce(g, string.ascii_letters + string.digits, 8))
 
 ## 🪐 低带宽星球
 
-*下次还填非常简单！*
+<i>下次还填非常简单！</i>
 
 第一小题当然第一天就做完了，随便找个无损压缩工具，连PNG都能做到2KB以内，PNGGauntlet还能再战二十年，然后就开始思考如何极限压缩。时间已经过去了五天。仔细研究了GIF标准，甚至尝试了MATLAB和PDF，无果。通过SVGZ能压缩到98字节：
 ```sh
@@ -433,7 +434,7 @@ if x > 367
 # 第7天
 ## 小Z的谜题
 
-*puzzlehunt\_of\_z3.py*
+<i>puzzlehunt\_of\_z3.py</i>
 
 程序描述的是将16个实心长方体沿坐标轴放入5³的立方体盒子中，第二、三小题分别要求产生的点、直线、平面、空间总数≤136、≥157。
 
@@ -509,7 +510,7 @@ print(m.evaluate(score))
 
 ## Komm, süsser Flagge / 我的GET
 
-*Did you hear the IP packet from 1981?*
+<i>Did you hear the IP packet from 1981?</i>
 
 IP包头20字节，TCP包头20+字节，必然要在包头动手脚了。看起来可以直接加大IP包头长度，在padding里塞垃圾。理论有了，但不知道怎么实现。于是我在GitHub USTC-Hackergame组织里搜iptables，呃呃，当时还只有四篇2020年的题解，现在一下子多了十几篇2023的……好吧，我这篇也是。
 

@@ -2,6 +2,7 @@
 title: Hackergame 2024 解题报告 by piscesciurus
 date: 2024-11-10
 dates: 2024-11-02 ~ 2024-11-10
+excerpt: 随机判定随机过，AI题目AI做。<br>misc web math bin都不会，一看排名一千多。
 tags:
 - CTF
 ---

@@ -1,6 +1,7 @@
 ---
 title: 慢报：角川又在搞什么神秘东西？
 date: 2024-10-22
+excerpt: 我很少能用“好笑”来形容一个软件🤣
 tags:
 - 闲聊
 - Action Game Maker

@@ -29,15 +29,10 @@ Eleventy是一颗静态站点生成器界的新星，是以简单著称的后起
 常逛Vue生态圈的人一定很熟悉Vue 3官方文档的页面风格，这便是VitePress默认主题。VitePress是驱动Vue、Vite、VueUse、Vitest、Pinia、Rollup等库文档的静态站点生成器（static site generator），[于今年3月发布了正式版](https://blog.vuejs.org/posts/vitepress-1.0)。
 
 <div class="paracol">
-
-![Vue](vue.png)
-
-![Vite](vite.png)
-
-![Vitest](vitest.png)
-
-![VitePress](vitepress.png)
-
+<img src="vue.png" alt="Vue">
+<img src="vite.png" alt="Vite">
+<img src="vitest.png" alt="Vitest">
+<img src="vitepress.png" alt="VitePress">
 </div>
 
 它们是少见的在网络条件较差的环境下也能正常浏览的网站，这得益于VitePress采用初次访问提前渲染，站内路由动态加载的策略。不过，它们也是少见的在网络条件很差的环境下点击链接没反应的网站，页面内外都没有正在载入的标志。

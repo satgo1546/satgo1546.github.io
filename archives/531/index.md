@@ -143,7 +143,7 @@ Html.Lazy提供了传统意义上的组件分界面，用于跳过模型未变�
 
 ```elm
 infix right 7 (</>) = slash
-infix left  8 (<?>) = questionMark
+infix left 8 (<?>) = questionMark
 ```
 
 Task相当于JS中的Promise，但与Haskell IO不同，Task通过perform或attempt转换为一个Cmd，再由Elm运行时处理。这块来回的流程看不明白，感觉有点奇怪。

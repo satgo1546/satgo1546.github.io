@@ -30,33 +30,46 @@ Godot支持自研脚本语言GDScript，也支持C#。我不会C#，所以先看
 
 目前发现的诡异的语言设计：
 
-- 一个文件只能是一个类。你是Java吗？要写实用函数库的时候就遭罪了
-- 虽然面向对象，但是字段和方法不能为私有，鉴定为学Python学的。写Python的时候我恨死这个问题了，完全违反面向对象原则的设计实在是太逆天了。[godot-proposals #641](https://github.com/godotengine/godot-proposals/issues/641)
-- 类型不匹配时`==`和`!=`可能报错
-- 仅在创建闭包时捕获一次变量值，之后外层变量的修改对闭包内无效
-  ```go
-  var x = 114
-  var f = func (): return x
-  x = 514
-  print(f.call()) # 结果是114
-  ```
-  - 不能写`f()`，只能写`f.call()`的原因是`f()`是`self.f()`，就算作用域内有f也是如此
-- 渐进式类型系统疑似有点过于渐进了，只要不标类型就完全不推断
-  ```go
-  var x := 114514
-  x = "这样会报错" # Parser Error: Cannot assign a value of type "String" as "int".
-  ```
+<ul>
+<li>一个文件只能是一个类。你是Java吗？要写实用函数库的时候就遭罪了
 
-  ```go
-  var x = 114514
-  x = "把:=换成=就不报错了"
-  ```
-- 类型系统非常非常弱，唯一的泛型类型是数组
-- Godot 4更换了异步函数的写法：不需要标注异步函数，异步函数也不返回promise；await几乎没有存在的必要，但仍必写，以供参考。Godot 3没有await，取而代之的是yield带有自动继续能力的生成器语法，更怪。很难说主流语言的异步写法是好的，GDScript不同寻常说不定反倒是件好事
-- 有很多基于名字字符串（准确地说是StringName，也就是Lisp风符号）的API，这太动态了，直接消灭了自动重构的可能性
-- 不知道为什么文档里完全没有提到场景内建脚本。脚本和场景分开就像在Vue SFC里分开导入`<template src>`、`<style src>`和`<script src>`一样，弱化了它们之间内在的关联。Godot推荐分离的原因应该是为了方便集成外部工具（C#、版本控制、外部编辑器），但编辑器又不像Visual Studio那样将.designer.cs文件（≈ .tscn文件）视作.cs（≈ .gd）的一部分，甚至推崇分离以备复用（但其实根本不存在这样复用的可能）
-- 跨过场景边界后，自动补全和类型检查就不复存在了。就当是在写古典JS和Python吧，这类型系统用不了一点
-- 4.0中`not ""`和`"" or []`会报错，4.1才修（[#74741](https://github.com/godotengine/godot/pull/74741)）。不过这个好像是重写导致的退化，应该不是故意的
+<li>虽然面向对象，但是字段和方法不能为私有，鉴定为学Python学的。写Python的时候我恨死这个问题了，完全违反面向对象原则的设计实在是太逆天了。<a href="https://github.com/godotengine/godot-proposals/issues/641">godot-proposals #641</a>
+
+<li>类型不匹配时<code>==</code>和<code>!=</code>可能报错
+
+<li>仅在创建闭包时捕获一次变量值，之后外层变量的修改对闭包内无效
+<pre><code class="language-gdscript">
+var x = 114
+var f = func (): return x
+x = 514
+print(f.call()) # 结果是114
+</code></pre>
+<ul>
+<li>不能写<code>f()</code>，只能写<code>f.call()</code>的原因是<code>f()</code>是<code>self.f()</code>，就算作用域内有f也是如此
+</ul>
+
+<li>渐进式类型系统疑似有点过于渐进了，只要不标类型就完全不推断
+<pre><code class="language-gdscript">
+var x := 114514
+x = "这样会报错" # Parser Error: Cannot assign a value of type "String" as "int".
+</code></pre>
+<pre><code class="language-gdscript">
+var x = 114514
+x = "把:=换成=就不报错了"
+</code></pre>
+
+<li>类型系统非常非常弱，唯一的泛型类型是数组
+
+<li>Godot 4更换了异步函数的写法：不需要标注异步函数，异步函数也不返回promise；await几乎没有存在的必要，但仍必写，以供参考。Godot 3没有await，取而代之的是yield带有自动继续能力的生成器语法，更怪。很难说主流语言的异步写法是好的，GDScript不同寻常说不定反倒是件好事
+
+<li>有很多基于名字字符串（准确地说是StringName，也就是Lisp风符号）的API，这太动态了，直接消灭了自动重构的可能性
+
+<li>不知道为什么文档里完全没有提到场景内建脚本。脚本和场景分开就像在Vue SFC里分开导入<code>&lt;template src&gt;</code>、<code>&lt;style src&gt;</code>和<code>&lt;script src&gt;</code>一样，弱化了它们之间内在的关联。Godot推荐分离的原因应该是为了方便集成外部工具（C#、版本控制、外部编辑器），但编辑器又不像Visual Studio那样将.designer.cs文件（≈ .tscn文件）视作.cs（≈ .gd）的一部分，甚至推崇分离以备复用（但其实根本不存在这样复用的可能）
+
+<li>跨过场景边界后，自动补全和类型检查就不复存在了。就当是在写古典JS和Python吧，这类型系统用不了一点
+
+<li>4.0中<code>not ""</code>和<code>"" or []</code>会报错，4.1才修（<a href="https://github.com/godotengine/godot/pull/74741">#74741</a>）。不过这个好像是重写导致的退化，应该不是故意的
+</ul>
 
 2D教程有一些明显不符合最佳实践的操作，不知是否为了简单起见所致。
 

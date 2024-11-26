@@ -73,7 +73,11 @@ article {
 	max-inline-size: 42pc;
 
 	>*,
-	p {
+	p,
+	h1,
+	h2,
+	h3,
+	h4 {
 		margin-inline: auto;
 		margin-block-end: 6pt;
 	}
@@ -97,9 +101,14 @@ article {
 		text-emphasis-style: sesame;
 	}
 
-	ul:lang(zh-Hans) {
+	ul {
 		padding-inline-start: 2em;
 		list-style: circle;
+	}
+
+	ol {
+		padding-inline-start: 2em;
+		list-style-type: decimal;
 	}
 
 	dl {
@@ -134,6 +143,11 @@ article {
 			content: "❄ ❄ ❄";
 		}
 	}
+
+	aside {
+		font-size: .8em;
+		margin-block-end: 6pt;
+	}
 }
 
 // https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-kbd-element
@@ -157,12 +171,32 @@ p img {
 	vertical-align: middle;
 }
 
-blockquote+figcaption::before {
-	content: "— ";
+ul.articles {
+	>li {
+		>time {
+			font-size: .8em;
+			opacity: .5;
+		}
+	}
 }
 
-blockquote+figcaption:lang(zh)::before {
-	content: "——";
+figcaption {
+	text-align: center;
+	font-size: .8em;
+	margin-block-start: 3pt;
+}
+
+blockquote+figcaption {
+	text-align: right;
+	font: inherit;
+
+	&::before {
+		content: "— ";
+	}
+
+	&:lang(zh)::before {
+		content: "——";
+	}
 }
 
 table.settabs {
@@ -201,6 +235,10 @@ table.spreadsheet {
 		border-block-end: thin inset;
 		border-inline-end: thin inset;
 	}
+}
+
+figure>table {
+	margin-inline: auto;
 }
 
 pre,
@@ -249,7 +287,7 @@ code:not([class*="language-"]),
 // 双栏对照
 .paracol {
 	display: grid;
-	grid: 1fr 1fr / auto-flow;
+	grid: auto-flow / 1fr 1fr;
 	column-gap: 1em;
 }
 

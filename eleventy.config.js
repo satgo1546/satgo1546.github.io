@@ -46,6 +46,7 @@ export default eleventyConfig => {
 		breaks: true,
 		linkify: true,
 	}).use(markdownItDeflist)
+	md.renderer.rules.table_open = () => '<table class="booktabs">'
 	eleventyConfig.setLibrary('md', md)
 	eleventyConfig.addFilter('markdown', content => md.render(content))
 	eleventyConfig.addFilter('markdownInline', content => md.renderInline(content))
