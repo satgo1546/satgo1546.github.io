@@ -11,7 +11,7 @@ date: 2022-12-09
 
 **示例1：**
 
-![](image.svg)
+<!----><img src="image.svg" width="180" height="180">
 
 ```
 输入：matrix = [[1,0,1],[0,1,0],[1,0,0]]

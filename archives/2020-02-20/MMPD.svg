@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 33 33" xml:space="preserve" version="1.1">
+	<defs>
+		<clipPath id="clipPath1" clipPathUnits="userSpaceOnUse">
+			<path d="M 18.5 0.5 L 16.5 17.5 L 0.5 18.5 Z"/>
+		</clipPath>
+		<pattern id="pattern1" x="0" y="0" width="2" height="2" patternUnits="userSpaceOnUse">
+			<rect x="0" y="0" width="2" height="1" fill="gray" />
+			<rect x="0" y="1" width="2" height="1" fill="cyan" />
+		</pattern>
+		<pattern id="pattern2" x="0" y="0" width="2" height="2" patternUnits="userSpaceOnUse">
+			<rect x="0" y="0" width="2" height="2" fill="white" />
+			<path fill="maroon" d="M 0 0 h 1 v 2 h 1 v -1 h -2 Z" />
+		</pattern>
+		<pattern id="pattern3" x="0" y="0" width="2" height="2" patternUnits="userSpaceOnUse">
+			<rect x="0" y="0" width="2" height="2" fill="yellow" />
+			<path fill="maroon" d="M 0 0 h 1 v 2 h 1 v -1 h -2 Z" />
+		</pattern>
+		<pattern id="pattern4" x="0" y="0" width="2" height="2" patternUnits="userSpaceOnUse">
+			<rect x="0" y="0" width="2" height="2" fill="olive" />
+			<path fill="red" d="M 0 0 h 1 v 2 h 1 v -1 h -2 Z" />
+		</pattern>
+	</defs>
+	<g stroke-linecap="butt" stroke-linejoin="miter" stroke-width="0.8535533906">
+		<path d="M 20.25 1.5 L 26.5 26.5 L 1.5 20.25 Z M 5.5 5.5 l 26 7 l -19 19 Z" stroke="none" fill="url(#pattern1)" fill-rule="nonzero" />
+		<path fill="white" d="M 18.5 0.5 l 6 24 l -24 -6 Z M 4.5 4.5 l 26 7 l -19 19 Z" />
+		<path fill="maroon" d="M 16.5 17.5 l 8 7 l -24 -6 Z" />
+		<path fill="url(#pattern2)" d="M 16.5 17.5 l 8 7 l -6 -24 Z" />
+		<path fill="maroon" d="M 13.5 13.5 l -9 -9 l 26 7 Z" />
+		<path fill="url(#pattern4)" d="M 13.5 13.5 l -9 -9 l 26 7 Z" clip-path="url(#clipPath1)" />
+		<path fill="url(#pattern3)" d="M 13.5 13.5 l -9 -9 l 7 26 Z" />
+		<path d="M 16.5 17.5 l -16 1 M 16.5 17.5 l 8 7 M 16.5 17.5 l 2 -17 M 18.5 0.5 l 6 24 l -24 -6 Z" stroke="red" fill="none" />
+		<path d="M 13.5 13.5 l -9 -9 M 13.5 13.5 l -2 17 M 13.5 13.5 l 17 -2 M 4.5 4.5 l 26 7 l -19 19 Z" stroke="olive" fill="none" />
+	</g>
+</svg>

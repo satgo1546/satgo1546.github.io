@@ -29,16 +29,24 @@
 		border-spacing: 0;
 	}
 
-	button,
-	input,
-	select,
 	img,
 	video,
-	audio {
+	audio,
+	embed,
+	iframe,
+	object {
 		// todo: exhaust the list
 		display: block;
 		margin: auto;
 		max-inline-size: 100%;
+	}
+
+	kbd,
+	button,
+	input,
+	select,
+	textarea {
+		font: inherit;
 	}
 }
 
@@ -153,17 +161,17 @@ article {
 // https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-kbd-element
 // When the `kbd` element is nested inside another `kbd` element, it represents an actual key or other single unit of input as appropriate for the input mechanism.
 kbd kbd {
-  display: inline;
-  font-size: .8em;
+	display: inline;
+	font-size: .8em;
 	vertical-align: middle;
-  min-inline-size: 2em;
-  margin-inline: .1em;
-  padding-block: .1em;
-  padding-inline: .4em;
-  box-shadow: inset 0 0 1.25em -1em;
-  border: .05em solid;
-  border-bottom-width: .15em;
-  border-radius: .15em;
+	min-inline-size: 2em;
+	margin-inline: .1em;
+	padding-block: .1em;
+	padding-inline: .4em;
+	box-shadow: inset 0 0 1.25em -1em;
+	border: .05em solid;
+	border-bottom-width: .15em;
+	border-radius: .15em;
 }
 
 p img {
@@ -245,11 +253,11 @@ pre,
 code {
 	font: inherit;
 	white-space: pre-wrap;
-  word-spacing: normal;
-  word-break: normal;
-  word-wrap: normal;
-  tab-size: 2em;
-  hyphens: none;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	tab-size: 1em;
+	hyphens: none;
 }
 
 .token.bold {
@@ -1531,6 +1539,10 @@ code:not([class*="language-"]),
 	--blue: #0d47a1;
 	--violet: #4a148c;
 
+	&:root {
+		background: var(--bg1);
+	}
+
 	body {
 		display: grid;
 		grid:
@@ -1538,12 +1550,20 @@ code:not([class*="language-"]),
 			"foot foot"
 			/ minmax(auto, 160px) 1fr;
 		gap: 8px;
+		margin: 8px;
 	}
 
 	body>* {
-		border: 3px solid;
+		border: 3px solid var(--fg1);
+		padding: 8px;
+		background: var(--bg0);
 	}
 
+	.admonition {
+		border: 1px solid var(--fg1);
+		padding: 8px;
+		background: var(--bg1);
+	}
 }
 
 .theme-htmltex {
