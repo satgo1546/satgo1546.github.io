@@ -1,0 +1,34 @@
+<svg viewBox="0 0 704 704" fill="none" stroke-width="4" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<g id="h">
+<rect x="2" y="2" width="80" height="56" rx="4" fill="#D3EEC1" stroke="#7AC043"/>
+<rect x="12" y="12" width="60" height="36" fill="#95D366"/>
+</g>
+<use href="#h" transform="translate(60 0) rotate(90)" id="v"/>
+</defs>
+<g id="b">
+<path d="M2 2H302V302H2ZM2 102H302M2 202H302M102 2V302M202 2V302" fill="#EEFBE7" stroke="black"/>
+<rect x="202" y="2" width="100" height="100" fill="#E8E8E8" stroke="black"/>
+<path d="M233 71L271 33M233 33L271 71" stroke="#8C8C8C" stroke-width="12" stroke-linecap="round"/>
+<rect x="60" y="22" width="84" height="60" rx="6"/>
+</g>
+<use href="#b" x="400"/>
+<use href="#b" y="400"/>
+<use href="#b" x="400" y="400"/>
+<use href="#h" x="60" y="22"/>
+<use href="#h" x="60" y="122"/>
+<use href="#h" x="60" y="222"/>
+<use href="#h" x="60" y="622"/>
+<use href="#h" x="460" y="422"/>
+<use href="#h" x="560" y="522"/>
+<use href="#h" x="560" y="622"/>
+<use href="#h" x="460" y="22"/>
+<use href="#v" x="222" y="160"/>
+<use href="#v" x="22" y="460"/>
+<use href="#v" x="122" y="460"/>
+<use href="#v" x="222" y="560"/>
+<use href="#v" x="422" y="160"/>
+<use href="#v" x="522" y="160"/>
+<use href="#v" x="422" y="560"/>
+<use href="#v" x="622" y="160"/>
+</svg>
