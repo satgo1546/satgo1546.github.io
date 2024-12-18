@@ -86,7 +86,6 @@ article {
 	h2,
 	h3,
 	h4 {
-		margin-inline: auto;
 		margin-block-end: 6pt;
 	}
 
@@ -1532,6 +1531,14 @@ code:not([class*="language-"]),
 	--bg0: #fff3e0;
 	--fg1: #b53d00;
 	--bg1: #ffcc80;
+
+	&.dark {
+		--fg0: #fff3e0;
+		--bg0: black;
+		--fg1: #ffcc80;
+		--bg1: #b53d00;
+	}
+
 	--red: #b71c1c;
 	--yellow: #827717;
 	--green: #33691e;
