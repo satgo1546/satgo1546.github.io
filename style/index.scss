@@ -298,6 +298,28 @@ code:not([class*="language-"]),
 	column-gap: 1em;
 }
 
+// 防止索引
+@font-face {
+	font-family: sats-cipher-1;
+	src: url("SatsCipher1.otf") format("opentype");
+}
+
+.cipher-1 {
+	--monospace: sats-symbol, sats-cipher-1, monospace, monospace;
+	font-family: var(--monospace);
+
+	em {
+		text-decoration: underline;
+		font-style: normal;
+		text-emphasis: none;
+	}
+
+	code:not(pre>*)::before,
+	code:not(pre>*)::after {
+		content: "`";
+	}
+}
+
 //=============================================================================
 // ■ Themes
 //=============================================================================
