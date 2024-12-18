@@ -7,8 +7,8 @@
 </template>
 <template webc:else webc:nokeep>
 	<title @text="`${title} · satgo1546’s ocean`"></title>
-	<meta name="keywords" :content="''">
-	<meta name="description" :content="1+1">
+	<meta name="keywords" :content="tags.join()" webc:if="tags">
+	<meta name="description" :content="description || excerpt">
 </template>
 <meta name="generator" :content="eleventy.generator">
 <link rel="shortcut icon" type="image/svg" href="/style/favicon.svg">
