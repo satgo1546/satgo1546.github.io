@@ -75,7 +75,7 @@ body>footer {
 	grid-area: foot;
 }
 
-article {
+:where(article) {
 	margin-block: 1pc;
 	margin-inline: auto;
 	max-inline-size: 42pc;
@@ -299,13 +299,19 @@ code:not([class*="language-"]),
 }
 
 // 防止索引
-@font-face {
-	font-family: sats-cipher-1;
-	src: url("SatsCipher1.otf") format("opentype");
+@for $i from 0 through 1 {
+	@font-face {
+		font-family: sats-cipher-#{$i};
+		src: url("SatsCipher#{$i}.otf") format("opentype");
+		font-display: swap;
+	}
+
+	.cipher.\3#{$i} {
+		--monospace: sats-symbol, sats-cipher-#{$i}, sats-cipher-0, monospace, monospace;
+	}
 }
 
-.cipher-1 {
-	--monospace: sats-symbol, sats-cipher-1, monospace, monospace;
+.cipher {
 	font-family: var(--monospace);
 
 	em {
