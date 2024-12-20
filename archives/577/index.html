@@ -1,0 +1,220 @@
+---
+title: 关于永远对不齐的字体尺寸调查
+date: 2024-11-29
+dates: 2024-11-29 ~ 2024-12-01
+excerpt: 我随机挑选了我电脑上的一些字体，查看它们填写的参数，发现大写字母高度平均都在0.7em附近。<br>为什么有的字体没填cap height？小编也觉得很奇怪。
+tags:
+- 实验
+- 字体
+---
+
+<figure lang="en">
+<blockquote>
+<p>Aligning rectangles is relatively easy. Aligning text is hard. Icons are rectangles. So what if we put icons into a font file?
+<p>Now we can’t align anything […] Neither can we set icon size!
+</blockquote>
+<figcaption><a href="https://tonsky.me/blog/centering/">Hardest Problem in Computer Science: Centering Things</a></figcaption>
+</figure>
+
+<figure>
+<blockquote>
+<p>对齐矩形相对容易。对齐文本则很难。已知图标是矩形。那么，如果我们将图标放入字体文件中呢？
+<p>现在我们不能对齐任何东西了……我们也无法设置图标大小！
+</blockquote>
+<figcaption><a href="https://nptr.cc/posts/tonsky-blog-centering/">计算机科学中最困难的事：居中</a></figcaption>
+</figure>
+
+<p>在<a href="【TODO：欢迎来到SFNT工会】">字体系列</a>中我提到：
+
+<blockquote>
+深入到hhea和OS/2表里，才知道各家字体制作软件里行距设定都很复杂是因为OpenType格式本身就是一团乱糟。
+</blockquote>
+
+<p>字体格式中的竖直尺寸信息因各软件之间和字体制作者解释不同，早已成为一滩烂泥。按字面意思正确填写ascender、descender、cap height、x-height在数字出版时代只会让渲染效果不合预期，真正要考虑的应是如何让软件正确解读。
+
+<p>CSS完全是废物。大部分时候，开发者往往靠`vertical-align: middle`看着差不多就蒙混过去了，但其实并没有真正对齐。不能控制具体使用的字体时，单靠CSS对齐是不可能的，这也就成了没有办法的办法。
+
+<p>在<a href="【TODO：补充链接】">制作梦中的动画</a>的时候，我遇到了严重的居中对不齐的问题：</p>
+
+<img src="figma.webp" width="533" height="400">
+
+<p>网页烂了，我也忍了，可在绘图软件里也对不齐，几个意思？好在在字体详细设置面板里可以开启“按大写字母计算高度”功能，因为数字和大写字母高度一致，所以情况也适用，这样至少不用手动调整位置了。
+
+<p>我随机挑选了我电脑上的一些字体，查看它们填写的参数，发现大写字母高度平均都在0.7em附近。最低的是Courier New 0.571em，最高的是Noto Emoji 0.928em，不过这个应该是乱填的，不算。如果我的图标字体按0.7em对齐，是否能做到与大部分字体基本对齐？
+
+<p>我把整个<a href="https://github.com/google/fonts/tree/a2bcf1c907ca7cdfec5c05cefe29f14e840a899b">google/fonts @ a2bcf1c</a>拖了下来。先看看其中有多少字体竖直居中不了吧。
+
+<details>
+<summary>叫ChatGPT写了个脚本导出数据。</summary>
+<pre><code class="language-python">
+import glob
+import sys
+from fontTools.ttLib import TTFont
+from tqdm import tqdm
+
+font_files = glob.glob("**/*.[ot]tf", recursive=True)
+print(
+    "filename",
+    "font name",
+    "OS/2 ascender",
+    "OS/2 descender",
+    "hhea ascender",
+    "hhea descender",
+    "cap height",
+    sep="\t",
+)
+for font_path in tqdm(font_files):
+    try:
+        font = TTFont(font_path)
+        upem = font["head"].unitsPerEm
+        try:
+            capheight = font["OS/2"].sCapHeight / upem
+        except AttributeError:
+            capheight = "#N/A"
+        print(
+            font_path,
+            font["name"].getDebugName(1),
+            font["OS/2"].usWinAscent / upem,
+            font["OS/2"].usWinDescent / upem,
+            font["hhea"].ascent / upem,
+            font["hhea"].descent / upem,
+            capheight,
+            sep="\t",
+        )
+    except Exception as e:
+        print(f"Error processing {font_path}: {e}", file=sys.stderr)
+</code></pre>
+</details>
+
+<details>
+<summary>又叫ChatGPT写了个脚本画直方图。</summary>
+<pre><code class="language-python">
+import numpy as np
+import matplotlib.pyplot as plt
+
+data = np.genfromtxt(
+    "out.tsv",
+    delimiter="\t",
+    names=True,
+    dtype=(str, str, float, float, float, float, float),
+)
+os2_values = data["OS2_ascender"] - data["cap_height"] - data["OS2_descender"]
+hhea_values = data["hhea_ascender"] - data["cap_height"] + data["hhea_descender"]
+plt.figure()
+plt.hist(
+    [os2_values, hhea_values],
+    bins=35,
+    range=(-2.35, 1.15),
+    label=["OS/2 typo", "hhea"],
+    histtype="stepfilled",
+    alpha=0.5,
+)
+plt.title("Are fonts vertically centered?")
+plt.xlabel("(ascender space − descender space) / em")
+plt.ylabel("# of font files")
+plt.legend()
+plt.savefig("font_histogram.svg")
+
+plt.figure()
+plt.hist(data["cap_height"], bins=145, range=(0, 1.45))
+plt.xlabel("cap height / em")
+plt.xticks([0, 0.6, 0.7, 0.8, 1.4])
+plt.ylabel("# of font files")
+plt.savefig("cap_height.svg")
+</code></pre>
+</details>
+
+<p>这时我发现了一个问题：OS/2和hhea两个表里各有一组ascender/descender数据。（同在OS/2里且名字很像的winAscent和winDescent用于指定绘图框，压根不属于这个范畴。）众所周知，只要有重复数据，产生分歧只是时间问题。<a href="https://www.w3.org/TR/2024/WD-css-inline-3-20240812/#ascent-descent">CSS标准只是“推荐”使用OS/2表的数据</a>，事实当然是各搞各的，Windows采用OS/2，macOS采用hhea，所以如果两者值不相同，就会在两个操作系统上产生不同的行高。在统计的3637个字体文件中，有1841个存在差异！</p>
+<img src="space.svg">
+<p>导致图表左边被撑开的罪魁祸首是jsMath-cmex10，cap height只有40单位，descender却高达2960单位，但数学字体因符号定位要求大多都这样，可以忽略。接下来是Noto Serif Grantha和Noto Sans Grantha，古兰塔文当然也没有大写字母的概念，忽略。真正最离谱的西文字体是Ballet，cap height = 1209比ascender = 1160还高。
+
+<p>在图表另一侧，Sedgwick Ave的cap height很正常，但有着离谱的ascender，作为英文字体，应该是字体作者在乱填数值。
+
+<p>在有cap height数据的3528个字体文件中，OS/2 typo和hhea值都竖直居中对齐的只有区区25个！因为过于稀少，现将这些字体族罗列如下：
+<ul>
+<li>Bruno Ace
+<li>Bungee
+<li>Caveat Brush
+<li>Creepster
+<li>Creepster Caps
+<li>Finger Paint
+<li>Hanken Grotesk
+<li>Hedvig Letters Sans
+<li>Hedvig Letters Serif
+<li>Kumbh Sans
+<li>Madimi One
+<li>MuseoModerno
+<li>Puppies Play
+<li>Shantell Sans
+<li>Sofia
+<li>Tektur
+</ul>
+<p>有不少字体只差几个单位就对齐了，视觉上没有区别。提名Lobster Two粗体，差值2单位，字体名很应景。但是，即使把阈值拉到50单位（10pt的文字差0.5pt对齐），也只有890个字体满足要求，只占¼。
+
+<p>为什么有的字体没填cap height？小编也觉得很奇怪。非西文字体没填还情有可原，可Cantarell、Oxygen这样的纯拉丁字体也不填属实不能理解。
+
+<p>在填了cap height的字体中，有27个是0。其中有非西文字体和特殊用途字体，填0无可厚非，但亦有若干西文字体设计师脚填数值。提名字体Redacted，以该字体显示的敏捷狐狸如下：</p>
+
+<img src="black.webp" width="649" height="48">
+
+<p><a href="https://fonts.googleblog.com/2022/01/flow-and-redacted-check-out-these-new.html">这玩意怎么能混进Google Fonts里的</a>？
+
+<p>无论是否包含这些0值，cap height的中位数和众数都是0.7em，平均值在0.68~0.69em附近。</p>
+
+<img src="cap-height.svg">
+
+<p>两根异常柱是0.623em的Inconsolata（样式繁多）和0.714em的Noto婆罗米系文字字体（语言繁多）。
+
+<p>再来看看图标字体都是如何对齐的。图标字体没有好用的数据源，只好手工测量了。因为图标通常作为行内元素，它的出现理应不影响行高（希望如此）。要注意的数据不是ascender和descender，而是图标实际尺寸相对基线的位置，即max y和min y。这里选取了类似复选框“☑”等带框字符进行测量，按框应垂直居中的常识计算图标适配的cap height。
+
+<table class="booktabs">
+<thead><th>字体<th>min y<th>max y<th>理论适配<br>cap height
+<tbody>
+<tr><td>Font Awesome 6<td>−32/512<td>416/512<td>0.75em
+<tr><td>Material Symbols<td>120/960<td>840/960<td>1em
+<tr><td>Codicon 0.0.36<td>19/300<td>281/300<td>1em
+<tr><td>Noto Emoji<td>−340/2048<td>1740/2048<td>0.684em
+<tr><td>Segoe UI Emoji<td>−359/2048<td>1803/2048<td>0.705em
+<tr><td>SF Symbols 6<td>−199/2048<td>1642/2048<td>0.705em
+</table>
+
+<details>
+<summary>支线任务：如何在macOS外获取SF Symbols字体？</summary>
+<p>登陆<a href="https://developer.apple.com/sf-symbols/">SF Symbols</a>页面，下载链接处显示“Requires macOS Ventura or later.”。无视之，可下载到一个DMG文件。这是一个应用程序，所以确实必须在macOS上运行，但是其中字体资源可被提取出来。用7-Zip打开，导航到<strong>SF-Symbols-6.dmg/</strong>SFSymbols/<strong>SF Symbols.pkg/</strong>SFSymbols.pkg/<strong>Payload/</strong><strong>Payload~/</strong>./Library/Fonts/（粗体的为文件，实际经历解包），其中就包含了San Francisco系列字体的OTF和TTF文件。
+</details>
+
+<p>Segoe UI的cap height是0.7em，大差不差，但是Segoe UI自身有严重的上下不对称问题，导致它反而是最偏的。SF的cap height是精确的0.705em，完美的居中，又是苹果的胜利。
+
+<hr>
+
+<p>除了居中的要求，至于字体参数具体应该怎么填，则众说纷纭。关于ascender和descender的设置方法的文章层出不穷，下面是几篇：
+
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/typography/opentype/otspec184/recom#stypoascender-stypodescender-and-stypolinegap">Microsoft OpenType规范1.8.4推荐</a>
+<li><a href="https://glyphsapp.com/learn/vertical-metrics">Glyphs的指南</a>
+<li><a href="https://silnrsi.github.io/FDBP/en-US/Line_Metrics.html">SIL的指南</a>
+<li><a href="https://googlefonts.github.io/gf-guide/metrics.html">Google Fonts的强制要求</a>
+</ul>
+
+<p>尽管指南大都推荐置位fsSelection第7位（使用typo度量值），还是能见到没有设置的字体。有的是历史原因，比如Go怎么看都是从老字体改来的。有的是语言原因，比如Google Fonts要求中文字体不设置该位，并用typo/hhea值指定汉字框，用win值调整行距。这意味着中文字体将无法提供合适的默认英文效果。
+
+<p>希望中文字体的ascender + descender = em是因为在竖版排版中，如果应用程序没有处理或字体中没有其他数值，ascender和descender将指定字符高度。line gap值为0的字体在竖版中西文混排场景中会带来过大的空白，因为这种字体的ascender和descender带着行距。</p>
+
+<figure>
+<img src="哆啦A梦.webp">
+<!-- data:text/html,<body style="writing-mode:vertical-rl;text-orientation:upright;font:66.6666666666px/normal 'Source Han Sans';text-autospace:no-autospace">%E5%93%86<span style=background:lightyellow>%E5%95%A6<span style="background:pink;font-family:'Source Sans Pro'">A</span>%E6%A2%A6</span><br>%E5%93%86<span style=background:lightgreen>%E5%95%A6<span style=background:pink>A</span>%E6%A2%A6</span> -->
+<figcaption>左：全程使用思源黑体，字高一致<br>
+右：思源黑体和Source Sans Pro混排，字母比汉字高一截
+</figcaption>
+</figure>
+
+<p>但是，如果坚持字高一致，又会在有降部的字母上出问题。思源黑体的全角字符有额外尺寸信息，竖排时全角字符不对齐基线，强行把字母塞入汉字框，就无此问题了。这是全角字符能派上的用场。</p>
+
+<figure>
+<img src="y坐标.webp">
+<figcaption>左：全程使用思源黑体，全角字母，可读<br>
+中：全程使用思源黑体，半角字母，字形重叠<br>
+右：思源黑体和Source Sans Pro混排，半角字母，可读</figcaption>
+</figure>
+
+<p>横排和竖排的软件兼容性目标相互矛盾，靠字体指定在所有场合都正确的尺寸是不可能完成的任务。
