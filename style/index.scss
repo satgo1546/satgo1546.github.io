@@ -55,6 +55,12 @@
 //   including language-specific styles for article building blocks
 //=============================================================================
 
+@font-face {
+	font-family: sats-symbol;
+	src: url("SatsSymbol.otf") format("opentype");
+	font-display: swap;
+}
+
 :root {
 	--monospace: sats-symbol, monospace, monospace;
 }
