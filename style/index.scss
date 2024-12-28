@@ -47,6 +47,7 @@
 	select,
 	textarea {
 		font: inherit;
+		color: inherit;
 	}
 }
 
@@ -86,12 +87,21 @@ body>footer {
 	margin-inline: auto;
 	max-inline-size: 42pc;
 
-	>*,
 	p,
 	h1,
 	h2,
 	h3,
-	h4 {
+	h4,
+	ul,
+	ol,
+	dl,
+	pre,
+	blockquote,
+	hr,
+	aside,
+	figure,
+	table,
+	img:not(p *) {
 		margin-block-end: 6pt;
 	}
 
@@ -146,7 +156,7 @@ body>footer {
 	}
 
 	hr {
-		height: 1em;
+		line-height: 1;
 		text-align: center;
 		opacity: .5;
 		word-spacing: 1em;
@@ -159,7 +169,6 @@ body>footer {
 
 	aside {
 		font-size: .8em;
-		margin-block-end: 6pt;
 	}
 }
 
@@ -1582,6 +1591,7 @@ code:not([class*="language-"]),
 
 	&:root {
 		background: var(--bg1);
+		color: var(--fg0);
 	}
 
 	body {

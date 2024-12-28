@@ -15,5 +15,6 @@
 <link rel="stylesheet" href="/style/index.css" webc:keep>
 <link rel="alternate" type="application/atom+xml" href="https://satgo1546.github.io/feed.xml">
 <style @raw="getBundle('css')" webc:keep></style>
-<script @raw="getBundle('js')" defer webc:keep></script>
-<body @raw="content">
+<body>
+<template webc:nokeep @raw="content"></template>
+<script @raw="getBundle('js')" webc:keep></script>

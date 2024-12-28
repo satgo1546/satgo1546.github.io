@@ -4,6 +4,7 @@ lang: en
 date: 2024-12-19
 dates: 2024-12-18 ~ 2024-12-20
 excerpt: "Fun fact: FontForge has crashed more than 10 times while I was preparing this article."
+theme: theme-modern-magic dark
 tags:
 - 实验
 - 字体
@@ -36,7 +37,8 @@ tags:
 <img src="pua.webp">
 <textarea id=x>Hello World!</textarea>
 <pre><output id=y></output></pre>
-<script>/*【TODO：定时器是什么鬼】*/setTimeout(() => (x.oninput = () => {
+<script>
+(x.oninput = () => {
 	y.textContent = x.value.replace(
 		/[A-Z]{2}|[a-z]{2}/g,
 		m => String.fromCodePoint(0xf0000 | m.charCodeAt(0) << 8 | m.charCodeAt(1))
@@ -47,7 +49,7 @@ tags:
 		/[A-Za-z]/g,
 		m => String.fromCharCode(((m.charCodeAt(0) & 31) + 12) % 26 + 1 | m.charCodeAt(0) & 96)
 	)
-})(), 1000)
+})()
 </script>
 <h2>N󶙴󶕲󷝯󷉤</h2>
 <p>Gb 󶉥 󷍵󷉥, 󶙯󶹴 󷑲󶥣󶭳 󶱩󶭥 󷑨󶥳 󶽮r 󶅲r 󶡡󶍫f. G󶡥l 󷍣󷉥j 󷕰 󶅣󶍥󷍳󶥢󶥬󶥴l 󶍯󶵰󶱥󷑥󶱹. L󶕴 󷑨󶕹 󶅲r 󶕡󷍩󶱹 󶽢󷙩󶅴󶕤 󶉹 󴽃E 󶽮 n 󷍣󷉥󶕮󷍨󶽴, 󶅳 󶱯󶹧 󶅳 󷑨r 󷉥󶹤󶕲󶥮t 󶥳 󶥮󶑥󶕤 󶡵󶵡a-󷉥󶅤󶅢󶱥. Vg 󶵩󶝨g 󶉥 󶹯g 󶱯󶹧 󶉥󶙯󷉥 󷑨󶥳 󶙯󶹴 󶉥󶍯󶵥 󷕳󶕬󶕳f.
