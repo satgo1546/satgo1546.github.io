@@ -21,6 +21,10 @@ date: 2015-01-01
 : ```sh
   unzip a.zip -O gbk -d b/
   ```
+有损GIF
+: ```sh
+  gifsicle -O3 --lossy=400 -o b.gif a.gif
+  ```
 高质量OGG
 : ```sh
   ffmpeg -i a.wav -q 9 b.ogg
