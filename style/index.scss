@@ -259,6 +259,23 @@ table.spreadsheet {
 	}
 }
 
+table.tilemap {
+	table-layout: fixed;
+
+	th,
+	td {
+		width: 2em;
+		height: 2em;
+		text-align: center;
+		vertical-align: middle;
+		border: thin solid;
+	}
+
+	.given {
+		background: #80808040;
+	}
+}
+
 figure>table {
 	margin-inline: auto;
 }
@@ -304,6 +321,20 @@ code:not([class*="language-"]),
 	&:hover {
 		color: white;
 	}
+}
+
+// 透明底
+.checkered {
+	background: 0 0 / 32px 32px repeating-conic-gradient(#000040 0 .25turn, #000080 0 .5turn);
+}
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	align-content: flex-start;
+	justify-content: center;
+	align-items: center;
+	gap: 6pt 2em;
 }
 
 // 双栏对照
