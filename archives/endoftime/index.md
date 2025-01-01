@@ -706,6 +706,8 @@ AAA=
 
 </div>
 
+哇，真是小众的文字排列啊。
+
 而文本尾部的等号明示了Base64。解码得到的二进制数据以`7z`开头，作为7-Zip压缩包打开，其中包含一个密码加密的文件please.txt。Lαsting分析压缩包并尝试了endoftime等常用密码无果，看来密码需要从其他地方获取。
 
 向CALS谜题公众号发送endoftime，会收到下列图片。
@@ -747,3 +749,32 @@ AAA=
 </div>
 
 把九宫视作九键，按信息图标处的数字提取，依次得到B、E、G、L、O、S、T、Y。压缩包的密码是小写的beglosty。解压后得到的[please.txt](please.txt)内容仍是缺字字阵。
+
+虽然缺字字阵一般标示着分支的终点，我仍好奇文本文件中的那段看起来同时在讲宗教和物理学的乱码到底是什么。经过一些关键词搜索，我发现中文维基百科上关于格林尼治标准时间的页面中有一段与文本重合度很高的文字：
+
+> 格林尼治标准时间的正午是指当平太阳横穿格林尼治子午线时（也就是在格林尼治上空最高点时）的时间。由于地球每**天的自转是**有些不规则的，而**且正在缓慢**减速，因此格**林尼治平**时基于天文**观测本身的缺陷**，目前已经被原子钟报时的协调世界时（UTC）所取代。
+
+剔除重合部分后再次搜索，逐步找到所有乱码文字都来自中文维基百科上关于时间的页面。
+
+维基百科页面|引用部分
+-|-
+[普朗克时间](https://zh.wikipedia.org/w/index.php?title=%E6%99%AE%E6%9C%97%E5%85%8B%E6%99%82%E9%96%93&oldid=85333991)|<span style="color: var(--violet)">按照当今**学术界所了解的物理定**律，在这短暂**时间间隔里**所发生**的任何变**化，是无法**通过测量或探**测求得的。</span>
+[原子钟](https://zh.wikipedia.org/w/index.php?title=%E5%8E%9F%E5%AD%90%E9%90%98&oldid=85076814)|<span style="color: var(--cyan)">……它以**原子共振频率**标准来计算及保持**时间的准确。**原**子钟是世**界上已知最**准确的时间测**量和频**率标准，也是**国际时间和频率转换的基准，……</span>
+[格林尼治标准时间](https://zh.wikipedia.org/w/index.php?title=%E6%A0%BC%E6%9E%97%E5%B0%BC%E6%B2%BB%E6%A8%99%E6%BA%96%E6%99%82%E9%96%93&oldid=84627163)|<span style="color: var(--green)">由于地球每**天的自转是**有些不规则的，而**且正在缓慢**减速，因此格**林尼治平**时基于天文**观测本身的缺陷**，……</span>
+[永恒](https://zh.wikipedia.org/w/index.php?title=%E6%B0%B8%E6%81%86&oldid=78721302)|<span style="color: var(--red)">永恒在很**多宗教中**是一个重要的概念，宗教神话中**的神往往**被认为存**在于永恒，**这**可被理解神存在于时**间**之外**或存在于时间之内而没有终结，……</span>
+
+<pre><span style="color: var(--green)">天的自转是</span><span style="color: var(--cyan)">原子共振频率</span>[NOISE]<span style="color: var(--red)">多宗
+教中</span><span style="color: var(--violet)">学术界所了</span><span style="color: var(--cyan)">时间的准确。</span><span style="color: var(--green)">且正在</span>
+[NOISE]
+[NOISE]
+[NOISE]
+<span style="color: var(--green)">缓慢</span><span style="color: var(--red)">的神往往</span><span style="color: var(--violet)">解的物理定在</span><span style="color: var(--red)">于
+永恒，</span><span style="color: var(--violet)">时间间隔里</span><span style="color: var(--cyan)">子</span>[NOISE]
+<span style="color: var(--cyan)">钟是世</span><span style="color: var(--green)">林尼治平</span><span style="color: var(--red)">可被理解神</span>
+[NOISE]
+<span style="color: var(--cyan)">准确的</span><span style="color: var(--green)">观测本身</span><span style="color: var(--violet)">的任何变</span><span style="color: var(--cyan)">时
+间测</span><span style="color: var(--green)">的缺陷</span><span style="color: var(--red)">存在于时</span><span style="color: var(--violet)">通过测量或探</span><span style="color: var(--red)">间</span>
+[NOISE]<span style="color: var(--red)">之外</span><span style="color: var(--cyan)">率标准，也是</span></pre>
+
+谁家暗锅？
+
