@@ -1,7 +1,7 @@
 ---
 title: 距离实现精美的代码排版还剩−37年
 date: 2024-11-20
-dates: 2024-11-20, 2024-11-22
+dates: 2024-11-20, 2024-11-22, 2024-12-29, 2024-12-31
 excerpt: 除着色之外，除编辑器之外，语法高亮本还应能做到的事情还远没有结束。
 tags:
 - 实验
@@ -69,3 +69,32 @@ tags:
 <p>必须承认，语法高亮是一个很小众的领域，但也是一个影响范围广大的领域。无论是历史上的语义化高亮尝试，还是现在集成到LSP中的语义化高亮，编辑器内着色的正确性已经得到了提升。但除着色之外，除编辑器之外，语法高亮本还应能做到的事情还远没有结束。
 <p>TextMate跟Prism等本质上并无很大不同，更准确只是因为它被用在编辑器中，得到修正的机会更多而已。一车正则表达式是有极限的，所以CodeMirror 6上了真格解析器<a href="https://lezer.codemirror.net/">Lezer</a>，已然成为语法高亮最准确的编辑器。它能正确解析C++和TypeScript中的<code>&gt;&gt;</code>、JavaScript中的<code>{}/i/i</code>（取决于处于表达式还是语句上下文中，<code>{}</code>可能是空对象或空块，<code>/i/i</code>可能是除法或正则表达式）、Python中的<code>@lambda</code>（作为装饰器的匿名函数）。
 <p>不使用Lezer的语法树和增量解析能力的话，只当成高亮库来用也完全没问题，CodeMirror网站上文档中的代码当然就是如此实现高亮的。只是因为语法定义也是真格的，它支持的语言还很少。我经常会在文章中插入一些奇奇怪怪的语言的代码，所以没有考虑Lezer。如果只使用主流语言的话，它也是很好的代码高亮的选择。
+<hr>
+<p>一个月后补充：很遗憾，代码高亮 = 乱涂色的现象仍在加剧。
+<p>Nue的作者，设计师Tero Piirainen<a href="https://nuejs.org/blog/introducing-glow/" rel="noopener nofollow ugc">推出了一种高亮代码的全新思路：Glow</a>，高亮引擎核心代码只有300行，不需要为每门语言编写语法文件。这怎么可能？？
+<blockquote>
+<p><em>Glow is different</em>: Rather than parsing language internals, Glow focuses purely on aesthetics and the visual style of your code.
+</blockquote>
+<p>介绍文章中完全没有解释这是如何做到的，但其实猜都应该猜到了。具体来说，实现方式是高亮各种语言中共通的关键字和语法结构，特判常用标记语言，并彻底放弃准确性。
+<p>源代码<a href="https://github.com/nuejs/nue/blob/v1.0.0-RC.1/packages/glow/src/glow.js">glow.js</a>节选如下。
+<pre><code class="language-javascript">
+const MIXED_HTML = ['html', 'jsx', 'php', 'astro', 'dhtml', 'vue', 'svelte', 'hb']
+const LINE_COMMENT = { clojure: ';;', lua: '--', python: '#' }
+const PREFIXES = { '+': 'ins', '-': 'del', '&gt;': 'dfn' }
+const MARK = /(••?)([^•]+)\1/g   // ALT + q
+const NL = '\n'
+
+const COMMON_WORDS = 'null|true|false|undefined|import|from|async|await|package|begin\
+|interface|class|new|int|func|function|get|set|export|default|const|var|let\
+|return|for|while|defer|if|then|else|elif|fi|int|string|number|def|public|static|void\
+|continue|break|switch|case|final|finally|try|catch|while|super|long|float\
+|throw|fun|val|use|fn|my|end|local|until|next|bool|ns|defn|puts|require|each'
+
+// Implement most~50% of words to cover 95% of cases
+const SPECIAL_WORDS = {
+  cpp: 'cout|cin|using|namespace',
+  python: 'None|nonlocal|lambda',
+  go: 'chan|fallthrough'
+}
+</code></pre>
+<p>我实在是无言以对。这种代码应该出现在IOCCC和JS1k上，而不是npm上！
