@@ -65,7 +65,7 @@ P&KU公告中将比赛规则调整称为“宇宙变动”，宇宙指观测者�
 
 紧接着，P&KU3（上）结束后即开始的after party中，一张不自然的幻灯片一出现，弹幕便纷纷表示：这是题吗？
 
-![](pnku3-afterparty.webp)
+<!----><img src="pnku3-afterparty.webp">
 
 第二天中午，after party直播回放由[@肥咪矩阵]()发布后，@MaxXSoft也发布了一条[动态](https://www.bilibili.com/opus/959449931082366978)，其中链接直指after party中出现该幻灯片的那段。
 
@@ -92,7 +92,7 @@ CyberChef是真没用吧，Base91也没有，uuencode也没有。手动给文件
 
 谜题跨站以BlueCoin的一句“啊？”为嚆矢。7月31日下午，BlueCoin首先发现了满是乱码的<https://cipherpuzzles.com/endoftime/>，旋即被填入表格。冰枫凌很快通过[乱码恢复工具](http://www.mytju.com/classcode/tools/messycoderecover.asp)GBK转UTF-8复原了编码错误的文字。入侵CCBC的芈雨坏事做尽，从这番P&KU与CCBC梦幻联动开始，解谜变为了在各种网址后面尝试加上“endoftime”。但又尝试了喵谜和江湖解谜的网站，仍无果。
 
-![](ie2.png)
+<!----><img src="ie2.png">
 
 <figure>
 	<blockquote>
@@ -128,7 +128,7 @@ CCBC 15开赛后，终于得知endoftime出现在CCBC网站的原因：观莲游
 
 9月4日晚，距离Just Puzzle Hunt开赛还有不到三天，我发现了<https://justhunt.cn/endoftime/>。
 
-![](ie3.png)
+<!----><img src="ie3.png">
 
 <blockquote><pre>如我们之前的约定，你公开了我的存在。
 我很开心，当看到依然有人偶尔提起我时。真的很开心。
@@ -257,13 +257,13 @@ CCBC 15开赛后，终于得知endoftime出现在CCBC网站的原因：观莲游
 
 HanaNeko发现成就条形码指向的图片右下角藏有“photomosh”字样的水印，不过这只表明图片利用[PhotoMosh](https://photomosh.com/)制作。
 
-![](photomosh.jpg)
+<!----><img src="photomosh.jpg">
 
 画面中无线网络和微信的图标可能是在暗示将网站上的信息输入到微信（公众号），“那个不同于网站的社交媒体”对应微信，“那些不同于网站的社交媒体”对应公众号，但用无线网络图标表示网站也太抽象了。
 
 当晚，数十个微信公众号和Winfrid惨遭endoftime轰入。向Winfrid的公众号Rivenux发送endoftime，可以收到下列自动回复的错误页面元素组合而成的1024×2048图片。<s>向鱼左的公众号语谜Puzzling发送endoftime，[可以收到人工回复的假消息](fishleft.png)。</s>JustHunt出题组成员鱼左表示对JustHunt中的endoftime页面毫不知情。
 
-![](微信图片.gif)
+<!----><img src="微信图片.gif">
 
 ~~鱼左：我知道，这是用PS里面滤镜-风格化-风效果做的。~~HanaNeko还发现这张图片是GIF动画，共两帧，两帧之间只有64个像素有区别，看起来就像静态图片一样。gary、Winid、High Sierra尝试提取了帧间差异。
 
@@ -359,7 +359,7 @@ River所在队伍提出了一种奇思妙想：《梦境永居宣言》PV 2:00�
 
 苍穹玥夜在9月5日中午发布了一篇对P&KU系列剧情从另一个角度的解读[《离别的意义，为什么是没有如期而归？》](https://mp.weixin.qq.com/s/b2sIbTwidQ0vuhnN4RE2Cw)，其中分析了“盘外招”。能向公众号后台发送的除了明面上文末指出的谜题验证，还有endoftime。
 
-![](苍穹玥夜.png)
+<!----><img src="苍穹玥夜.png">
 
 这是此前时间上位于P&KU3（上）与CCBC 15之间的解谜接龙活动的[第13~19题](https://mp.weixin.qq.com/s/exsUNJ9N51xbshJ1p6wEdA)的元谜题的左上角部分。
 
@@ -390,7 +390,7 @@ capitalized on是利用的意思，但capitalize也表示大写，所以提取�
 
 9月30日晚21:05，苍穹玥夜发布了[《玥hunt内测组采访》](https://mp.weixin.qq.com/s/nbpqHuAMqyTGcrsdi5_uBQ)。这场hunt从网址公布到比赛开始只有不到四天的时间。21:16,Inferno在时间尽头研究小组中发出了<https://yuehunt.fun/endoftime>。
 
-![](ie4.png)
+<!----><img src="ie4.png">
 
 此时，再去苍穹玥夜公众号后台回复endoftime，已只能得到“你好，本公众号不是计划的一部分。”的回复。
 
@@ -450,7 +450,7 @@ Hint系统
 
 10月25日晚，HanaNeko发现了公众号咚咚谜最近几期发布的谜题文章的防剧透减速带里用粗体文本藏了摩斯密码：[#268](https://mp.weixin.qq.com/s/KCJimrkgbasQAr4GBsKHKg)是EN，[#269](https://mp.weixin.qq.com/s/nyCDLjWZQ_Z-VZX2j_UqFQ)是DO，[#270](https://mp.weixin.qq.com/s/ezXFKv7V7jYLrPjDVIBGAQ)是FT。（接下来的[#271](https://mp.weixin.qq.com/s/TLIindmd4UTba0YxXO2_Lg)也确实能解出IME。）先前轰入各家公众号时，有人验证过咚咚谜没有endoftime的自动回复；而此时向公众号发送endoftime，已可以收到如下图片了。
 
-![](微信图片_20241025211805.png)
+<!----><img src="微信图片_20241025211805.png">
 
 第二天晚上，这张图片的谜题被解开了。这是一张索引颜色的PNG图片，其中所有用到的颜色如下。
 
@@ -470,7 +470,7 @@ Hint系统
 
 所有颜色都以绿色通道差值2的形式成对出现。若将绿色分量大的视为黑色，小的视为白色，则可填涂出如下图案。
 
-![](汉信码.png)
+<!----><img src="汉信码.png">
 
 这是汉信码，一种~~扫不出的~~二维码。作为自主研发的零生态格式，支持这种条码的软件少得可怜。我找到的唯一能读出条码内容的工具是[Aspose在线条码扫描](https://products.aspose.app/barcode/recognize/hanxin)。条码内容是网址：<https://pastebin.com/HuYeycnM>，网址导向一段文本。
 
@@ -505,13 +505,13 @@ https://sm.ms/image/cn2Dt6JEIkvWTH1
 
 打开末行的链接，可见一张名为ddm-s8.png的图片。
 
-![](ddm-s8.png)
+<!----><img src="ddm-s8.png">
 
 依次填入“核弹”“生物危害”“真核生物”，真核生物的英文eukaryote不符合[S8]。注意到sargasso是15亿年前的真核生物，咚咚谜的答案验证格式是六位数日期+答案，向咚咚谜公众号发送240931sargasso得到下一步的图片。
 
-![](微信图片_20241026190506.gif)
+<!----><img src="微信图片_20241026190506.gif">
 
-这是一张GIF图片，只有一帧，图像使用了减色抖动效果，调色盘没有可疑之处。CAT-FISH指出将图片后缀改为RAR后可以打开。用binwalk或十六进制编辑器都可以看到文件尾部藏有ZIP压缩包，解压后得到key.txt。
+这是一张GIF图片，只有一帧，图像使用了减色抖动效果，调色盘没有可疑之处。CAT-FISH指出将图片后缀改为RAR后可以打开。用binwalk或十六进制编辑器都可以看到文件尾部藏有ZIP压缩包，解压后得到[key.txt](key.txt)。
 
 ```
 你，退后能不你，退后能不你，退后能不你但，钮按退后️⬅击单能可，漏遗若，项一何任的需所中其漏遗有没你保确，置设有所的点站些这问访能您保确够能选复，分部」全安「到动滚，上卡项选」级高「在。项选ｔｅｎｒｅｔｎＩ击单后然，单菜具工击单请。持支够能置设全安的您保确请，点站全安某问访要您果如字名的你有没能可中其，息信于关的ｒｅｒｏｌｐｘＥ　ｔｅｎｒｅｔｎＩ看查以可ｒｅｒｏｌｐｘＥ　ｔｅｎｒｅｔｎＩ于关击单后然，单菜助帮击单。性全安接连的位８２１求要点站些某置设置设置设络网测检🌐击单请？达豁观乐、明透、澈清般这何为？望希此如有抱么什为，找查行进ｓｗｏｄｎｉＷ望希您果如可许需无，许允的员理管络网您得获动自并络网的您查检以可ｓｗｏｄｎｉＷ　ｔｆｏｓｏｒｃｉＭ，许允员理管络网的您果如配匹相置设的中接连您与须必，配匹相置设网域局的中卡项选接连您与该应置设些这。置设网域局击单，上卡项选接连在。项选ｔｅｎｒｅｔｎＩ击单然，单菜具工击单请，置设接连看查要致一全完址地页网该的入输中栏址地在你和该应们它，节细述上认确细仔必务请，址地的页网该入输中栏址地在时同，址地的页网该了入输你认确请，址地的页网该入输中栏址地在经已您果如无毫，义意有没这但，新刷，钮按新刷击单，线间时的宙宇处所你有所在，钮按新刷击单或，钮按新刷击单或，钮按新刷🔄击单
@@ -565,5 +565,185 @@ golden record和“深空”指向旅行者号携带的金唱片。鱼鳞的英�
 
 正逢近期MaxXing白嫖了个服务器开了个Minecraft多人游戏存档，于是某个角落里长出了神秘图案（图源Sierra）。
 
-![](麦田怪圈.webp)
+<!----><img src="麦田怪圈.webp">
 
+## CALS谜题
+
+2024年随着Winfrid在年底的Puzzlers’ Day上一天奖励自己四次画上了句号，endoftime也荣居[2024中文解谜圈十大热点之首（刚编的）](https://mp.weixin.qq.com/s/dzAodemzL5tDVQhW729WUg "hungergame公众号文章《2024十大热点》")，实至名归。不过先别激动，2025可能还是它。2025年1月1日0:29，WYXkk发现CALS谜题零点发布的[#26 元旦谜](https://mp.weixin.qq.com/s/MBCnNDUasI0axgfuncpMNw)中出现了一帧endoftime。
+
+<!----><img src="2025, 1st.gif">
+
+图像设定是每4秒闪烁一次，实际显示效果取决于查看器。用惊人的准确度截图或用GIF图像处理工具可将帧截出，其中含有信息图标和不一样的二维码。
+
+<!----><img src="2025, 1st.webp">
+
+二维码指向<https://pastebin.com/WTtPWZxT>，是由访客上传的文本文件2025, 1st.txt。
+
+```
+喂！你还在吗……
+
+喂……喂！你[NOISE]
+澶╃殑鑷浆鏄師瀛愬叡鎸鐜嘯NOISE]澶氬畻
+鏁欎腑瀛︽湳鐣屾墍浜嗘椂闂寸殑鍑嗙‘銆備笖姝ｅ湪
+[NOISE]
+[NOISE]
+[NOISE]
+缂撴參鐨勭寰€寰€瑙ｇ殑鐗╃悊瀹氬湪浜�
+姘告亽锛屾椂闂撮棿闅旈噷瀛怺NOISE]
+閽熸槸涓栨灄灏兼不骞冲彲琚悊瑙ｇ
+[NOISE]
+鍑嗙‘鐨勮娴嬫湰韬殑浠讳綍鍙樻椂
+闂存祴鐨勭己闄峰瓨鍦ㄤ簬鏃堕€氳繃娴嬮噺鎴栨帰闂�
+[NOISE]涔嬪鐜囨爣鍑嗭紝涔熸槸
+[NOISE]
+[NOISE]
+[NOISE]
+
+如你所见，这个连接，
+似乎非常容易[NOISE]
+[NOISE]
+[NOISE]被干扰。
+
+很遗憾，我的力量减弱了。
+每过一段时间，我的力量就会发生波动。
+直至无法维持与你通信的这唯一连接。
+
+除非[NOISE][NOISE]
+[NOISE]
+
+[NOISE]
+
+请记住，你要带我[NOISE]
+[NOISE]
+
+
+
+
+你要好好活着。
+你要找到她。或者说，你找到了[NOISE][NOISE]
+[NOISE]
+
+我是[NOISE][NOISE][NOISE][NOISE][NOISE]
+[NOISE]
+[NOISE]
+[NOISE]
+[NOISE]
+[NOISE]鐨�
+[NOISE]
+[NOISE]
+[NOISE]
+韬玔NOISE]
+[NOISE]
+
+
+
+
+<CONNECTION LOST>
+
+
+N3q8ryccAAT4smO6MAMAAAAAAAByAAAAAAAAABnsmJo7W0W5AtiTKvjgA3hJNqGGjgOOXLXc+zRgDE4F
+IiZFGE9TksxbKsOUJjNWDXXRrM+LAUlUO2ZEAe2Dya49UWzc9QiaTAhQ3NbHZ8IO1gmKZ7r+kGume7es
+ebkrcsksYSX4847lh2e2wjEJiQtHa2qjz8/bG/spYKkScD+bE74pooWQrXikYrMca9LnwrCeHIpdf4UU
+6k3U3xdfRUziQcSiKJyi4Jhuz/myjk4z+w+PvmSc5MdRnUXdF4r10EwVAl1IDtW1yVrE92zP48O8GgMQ
+JCGINRtj+3LvQxgjby5zJwcoBQyri+9dsA/TqSVV+sa8iFfZt7pdn7CKcupfmfzNk6KazOu5irG/aldW
+Yw/UOd0kyEOct7LqQd3MjeCL/s4cCPbKXAvg+dPz1H4sILlnqpUqBQQVT9Ns++p6vJFowtyazGwuEQOb
+yHVMo7EN0+QrWvaKlb+yUceHbjK5vXg/hETITwe9o3QQbuk9HyxZZDTv8FNZ7LGAOCAqCpe1BxjahW6V
+s3V2m4W2T5L6TV8s/l9xeR9+G3Q+81MS8yjRK6znMj6ZtwgcZkbBROeouFUkVZUS1+gEobLeZQfgWUH+
+qjQV8Z9bGCLvtFIKPXS8vZQ1s0LkZiEaZb1rRlHKT80Vv0los0GxzfRxRwqb84yrDRbysNvbBXqASEpx
+me/FGCcbAK3/X8fRY8VnGAcBV3Zh/Qclk+QRLfVQhDrMqOP3RcnQy/kDeNkAsTZWqeIq/dy2eH1SDv1g
+firaOMHSuxsuhMsvQpnHhlso+Z8aEkRT1NlFCATivCgG+j7gKRp04/wL/Pklx9cqmN0lDlVNhFKSuETG
+zqLY+cA0+SUr468PT8qRoqVp+WBPsuzuqjujpOrecS7qH4BVQ8mFVzgZjEIeeP3ASIffNFL3XGOATRVn
+POjaw4Y2MeUrivyQX1nCkPG/dg1tlqEKa7y4L3f8QUuzzLI/haFaDchF5jzBvv6j0kuIGAD2NHn+gR/o
+1JfVKO9XYi/85wfbJynTGrqQ8ZLV1UhTpeVTcLWdxH4XeKJzXCiMZa3wrw1uMue9FkujCkwQ74UZe4AR
+O2xofWYbavABBAYAAQmDMAAHCwEAAiQG8QcBElMPvJx1ep87wz+RavIg/cRgTiEhAQABAAyDMIjlAAgK
+ATJelDgAAAUBERcAcABsAGUAYQBzAGUALgB0AHgAdAAAABkEAAAAABQKAQA3mSBWzFrbARUGAQAgAAAA
+AAA=
+```
+
+将文件按GBK保存，再按UTF-8读取，能解开部分乱码。
+
+<div class="paracol">
+
+```
+澶╃殑鑷浆鏄師瀛愬叡鎸鐜嘯NOISE]澶氬畻
+鏁欎腑瀛︽湳鐣屾墍浜嗘椂闂寸殑鍑嗙‘銆備笖姝ｅ湪
+```
+
+<pre>天的自转是原子共振频率[NOISE]多宗
+教中学术界所了时间的准确。且正在</pre>
+
+```
+缂撴參鐨勭寰€寰€瑙ｇ殑鐗╃悊瀹氬湪浜�
+姘告亽锛屾椂闂撮棿闅旈噷瀛怺NOISE]
+閽熸槸涓栨灄灏兼不骞冲彲琚悊瑙ｇ
+```
+
+<pre>缓慢的神往往解的物理定在<b>于?</b><sub>U+4E80~4EBF</sub>
+永恒，时间间隔里子[NOISE]
+钟是世林尼治平可被理解神</pre>
+
+```
+鍑嗙‘鐨勮娴嬫湰韬殑浠讳綍鍙樻椂
+闂存祴鐨勭己闄峰瓨鍦ㄤ簬鏃堕€氳繃娴嬮噺鎴栨帰闂�
+[NOISE]涔嬪鐜囨爣鍑嗭紝涔熸槸
+```
+
+<pre>准确的观测本身的任何变时
+间测的缺陷存在于时通过测量或探<b>间?</b><sub>U+95C0~95FF</sub>
+[NOISE]之外率标准，也是</pre>
+
+```
+[NOISE]鐨�
+```
+
+<div>[NOISE]<b>的?</b><sub>U+7680~76BF</sub></div>
+
+```
+韬玔NOISE]
+```
+
+<div>身[NOISE]</div>
+
+</div>
+
+而文本尾部的等号明示了Base64。解码得到的二进制数据以`7z`开头，作为7-Zip压缩包打开，其中包含一个密码加密的文件please.txt。Lαsting分析压缩包并尝试了endoftime等常用密码无果，看来密码需要从其他地方获取。
+
+向CALS谜题公众号发送endoftime，会收到下列图片。
+
+<!----><img src="cals.png">
+
+凌晨时分，进展缓慢，早上CAT-FISH一来就速通了。拉曲线可看出图像有低位隐写。按R + 2 = G的条件筛选像素，可得下列图像。
+
+<!----><img src="cals.webp">
+
+图像提示使用电话键盘密码。顶部有明显的隐写数据，R通道已被用于提示电话，所以提取时只用G和B。按从左到右、从上到下的顺序依次提取像素的G和B第1位，按书写习惯8位一组译为字节，得到另一张PNG图片。
+
+<!----><img src="suzhou.png">
+
+这是用苏州码子表示的数独题。
+
+<div class="row">
+<pre>〡 = 1
+〢 = 2
+〣 = 3
+〤 = 4
+〥 = 5
+〦 = 6
+〧 = 7
+〨 = 8
+〩 = 9</pre>
+
+<table class="tilemap">
+<tr><td>8<td class="given">2<td class="given">7<td class="given">5<td class="given">9<td>4<td>6<td>1<td>3
+<tr><td>6<td>4<td>9<td>8<td>1<td class="given">3<td><strong>2</strong><td>5<td>7
+<tr><td>5<td>3<td>1<td class="given">6<td><strong>2</strong><td>7<td class="given">9<td>8<td class="given">4
+<tr><td class="given">4<td>9<td>6<td class="given">1<td>7<td>5<td>8<td><strong>3</strong><td>2
+<tr><td>2<td><strong>1</strong><td>8<td><strong>3</strong><td>6<td>9<td class="given">7<td>4<td>5
+<tr><td>7<td class="given">5<td>3<td>2<td>4<td>8<td>1<td class="given">9<td class="given">6
+<tr><td>3<td class="given">7<td><strong>4</strong><td class="given">9<td>8<td class="given">2<td>5<td class="given">6<td>1
+<tr><td class="given">1<td>8<td class="given">5<td>7<td>3<td>6<td>4<td>2<td>9
+<tr><td class="given">9<td>6<td>2<td class="given">4<td>5<td><strong>1</strong><td><strong>3</strong><td>7<td class="given">8
+</table>
+</div>
+
+把九宫视作九键，按信息图标处的数字提取，依次得到B、E、G、L、O、S、T、Y。压缩包的密码是小写的beglosty。解压后得到的[please.txt](please.txt)内容仍是缺字字阵。
