@@ -353,7 +353,11 @@ code:not([class*="language-"]),
 	}
 
 	.cipher.\3#{$i} {
-		--monospace: sats-symbol, sats-cipher-#{$i}, sats-cipher-0, monospace, monospace;
+		--monospace: sats-symbol,
+		sats-cipher-#{$i},
+		sats-cipher-0,
+		monospace,
+		monospace;
 	}
 }
 
@@ -1623,16 +1627,29 @@ code:not([class*="language-"]),
 	&:root {
 		background: var(--bg1);
 		color: var(--fg0);
+		font: 12pt/1.25 sats-symbol, "【TODO：某个字体】", sans-serif;
+		padding: 8px;
 	}
 
 	body {
 		display: grid;
 		grid:
-			"head head" 300px "side main"
-			"foot foot"
-			/ minmax(auto, 160px) 1fr;
+			"head" 300px "main"
+			"side"
+			"foot"
+			/ 1fr;
 		gap: 8px;
-		margin: 8px;
+		max-inline-size: 960px;
+		margin: auto;
+	}
+
+	@media (min-width: 640px) {
+		body {
+			grid:
+				"head head" 300px "side main"
+				"foot foot"
+				/ minmax(auto, 160px) 1fr;
+		}
 	}
 
 	body>* {
