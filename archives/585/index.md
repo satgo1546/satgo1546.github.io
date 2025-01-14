@@ -30,7 +30,7 @@ This is a common pitfall in server-side rendering, which causes **hydration mism
 
 Not only are paragraphs affected, but also many elements that have special parsing rules. It is much rarer to see in the wild a real element inside what is supposed to be a leaf node, though.
 
-Content in a normally self-closing tag don't show up. However, if `content: "…"` is applied to `<br>` itself (not its pseudo element) in Chrome, the content inside the `<br>` is displayed. This does not work in Firefox, so it seems to be a Chromium bug.
+Content in a normally self-closing tag don't show up. However, if `content: "…"` is applied to `<br>` itself (not its pseudo element) in Chrome, the content inside the `<br>` is displayed. It does not work in Firefox. The current [CSS Generated Content Module Level 3 suggests](https://drafts.csswg.org/css-content-3/#typedef-content-content-list) that the `content` property value should take over the inner text, but this has not been implemented by browsers.
 
 ## Conclusion
 
