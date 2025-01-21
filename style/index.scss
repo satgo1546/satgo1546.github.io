@@ -204,7 +204,15 @@ p img {
 }
 
 ul.articles {
+	list-style: "\25c7\2002";
+
 	>li {
+		margin-block-end: 6pt;
+
+		>a {
+			margin-inline-end: .5em;
+		}
+
 		>time {
 			font-size: .8em;
 			opacity: .5;
@@ -1601,10 +1609,10 @@ code:not([class*="language-"]),
 	--bg1: #ffcc80;
 
 	&.dark {
-		--fg0: #fff3e0;
-		--bg0: black;
-		--fg1: #ffcc80;
-		--bg1: #b53d00;
+		--fg0: #edb;
+		--bg0: #210;
+		--fg1: #fa5;
+		--bg1: #531;
 	}
 
 	--red: #b71c1c;
