@@ -49,15 +49,10 @@ site.data('title', '<i>无标题</i>')
 site.data('theme', 'theme-modern-magic light')
 site.data('lang', 'zh-Hans')
 site.data('generator', `Lume v${getCurrentVersion()}`)
-site.data('tags', ['post', 'archive'], '/archives')
-site.data('tags', ['post', 'status'], '/statuses')
+site.data('date', new Date(0))
 site.parseBasename(basename => {
 	const match = basename.match(/\d{4}-\d{2}-\d{2}/)
-	if (match) {
-		return {
-			date: new Date(match[0])
-		}
-	}
+	if (match) return { date: new Date(match[0]) }
 })
 site.preprocess([".html"], pages => {
 	for (const page of pages) {
@@ -69,7 +64,9 @@ site.preprocess([".html"], pages => {
 			page.data.description = `<blockquote>${page.data.excerpt}</blockquote>`
 		}
 		if (!page.data.dates) {
-			page.data.dates = page.data.date.toISOString().slice(0, 10)
+			page.data.dates = +page.data.date
+				? page.data.date.toISOString().slice(0, 10)
+				: ''
 		}
 	}
 })
@@ -80,7 +77,7 @@ site.data('tagUrl', (tag: string) => `/tags/${slugify(tag)}/`)
 site.use(highlightPlugin)
 site.use(feed({
 	output: ['/feed.xml'],
-	query: 'post',
+	query: 'url^="/archive|/status"',
 	sort: 'date=desc',
 	limit: 8,
 	info: {

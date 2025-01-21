@@ -27,7 +27,7 @@ export default (data: Lume.Data) => {
 				{data.children}
 			</article>
 			<footer class="entry-meta">
-				<a href="." title="链向本文的固定链接" rel="bookmark">{data.dates}</a>
+				<a href="." title="链向本文的固定链接" rel="bookmark">{data.dates || '固定链接'}</a>
 				<a class="comments-link" href="https://satgo1546.mist.so/archives/462#respond">发表评论</a>
 				<a href={'https://github.com/satgo1546/satgo1546.github.io/blob/main' + data.sourcePath}>查看源代码</a>
 			</footer>
