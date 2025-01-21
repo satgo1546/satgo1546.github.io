@@ -7,12 +7,12 @@ export default function* (data: Lume.Data) {
 			title: `标签：${tag}`,
 			url: data.tagUrl(tag),
 			content: <>
-				<div dangerouslySetInnerHTML={{ __html: data.tagDescriptions[tag] }} />
+				<div dangerouslySetInnerHTML={{ __html: data.tagDescriptions[tag] ?? '此标签没有描述。' }} />
 				<ul class="articles">
-					{data.search.pages(`"${tag}"`).map(page => <li>
+					{data.search.pages(`"${tag}"`, 'date=desc').map(page => <li>
 						<a href={page.url} dangerouslySetInnerHTML={{ __html: String(page.title) }} />
 						<time datetime={page.date.toISOString().slice(0, 10)}>{page.dates}</time>
-						<div dangerouslySetInnerHTML={{ __html: page.description }} />
+						<div dangerouslySetInnerHTML={{ __html: page.description ?? '' }} />
 					</li>)}
 				</ul>
 			</>

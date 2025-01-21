@@ -49,6 +49,16 @@ site.data('title', '<i>无标题</i>')
 site.data('theme', 'theme-modern-magic light')
 site.data('lang', 'zh-Hans')
 site.data('generator', `Lume v${getCurrentVersion()}`)
+site.data('tags', ['post', 'archive'], '/archives')
+site.data('tags', ['post', 'status'], '/statuses')
+site.parseBasename(basename => {
+	const match = basename.match(/\d{4}-\d{2}-\d{2}/)
+	if (match) {
+		return {
+			date: new Date(match[0])
+		}
+	}
+})
 site.preprocess([".html"], pages => {
 	for (const page of pages) {
 		page.data.sourcePath = page.sourcePath
@@ -71,6 +81,7 @@ site.use(highlightPlugin)
 site.use(feed({
 	output: ['/feed.xml'],
 	query: 'post',
+	sort: 'date=desc',
 	limit: 8,
 	info: {
 		lang: 'zh-Hans',
