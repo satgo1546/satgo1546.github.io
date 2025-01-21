@@ -1,0 +1,255 @@
+---
+title: CSS 3D数据黑盒
+layout: ~
+description: <a href="/archives/431/">用CSS和SVG滤镜制作</a>的可旋转<a href="https://prts.wiki/w/%E6%95%B0%E6%8D%AE%E9%BB%91%E7%9B%92">数据黑盒</a>。
+---
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+	html,
+	body {
+		height: 100%;
+	}
+
+	body {
+		display: flex;
+		margin: 0;
+	}
+
+	#data-black-box-container {
+		background:
+			/* 66px 73px / 174px 174px url("blackbox.png"), */
+			linear-gradient(skyblue, khaki);
+		width: 300px;
+		height: 300px;
+		margin: auto;
+		display: flex;
+		font-size: 100px;
+		line-height: 0;
+	}
+
+	#data-black-box-filter {
+		width: 2em;
+		height: 2em;
+		margin: auto;
+		display: flex;
+		filter: url("#data-black-box-post-processing");
+	}
+
+	#data-black-box-transform {
+		width: 1em;
+		height: 1em;
+		margin: auto;
+		transform-style: preserve-3d;
+	}
+
+	#data-black-box-transform>* {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		backface-visibility: hidden;
+		background: 0 0 / calc(var(--w) + var(--gap)) calc(var(--w) + var(--gap)) conic-gradient(at var(--w) var(--w), transparent .75turn, #665 0);
+	}
+</style>
+
+<div id="data-black-box-container" onpointerenter="setAccelerate(true)" onpointerleave="setAccelerate(false)">
+	<div id="data-black-box-filter">
+		<div id="data-black-box-transform">
+			<div id="data-black-box-debug-sun" style="background: orange"></div>
+		</div>
+	</div>
+</div>
+<!--
+	item_table.json/items/act1bossrush_token_relic/name
+	item_table.json/items/act1bossrush_token_relic/description
+-->
+<svg width="0" height="0">
+	<filter id="data-black-box-outer-face" x="0" y="0" width="100%" height="100%" filterUnits="objectBoundingBox"
+		primitiveUnits="objectBoundingBox">
+		<feTurbulence type="fractalNoise" baseFrequency=".5" numOctaves="2" />
+		<feComponentTransfer result="noise">
+			<feFuncA type="linear" slope=".1" intercept=".2" />
+		</feComponentTransfer>
+
+		<feDiffuseLighting in="SourceAlpha" surfaceScale="2" diffuseConstant="1" lighting-color="white" result="light0">
+			<fePointLight x="0" y="0" z="0" />
+		</feDiffuseLighting>
+		<feBlend mode="overlay" in="SourceGraphic" in2="noise" />
+		<feBlend mode="hard-light" in2="light0" />
+		<feComposite in2="SourceAlpha" operator="in" />
+		<feComponentTransfer>
+			<feFuncR type="linear" slope=".5" />
+			<feFuncG type="linear" slope=".5" />
+			<feFuncB type="linear" slope=".5" />
+		</feComponentTransfer>
+	</filter>
+	<filter id="data-black-box-inner-face" x="0" y="0" width="100%" height="100%" filterUnits="objectBoundingBox"
+		primitiveUnits="objectBoundingBox">
+		<feColorMatrix values="0 0 0 0 .9  0 0 0 0 .67  0 0 0 0 .2  0 0 0 1 0" result="recolored" />
+	</filter>
+	<filter id="data-black-box-post-processing" x="0" y="0" width="100%" height="100%" filterUnits="objectBoundingBox"
+		primitiveUnits="objectBoundingBox">
+		<feDropShadow stdDeviation=".03" in="SourceAlpha" dx="0" dy=".08" flood-color="black" flood-opacity=".5" />
+		<feComposite in2="SourceAlpha" operator="out" result="shadow" />
+
+		<!--
+			https://kalogirou.net/2006/05/20/how-to-do-good-bloom-for-hdr-rendering/
+			Sadly, SVG lacks a scaling filter that truly reduces computation.
+		-->
+		<feColorMatrix type="matrix" values="1 0 0 0 -.5  0 1 0 0 -.5  0 0 1 0 -.5  21.25 71.54 7.21 0 -49.5"
+			in="SourceGraphic" />
+		<feComposite in2="SourceGraphic" operator="in" />
+		<feGaussianBlur stdDeviation=".01" result="blur1" />
+		<feGaussianBlur stdDeviation=".02" result="blur2" />
+		<feGaussianBlur stdDeviation=".03" result="blur3" />
+		<feMerge>
+			<feMergeNode in="blur1" />
+			<feMergeNode in="blur2" />
+			<feMergeNode in="blur3" />
+		</feMerge>
+		<feComponentTransfer>
+			<feFuncA type="linear" slope="2" />
+		</feComponentTransfer>
+		<feComposite in2="SourceGraphic" operator="arithmetic" k1="0" k2="1" k3="2" k4="0" />
+		<feComposite in2="shadow" operator="over" />
+	</filter>
+</svg>
+
+<script>
+	/**
+	 * @typedef {Object} Face
+	 * @property {boolean} isOuterFace - Indicates if the face is an outer face.
+	 * @property {HTMLDivElement} el - The associated HTML div element.
+	 * @property {SVGFilterElement} filter - The SVG filter element.
+	 * @property {SVGFEPointLightElement} [light0] - Optional first point light.
+	 * @property {SVGFEPointLightElement} [light1] - Optional second point light.
+	 */
+
+	/** @type {Face[]} */
+	const faces = [];
+
+	// Lengths are in em.
+	const gap = 0.02
+	const w = (1 - gap * 2) / 3
+
+	function rotate(angle = 7 / 12) {
+		// The rotation axis is found through OpenCV cv2.solvePnP with an iterative method.
+		// The focal length is set manually and randomly.
+		let axisX = 2, axisY = 7, axisZ = 3.1
+		// axisX=1,axisY=1,axisZ=-3+angle
+		faces[0].el.parentElement.style.transform = `perspective(6em) rotate3d(${axisX}, ${axisY}, ${axisZ}, ${angle}turn)`
+		const axisLength = Math.hypot(axisX, axisY, axisZ)
+		axisX /= axisLength
+		axisY /= axisLength
+		axisZ /= axisLength
+		const a = -2 * Math.PI * angle
+		const px = -.25, py = -1, pz = 1
+		const sin = Math.sin(a), cos = Math.cos(a)
+		const px1 = (1 + (1 - cos) * (axisX * axisX - 1)) * px +
+			(-axisZ * sin + axisX * axisY * (1 - cos)) * py +
+			(axisY * sin + axisX * axisZ * (1 - cos)) * pz
+		const py1 = (axisZ * sin + axisX * axisY * (1 - cos)) * px +
+			(1 + (1 - cos) * (axisY * axisY - 1)) * py +
+			(-axisX * sin + axisY * axisZ * (1 - cos)) * pz
+		const pz1 = (-axisY * sin + axisX * axisZ * (1 - cos)) * px +
+			(axisX * sin + axisY * axisZ * (1 - cos)) * py +
+			(1 + (1 - cos) * (axisZ * axisZ - 1)) * pz
+		let style = ''
+		// style+=`#data-black-box-debug-sun{transform:translate3d(${px1}em,${py1}em,${pz1}em);backface-visibility:visible}#data-black-box-sun::before{content:"${angle.toFixed(1)}"}`
+
+		for (let i = 0; i < 3; i++) {
+			for (let j = 0; j < 3; j++) {
+				for (let k = 0; k < 2; k++) {
+					const face = faces[i * 6 + j * 2 + k]
+					if (face.isOuterFace) {
+						let lx = px1, ly = py1, lz = pz1
+						if (i === 1) ly = pz1, lz = py1
+						if (i === 2) lx = pz1, lz = px1
+						lz -= j * w + j * gap + k * w - .5
+						if (!k) lx = -lx, lz = -lz
+						if (i) lx = -lx
+						face.light0.x.baseVal = lx
+						face.light0.y.baseVal = ly
+						face.light0.z.baseVal = lz
+						//face.el.id=`data-black-box-face-${i}${j}${k}`
+						style += `#data-black-box-face-${i}${j}${k}{transform-style:preserve-3d}#data-black-box-face-${i}${j}${k}::before{content:"";transform:translate3d(${lx}em,${ly}em,${lz}em)rotateX(${i * 6 + j * 2 + k}deg);background:#${i * 2}${j * 2}${k * 7};display:block;width:1em;height:1em;backface-visibility:visible}`
+					}
+				}
+			}
+		}
+		if (!document.getElementById('data-black-box-debug-style')) {
+			document.body.appendChild(document.createElement('style')).id = 'data-black-box-debug-style'
+		}
+		document.getElementById('data-black-box-debug-style').innerHTML = style
+	}
+
+	let rotation = 0
+	let angleVelocity = 0
+	let accelerate = false
+	let timer = 0
+	let oldT = 0
+
+	/**
+	 * @param {number} t
+	 * @returns {void}
+	 */
+	function animate(t) {
+		if (!oldT) oldT = t
+		const dt = t - oldT
+		oldT = t
+
+		// Update.
+		if (accelerate) {
+			angleVelocity = Math.min(.001, angleVelocity + .000001 * dt)
+		} else {
+			angleVelocity = Math.min(angleVelocity, (Math.ceil(rotation) - rotation) / 60)
+		}
+		rotation += angleVelocity
+
+		// Render.
+		rotate(rotation + 7 / 12)
+
+		timer = requestAnimationFrame(animate)
+	}
+
+	/**
+	 * @param {boolean}
+	 * @returns {void}
+	 */
+	function setAccelerate(x) {
+		accelerate = x
+	}
+
+	const container = document.getElementById('data-black-box-transform')
+	container.style.setProperty('--w', w + 'em')
+	container.style.setProperty('--gap', gap + 'em')
+	for (let i = 0; i < 3; i++) { // 0 = xy-plane; 1 = xz-plane; 2 = yz-plane
+		for (let j = 0; j < 3; j++) { // 0 = lowest cube; 2 = highest cube
+			for (let k = 0; k < 2; k++) { // 0 = bottom face; 1 = top face
+				const face = container.appendChild(document.createElement('div'))
+				face.style.transform = ['', 'rotateX(-.25turn) rotateZ(.5turn)', 'rotateY(.25turn)'][i] + `translateZ(${j * w + j * gap + k * w - .5}em) rotateY(${(1 - k) * .5}turn)`
+				const isOuterFace = j === 0 && k === 0 || j === 2 && k === 1
+				let filter
+				filter = document.getElementById(isOuterFace ? 'data-black-box-outer-face' : 'data-black-box-inner-face')
+				filter = filter.insertAdjacentElement('beforebegin', filter.cloneNode(true))
+				filter.id = 'data-black-box-face-' + i + j + k
+				if (isOuterFace) {
+
+				} else {
+
+				}
+				face.style.filter = `url("#${filter.id}")`
+				const lights = filter.getElementsByTagName('fePointLight')
+				faces.push({
+					isOuterFace,
+					el: face,
+					filter,
+					light0: lights[0],
+					light1: lights[1],
+				})
+			}
+		}
+	}
+	animate(0)
+</script>
