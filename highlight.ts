@@ -1,10 +1,35 @@
+import { ensureDir } from 'jsr:@std/fs@1.0.9'
 import { codeToTokens, bundledLanguages, BundledLanguage } from 'npm:shiki'
 import theme from './style/tm-theme.js'
-import Cache from 'lume/core/cache.ts'
+
+const Cache = {
+	ofCache: new Map<string, string>,
+
+	async filename(content: string, key: string): Promise<string> {
+		let hash = Cache.ofCache.get(content)
+		if (!hash) {
+			hash = new Uint8Array(await crypto.subtle.digest('sha-256', typeof content === 'string' ? new TextEncoder().encode(content) : content)).join('_')
+			Cache.ofCache.set(content, hash)
+		}
+		return `_cache/${hash}-${encodeURIComponent(key)}`
+	},
+
+	async set(content: string, key: string, result: string): Promise<void> {
+		await ensureDir('_cache')
+		await Deno.writeTextFile(await Cache.filename(content, key), result)
+	},
+
+	async get(content: string, key: string): Promise<string | undefined> {
+		try {
+			return await Deno.readTextFile(await Cache.filename(content, key))
+		} catch {
+			// ignore
+		}
+	}
+}
 
 export default function (site: Lume.Site) {
-	const cache = new Cache({folder:site.root('_cache')})
-	site.process(['.html'], async pages => {
+	site.process(['.html'], async (pages: Lume.Page[]) => {
 		for (const page of pages) {
 			for (const node of page.document!.getElementsByTagName('code')) {
 				const lang = /(?:^|\s)language-(\S*)/.exec(node.className)?.[1]
@@ -21,7 +46,7 @@ export default function (site: Lume.Site) {
 				// It is expected that both are accepted.
 				// https://prismjs.com/plugins/unescaped-markup/
 				const source = (node.childNodes[0]?.textContent ?? '').replace(/^\n|\n[ \t]*$/g, '')
-				const cached = await cache.getText(source, lang)
+				const cached = await Cache.get(source, lang)
 				if (cached) {
 					node.innerHTML = cached
 					continue
@@ -49,7 +74,7 @@ export default function (site: Lume.Site) {
 					if (i < length - 1) spans.push(page.document!.createTextNode('\n'))
 					return spans
 				}))
-				cache.set(source, lang, node.innerHTML)
+				Cache.set(source, lang, node.innerHTML)
 			}
 		}
 	})
