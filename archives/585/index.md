@@ -11,6 +11,12 @@
 document.remove()
 ```
 
+## Impossible characters in comments
+
+```js
+document.appendChild(document.createComment('-->'))
+```
+
 ## Block elements in paragraphs
 
 ```js
