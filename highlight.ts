@@ -34,6 +34,13 @@ export default function (site: Lume.Site) {
 			for (const node of page.document!.getElementsByTagName('code')) {
 				const lang = /(?:^|\s)language-(\S*)/.exec(node.className)?.[1]
 				if (!lang) continue
+				// I don't know why adding `source.diff` to monospaceLanguageScope in tm-theme.js doesn't work.
+				// It is a temporary measure to force diff to be monospace anyway.
+				// Proper layered highlighting should be done.
+				if (lang === 'diff') {
+					node.classList.remove('language-diff')
+					continue
+				}
 				if (node.childNodes.length > 1) {
 					console.warn('non-plaintext code span')
 				}
