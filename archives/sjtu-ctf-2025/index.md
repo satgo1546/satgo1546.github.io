@@ -12,9 +12,7 @@ tags:
 本文最初发表在<a href="https://shuiyuan.sjtu.edu.cn/t/topic/365479">水源社区</a>。发表在本站时，移除了仅水源社区用户可访问的内容。
 </div>
 
-<div>
 前情提要：<a href="https://notes.sjtu.edu.cn/s/M8ka52CHh">SJTU CTF 2025 游戏设计文档</a>
-</div>
 
 大家好啊，这里是塞提菲尔糊精。最近谜题档期空了，就来校赛玩了。本来只想着做几道简单题就跑路的，结果发现简单题怎么那么多（？）最后也是多谢囤flag的WuYan大佬<ruby>手下留情<rt>被系统制裁</ruby>，拿下了总榜首位。
 
@@ -407,7 +405,7 @@ reconstructed_audio = reconstruct_audio_from_spectrogram()
 +    audio = librosa.griffinlim(spectrogram_mag[::-4], n_iter=32, hop_length=hop_length, win_length=n_fft)
 ```
 
-<audio src="Inaudible.flac" controls alt="zero-day vulnerabilities"></audio>
+<!----><audio src="Inaudible.flac" controls alt="zero-day vulnerabilities"></audio>
 
 时长仍然不对但反正已经能听出人话来了就不管了。
 
@@ -618,6 +616,7 @@ Note: The exact extraction method would depend on how the flag was encoded in th
 </details>
 
 AI能看见人类看不见的东西（哭笑不得）
+
 就一定要用[最新最热的emoji编解码器](https://emoji.paulbutler.org/)吗
 
 <dl lang=en>
@@ -2450,14 +2449,13 @@ final class Backup extends BaseController{
 }
 ```
 
-
 </details>
 
 ## UnrealPacket
 
 <aside>* 解出于提示放出之前</aside>
 
-哦豁还有3A大作玩的（指Unre[u][b]a[/b][/u]lP[u][b]a[/b][/u]cket.pc[u][b]a[/b][/u]p）
+哦豁还有3A大作玩的（指Unre<u>a</u>lP<u>a</u>cket.pc<u>a</u>p）
 
 优化好烂！一直掉帧！
 
@@ -2529,7 +2527,7 @@ while True:
     break
 ```
 
-<video src="UnrealPacket.mp4" controls></video>
+<!----><video src="UnrealPacket.mp4" controls></video>
 
 ## ret2vmcode
 
@@ -3061,23 +3059,23 @@ def check(bits: int):
 
 ```asm
 .rodata
-+2022 align 8
-+2028 db 0xb6
-+2029 db 0x7d ; }
-+202A db 0x66 ; f
-+202B db 0x07
-+202C db 0x22 ; "
-+202D db 0x78 ; x
-+202E db 0x77 ; w
-+202F db 0x6a ; j
-+2030 db 0xc3
-+2031 db 0x22 ; "
-+2032 db 0x2a ; *
-+2033 db 0x37 ; 7
-+2034 db 0x54 ; T
-+2035 db 0x1d
-+2036 db 0x27 ; '
-+2037 db 0x0f
++2022	align 8
++2028	db 0xb6
++2029	db 0x7d ; }
++202A	db 0x66 ; f
++202B	db 0x07
++202C	db 0x22 ; "
++202D	db 0x78 ; x
++202E	db 0x77 ; w
++202F	db 0x6a ; j
++2030	db 0xc3
++2031	db 0x22 ; "
++2032	db 0x2a ; *
++2033	db 0x37 ; 7
++2034	db 0x54 ; T
++2035	db 0x1d
++2036	db 0x27 ; '
++2037	db 0x0f
 .rodata ends
 ```
 
@@ -4071,6 +4069,7 @@ The `block.timestamp` used as the `deadline` is likely too far in the past relat
 
 MevBot富可敌国，用它的余额能操控汇率。命令MevBot高买低卖，自己就可低买高卖。
 
+<figure>
 <table class="booktabs">
 <thead>
 <tr>
@@ -4149,6 +4148,7 @@ MevBot富可敌国，用它的余额能操控汇率。命令MevBot高买低卖�
 <td><abbr title="909.338910611985086842">909</abbr>
 <td>1100
 </table>
+</figure>
 
 表中的数值是在题目环境中运行得到的。因为我不知道怎么在本地调试，知道如何观察链上数据就很重要。通过`cast call`可以查询视图，我写了个脚本查询每一步之后的各账户的余额。
 
@@ -6008,13 +6008,17 @@ declare var mapArrayFromChurchToChurch: typeof Array_map<Church, Church>
 
 阅读代码可以确认以下辅助函数。
 
+<figure>
+
 函数签名|功能
 -|-
-`401536<T>(x: Church<T>): Church<T>`|丘奇数+1
-`401221<T>(x: Church<T>): Church<T>`|丘奇数×2
-`401641<T>(x: Int): Church<T>`|Int转丘奇数
-`401011(x: Church<Int>): Int`|丘奇数转Int
-`401554<T>(n: Church<[T, T]>): Church<T>`|丘奇数泛型参数转换
+<code class="language-ts">401536&lt;T&gt;(x: Church&lt;T&gt;): Church&lt;T&gt;</code>|丘奇数+1
+<code class="language-ts">401221&lt;T&gt;(x: Church&lt;T&gt;): Church&lt;T&gt;</code>|丘奇数×2
+<code class="language-ts">401641&lt;T&gt;(x: Int): Church&lt;T&gt;</code>|Int转丘奇数
+<code class="language-ts">401011(x: Church&lt;Int&gt;): Int</code>|丘奇数转Int
+<code class="language-ts">401554&lt;T&gt;(n: Church<[T, T]>): Church&lt;T&gt;</code>|丘奇数泛型参数转换
+
+</figure>
 
 因为知道源码没有特化，只需阅读T = Int的定义，T为其他类型时的行为是一样的。
 
@@ -6055,6 +6059,7 @@ Array.from(stack[0].value.$field0.value, o => o.value)
 输入1145141919810233时，通过观察打印值，得到c数组的几步变化如下：
 
 ```js
+s = [1, 1, 4, 5, 1, 4, 1, 9, 1, 9, 8, 1, 0, 2, 3, 3]
 // 映射数字0~9到其平方减一
 c = [0, 0, 15, 24, 0, 15, 0, 80, 0, 80, 63, 0, 0, 3, 8, 8]
 // 乱序：c = [c[6], c[2], c[0], c[8], c[9], c[13], c[5], c[1], c[15], c[3], c[11], c[7], c[4], c[12], c[10], c[14]]

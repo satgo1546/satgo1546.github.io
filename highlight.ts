@@ -31,7 +31,10 @@ const Cache = {
 export default function (site: Lume.Site) {
 	site.process(['.html'], async (pages: Lume.Page[]) => {
 		for (const page of pages) {
-			for (const node of page.document!.getElementsByTagName('code')) {
+			const article = page.document!.getElementsByTagName('article')[0]
+			if (!article) continue
+
+			for (const node of article.getElementsByTagName('code')) {
 				const lang = /(?:^|\s)language-(\S*)/.exec(node.className)?.[1]
 				if (!lang) continue
 				// I don't know why adding `source.diff` to monospaceLanguageScope in tm-theme.js doesn't work.

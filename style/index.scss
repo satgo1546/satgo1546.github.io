@@ -18,6 +18,7 @@
 
 	:root {
 		text-decoration-skip-ink: none;
+		word-wrap: break-word;
 	}
 
 	ul,
@@ -101,7 +102,14 @@ body>footer {
 	aside,
 	figure,
 	table,
-	img:not(p *) {
+	img:not(p *),
+	video,
+	audio,
+	embed,
+	iframe,
+	object,
+	.admonition,
+	details {
 		margin-block-end: 6pt;
 	}
 
@@ -169,6 +177,19 @@ body>footer {
 
 	aside {
 		font-size: .8em;
+	}
+
+	figure {
+		padding-block-start: 6pt;
+		overflow: auto;
+	}
+
+	table {
+		margin-inline: auto;
+	}
+
+	figure table {
+		white-space: nowrap;
 	}
 }
 
@@ -241,6 +262,7 @@ blockquote+figcaption {
 
 table.settabs {
 	table-layout: fixed;
+	margin-inline: 0;
 
 	td,
 	th {
@@ -294,17 +316,14 @@ table.tilemap {
 	}
 }
 
-figure>table {
-	margin-inline: auto;
-}
-
 pre,
 code {
 	font: inherit;
+	font-style: normal;
 	white-space: pre-wrap;
 	word-spacing: normal;
 	word-break: normal;
-	word-wrap: normal;
+	word-wrap: break-word;
 	tab-size: 1em;
 	hyphens: none;
 }
@@ -329,6 +348,13 @@ code {
 code:not([class*="language-"]),
 .token.monospace {
 	font-family: var(--monospace);
+}
+
+pre>code {
+	display: block;
+	overflow: auto;
+	text-overflow: clip;
+	white-space: pre;
 }
 
 // Sat's 黑幕
@@ -1656,10 +1682,51 @@ code:not([class*="language-"]),
 		background: var(--bg0);
 	}
 
+	body>main {
+		container-type: inline-size;
+	}
+
 	.admonition {
 		border: 1px solid var(--fg1);
 		padding: 8px;
 		background: var(--bg1);
+	}
+
+	article {
+		>figure,
+		>div>figure,
+		>div>div>figure {
+			margin-inline: -8px;
+			margin-inline: calc(50% - 50cqi - 8px);
+			padding-inline: 8px;
+		}
+
+		pre>code {
+			display: block;
+			border-block: 1px solid var(--fg1);
+			padding-block: 8px;
+		}
+
+		details {
+			border: 1px solid var(--fg1);
+
+			>summary {
+				background: var(--bg1);
+				list-style: "\1fb6c" inside;
+				cursor: default;
+				color: var(--fg1);
+			}
+
+			&[open] {
+				>summary {
+					list-style: "\1fb9a" inside;
+					border-block-end: 1px solid var(--fg1);
+					margin-block-end: 8px;
+				}
+
+				padding-block-end: 8px;
+			}
+		}
 	}
 }
 
