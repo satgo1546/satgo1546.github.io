@@ -6,9 +6,9 @@ export default (data: Lume.Data) => {
 			data.url === '/'
 				? <title>satgo1546’s ocean</title>
 				: <>
-					<title>{data.title} · satgo1546’s ocean</title>
-					{data.tags && <meta name="keywords" content={data.tags.join()} />}
-					<meta name="description" content={data.description} />
+					<title>{data.title.replace(/<[^>]*>/g, '')} · satgo1546’s ocean</title>
+					{!!data.tags.length && <meta name="keywords" content={data.tags.join()} />}
+					{data.description && <meta name="description" content={data.description.replace(/<[^>]*>/g, '')} />}
 				</>
 		}
 		<meta name="generator" content={data.generator} />
