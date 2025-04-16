@@ -30,6 +30,9 @@ export default (data: Lume.Data) => {
 				<a href="." title="链向本文的固定链接" rel="bookmark">{data.dates || '固定链接'}</a>
 				<a class="comments-link" href="javascript:alert('还没做')">发表评论</a>
 				<a href={'https://github.com/satgo1546/satgo1546.github.io/blob/main' + data.sourcePath}>查看源代码</a>
+				{!!data.tags.length && <ul>
+					{data.tags.map(tag => <li><a href={data.tagUrl(tag)} rel="tag">{tag}</a></li>)}
+				</ul>}
 			</footer>
 			<div class="comments-area">
 				{!!data.comments?.length && <>
