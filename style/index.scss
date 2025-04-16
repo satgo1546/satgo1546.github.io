@@ -117,6 +117,10 @@ body>footer {
 		text-indent: 2em;
 	}
 
+	li>p:lang(zh) {
+		text-indent: 0;
+	}
+
 	p:lang(ja) {
 		text-indent: 1em;
 	}
@@ -319,13 +323,16 @@ table.tilemap {
 pre,
 code {
 	font: inherit;
-	font-style: normal;
 	white-space: pre-wrap;
 	word-spacing: normal;
 	word-break: normal;
 	word-wrap: break-word;
 	tab-size: 1em;
 	hyphens: none;
+}
+
+code {
+	font-style: normal;
 }
 
 .token.bold {
@@ -1686,6 +1693,20 @@ pre>code {
 		container-type: inline-size;
 	}
 
+	.menu-toggle {
+		display: none;
+	}
+
+	.entry-meta {
+		a {
+			margin-inline-end: .5em;
+		}
+
+		li {
+			display: inline;
+		}
+	}
+
 	.admonition {
 		border: 1px solid var(--fg1);
 		padding: 8px;
@@ -1693,6 +1714,7 @@ pre>code {
 	}
 
 	article {
+
 		>figure,
 		>div>figure,
 		>div>div>figure {
@@ -1715,6 +1737,11 @@ pre>code {
 				list-style: "\1fb6c" inside;
 				cursor: default;
 				color: var(--fg1);
+
+				&:active {
+					background: var(--fg1);
+					color: var(--bg1);
+				}
 			}
 
 			&[open] {
@@ -1722,9 +1749,11 @@ pre>code {
 					list-style: "\1fb9a" inside;
 					border-block-end: 1px solid var(--fg1);
 					margin-block-end: 8px;
+					margin-inline: -8px;
 				}
 
 				padding-block-end: 8px;
+				padding-inline: 8px;
 			}
 		}
 	}

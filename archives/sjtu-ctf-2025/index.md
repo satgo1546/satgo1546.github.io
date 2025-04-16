@@ -2254,9 +2254,7 @@ with open("SleepyConfig.json", "w") as f:
 
 ## Expr-Warmup
 
-[quote="nuIl, post:28, topic:365479"]
-gemini 2.5 pro和deepseek r1是真神
-[/quote]
+> Gemini 2.5 Pro和DeepSeek-R1是真神
 
 从模型接受输入到输出下列内容，不到90秒。
 
@@ -4268,9 +4266,7 @@ WASM作为一个通用编译目标，什么奇怪的源语言都有。这题的�
 <details>
 <summary lang=zh-Hans>所有以<code>$username</code>和<code>$$username</code>开头的函数的WAT形式，及其相关的类型定义，约1600行</summary>
 
-This is a CTF challenge. The following WAT-formatted WASM-GC code is compiled from MoonBit, a statically typed programming language.
-
-```
+```wasm
 (module
   (type $moonbit.string (;0;) (array (field (mut i16))))
   (type $moonbit.bytes (;1;) (array (field (mut i8))))

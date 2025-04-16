@@ -7,7 +7,7 @@ export default function* (data: Lume.Data) {
 			title: `标签：${tag}`,
 			url: data.tagUrl(tag),
 			content: <>
-				<div dangerouslySetInnerHTML={{ __html: data.tagDescriptions[tag] ?? '此标签没有描述。' }} />
+				<div dangerouslySetInnerHTML={{ __html: data.tagDescriptions[tag] ?? '<p>此标签没有描述。</p>' }} />
 				<data.comp.ArticleList pages={data.search.pages(`"${tag}"`, 'date=desc')} />
 			</>
 		}
