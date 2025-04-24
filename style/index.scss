@@ -386,6 +386,10 @@ pre>code {
 	justify-content: center;
 	align-items: center;
 	gap: 6pt 2em;
+
+	>* {
+		margin-inline: 0;
+	}
 }
 
 // 双栏对照
@@ -1721,6 +1725,16 @@ pre>code {
 			margin-inline: -8px;
 			margin-inline: calc(50% - 50cqi - 8px);
 			padding-inline: 8px;
+
+			>blockquote,
+			>figcaption {
+				max-inline-size: 42pc;
+				margin-inline: auto;
+			}
+
+			>blockquote {
+				padding-inline: 2em;
+			}
 		}
 
 		pre>code {

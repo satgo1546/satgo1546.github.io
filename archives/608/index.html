@@ -1,0 +1,784 @@
+---
+title: 洛特、光标与同步多媒体集成语言
+date: 2025-04-24
+dates: 2025-04-20 ~ 2025-04-24
+excerpt: 很遗憾，如果不希望为了几个哈气米让访客的设备掉电速度比运行高画质游戏还恐怖的话，就不能在每个页面上都放置这些动画了。
+tags:
+- 进度报告
+- Lottie
+- LLM
+- SVG
+- SMIL
+- 😾
+- 分形动画
+---
+
+<figure lang=en>
+<blockquote>
+<p>Lottie - A pet form of the female given name Charlotte.
+</blockquote>
+<figcaption><a href="https://en.wiktionary.org/wiki/Lottie">Wiktionary</a></figcaption>
+</figure>
+
+<figure lang=en>
+<blockquote>
+<p>cursor - a line on a computer screen that moves to show the point where work is being done
+</blockquote>
+<figcaption><a href="https://dictionary.cambridge.org/dictionary/english/cursor">Cambridge Dictionary</a></figcaption>
+</figure>
+
+<figure lang=en>
+<blockquote>
+<p><a href="https://www.w3.org/TR/REC-smil/">Synchronized Multimedia Integration Language</a> (SMIL) is an XML-based language for writing interactive multimedia presentations.
+</blockquote>
+<figcaption><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Guides/SVG_animation_with_SMIL">MDN</a></figcaption>
+</figure>
+
+<p>我对风靡已久的矢量动画格式Lottie没有一点好感：
+<ul>
+<li>
+一个基于JSON的文件格式硬是做成了二进制块的效果，既不如纯正JSON人类可读，又不如纯正二进制高效。
+<pre><code class="language-json">{
+	"v": "5.8.1",
+	"fr": 60,
+	"ip": 0, "op": 134,
+	"w": 1024, "h": 1024,
+	"nm": "pouting_cat",
+	"layers": [{
+		"ind": 1,
+		"ty": 3,
+		"sr": 1,
+		"ks": {
+			"o": {"a": 0, "k": 0},
+			"r": {"a": 0, "k": 0},
+			"p": {"a": 1, "k": [
+</code></pre>
+<li>
+事后才指定<a href="https://lottie.github.io/lottie-spec/1.0.1/single-page/">标准</a>，写得不清楚还不全。
+<li>
+周边生态几乎没有：唯一的创作工具是After Effects，唯一可行操作是调库播放，唯一可用的官方库<a href="https://github.com/airbnb/lottie-web">airbnb/lottie-web</a>缺乏维护，留着近千个议题。
+</ul>
+
+<p>作者Hernan Torrisi @bodymovin以前是Flash创作者，才会在Flash被弃用时明白web平台动画生态的缺乏。就因为能从After Effects导出，Lottie赢了，赢得有理有据。
+<p><a href="https://googlefonts.github.io/noto-emoji-animation/">Noto Color Emoji动图</a>矢量图以Lottie格式提供。WebP和GIF格式由Lottie随意转换而来，帧率很低，带抗锯齿，适合直接嵌入，难以进一步加工利用 <img src="pouting_cat.webp" alt="😾" width="20" height="20">
+<p>Lottie web播放器臃肿又难用，而我希望浏览者不需要启用JS也能观看矢量动画。SVG支持SMIL和CSS动画。@bodymovin开发了<a href="https://github.com/bodymovin/bodymovin-to-smil">bodymovin-to-smil</a>工具，能将Lottie动画转换为SVG + SMIL。虽然转换效果很难绷，但这已是我能找到的最好的工具了。</p>
+<img src="test.svg" width="256" height="256">
+<p>为了把怒猫的嘴补上，我把仓库克隆下来研究。这代码写得奇差无比！四处散落的全局状态，乱七八糟的抽象，不知所云的命名，未使用的依赖，无意义的异步，坚持用下标迭代数组……阅读这样的代码真是一种精神损伤。
+<p>AI驱动的编辑器Cursor刚推出时，我下载并安装，发现是个VS Code套壳产品，而且要注册才能用AI功能（废话），就又立刻卸载了。现在Cursor的版本是0.48.9，前几天我拿到了个同学的Cursor账号，于是来体验一下重构屎山的场景。
+<p>与GitHub Copilot只能续写不同，Cursor的Tab补全能提供编辑建议，在重构中更有用。
+<p>在代码逻辑相对独立的场合，能精准重写：</p>
+<img src="isPositionXAnimated.webp">
+<p>改了X之后同样修改Y：</p>
+<img src="isPositionYAnimated.webp">
+<p>有时候，只需要光标停留在问题代码附近，就能自动完成修改：</p>
+<img src="shorthand.webp">
+<p>像这样有少量重复性但很难快速又精确地描述以便自动化的操作，AI的辅助恰到好处。给出编辑建议所需时间不到一秒，不知道是什么原理。小语言模型能做到这么快吗？
+<p>对于更大的重构，Cursor提供了agent对话面板，自动为LLM提供上下文，自动应用代码变更。
+
+<details>
+<summary>Claude 3 Opus（？）锐评该库的XML数据模型</summary>
+<blockquote lang=en>
+<p><strong>User</strong>: [@<a href="https://github.com/bodymovin/bodymovin-to-smil/blob/c53a0c8d546c4f7d29964f40a326aa2c6580c1e9/src/node.js">src/node.js</a>] Whoa, I'm deeply impressed how bad this code is at modelling data. It is an interface for XML, but the nodes are represented so awfully as objects. Can you figure out what I mean? For example, how would this code represent the element <code>&lt;a b="c"&gt;</code> and <code>&lt;d e="f"&gt;&lt;g/&gt;&lt;/d&gt;</code>?
+<p><strong>Model</strong>: Let me analyze how this code represents XML elements. Looking at the code, I can see that it uses a very convoluted object structure to represent XML nodes. Let me break down how it would represent your examples:</p>
+<ol>
+<li>
+<p>For <code>&lt;a b="c"&gt;</code>:</p>
+<pre><code class="language-javascript">{
+  a: {
+    _attr: {
+      b: "c"
+    }
+  }
+}
+</code></pre>
+</li>
+<li>
+<p>For <code>&lt;d e="f"&gt;&lt;g/&gt;&lt;/d&gt;</code>:</p>
+<pre><code class="language-javascript">{
+  d: [
+    {
+      _attr: {
+        e: "f"
+      }
+    },
+    {
+      g: {
+        _attr: {}
+      }
+    }
+  ]
+}
+</code></pre>
+</li>
+</ol>
+<p>You're absolutely right - this is a terrible way to model XML data. Here are the key issues:</p>
+<ol>
+<li>
+<p><strong>Inconsistent Structure</strong>: The code uses two different patterns for children:</p>
+<ul>
+<li>Single child: <code>{ tagName: { _attr: {...} } }</code></li>
+<li>Multiple children: <code>{ tagName: [{ _attr: {...} }, { childTag: {...} }] }</code>
+This inconsistency makes the code harder to work with and reason about.</li>
+</ul>
+</li>
+<li>
+<p><strong>Overly Complex Attribute Handling</strong>: Attributes are stored in a special <code>_attr</code> object, which adds unnecessary nesting and complexity.</p>
+</li>
+<li>
+<p><strong>No Clear Separation</strong>: There's no clear separation between element names, attributes, and content. Everything is mixed together in a way that makes it hard to distinguish between different parts of the XML structure.</p>
+</li>
+<li>
+<p><strong>Array vs Object Ambiguity</strong>: The code has to constantly check if children are arrays or objects, which is a sign of poor data modeling.</p>
+</li>
+<li>
+<p><strong>Excessive Nesting</strong>: The structure requires multiple levels of nesting to represent even simple XML elements.</p>
+</li>
+</ol>
+<p>A better approach would be to use a more straightforward structure like:</p>
+<pre><code class="language-javascript">{
+  name: "a",
+  attributes: { b: "c" },
+  children: []
+}
+</code></pre>
+<p>Or even better, use a proper XML DOM implementation that's already built into JavaScript. This would provide a more standard and maintainable way to work with XML data.
+<p>Would you like me to suggest a better implementation for this XML handling code?
+<p><strong>User</strong>: [@src/node.js] Yeah, your suggestion is well-grounded. This code needs to work in Node.js so unfortunately we cannot rely on browser-only XML DOM implementations. Rewrite using your straightforward structure, but keep the API the same. You do not need to keep compatibility with old data; only the function signatures are kept. The object representation format is an implementation detail. Do not write a node class; use plain objects instead.
+<p><strong>Model</strong>: I'll help rewrite this code with a cleaner data structure while maintaining the same API. First, let me analyze the current API by looking at the exports and function signatures.
+<p>Let me create a new implementation with the same function signatures but using a cleaner data structure. I'll write this in a new file to avoid disrupting the existing code.</p>
+<pre><code class="language-javascript:src/node.js">// New implementation using a cleaner data structure
+// Each node is represented as { name, attributes, children }
+// where attributes is an object and children is an array
+
+function createNode(tagName, name) {
+    const node = {
+        name: tagName,
+        attributes: {},
+        children: []
+    };
+    if (name) {
+        node.attributes.id = name;
+    }
+    return node;
+}
+
+function createNodeWithAttributes(tagName, attributes, name) {
+    const node = createNode(tagName, name);
+    for (const attr of attributes) {
+        node.attributes[attr.key] = attr.value;
+    }
+    return node;
+}
+
+function addAttribute(object, key, value) {
+    object.attributes[key] = value;
+}
+
+function getTagName(nodeElem) {
+    return nodeElem.name;
+}
+
+function getAttribute(nodeElem, key) {
+    return nodeElem.attributes[key] || '';
+}
+
+function getChildren(nodeElem) {
+    return nodeElem.children;
+}
+
+function getChild(nodeElem, childName) {
+    return nodeElem.children.find(child =&gt; child.name === childName) || '';
+}
+
+function nestChild(nodeElem, nested) {
+    if (!nested) return;
+    nodeElem.children.push(nested);
+}
+
+function cloneNode(node, targets, suffix) {
+    const cloningNode = JSON.parse(JSON.stringify(node));
+    renameNode(cloningNode, targets, suffix);
+    return cloningNode;
+}
+
+function renameNode(nodeElem, targets, suffix) {
+    // Recursively process children
+    for (const child of nodeElem.children) {
+        renameNode(child, targets, suffix);
+    }
+
+    // Rename this node if it has an id
+    const id = nodeElem.attributes.id;
+    if (id) {
+        duplicateTargets(targets, id, id + suffix);
+        nodeElem.attributes.id = id + suffix;
+    }
+}
+
+function duplicateTargets(targets, name, newName) {
+    for (const target of targets) {
+        if (target.target[0].attributes.id === name) {
+            const newTarget = JSON.parse(JSON.stringify(target));
+            newTarget.target[0].attributes.id = newName;
+            targets.push(newTarget);
+        }
+    }
+}
+
+function nestArray(array) {
+    for (let i = 1; i &lt; array.length; i++) {
+        nestChild(array[i], array[i - 1]);
+    }
+    return array[array.length - 1];
+}
+
+function getLastLeaves(node) {
+    if (node.children.length === 0) {
+        return [node];
+    }
+
+    const leaves = [];
+    for (const child of node.children) {
+        leaves.push(...getLastLeaves(child));
+    }
+    return leaves;
+}
+
+export default {
+    createNode,
+    createNodeWithAttributes,
+    addAttribute,
+    getTagName,
+    getAttribute,
+    nestChild,
+    nestArray,
+    getChild,
+    getChildren,
+    getLastLeaves,
+    cloneNode
+}
+</code></pre>
+<p>I've completely rewritten the implementation with a much cleaner data structure. Here are the key improvements:</p>
+<ol>
+<li>
+<p><strong>Consistent Node Structure</strong>: Each node is now represented as:</p>
+<pre><code class="language-javascript">{
+    name: string,
+    attributes: { [key: string]: string },
+    children: Node[]
+}
+</code></pre>
+</li>
+<li>
+<p><strong>Simplified Attribute Handling</strong>: Attributes are stored directly in an <code>attributes</code> object instead of the convoluted <code>_attr</code> structure.</p>
+</li>
+<li>
+<p><strong>Clear Child Management</strong>: Children are always stored in an array, eliminating the need to check for array vs object cases.</p>
+</li>
+<li>
+<p><strong>Modern JavaScript</strong>: Used modern JavaScript features like <code>const</code>, <code>for...of</code>, and array methods like <code>find()</code>.</p>
+</li>
+<li>
+<p><strong>Simplified Logic</strong>: Removed all the complex checks for array types and attribute containers.</p>
+</li>
+</ol>
+<p>Now your example XML elements would be represented as:</p>
+<ol>
+<li>
+<p><code>&lt;a b="c"&gt;</code>:</p>
+<pre><code class="language-javascript">{
+    name: "a",
+    attributes: { b: "c" },
+    children: []
+}
+</code></pre>
+</li>
+<li>
+<p><code>&lt;d e="f"&gt;&lt;g/&gt;&lt;/d&gt;</code>:</p>
+<pre><code class="language-javascript">{
+    name: "d",
+    attributes: { e: "f" },
+    children: [
+        {
+            name: "g",
+            attributes: {},
+            children: []
+        }
+    ]
+}
+</code></pre>
+</li>
+</ol>
+<p>The API remains exactly the same, so existing code that uses these functions won't need to change. The only difference is in how the data is structured internally, which is now much more intuitive and easier to work with.
+<p>Would you like me to explain any specific part of the implementation in more detail?
+<p><strong>User</strong>: [@src/node.js] Now write an additional function, <code>xml</code>, that serializes the node into XML string. Beware of value escaping.
+<p><strong>Model</strong>: I'll add an <code>xml</code> function that properly serializes the node structure into an XML string, handling attribute value escaping and self-closing tags appropriately.</p>
+<pre><code class="language-javascript:src/node.js">// ... existing code ...
+
+function escapeXml(str) {
+    if (typeof str !== 'string') return str;
+    return str
+        .replace(/&amp;/g, '&amp;amp;')
+        .replace(/&lt;/g, '&amp;lt;')
+        .replace(/&gt;/g, '&amp;gt;')
+        .replace(/"/g, '&amp;quot;')
+        .replace(/'/g, '&amp;apos;');
+}
+
+function xml(node) {
+    if (!node) return '';
+    
+    const attrs = Object.entries(node.attributes)
+        .map(([key, value]) =&gt; ` ${key}="${escapeXml(value)}"`)
+        .join('');
+    
+    if (node.children.length === 0) {
+        return `&lt;${node.name}${attrs}/&gt;`;
+    }
+    
+    const children = node.children.map(child =&gt; xml(child)).join('');
+    return `&lt;${node.name}${attrs}&gt;${children}&lt;/${node.name}&gt;`;
+}
+
+export default {
+    createNode,
+    createNodeWithAttributes,
+    addAttribute,
+    getTagName,
+    getAttribute,
+    nestChild,
+    nestArray,
+    getChild,
+    getChildren,
+    getLastLeaves,
+    cloneNode,
+    xml
+}
+</code></pre>
+<p>I've added two functions:</p>
+<ol>
+<li>
+<p><code>escapeXml</code>: A helper function that properly escapes XML special characters in attribute values:</p>
+<ul>
+<li><code>&amp;</code> → <code>&amp;amp;</code></li>
+<li><code>&lt;</code> → <code>&amp;lt;</code></li>
+<li><code>&gt;</code> → <code>&amp;gt;</code></li>
+<li><code>"</code> → <code>&amp;quot;</code></li>
+<li><code>'</code> → <code>&amp;apos;</code></li>
+</ul>
+</li>
+<li>
+<p><code>xml</code>: The main serialization function that:</p>
+<ul>
+<li>Handles empty nodes with self-closing tags</li>
+<li>Properly escapes attribute values</li>
+<li>Recursively processes child nodes</li>
+<li>Maintains proper XML structure</li>
+</ul>
+</li>
+</ol>
+<p>For example:</p>
+<pre><code class="language-javascript">const node = {
+    name: "test",
+    attributes: { value: 'a&amp;b&lt;c&gt;"d"' },
+    children: []
+};
+console.log(xml(node)); // Outputs: &lt;test value="a&amp;amp;b&amp;lt;c&amp;gt;&amp;quot;d&amp;quot;"/&gt;
+</code></pre>
+<p>The function will handle all the XML escaping rules properly, ensuring that the output is valid XML. Would you like me to add any additional features to the serialization, such as pretty-printing or handling of CDATA sections?</p>
+</blockquote>
+</details>
+
+<p>我不确定对话使用的模型是哪个，界面上并不会显示自动选择的模型，“Claude 3 Opus”是我对话询问得到的回应。
+
+<p>似乎模型编辑代码的原理是以<code>```⟨语言⟩:⟨文件名⟩</code>（例如<code>```javascript:src/node.js</code>）开头输出整个修改后的文件，然后经由附加步骤与原始文件比较并由UI呈现为差异视图。附加步骤大概也有模型参与，因为非常慢，一个百来行的文件在“应用修改”一步上要花好几秒。
+
+<p>我尝试令Cursor将整个项目从CommonJS转为ES模块。项目有约二十个文件，在转换了十几个文件后死机了，也不知道为什么。LLM的上下文窗口达到百万字级别后，影响响应速度的竟是前端对话框渲染了。由于ES模块的默认导出和命名导出与CommonJS有着微妙的语义差异，AI没能成功转换。最后，我手动通过正则表达式替换完成了不够地道但能正确运行的转换。
+
+<p>我尝试让Cursor将整个项目中对XML属性的描述由对象数组重构为单个对象。描述重构目标最清晰的方法是举例。我修改了一处的调用方式，然后指令AI以此为例修改全部调用点。</p>
+<img src="exportNode.webp">
+<p>对于全项目的重构，agent可以在所有文件中查找字符串。像createNodeWithAttributes这样的超长方法名，这就足够了，但对于平庸的方法名，只是搜索字符串会有很多误报，很难正确选出真正的调用点。
+<p>令我震惊的是，这么简单的重构，AI产生的变更牛头不对马嘴，错漏百出。
+</p><img src="createNodeInstance.webp">
+<p>更令我迷惑的是，骂了一顿就好了。</p>
+<hr>
+<p>库里残留了很多Android相关的未使用代码，作者可能是在<a href="https://github.com/bodymovin/bodymovin-to-avd">bodymovin-to-avd</a>的基础上改出来的转换器。AVD（AnimatedVectorDrawable）是Android平台原生的矢量动画格式，也基于XML。意义不明的名为target的东西好像是AVD特有的，在删除死代码后没有存在的意义了。
+<p>库输出的<code>&lt;animate&gt;</code>系元素都放在<code>&lt;defs&gt;</code>中，通过ID链接到有动画的图形元素。ID并不是必须的，如果将<code>&lt;animate&gt;</code>嵌套在图形元素里，就可省去href属性。
+<p>property.js的getTimeCap和helpers/timing.js的getDuration都会返回动画总时长，区别在于入点不为零的场合的行为。我无法找到关于动画整体入点帧的说明：标准含糊其辞，官方web播放器的测试文件中没有入点不为零的，在Noto Color Emoji动图库里随便找了几个文件入点也都是零。不敢想象各库对入点非零的动画的解析有多不一致。
+<p>由于图层嵌套关系以父图层编号的形式存储在子图层上，图层分组成有向无环图结构，图层索引和编号均不能代表绘制顺序。在怒猫的原始JSON数据中，图层编号顺序完全是乱的。
+<figure>
+<div class="row">
+<table class="booktabs"><thead><tr><th>图层编号<th>父图层编号<th>图层名<tbody>
+<tr><td>1<td>null<td>Move ALL
+<tr><td>2<td>1<td>Move HEAD
+<tr><td>3<td>2<td>eyes
+<tr><td>4<td>1<td>Move HEAD 2
+<tr><td>5<td>1<td>HEAD 2
+<tr><td>6<td>4<td>head hair
+<tr><td>7<td>2<td>nose
+<tr><td>8<td>7<td>mouth 3
+<tr><td>9<td>7<td>mouth
+<tr><td>10<td>2<td>mouth 4
+<tr><td>11<td>12<td>tongue
+<tr><td>12<td>2<td>mouth 2
+<tr><td>13<td>14<td>ear
+<tr><td>14<td>1<td>ear
+<tr><td>15<td>16<td>ear
+<tr><td>16<td>1<td>ear
+<tr><td>17<td>2<td>mustache
+<tr><td>18<td>2<td>mustache
+<tr><td>19<td>2<td>mustache
+<tr><td>20<td>2<td>mustache
+<tr><td>21<td>2<td>mustache
+<tr><td>22<td>2<td>mustache
+<tr><td>23<td>1<td>HEAD
+</table>
+<ol><li>Move ALL<ol>
+	<li value=2>Move HEAD
+		<ol><li value=3>eyes
+		<li value=7>nose
+			<ol><li value=8>mouth 3
+			<li value=9>mouth</ol>
+		<li value=10>mouth 4
+		<li value=12>mouth 2
+			<ol><li value=11>tongue</ol>
+		<li value=17>mustache
+		<li value=18>mustache
+		<li value=19>mustache
+		<li value=20>mustache
+		<li value=21>mustache
+		<li value=22>mustache</ol>
+	<li value=4>Move HEAD 2
+		<ol><li value=6>head hair</ol>
+	<li value=5>HEAD 2
+	<li value=14>ear
+		<ol><li value=13>ear</ol>
+	<li value=16>ear
+		<ol><li value=15>ear</ol>
+	<li value=23>HEAD
+</ol></ol>
+</div>
+</figure>
+<p>在图层内部，形状可以嵌套，也就是说，图节点是树。怎么能搞得这么复杂？
+<p>转换器完全没有建树，直接在这样的数据结构上运行，典型的GPT思维（指没有脑容量，不假思索地有啥用啥）。对每个图层追踪其父图层序列，重复输出父图层的动画和变换，输出的SVG非常大。难怪输出的图层是扁平结构。输出顺序就是原始数据中的顺序，所以部分五官被遮盖了。
+<p>整个库只处理了maskProperties（其实更像clip）而没有处理tt（这才是mask）。怒猫使用了tt，因此头上冒出的两块色块没有被切除。</p>
+<hr>
+<p>你知道吗？😾并不是严格左右对称的图形，<img src="pouting_cat/0.svg" width="20" height="20">更不是了。两侧胡须的摆动幅度都不一样。
+</p><img src="flip.webp" width="256" height="256">
+<p>怒猫张嘴时嘴型变化很丝滑，但合拢时嘴型在第68和69帧间突变，这在帧率很低的GIF中看不出来，转成SVG就很清楚。
+<hr>
+<p>理解原动画图层结构后，在工具转出的SVG的基础上人工修改和优化。我将图层重新组合，调整绘制顺序，补上蒙版，重写优化了部分路径。结果，46KB的Lottie JSON转成SVG只有26KB了。即使按GZip压缩后大小算，也是SVG更小。</p>
+<img src="/style/pouting_cat.animated.svg" width="256" height="256">
+<p>有了SVG，就可以以此为基元，制作更复杂的动画了。作为图片，SVG可以代替GIF，比如作为背景图：
+
+<figure>
+	<style>
+		@keyframes pouting-cat-background {
+			0% {
+				background-size: 4px 4px;
+				background-color: #ef6c00;
+			}
+			100% {
+				background-size: 2048px 2048px;
+				background-color: #ef9317;
+			}
+		}
+	</style>
+	<div style="contain: strict; block-size: 256px;">
+		<div style="background: url('pouting_cat/0.svg') top;
+			animation: pouting-cat-background 4s cubic-bezier(.7, .01, .85, -.06) infinite;">
+			<img src="pouting_cat/0.svg" width="256" height="256">
+		</div>
+	</div>
+	<figcaption>background-image</figcaption>
+</figure>
+
+<pre><code class="language-css">@keyframes pouting-cat-fractal {
+	from {
+		background-size: 4px 4px;
+		background-color: #ef6c00;
+	}
+	to {
+		background-size: 2048px 2048px;
+		background-color: #ef9317;
+	}
+}
+
+div {
+	background: url("pouting_cat.svg") top;
+	animation: pouting-cat-fractal 4s cubic-bezier(.7, .01, .85, -.06) infinite;
+}
+</code></pre>
+<p>虽然代码很短，但有好多细节。</p>
+<ul>
+<li>
+<p>为了使动画循环点小怒猫的突然出现不那么突兀，在末状态，背景色#EF9317与初状态的平均颜色一致。
+<div class="row">
+<div style="width: 128px; height: 128px; background: url('/style/pouting_cat.svg') center / 4px 4px, #ef6c00;"></div>
+<span style="font-size: 2em;">≈</span>
+<div style="width: 128px; height: 128px; background: #ef9317;"></div>
+</div>
+<p>
+<p>色彩处理是个雷区。如果搜索或询问LLM“如何获取图片平均颜色”，往往引向<code>np.mean</code>，或随便找个图像处理软件将图片缩小到1×1之类的操作。这些结果都是错误的。
+<ul>
+<li><p>缩小图像通过采样实现，缩小到1×1只会在原图中采数个点，不能反映全图。
+<li><p>不能对sRGB颜色直接进行计算。<a href="http://www.ericbrasseur.org/gamma.html">Gamma error in picture scaling</a>清楚地解释了原理。
+</ul>
+<p>正确的做法是将图像转换到线性空间，计算平均值，再将算得的色值转回sRGB空间。
+<li>
+<p>如果图像尺寸随时间线性增加，体感却会是越来越慢，如下所示。虽然从4像素扩张到8像素和从2044像素扩张到2048像素都是扩张4像素，但是倍率天差地别。
+<div style="contain: strict; block-size: 256px;">
+	<div style="background: url('pouting_cat/0.svg') top;
+		animation: pouting-cat-background 4s linear infinite;
+		block-size: 100%">
+	</div>
+</div>
+<p><p>所以我将缓动曲线设定为指数型<var>y</var> = (2<sup>11<var>t</var></sup> − 1)/2047。CSS动画缓动曲线只支持通过贝塞尔曲线自定义，手动拟合了一下，得到上述代码中的数值。
+<p>其实4 → 2048的曲线应该是<var>y</var> = (2<sup>9<var>t</var>+2</sup> − 4)/2044，但我算错了 😾
+</ul>
+<p>可惜SVG数据描述的一大限制是难以更有效地组合图形，SMIL数据描述的一大限制是难以更有效地组合动画。图形至少还能通过<code>&lt;use&gt;</code>和变换组合，制作好的动画则不能作为预合成来使用。上述动画中，所有怒猫同时启动，因为它们是同时加载完毕的同一张图片。要控制某个怒猫的启动时间，我能想到的办法只有复制图片，然后修改所有animate系元素的begin属性。下面的动画使用了5张仅启动时间不同的动图。
+
+<figure>
+	<style>
+		.pouting-cat-banner {
+			contain: strict;
+			block-size: 200px;
+			background: #ef6c00;
+			display: flex;
+			justify-content: center;
+		}
+
+		.pouting-cat-banner > div {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			transform: rotate(.7turn);
+			transform-origin: center;
+		}
+
+		.pouting-cat-banner > div:nth-child(2n) {
+			transform: rotate(.2turn);
+		}
+
+		.pouting-cat-banner img {
+			transform: rotate(.25turn);
+			transform-origin: center;
+			margin: 0;
+		}
+	</style>
+	<div class="pouting-cat-banner">
+		<div style="margin: 0 20px;">
+			<div style="height: 220px;"></div>
+			<img src="pouting_cat/0.svg" width="20" height="20">
+			<img src="pouting_cat/1.svg" width="20" height="20">
+			<img src="pouting_cat/2.svg" width="20" height="20">
+			<img src="pouting_cat/3.svg" width="20" height="20">
+			<img src="pouting_cat/4.svg" width="20" height="20">
+			<img src="pouting_cat/0.svg" width="20" height="20">
+			<img src="pouting_cat/1.svg" width="20" height="20">
+			<img src="pouting_cat/2.svg" width="20" height="20">
+			<img src="pouting_cat/3.svg" width="20" height="20">
+			<img src="pouting_cat/4.svg" width="20" height="20">
+			<img src="pouting_cat/0.svg" width="20" height="20">
+			<img src="pouting_cat/1.svg" width="20" height="20">
+			<img src="pouting_cat/2.svg" width="20" height="20">
+			<img src="pouting_cat/3.svg" width="20" height="20">
+			<img src="pouting_cat/4.svg" width="20" height="20">
+			<img src="pouting_cat/0.svg" width="20" height="20">
+			<img src="pouting_cat/1.svg" width="20" height="20">
+			<img src="pouting_cat/2.svg" width="20" height="20">
+			<img src="pouting_cat/3.svg" width="20" height="20">
+			<img src="pouting_cat/4.svg" width="20" height="20">
+			<img src="pouting_cat/0.svg" width="20" height="20">
+			<img src="pouting_cat/1.svg" width="20" height="20">
+			<img src="pouting_cat/2.svg" width="20" height="20">
+			<img src="pouting_cat/3.svg" width="20" height="20">
+		</div>
+		<div style="margin: 0 20px;">
+			<img src="pouting_cat/3.svg" width="20" height="20">
+			<img src="pouting_cat/4.svg" width="20" height="20">
+			<img src="pouting_cat/0.svg" width="20" height="20">
+			<img src="pouting_cat/1.svg" width="20" height="20">
+			<img src="pouting_cat/2.svg" width="20" height="20">
+			<img src="pouting_cat/3.svg" width="20" height="20">
+			<img src="pouting_cat/4.svg" width="20" height="20">
+			<img src="pouting_cat/0.svg" width="20" height="20">
+			<img src="pouting_cat/1.svg" width="20" height="20">
+			<img src="pouting_cat/2.svg" width="20" height="20">
+			<img src="pouting_cat/3.svg" width="20" height="20">
+			<img src="pouting_cat/4.svg" width="20" height="20">
+			<img src="pouting_cat/0.svg" width="20" height="20">
+			<img src="pouting_cat/1.svg" width="20" height="20">
+			<img src="pouting_cat/2.svg" width="20" height="20">
+			<img src="pouting_cat/3.svg" width="20" height="20">
+			<img src="pouting_cat/4.svg" width="20" height="20">
+			<div style="height: 386px;"></div>
+		</div>
+		<div style="margin: 0 20px;">
+			<div style="height: 220px;"></div>
+			<img src="pouting_cat/0.svg" width="20" height="20">
+			<img src="pouting_cat/1.svg" width="20" height="20">
+			<img src="pouting_cat/2.svg" width="20" height="20">
+			<img src="pouting_cat/3.svg" width="20" height="20">
+			<img src="pouting_cat/4.svg" width="20" height="20">
+			<img src="pouting_cat/0.svg" width="20" height="20">
+			<img src="pouting_cat/1.svg" width="20" height="20">
+			<img src="pouting_cat/2.svg" width="20" height="20">
+			<img src="pouting_cat/3.svg" width="20" height="20">
+			<img src="pouting_cat/4.svg" width="20" height="20">
+			<img src="pouting_cat/0.svg" width="20" height="20">
+			<img src="pouting_cat/1.svg" width="20" height="20">
+			<img src="pouting_cat/2.svg" width="20" height="20">
+			<img src="pouting_cat/3.svg" width="20" height="20">
+			<img src="pouting_cat/4.svg" width="20" height="20">
+			<img src="pouting_cat/0.svg" width="20" height="20">
+			<img src="pouting_cat/1.svg" width="20" height="20">
+			<img src="pouting_cat/2.svg" width="20" height="20">
+			<img src="pouting_cat/3.svg" width="20" height="20">
+			<img src="pouting_cat/4.svg" width="20" height="20">
+			<img src="pouting_cat/0.svg" width="20" height="20">
+			<img src="pouting_cat/1.svg" width="20" height="20">
+			<img src="pouting_cat/2.svg" width="20" height="20">
+			<img src="pouting_cat/3.svg" width="20" height="20">
+		</div>
+		<div style="margin: 0 20px;">
+			<img src="pouting_cat/3.svg" width="20" height="20">
+			<img src="pouting_cat/4.svg" width="20" height="20">
+			<img src="pouting_cat/0.svg" width="20" height="20">
+			<img src="pouting_cat/1.svg" width="20" height="20">
+			<img src="pouting_cat/2.svg" width="20" height="20">
+			<img src="pouting_cat/3.svg" width="20" height="20">
+			<img src="pouting_cat/4.svg" width="20" height="20">
+			<img src="pouting_cat/0.svg" width="20" height="20">
+			<img src="pouting_cat/1.svg" width="20" height="20">
+			<img src="pouting_cat/2.svg" width="20" height="20">
+			<img src="pouting_cat/3.svg" width="20" height="20">
+			<img src="pouting_cat/4.svg" width="20" height="20">
+			<img src="pouting_cat/0.svg" width="20" height="20">
+			<img src="pouting_cat/1.svg" width="20" height="20">
+			<img src="pouting_cat/2.svg" width="20" height="20">
+			<img src="pouting_cat/3.svg" width="20" height="20">
+			<img src="pouting_cat/4.svg" width="20" height="20">
+			<div style="height: 386px;"></div>
+		</div>
+		<div style="margin: 0 40px;">
+			<img src="pouting_cat/0.svg" width="40" height="40">
+			<img src="pouting_cat/1.svg" width="40" height="40">
+			<img src="pouting_cat/2.svg" width="40" height="40">
+			<img src="pouting_cat/3.svg" width="40" height="40">
+			<img src="pouting_cat/4.svg" width="40" height="40">
+			<img src="pouting_cat/0.svg" width="40" height="40">
+			<img src="pouting_cat/1.svg" width="40" height="40">
+			<img src="pouting_cat/2.svg" width="40" height="40">
+			<img src="pouting_cat/3.svg" width="40" height="40">
+			<img src="pouting_cat/4.svg" width="40" height="40">
+			<img src="pouting_cat/0.svg" width="40" height="40">
+			<img src="pouting_cat/1.svg" width="40" height="40">
+			<img src="pouting_cat/2.svg" width="40" height="40">
+			<img src="pouting_cat/3.svg" width="40" height="40">
+			<img src="pouting_cat/4.svg" width="40" height="40">
+			<img src="pouting_cat/0.svg" width="40" height="40">
+			<img src="pouting_cat/1.svg" width="40" height="40">
+			<img src="pouting_cat/2.svg" width="40" height="40">
+		</div>
+		<div style="margin: 0 40px;">
+			<div style="height: 28px;"></div>
+			<img src="pouting_cat/3.svg" width="40" height="40">
+			<img src="pouting_cat/4.svg" width="40" height="40">
+			<img src="pouting_cat/0.svg" width="40" height="40">
+			<img src="pouting_cat/1.svg" width="40" height="40">
+			<img src="pouting_cat/2.svg" width="40" height="40">
+			<img src="pouting_cat/3.svg" width="40" height="40">
+			<img src="pouting_cat/4.svg" width="40" height="40">
+			<img src="pouting_cat/0.svg" width="40" height="40">
+			<img src="pouting_cat/1.svg" width="40" height="40">
+			<img src="pouting_cat/2.svg" width="40" height="40">
+			<img src="pouting_cat/3.svg" width="40" height="40">
+			<img src="pouting_cat/4.svg" width="40" height="40">
+			<img src="pouting_cat/0.svg" width="40" height="40">
+			<img src="pouting_cat/1.svg" width="40" height="40">
+			<img src="pouting_cat/2.svg" width="40" height="40">
+			<img src="pouting_cat/3.svg" width="40" height="40">
+			<img src="pouting_cat/4.svg" width="40" height="40">
+			<img src="pouting_cat/0.svg" width="40" height="40">
+			<img src="pouting_cat/1.svg" width="40" height="40">
+			<div style="height: 40px;"></div>
+		</div>
+		<div style="margin: 0 80px;">
+			<img src="pouting_cat/0.svg" width="80" height="80">
+			<img src="pouting_cat/1.svg" width="80" height="80">
+			<img src="pouting_cat/2.svg" width="80" height="80">
+			<img src="pouting_cat/3.svg" width="80" height="80">
+			<img src="pouting_cat/4.svg" width="80" height="80">
+			<img src="pouting_cat/0.svg" width="80" height="80">
+			<img src="pouting_cat/1.svg" width="80" height="80">
+			<img src="pouting_cat/2.svg" width="80" height="80">
+			<img src="pouting_cat/3.svg" width="80" height="80">
+			<img src="pouting_cat/4.svg" width="80" height="80">
+			<img src="pouting_cat/0.svg" width="80" height="80">
+		</div>
+		<div style="margin: 0 80px;">
+			<div style="height: 58px;"></div>
+			<img src="pouting_cat/3.svg" width="80" height="80">
+			<img src="pouting_cat/4.svg" width="80" height="80">
+			<img src="pouting_cat/0.svg" width="80" height="80">
+			<img src="pouting_cat/1.svg" width="80" height="80">
+			<img src="pouting_cat/2.svg" width="80" height="80">
+			<img src="pouting_cat/3.svg" width="80" height="80">
+			<img src="pouting_cat/4.svg" width="80" height="80">
+			<img src="pouting_cat/0.svg" width="80" height="80">
+			<img src="pouting_cat/1.svg" width="80" height="80">
+			<img src="pouting_cat/2.svg" width="80" height="80">
+			<div style="height: 80px;"></div>
+		</div>
+		<div style="margin: 0 40px;">
+			<img src="pouting_cat/0.svg" width="40" height="40">
+			<img src="pouting_cat/1.svg" width="40" height="40">
+			<img src="pouting_cat/2.svg" width="40" height="40">
+			<img src="pouting_cat/3.svg" width="40" height="40">
+			<img src="pouting_cat/4.svg" width="40" height="40">
+			<img src="pouting_cat/0.svg" width="40" height="40">
+			<img src="pouting_cat/1.svg" width="40" height="40">
+			<img src="pouting_cat/2.svg" width="40" height="40">
+			<img src="pouting_cat/3.svg" width="40" height="40">
+			<img src="pouting_cat/4.svg" width="40" height="40">
+			<img src="pouting_cat/0.svg" width="40" height="40">
+			<img src="pouting_cat/1.svg" width="40" height="40">
+			<img src="pouting_cat/2.svg" width="40" height="40">
+			<img src="pouting_cat/3.svg" width="40" height="40">
+			<img src="pouting_cat/4.svg" width="40" height="40">
+			<img src="pouting_cat/0.svg" width="40" height="40">
+			<img src="pouting_cat/1.svg" width="40" height="40">
+			<img src="pouting_cat/2.svg" width="40" height="40">
+		</div>
+		<div style="margin: 0 40px;">
+			<div style="height: 28px;"></div>
+			<img src="pouting_cat/3.svg" width="40" height="40">
+			<img src="pouting_cat/4.svg" width="40" height="40">
+			<img src="pouting_cat/0.svg" width="40" height="40">
+			<img src="pouting_cat/1.svg" width="40" height="40">
+			<img src="pouting_cat/2.svg" width="40" height="40">
+			<img src="pouting_cat/3.svg" width="40" height="40">
+			<img src="pouting_cat/4.svg" width="40" height="40">
+			<img src="pouting_cat/0.svg" width="40" height="40">
+			<img src="pouting_cat/1.svg" width="40" height="40">
+			<img src="pouting_cat/2.svg" width="40" height="40">
+			<img src="pouting_cat/3.svg" width="40" height="40">
+			<img src="pouting_cat/4.svg" width="40" height="40">
+			<img src="pouting_cat/0.svg" width="40" height="40">
+			<img src="pouting_cat/1.svg" width="40" height="40">
+			<img src="pouting_cat/2.svg" width="40" height="40">
+			<img src="pouting_cat/3.svg" width="40" height="40">
+			<img src="pouting_cat/4.svg" width="40" height="40">
+			<img src="pouting_cat/0.svg" width="40" height="40">
+		</div>
+	</div>
+	<figcaption>transform <code>&lt;img&gt;</code></figcaption>
+</figure>
+<p>由于浏览器没有投入（也难以达成）足够的优化，矢量动画极其消耗资源。在我的电脑上，渲染上述动画时CPU占用率高达40%，且时不时掉帧。很遗憾，如果不希望为了几个哈气米让访客的设备掉电速度比运行高画质游戏还恐怖的话，就不能在每个页面上都放置这些动画了。
+<p>最省资源的渲染方法还是嵌入真正的视频。然而，因为传统视频格式的特性，偏色、毛边等问题难以避免，要么就得用更大的文件体积交换质量。很遗憾，如果不希望为了几个哈气米让访客消耗数MB的流量用来下载背景视频的话，就不能在每个页面上都放置这些动画了。
+<figure>
+<video src="pouting_cat_banner_loopable.mp4" autoplay muted loop></video>
+<figcaption><code>&lt;video&gt;</code></figcaption>
+</figure>
+<p>分形动画位于一个没人管的地带：形状和色彩不如实拍影像复杂，传统视频格式需要较高码率才能保住边缘细节；动画和密度超出一般矢量渲染引擎的舒适区，处理器实时渲染成本太高。GPU渲染和缓存会是个不错的解决方案，但就没有现成工具套件可用了。
