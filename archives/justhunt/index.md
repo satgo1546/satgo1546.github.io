@@ -4,6 +4,7 @@ date: 2024-09-11
 dates: 2024-09-11, 2024-09-18
 excerpt: 这回，我必须立刻开爆！
 tags:
+- 进度报告
 - puzzle hunt
 theme: theme-htmltex
 ---

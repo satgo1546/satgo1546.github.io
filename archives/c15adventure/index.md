@@ -3,6 +3,7 @@ title: CCBC 15解题报告/幻境
 date: 2024-08-15
 dates: 2024-08-15 ~ 2024-08-20
 tags:
+- 进度报告
 - puzzle hunt
 ---
 
@@ -21,12 +22,16 @@ tags:
 }
 </style>
 
-<div>队伍：该队伍已注销<br>
-报告：piscesciurus</div>
+<dl>
+<dt>队伍<dd>该队伍已注销
+<dt>报告<dd>piscesciurus
+</dl>
 
 ## 幻境
 
-<div>解题：piscesciurus、Chrysl</div>
+<dl>
+<dt>解题<dd>piscesciurus、Chrysl
+</dl>
 
 > <div>2024-08-15 13:57:05 发布</div>
 >
@@ -585,7 +590,7 @@ Chrysl还发现了路口北能进，东面有加农炮，加农炮上有钥匙�
 
 突然间，文字游戏里出现了图片！说好的“任何行动和反馈都以文本的形式展现”呢？
 
-![](computer.jpg)
+<!----><img src="computer.jpg">
 
 注意到指针位置相当精准地指向45°位置，不符合时钟特性，这是伪装成钟表的旗语，解得密码TARDIS。TARDIS是《神秘博士》里的传送装置，这与蓝箱子的外形与初次进入蓝箱子时的提示“It's bigger! On the inside! Than it is! On the outside!”完全相符。
 
