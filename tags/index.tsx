@@ -1,4 +1,4 @@
-export const title = '标签'
+export const title = '标签列表'
 export const renderOrder = 114514
 
 export default (data: Lume.Data) => {

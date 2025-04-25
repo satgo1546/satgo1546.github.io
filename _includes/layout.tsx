@@ -9,14 +9,15 @@ export default (data: Lume.Data) => {
 				<label class="menu-toggle"><input type="checkbox" hidden />菜单</label>
 				<ul class="nav-menu">
 					<li class="current-menu-item"><a href="/">首页</a></li>
-					<li>
+					<li><a href="/pages/">页面</a></li>
+					<li><a href="/tags/">标签</a></li>
+					{/* <li>
 						<a href="/pages/about/">关于</a>
 						<ul>
-							<li><a href="/pages/changelog/">站点更新记录</a></li>
 							<li><a href="https://dearti.me/satgo1546">第二时光</a></li>
 							<li><a href="https://github.com/satgo1546">GitHub</a></li>
 						</ul>
-					</li>
+					</li> */}
 				</ul>
 			</nav>
 		</header>
