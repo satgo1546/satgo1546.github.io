@@ -55,7 +55,7 @@ export default function (site: Lume.Site) {
 			},
 			deleteCache() { },
 		},
-		pageSubExtension: '.page',
+		pageSubExtension: undefined,
 	})
 	site.process(['.html'], pages => {
 		for (const page of pages) {
