@@ -1,7 +1,7 @@
 import lume from 'lume/mod.ts'
 import { getCurrentVersion } from 'lume/core/utils/lume_version.ts'
 import feed from 'lume/plugins/feed.ts'
-import jsxPreact from 'lume/plugins/jsx_preact.ts'
+import jsxPreact from './jsx.ts'
 import nav from 'lume/plugins/nav.ts'
 import redirects from 'lume/plugins/redirects.ts'
 import sass from 'lume/plugins/sass.ts'
@@ -20,7 +20,7 @@ const site = lume({
 site.hooks.addMarkdownItRule('table_open', () => '<table class="booktabs">')
 site.loadPages(['.html'], {})
 site.copyRemainingFiles()
-site.use(jsxPreact()) // 【TODO：看看能不能干掉这玩意】
+site.use(jsxPreact)
 site.use(sass({
 	options: {
 		silenceDeprecations: ['mixed-decls'],
