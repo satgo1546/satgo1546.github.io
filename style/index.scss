@@ -162,6 +162,17 @@ body>footer {
 		grid-column: 2;
 	}
 
+	ul,
+	ol,
+	dl {
+
+		ul,
+		ol,
+		dl {
+			margin-block-end: 0;
+		}
+	}
+
 	blockquote {
 		font-style: italic;
 		margin-inline: 2em;
@@ -193,7 +204,7 @@ body>footer {
 	}
 
 	figure table {
-		white-space: nowrap;
+		inline-size: max-content;
 	}
 }
 

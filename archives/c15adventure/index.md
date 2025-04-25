@@ -67,6 +67,7 @@ Text adventure！又被硬控了。（顺带一提，另两种硬控方式是[�
     你咋啥也没有啊
 ```
 
+<figure>
 <table class="map">
 <tr>
 	<td style="border-width: thick thin thin medium;">
@@ -78,6 +79,7 @@ Text adventure！又被硬控了。（顺带一提，另两种硬控方式是[�
 		<path d="M0 30H20M10 55V5L5 15 13 20" fill="none" stroke="currentColor" stroke-miterlimit="9"/>
 	</svg>
 </table>
+</figure>
 
 我钥匙呢？
 
@@ -164,6 +166,7 @@ Text adventure！又被硬控了。（顺带一提，另两种硬控方式是[�
 不认识这个命令喵~
 ```
 
+<figure>
 <table class="map">
 <tr>
 	<td style="border-width: thick thin thin thick;">大喷菇字迹
@@ -181,6 +184,7 @@ Text adventure！又被硬控了。（顺带一提，另两种硬控方式是[�
 	<td style="border: none;">
 	<td style="border-width: thin thick thick thick;">钥匙
 </table>
+</figure>
 
 我死了？好像只能重开了。我决定把速通流程记下来。因为是读取标准输入的控制台程序，所以只要将命令历史每行一个地记录下来，粘贴进控制台就能批量执行，一下子到达执行完所有命令的状态，这就是手动存档。
 
@@ -316,6 +320,7 @@ Chrysl还发现了路口北能进，东面有加农炮，加农炮上有钥匙�
 
 怎么还有门啊！
 
+<figure>
 <table class="map">
 <tr>
 	<td style="border-width: thick thin thick thick; background: radial-gradient(circle at top right, currentcolor 1em, transparent 0) no-repeat;">黄色拼图
@@ -344,6 +349,7 @@ Chrysl还发现了路口北能进，东面有加农炮，加农炮上有钥匙�
 	<td style="border: none;">
 	<td style="border-width: thin thick thick thick;">钥匙
 </table>
+</figure>
 
 我在整理速通流程时，发现速通时输出的第5回合闷响文本竟和队友给出的有差别，可以判断所处位置距离声源远近。如果在出生点wait超过5回合，闷响输出就会被吞掉，所以还是一回合一回合等待为好。（实际上并非是消息被吞，而是跳过了墙壁掉落事件。这种情况下，能自如进出蓝色拼图的房间。但我当时并没有发现这一点。）
 
@@ -404,6 +410,7 @@ Chrysl还发现了路口北能进，东面有加农炮，加农炮上有钥匙�
 
 地图如下。
 
+<figure>
 <table class="map">
 <thead>
 	<tr>
@@ -450,6 +457,7 @@ Chrysl还发现了路口北能进，东面有加农炮，加农炮上有钥匙�
 		<td style="border-width: thin thick thick thick;">钥匙
 		<td>
 </table>
+</figure>
 
 六边形记号明显是见证者谜题里的符号，可全场只有这一个记号有些奇怪。“空在此处的东南角结束”指出了终点，“时于一切的东南角开始”是想说起点在初始房间的右下角吗？有门的墙是必经、能走还是不可通行？裂开的墙和本不属于房间的墙不能走吗？绿色和普通门是否意味着两条不同色的路线？自己变成了绿色说明要画的是绿色路径？即使画完了路线，又该如何提取？
 
