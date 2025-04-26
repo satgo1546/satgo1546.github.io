@@ -3,6 +3,7 @@ title: 时间的尽头 解谜报告
 date: 2024-07-31
 dates: 2024-07-31 ~
 tags:
+- 进度报告
 - puzzle hunt
 ---
 
@@ -172,7 +173,7 @@ CCBC 15开赛后，终于得知endoftime出现在CCBC网站的原因：观莲游
 	<figcaption>深色模式秒了</figcaption>
 </figure>
 
-<table>
+<table class=booktabs>
 <thead>
 	<tr><th>题目<th>回顾<th>摩斯<th>提取
 <tbody>
@@ -237,8 +238,8 @@ CCBC 15开赛后，终于得知endoftime出现在CCBC网站的原因：观莲游
 <tr><td>观莲游戏<td>emoji、cp——甚至connec
 <tr><td>流水账<td>题组的理由——日谜思路，
 
-<td rowspan="4">....<td rowspan="4">H
 <tr><td>数连游戏<td>他也不出（……），所以就
+<td rowspan="4">....<td rowspan="4">H
 <tr><td>扭曲的世界<td>难凑的东西……）我个人认
 <tr><td>奇怪的谜题<td>巫”这几个……并且总体来
 <tr><td>下不为例<td>把这个点子……放到了灵感
@@ -265,7 +266,7 @@ HanaNeko发现成就条形码指向的图片右下角藏有“photomosh”字样
 
 <!----><img src="微信图片.gif" width="512" height="1024">
 
-~~鱼左：我知道，这是用PS里面滤镜-风格化-风效果做的。~~HanaNeko还发现这张图片是GIF动画，共两帧，两帧之间只有64个像素有区别，看起来就像静态图片一样。gary、Winid、High Sierra尝试提取了帧间差异。
+<s>鱼左：我知道，这是用PS里面滤镜-风格化-风效果做的。</s>HanaNeko还发现这张图片是GIF动画，共两帧，两帧之间只有64个像素有区别，看起来就像静态图片一样。gary、Winid、High Sierra尝试提取了帧间差异。
 
 <var>x</var>|<var>y</var>|索引<sub>0</sub>|R<sub>0</sub>=G<sub>0</sub>|B<sub>0</sub>|索引<sub>1</sub>|R<sub>1</sub>=G<sub>1</sub>|B<sub>1</sub>|Δ索引|ΔR=ΔG|ΔB
 -:|-:|-:|-:|-:|-:|-:|-:|-:|-:|-:
@@ -472,7 +473,7 @@ Hint系统
 
 <!----><img src="汉信码.png" width="192" height="192">
 
-这是汉信码，一种~~扫不出的~~二维码。作为自主研发的零生态格式，支持这种条码的软件少得可怜。我找到的唯一能读出条码内容的工具是[Aspose在线条码扫描](https://products.aspose.app/barcode/recognize/hanxin)。条码内容是网址：<https://pastebin.com/HuYeycnM>，网址导向一段文本。
+这是汉信码，一种<s>扫不出的</s>二维码。作为自主研发的零生态格式，支持这种条码的软件少得可怜。我找到的唯一能读出条码内容的工具是[Aspose在线条码扫描](https://products.aspose.app/barcode/recognize/hanxin)。条码内容是网址：<https://pastebin.com/HuYeycnM>，网址导向一段文本。
 
 ```
 这里……是哪里？
@@ -812,3 +813,18 @@ AAA=
 
 谁家暗锅？
 
+---
+
+在此之后，迎来了一段漫长的长草期。中文解谜活动欣欣向荣：[SECO](https://secopuzzle.com/)、[Cornsnaky's Snakeyear](https://cornsnaky.dearfad.com/)、[FDU](https://fduph25.fdupuzzle.fun/)……时间的尽头连着几个月却不见了踪影。
+
+<figure>
+	<img src="时间的彼端.avif">
+	<figcaption>
+		Winfrid：<a href="https://www.bilibili.com/video/av113884128089650" title="《时间的彼端》">这个节目</a>喜欢
+	</figcaption>
+</figure>
+
+<figure>
+	<img src="ep15.avif">
+	<figcaption><a href="https://www.bilibili.com/video/av114271715328200">直到时间的尽头，我会在那个世界等你。</a></figcaption>
+</figure>
