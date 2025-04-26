@@ -1,8 +1,12 @@
 ---
-title: Hypertext Specimen
+title: Sat’s Hypertext Style Guide
 lang: en
 # theme: theme-htmltex
 ---
+
+<p>This page demonstrates many kinds of typography elements used on my site.
+Read the source to find out how to typeset them.
+<p>I try to follow the HTML standard where practical:
 
 <figure>
 <blockquote>
@@ -32,6 +36,17 @@ FORM FEED (FF), U+000D CARRIAGE RETURN (CR), or U+0020 SPACE
 in <cite>HTML Living Standard</cite>
 </figcaption>
 </figure>
+
+<p>As you see, cited quotations are wrapped in <code>&lt;figure&gt;</code> elements.
+<p><code>&lt;figure&gt;</code> elements are also for captioned images and graphics, as usual.
+
+<figure>
+<svg>
+</svg>
+<figcaption>An SVG directly embedded in HTML. It can be interactive.</figcaption>
+</figure>
+
+<p><code>&lt;figure&gt;</code> areas are scrollable horizontally.
 
 <figure>
 <table class=booktabs>
@@ -122,6 +137,72 @@ in <cite>HTML Living Standard</cite>
 <td><code>\nonscript\,</code>
 </table>
 </figure>
+
+
+
+<p>I generally refrain from including math formulas, but they are sometimes inevitable.
+Simple inline equations, like ∏ <var>a<sub>i</sub></var> = exp ∑ ln <var>a<sub>i</sub></var>, can be typeset with HTML alone,
+while those more 2D are delegated to MathML now that it is universally supported across browsers,
+like this one from <cite>Concrete Mathematics</cite>, exercise 4.19,
+or <cite>The TeX book</cite>, exercises 17.13 and 17.14:</p>
+<math display=block>
+	<mrow><mi>π</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow>
+	<mo>=</mo>
+	<munder>
+		<mo>∑</mo>
+		<mrow><mn>1</mn><mo>&lt;</mo><mi>k</mi><mo>≤</mo><mi>n</mi></mrow>
+	</munder>
+	<mrow>
+		<mo>⌊</mo>
+		<mfrac>
+			<mrow><mi>ϕ</mi><mo>(</mo><mi>k</mi><mo>)</mo></mrow>
+			<mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow>
+		</mfrac>
+		<mo>⌋</mo>
+	</mrow>
+	<mo>=</mo>
+	<munder>
+		<mo>∑</mo>
+		<mrow><mn>1</mn><mo>&lt;</mo><mi>m</mi><mo>≤</mo><mi>n</mi></mrow>
+	</munder>
+	<mrow>
+		<mo>⌊</mo>
+		<msup>
+			<mrow>
+				<mo>(</mo>
+				<munder>
+					<mo>∑</mo>
+					<mrow><mn>1</mn><mo>≤</mo><mi>k</mi><mo>&lt;</mo><mi>m</mi></mrow>
+				</munder>
+				<mrow>
+					<mo>⌊</mo>
+					<mfrac>
+						<mrow><mi>m</mi><mo>/</mo><mi>k</mi></mrow>
+						<mrow>
+							<mo>⌈</mo>
+							<mi>m</mi><mo>/</mo><mi>k</mi>
+							<mo>⌉</mo>
+						</mrow>
+					</mfrac>
+					<mo>⌋</mo>
+				</mrow>
+				<mo>)</mo>
+			</mrow>
+			<mrow><mo>−</mo><mn>1</mn></mrow>
+		</msup>
+		<mo>⌋</mo>
+	</mrow>
+</math>
+
+
+<p>Footnotes are kept to minimum*†.
+<aside>* Because they distract readers.
+I try to put notes inline — in parentheses, for example.
+Even if I can’t, I put them right below the paragraph rather than at the end of the page.
+They are always shown, requiring no disclosure interactivity.
+<br>† Footnotes use these symbols: *, ⁑, ⁂, †, ‡, ⹋.
+I don’t think I’ve ever needed anything more than * and †, though.
+</aside>
 
 <pre><code class="language-ruby"><!--
 #!/usr/bin/env ruby

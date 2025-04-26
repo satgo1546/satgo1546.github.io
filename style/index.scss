@@ -1754,6 +1754,11 @@ pre>code {
 			>blockquote {
 				padding-inline: 2em;
 			}
+
+			>figcaption {
+				position: sticky;
+				inset-inline-start: 0;
+			}
 		}
 
 		pre>code {
