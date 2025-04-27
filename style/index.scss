@@ -46,6 +46,10 @@
 		block-size: auto;
 	}
 
+	svg {
+		display: block;
+	}
+
 	kbd,
 	button,
 	input,
@@ -104,8 +108,7 @@ body>footer {
 	aside,
 	figure,
 	table,
-	img:not(p *),
-	p>img:only-child,
+	:is(img, svg):not(p :not(p>:only-child)),
 	math[display=block]:not(p *),
 	video,
 	audio,
@@ -132,6 +135,10 @@ body>footer {
 	.admonition,
 	details {
 		max-inline-size: var(--textwidth, none);
+		margin-inline: auto;
+	}
+
+	svg {
 		margin-inline: auto;
 	}
 
@@ -264,7 +271,7 @@ rt {
 	font-size: .7em;
 }
 
-p img:not(:only-child) {
+p :is(img, svg):not(:only-child) {
 	display: inline;
 	vertical-align: middle;
 }

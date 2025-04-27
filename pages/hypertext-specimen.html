@@ -38,12 +38,77 @@ in <cite>HTML Living Standard</cite>
 </figure>
 
 <p>As you see, cited quotations are wrapped in <code>&lt;figure&gt;</code> elements.
-<p><code>&lt;figure&gt;</code> elements are also for captioned images and graphics, as usual.
+<p><code>&lt;figure&gt;</code> elements are also for captioned images, graphics, and other displayed material, as usual.
 
 <figure>
-<svg>
+<div class=row>
+<svg width="330" height="220" xmlns="http://www.w3.org/2000/svg">
+<path d="M25 90L165 10L235 50V210M95 90V50L165 90M165 210V130L235 90L305 130V210" fill="none" stroke="var(--fg1)"/>
+<g fill="var(--bg1)">
+<rect x="140" width="50" height="20"/>
+<rect x="70" y="40" width="50" height="20"/>
+<rect x="210" y="40" width="50" height="20"/>
+<rect y="80" width="50" height="20"/>
+<rect x="70" y="80" width="50" height="20"/>
+<rect x="140" y="80" width="50" height="20"/>
+<rect x="210" y="80" width="50" height="20"/>
+<rect x="140" y="120" width="50" height="20"/>
+<rect x="210" y="120" width="50" height="20"/>
+<rect x="280" y="120" width="50" height="20"/>
+<rect x="140" y="160" width="50" height="20"/>
+<rect x="210" y="160" width="50" height="20"/>
+<rect x="280" y="160" width="50" height="20"/>
+<rect x="140" y="200" width="50" height="20"/>
+<rect x="210" y="200" width="50" height="20"/>
+<rect x="280" y="200" width="50" height="20"/>
+</g>
+<g fill="var(--fg1)" text-anchor="middle">
+<text x="165" y="15">html</text>
+<text x="95" y="55">head</text>
+<text x="235" y="55">body</text>
+<text x="25" y="95">title</text>
+<text x="95" y="95">meta</text>
+<text x="165" y="95">link</text>
+<text x="235" y="95">table</text>
+<text x="165" y="135">thead</text>
+<text x="235" y="135">tbody</text>
+<text x="305" y="135">tfoot</text>
+<text x="165" y="175">tr</text>
+<text x="235" y="175">tr</text>
+<text x="305" y="175">tr</text>
+<text x="165" y="215">th</text>
+<text x="235" y="215">td</text>
+<text x="305" y="215">td</text>
+</g>
 </svg>
-<figcaption>An SVG directly embedded in HTML. It can be interactive.</figcaption>
+
+<ul>
+<li><code>&lt;html&gt;</code>: root<ul>
+<li><code>&lt;head&gt;</code>: document header<ul>
+<li><code>&lt;title&gt;</code>: document title
+<li><code>&lt;meta&gt;</code>: metadata
+<li><code>&lt;link&gt;</code>: external resource
+</ul>
+<li><code>&lt;body&gt;</code>: document body<ul>
+<li><code>&lt;table&gt;</code>: table<ul>
+<li><code>&lt;thead&gt;</code>: table head<ul>
+<li><code>&lt;tr&gt;</code>: table row<ul>
+<li><code>&lt;th&gt;</code>: table header cell
+</ul></ul>
+<li><code>&lt;tbody&gt;</code>: table body<ul>
+<li><code>&lt;tr&gt;</code>: table row<ul>
+<li><code>&lt;td&gt;</code>: table data cell
+</ul></ul>
+<li><code>&lt;tfoot&gt;</code>: table foot<ul>
+<li><code>&lt;tr&gt;</code>: table row<ul>
+<li><code>&lt;td&gt;</code>: table data cell
+</ul></ul></ul></ul></ul></ul>
+</div>
+
+<figcaption>A tree in SVG embedded in HTML and as nested lists.
+The list representation packs more information in roughly equal space.
+As a graphical tree has little advantage over a list,
+I prefer the latter.</figcaption>
 </figure>
 
 <p><code>&lt;figure&gt;</code> areas are scrollable horizontally.
