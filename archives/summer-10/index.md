@@ -8,12 +8,16 @@ tags:
 - puzzle hunt
 ---
 
-<div>队伍：Find&amp;Discover Union</div>
+<dl>
+<dt>队伍<dd>Find&amp;Discover Union
+</dl>
 
 ## 爱慕猫体邻国斯必克二
 
-<div>解题：piscesciurus、Andantino<br>
-报告：piscesciurus</div>
+<dl>
+<dt>解题<dd>piscesciurus、Andantino
+<dt>报告<dd>piscesciurus
+</dl>
 
 正如出题人预想的那样，这是一道不会没有思路的题。第一遍翻阅题目文档时识别出了英语、旗语、A1Z26、注音、拼字、日语、猪圈，猜测左下是韩语拼音，upper right是某种字母替换密码，于是马上就去翻第一道题（我没有参与解第一道题，但知道里面有必知必会），检查是不是有我没见过的常见密码，借此确认了夏多。查韩语字母表看不太懂，想到这可能是纯正的韩语而不像片假名拼读，于是Google翻译lower left为韩语，确认了ㅇㅚㄴㅉㅗㄱ ㅇㅏㄹㅐ是韩语“왼쪽 아래”拆成单个部件（Hangul jamo），顺便找了个[在线韩文拆解工具](http://www.ch2ko.com/huoxingwen/)。
 
@@ -132,6 +136,7 @@ Q↖ 네덜란드路上的ㄹ说明这条是韩语，半信半疑，不过翻译
 
 ![](sheet.webp)
 
+<figure>
 <table class="spreadsheet">
 <thead>
 <tr><th><th>A<th>B<th>C<th>D<th>E<th>F<th>G<th>H<th>I<th>J<th>K<th>L<th>M<th>N<th>O<th>P<th>Q<th>R<th>S
@@ -157,6 +162,7 @@ Q↖ 네덜란드路上的ㄹ说明这条是韩语，半信半疑，不过翻译
 <tr><th>19<td>ㄛ<td><td><td><td><td><td><td>ㄓ<td>虫<td>尤<td><td><td>⪾<td><td><td>ー<td><td><td></td>
 </tbody>
 </table>
+</figure>
 
 <style>
 table.spreadsheet td:empty {

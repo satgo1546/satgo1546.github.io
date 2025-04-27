@@ -97,36 +97,39 @@ setTimeout(()=>submit(data.values.map(([a,b])=>a<b?'<':'>')),12000)
 ```
 
 <h2 title="旅行照片 4.0">开盒（地理）</h2>
-
-1\. 直接搜索科里科气科创驿站就能在地图上找到这里，最靠近的是USTC东校区西北门，但因为答案字数限制，只能填**东校区西门**。
-
-2\. B站[@中科大LEO动漫协会](https://space.bilibili.com/7021308)的投稿中，5月25日起陆续有标有“中国科大2024ACG音乐会单品”的视频投稿，可知活动在此之前，翻阅动态可找到[桁架及展架已经布置完毕](https://www.bilibili.com/opus/930934582351495204)的消息，日期为**2024年5月19日**。
-
-4\. 识图搜索可知这是三峡大坝喷泉，搜索可得截流石，再搜索可得**坛子岭**。
-
-3\. 被路中央的红黄蓝线坑了好久，这种线并不特别。右下角的垃圾桶上有小字“六安园林”。因为第4题的坛子岭很确定，所以可枚举六安市的公园。很巧，首个枚举的**中央森林公园**就对了。
-
-<img src="六安市.webp" width="320" height="240"> <img src="中央森林公园.webp" width="320" height="240">
-
-6\. 搜索四编组动车没搜到什么有用的信息，看颜色以为是CR400AF，但仔细看发现车头黑色块形状弧度不对。搜索“很标志性的……四编组动车”，找到了北京只有四节车厢、使用**CRH6F-A**型电力动车组的粉色动车“怀密号”。
-
-**赛后补**：垃圾百度，用Google搜四编组动车就能一下子找到了。
-
-5\. 照片中为检修动车组的动车运用所。该线路一端为北京北站，故拍摄地为北京北动车运用所。通过卫星地图与照片中的建筑物形状对比，可以确认这一点。地图查询得到附近的北京**积水潭医院**。
-
+<ol>
+<li value=1><p>直接搜索科里科气科创驿站就能在地图上找到这里，最靠近的是USTC东校区西北门，但因为答案字数限制，只能填<strong>东校区西门</strong>。
+<li value=2><p>B站<a href="https://space.bilibili.com/7021308">@中科大LEO动漫协会</a>的投稿中，5月25日起陆续有标有“中国科大2024ACG音乐会单品”的视频投稿，可知活动在此之前，翻阅动态可找到<a href="https://www.bilibili.com/opus/930934582351495204">桁架及展架已经布置完毕</a>的消息，日期为<strong>2024年5月19日</strong>。
+<li value=4><p>识图搜索可知这是三峡大坝喷泉，搜索可得截流石，再搜索可得<strong>坛子岭</strong>。
+<li value=3><p>被路中央的红黄蓝线坑了好久，这种线并不特别。右下角的垃圾桶上有小字“六安园林”。因为第4题的坛子岭很确定，所以可枚举六安市的公园。很巧，首个枚举的<strong>中央森林公园</strong>就对了。</p>
+<div class=row>
+<img src="六安市.webp" width="300" height="225">
+<img src="中央森林公园.webp" width="300" height="225">
+</div>
+<li value=6><p>搜索四编组动车没搜到什么有用的信息，看颜色以为是CR400AF，但仔细看发现车头黑色块形状弧度不对。搜索“很标志性的……四编组动车”，找到了北京只有四节车厢、使用<strong>CRH6F-A</strong>型电力动车组的粉色动车“怀密号”。
+<p><strong>赛后补</strong>：垃圾百度，用Google搜四编组动车就能一下子找到了。
+<li value=5><p>照片中为检修动车组的动车运用所。该线路一端为北京北站，故拍摄地为北京北动车运用所。通过卫星地图与照片中的建筑物形状对比，可以确认这一点。地图查询得到附近的北京<strong>积水潭医院</strong>。</p>
 <img src="北京北动车运用所.webp" width="320" height="240">
+</ol>
 
 TCRF：本题有未使用的image05.jpg，是列车车厢内对着车厢一头显示屏拍摄的照片，其中车厢号部分被挖去，信息屏显示两行文字`<JOURNEY>  19:01`、`temperature: 24℃`。
 
 **赛后补**：发现第一小题的图片文件名并非image01.jpg而是klkq.jpg，顺藤摸瓜发现还有几张未使用的图片。
 
-<table>
-<thead><th>image02.jpg<th>image03.jpg<th>image05.jpg
-<tbody>
-	<td><img src="image02.jpg" height="240">
-	<td><img src="image03.jpg" height="240">
-	<td><img src="image05.jpg" height="240">
-</table>
+<div class="row">
+<figure>
+<img src="image02.jpg" width="180" height="240">
+<figcaption>image02.jpg</figcaption>
+</figure>
+<figure>
+<img src="image03.jpg" width="346" height="240">
+<figcaption>image03.jpg</figcaption>
+</figure>
+<figure>
+<img src="image05.jpg" width="320" height="240">
+<figcaption>image05.jpg</figcaption>
+</figure>
+</div>
 
 <h2 title="不宽的宽字符">欸🤓👆，wchar_t</h2>
 

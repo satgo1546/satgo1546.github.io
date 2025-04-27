@@ -57,7 +57,7 @@ C系|Haskell|OCaml|F#|Elm
 `false`|`False`|`false`|`false`|`False`
 `x << y`|`x << y`\*|`x lsl y`|`x <<< y`|`shiftLeftBy y x`\*
 
-<div>* 需要导入标准库</div>
+<aside>* 需要导入标准库</aside>
 
 不像C系语言只能重载规定的若干运算符，ML系语言给予了运算符的定义极大的自由度：Haskell允许随便定义运算符优先级，OCaml和F#通过符号约定运算符类型……Elm在0.19版本中移除了自定义运算符的能力。
 

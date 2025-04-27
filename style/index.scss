@@ -42,6 +42,10 @@
 		max-inline-size: 100%;
 	}
 
+	img {
+		block-size: auto;
+	}
+
 	kbd,
 	button,
 	input,
@@ -85,8 +89,6 @@ body>footer {
 
 :where(article) {
 	margin-block: 1pc;
-	margin-inline: auto;
-	max-inline-size: 42pc;
 
 	p,
 	h1,
@@ -103,6 +105,8 @@ body>footer {
 	figure,
 	table,
 	img:not(p *),
+	p>img:only-child,
+	math[display=block]:not(p *),
 	video,
 	audio,
 	embed,
@@ -111,6 +115,24 @@ body>footer {
 	.admonition,
 	details {
 		margin-block-end: 6pt;
+	}
+
+	p,
+	h1,
+	h2,
+	h3,
+	h4,
+	ul,
+	ol,
+	dl,
+	pre,
+	blockquote,
+	aside,
+	figcaption,
+	.admonition,
+	details {
+		max-inline-size: var(--textwidth, none);
+		margin-inline: auto;
 	}
 
 	p:lang(zh) {
@@ -183,7 +205,7 @@ body>footer {
 
 	blockquote {
 		font-style: italic;
-		margin-inline: 2em;
+		padding-inline: 2em;
 	}
 
 	hr {
@@ -242,7 +264,7 @@ rt {
 	font-size: .7em;
 }
 
-p img {
+p img:not(:only-child) {
 	display: inline;
 	vertical-align: middle;
 }
@@ -313,7 +335,7 @@ table.booktabs {
 table.spreadsheet {
 	th {
 		border: medium outset;
-		min-width: 6ch;
+		padding-inline: 4px;
 	}
 
 	td {
@@ -383,6 +405,10 @@ pre>code {
 	white-space: pre;
 }
 
+math[display=block] {
+	overflow: auto;
+}
+
 // Sat's 黑幕
 .spoiler {
 	color: black;
@@ -404,7 +430,7 @@ pre>code {
 	align-content: flex-start;
 	justify-content: center;
 	align-items: center;
-	gap: 6pt 2em;
+	column-gap: 2em;
 
 	>* {
 		margin-inline: 0;
@@ -1669,6 +1695,7 @@ pre>code {
 		--bg0: #210;
 		--fg1: #fa5;
 		--bg1: #531;
+		color-scheme: dark;
 	}
 
 	--red: #b71c1c;
@@ -1683,6 +1710,7 @@ pre>code {
 		color: var(--fg0);
 		font: 12pt/1.25 sats-symbol, "【TODO：某个字体】", sans-serif;
 		padding: 8px;
+		--textwidth: 42pc;
 	}
 
 	body {
@@ -1712,21 +1740,22 @@ pre>code {
 		background: var(--bg0);
 	}
 
-	body>main {
-		container-type: inline-size;
-	}
-
 	.menu-toggle {
 		display: none;
 	}
 
 	.entry-meta {
-		a {
+		>a {
 			margin-inline-end: .5em;
+		}
+
+		small {
+			margin-inline-start: .1em;
 		}
 
 		li {
 			display: inline;
+			margin-inline-end: .5em;
 		}
 	}
 
@@ -1739,26 +1768,14 @@ pre>code {
 	article {
 
 		>figure,
-		>div>figure,
-		>div>div>figure {
+		>math[display=block] {
 			margin-inline: -8px;
-			margin-inline: calc(50% - 50cqi - 8px);
 			padding-inline: 8px;
+		}
 
-			>blockquote,
-			>figcaption {
-				max-inline-size: 42pc;
-				margin-inline: auto;
-			}
-
-			>blockquote {
-				padding-inline: 2em;
-			}
-
-			>figcaption {
-				position: sticky;
-				inset-inline-start: 0;
-			}
+		figcaption {
+			position: sticky;
+			inset-inline-start: 0;
 		}
 
 		pre>code {
@@ -1856,6 +1873,7 @@ pre>code {
 		font-synthesis: small-caps;
 		text-underline-position: under;
 		--monospace: sats-symbol, TeXCode, monospace, monospace;
+		--textwidth: 42pc;
 	}
 
 	text-decoration-thickness: .4pt;

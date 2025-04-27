@@ -7,6 +7,13 @@
     "lume": "echo \"import 'lume/cli.ts'\" | deno run -A -",
     "dev": "deno task lume -s"
   },
+  "lint": {
+    "rules": {
+      "exclude": [
+        "jsx-key"
+      ]
+    }
+  },
   "compilerOptions": {
     "types": [
       "lume/types.ts"

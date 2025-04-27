@@ -323,7 +323,7 @@ brute_force_password(host, port, known_prefix='a'*10, remaining_length=4)
 
 题目原图：
 
-<!----><img src="Inaudible.png">
+![](Inaudible.png)
 
 需要将频谱图转回音频。
 
@@ -395,7 +395,7 @@ reconstructed_audio = reconstruct_audio_from_spectrogram()
 
 这样产生的音频用Audacity查看频谱图可以发现比例对不上，轴也反了。注意一般音频软件的频谱图频率轴不会是线性刻度。这里是梅尔刻度，选项里可以调成线性。
 
-<!----><img src="Inaudible.jpg">
+![](Inaudible.jpg)
 
 好说，改改输入数组就行了。
 
@@ -2162,13 +2162,13 @@ file不语，只是一味地坚称这是data；CyberChef看到开头的00 01 00 
 
 迷茫的时候，不妨听听直方图说的道理：
 
-<!----><img src="SleepyGame1.webp" alt="ImHex直方图">
+![ImHex直方图](SleepyGame1.webp)
 
 数据呈现明显规律性。CE~D1出现频率异常地高，C0~CD、D3~FE没有出现，FF只在文件开头连续出现了4个。
 
 一些字节序列（如“NGIN”）频繁地出现，于是我尝试用文本编辑器打开它。控制字符出奇地少……原来这个文件可以用UTF-8编码读取！
 
-<!----><img src="SleepyGame2.webp" alt="Visual Studio Code文本编辑器">
+![Visual Studio Code文本编辑器](SleepyGame2.webp)
 
 全文仅在文件开头出现了5处解码错误。偏移量凑个整，猜测文件头24字节跟后面的编码方式不同。进一步确认数据发现确实如此：22处的两个字节E2 34是小端序的13538，与文件大小6779的两倍13558非常接近，应是某种长度指示，不必深究了。
 
@@ -2305,7 +2305,7 @@ Array.from({length:64},(_,i)=>Array.from({length:95},(_,j)=>(j+=32,`
 fetch('/index.php', {body: f, method: 'POST'})
 ```
 
-<!----><img src="Cloudflare.webp">
+![](Cloudflare.webp)
 
 除了span中出现的字符，浏览器还会请求空格对应的字体，是因为字体尺寸信息以空格所在字体为标准。忽略以`/32`结尾的地址后，浏览器其余请求的地址如下。
 

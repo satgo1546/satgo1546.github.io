@@ -13,8 +13,10 @@ theme: theme-htmltex
 本文也有<a href="index.pdf">PDF版本</a>，但其中没有完整列出所有代码。
 </div>
 
-<div>队伍：😾建一个Just队伍！<br>
-解题：piscesciurus</div>
+<dl>
+<dt>队伍<dd>😾建一个Just队伍！
+<dt>解题<dd>piscesciurus
+</dl>
 
 第一次准单刷的hunt！
 
@@ -506,10 +508,11 @@ JustHunt也要有自己的迷宫饭！这题的解析怎么能没有推理过程
 <style>
 .animal { color: #C71D31 }
 .plant { color: #342DDC }
-article > ul {
+.tree {
 	border: .4pt solid;
 	padding: 6pt;
-	margin-inline: 2em;
+	padding-inline-start: 30pt;
+	max-inline-size: 38pc;
 }
 </style>
 
@@ -561,7 +564,7 @@ article > ul {
 
 由于被束光蕨、日光鸟、透明蝇三者同时吃，昙花果开始喷射麻痹素，束光蕨和透明蝇都不再吃昙花果，只吃日光鸟。只有日光鸟进化成了月光鸟，还在吃昙花果。文中没有日光鸟一节，可以认为日光鸟现已灭绝，月光鸟是日光鸟的平替。
 
-<ul>
+<ul class="tree">
 <li class="plant">Epiphyllum 昙花果<ul>
 <li class="animal">Lunar 月光鸟<ul>
 <li class="plant">Beam 束光蕨
@@ -577,7 +580,7 @@ article > ul {
 
 这种生物是在昙花果开始喷射麻痹素后诞生的。按进化史将生物名填入，就能得到上瘾兔的食物是束光蕨。
 
-<ul>
+<ul class="tree">
 <li class="plant">Beam 束光蕨<ul>
 <li class="animal">Addiction 上瘾兔</ul>
 </ul>
@@ -593,7 +596,7 @@ article > ul {
 
 雨夜虎的食物链上富集了光催素。题中没有任何类似“某种激素”的叙述，因此只要搜索全文就能找到与光催素相关的生物，只有束光蕨生产光催素。雨夜虎是肉食性，不会直接食用束光蕨，而是通过捕食上瘾兔间接摄取光催素。
 
-<ul>
+<ul class="tree">
 <li class="animal">Addiction 上瘾兔<ul>
 <li class="animal">Rainy-night 雨夜虎</ul>
 </ul>
@@ -615,7 +618,7 @@ article > ul {
 
 基底茅和机械蜂活动范围受限，只能吃到深渊裂缝里的东西；天真蓬是唯一能沟通深渊裂缝内外的生物；束光蕨从深渊裂缝中诞生后离开，很可能在深渊裂缝附近有种群。只有基底茅能进行跨物种交配，机械蜂为基底茅传粉授粉，所以天真蓬是基底茅和机械蜂杂交产物，继承了机械蜂的飞行能力，在深渊裂缝外采集植物，自己作为基底茅和机械蜂的食物。基底茅和机械蜂都需要光催素，只有束光蕨生产光催素，其食物链上级的上瘾兔和雨夜虎都是动物，所以天真蓬捕食束光蕨。
 
-<ul>
+<ul class="tree">
 <li class="plant">Beam 束光蕨<ul>
 <li class="plant">Naive 天真蓬<ul>
 <li class="plant">Base 基底茅
@@ -631,7 +634,7 @@ article > ul {
 
 万花茧吃某种小型的、具有折射结构的动物。没有其他任何动物显式提到折射，但透明蝇的描述中提到其透明翅膀可以聚光，最符合折射，所以万花茧吃透明蝇。
 
-<ul>
+<ul class="tree">
 <li class="animal">Transparent 透明蝇<ul>
 <li class="animal">Kaleidoscope 万花茧</ul>
 </ul>
@@ -649,7 +652,7 @@ article > ul {
 
 与动凸素或植凹素相关的生物只有万花茧，它符合同时提供动凸素和植凹素的动物的描述，是绝对蚕和相对荇的食物。
 
-<ul>
+<ul class="tree">
 <li class="animal">Kaleidoscope 万花茧<ul>
 <li class="animal">Absolute 绝对蚕
 <li class="plant">Relative 相对荇</ul>
@@ -668,7 +671,7 @@ article > ul {
 
 与果实爆炸相关的生物只有上述两种，故酵母虫以伊甸橡果实为食。
 
-<ul>
+<ul class="tree">
 <li class="plant">Eden 伊甸橡<ul>
 <li class="animal">Yeast 酵母虫</ul>
 </ul>
@@ -682,7 +685,7 @@ article > ul {
 
 食用尸体的生物只有透明蝇和催产榆，其中动物只有透明蝇一种。
 
-<ul>
+<ul class="tree">
 <li class="animal">Transparent 透明蝇<ul>
 <li class="plant">Eden 伊甸橡</ul>
 </ul>
@@ -691,7 +694,7 @@ article > ul {
 
 连接到此为止的食物链片段，月光鸟一支的食物网已编织完成：
 
-<ul>
+<ul class="tree">
 <li class="plant">Epiphyllum 昙花果<ul>
 <li class="animal">Lunar 月光鸟<ul>
 <li class="plant">Beam 束光蕨<ul>
@@ -723,7 +726,7 @@ article > ul {
 
 早餐蝠有三大欲望：食欲、性欲、睡眠欲，而在这三大欲望当中，食欲和性欲分别是被寄宿藓和催产榆操控产生的（悲）。能撑死的动物仅此一种，所以非常确定。注意寄宿藓虽然依赖于早餐蝠，但它们并不吃早餐蝠，食物链的下级是早餐蝠所吃的某种植物。
 
-<ul>
+<ul class="tree">
 <li class="plant">??? 某种植物<ul>
 <li class="animal">Breakfast 早餐蝠<ul>
 <li class="plant">Oxytocin 催产榆</ul>
@@ -741,7 +744,7 @@ article > ul {
 
 寄宿藓在地表，吃不到高处的植物。有向高处移动过程的是二级菟。其他高处的生物自始至终位于高处，无法产生逐渐捕食不到的说法。
 
-<ul>
+<ul class="tree">
 <li class="plant">Diode 二极菟<ul>
 <li class="animal">Breakfast 早餐蝠</ul>
 </ul>
@@ -757,7 +760,7 @@ article > ul {
 
 其他一些生物也有篡改电信号的能力，但Neurax蠕虫和MITM攻击是科技树两个不同的分支，支持无线的只有干预草。
 
-<ul>
+<ul class="tree">
 <li class="animal">Email 电邮蚁<ul>
 <li class="plant">Intervene 干预草</ul>
 </ul>
@@ -771,7 +774,7 @@ article > ul {
 
 吃电邮蚁的是干预草。
 
-<ul>
+<ul class="tree">
 <li class="plant">Intervene 干预草<ul>
 <li class="plant">Nail 钉子藤</ul>
 </ul>
@@ -789,7 +792,7 @@ article > ul {
 
 与气味相关的生物有数种，其中提到气味减弱的生物只有干预草。
 
-<ul>
+<ul class="tree">
 <li class="plant">Intervene 干预草<ul>
 <li class="animal">Adorn 装饰驴</ul>
 </ul>
@@ -829,7 +832,7 @@ article > ul {
 
 干预草的气味淡去了，但伪造蛾仍留有同样的气味。这是装饰驴仍能找到干预草的原因，而基于嗅觉识别的嗅觉蟒就不会吃干预草，而是吃伪造蛾了。
 
-<ul>
+<ul class="tree">
 <li class="animal">Email 电邮蚁<ul>
 <li class="animal">Forge 伪造蛾<ul>
 <li class="plant">Arrow 箭头荚
@@ -851,7 +854,7 @@ article > ul {
 
 能够吃幻想树的是电邮蚁和二极菟。干预草专精无线电，不能控制生物体内的电信号。
 
-<ul>
+<ul class="tree">
 <li class="plant">Epiphyllum 昙花果<ul>
 <li class="plant">Fantasy 幻想树<ul>
 <li class="plant">Diode 二极菟
@@ -874,7 +877,7 @@ article > ul {
 
 踉跄爬行大概是被幻想树控制导致的。能够打断幻想树控制的植物是二极菟，二极菟的动物天敌是早餐蝠。
 
-<ul>
+<ul class="tree">
 <li class="animal">Breakfast 早餐蝠<ul>
 <li class="animal">Tired 疲惫鼠</ul>
 </ul>
@@ -885,7 +888,7 @@ article > ul {
 
 至此，食物网已绘制完全：
 
-<ul>
+<ul class="tree">
 <li class="plant">Epiphyllum 昙花果<ul>
 <li class="plant">Fantasy 幻想树<ul>
 <li class="plant">Diode 二极菟<ul>

@@ -32,7 +32,13 @@ export default (data: Lume.Data) => {
 				<a class="comments-link" href="javascript:alert('还没做')">发表评论</a>
 				<a href={'https://github.com/satgo1546/satgo1546.github.io/blob/main' + data.sourcePath}>查看源代码</a>
 				{!!data.tags.length && <ul>
-					{data.tags.map(tag => <li><a href={data.tagUrl(tag)} rel="tag">{tag}</a></li>)}
+					{data.tags.map(tag => {
+						const count = data.search.pages(`"${tag}"`).length
+						return count > 1 ? <li>
+							<a href={data.tagUrl(tag)} rel="tag">{tag}</a>
+							<small>{count}</small>
+						</li> : <li title="该标签只有本文使用">{tag}</li>
+					})}
 				</ul>}
 			</footer>
 			<div class="comments-area">
