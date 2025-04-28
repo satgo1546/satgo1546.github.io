@@ -1,4 +1,4 @@
-import { NavData } from "lume/plugins/nav.ts"
+import { NavData } from 'lume/plugins/nav.ts'
 
 export default function ArticleTree(props: { pages: NavData[] }) {
 	if (!Array.isArray(props.pages)) {

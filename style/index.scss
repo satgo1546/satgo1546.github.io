@@ -19,6 +19,7 @@
 	:root {
 		text-decoration-skip-ink: none;
 		word-wrap: break-word;
+		scrollbar-gutter: stable;
 	}
 
 	ul,
@@ -1718,6 +1719,7 @@ math[display=block] {
 		font: 12pt/1.25 sats-symbol, "【TODO：某个字体】", sans-serif;
 		padding: 8px;
 		--textwidth: 42pc;
+		scrollbar-color: var(--fg1) var(--bg1);
 	}
 
 	body {
@@ -1745,6 +1747,7 @@ math[display=block] {
 		border: 3px solid var(--fg1);
 		padding: 8px;
 		background: var(--bg0);
+		scrollbar-color: auto;
 	}
 
 	.menu-toggle {
