@@ -1,5 +1,6 @@
 // https://deno.land/x/lume@v2.5.3/plugins/jsx_preact.ts
-import { preact, renderToString } from 'lume/deps/preact.ts'
+import { h, isValidElement, type VNode } from 'npm:preact'
+import { renderToString } from 'npm:preact-render-to-string'
 import loader from 'lume/core/loaders/module.ts'
 
 // Hack to remove the <div> inserted at Preact–HTML boundary.
@@ -16,7 +17,7 @@ export default function (site: Lume.Site) {
 			async render(content: unknown, data: Record<string, unknown> = {}) {
 				// The content is a string, so we have to convert it to a Preact element.
 				if (typeof content === 'string') {
-					content = preact.h('preact-fragment', {
+					content = h('preact-fragment', {
 						dangerouslySetInnerHTML: { __html: content },
 					})
 				}
@@ -26,17 +27,17 @@ export default function (site: Lume.Site) {
 
 				// If the children is a string, convert it to a Preact element.
 				if (typeof children === 'string') {
-					children = preact.h('preact-fragment', {
+					children = h('preact-fragment', {
 						dangerouslySetInnerHTML: { __html: children },
 					})
 				}
 
 				const element =
-					typeof content === 'object' && preact.isValidElement(content)
+					typeof content === 'object' && isValidElement(content)
 						? content
 						: (typeof content === 'function'
 							? await content({ ...data, children }, helpers)
-							: content) as preact.VNode
+							: content) as VNode
 
 				if (element && typeof element === 'object') {
 					element.toString = () => renderToString(element)

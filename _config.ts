@@ -48,7 +48,7 @@ site.data('layout', 'layout.tsx')
 site.data('title', '<i>无标题</i>')
 site.data('theme', 'theme-modern-magic light')
 site.data('lang', 'zh-Hans')
-site.data('generator', `Lume v${getCurrentVersion()}`)
+site.data('generator', `Lume ${getCurrentVersion()}`)
 site.data('date', new Date(0))
 site.parseBasename(basename => {
 	const match = basename.match(/\d{4}-\d{2}-\d{2}/)
