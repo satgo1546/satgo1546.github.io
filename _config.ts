@@ -68,6 +68,17 @@ site.preprocess([".html"], pages => {
 				? page.data.date.toISOString().slice(0, 10)
 				: ''
 		}
+		// Prevent the Norway problem.
+		if (!(
+			typeof page.data.title === 'string'
+			&& (page.data.description === undefined || typeof page.data.description === 'string')
+			&& typeof page.data.dates === 'string'
+			&& typeof page.data.lang === 'string'
+			&& typeof page.data.theme === 'string'
+			&& Array.isArray(page.data.tags) && page.data.tags.every(tag => typeof tag === 'string')
+		)) {
+			throw new Error('wrong data type in ' + page.sourcePath)
+		}
 	}
 })
 const slugify = (content: string) => content.replace(/[\\\/:*?"<>| !@#$%^&`'{}-]+/g, '-').replace(/^-|-$/g, '')
