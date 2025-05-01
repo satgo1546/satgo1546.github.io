@@ -65,7 +65,8 @@ tags:
 <img src="test.svg" width="256" height="256">
 <p>为了把怒猫的嘴补上，我把仓库克隆下来研究。这代码写得奇差无比！四处散落的全局状态，乱七八糟的抽象，不知所云的命名，未使用的依赖，无意义的异步，坚持用下标迭代数组……阅读这样的代码真是一种精神损伤。
 <p>AI驱动的编辑器Cursor刚推出时，我下载并安装，发现是个VS Code套壳产品，而且要注册才能用AI功能（废话），就又立刻卸载了。现在Cursor的版本是0.48.9，前几天我拿到了个同学的Cursor账号，于是来体验一下重构屎山的场景。
-<p>与GitHub Copilot只能续写不同，Cursor的Tab补全能提供编辑建议，在重构中更有用。
+<p>令我依旧感到不满的是，明明从一开始就没有什么功能是VS Code插件实现不了的，Cursor却非要fork整个编辑器，如果与VS Code同时使用就会留下双倍的垃圾。
+<p>与GitHub Copilot<del>只能续写不同</del><ins>最新版一样</ins>，Cursor的Tab补全能提供编辑建议，在重构中更有用。
 <p>在代码逻辑相对独立的场合，能精准重写：</p>
 <img src="isPositionXAnimated.webp">
 <p>改了X之后同样修改Y：</p>
@@ -389,7 +390,7 @@ console.log(xml(node)); // Outputs: &lt;test value="a&amp;amp;b&amp;lt;c&amp;gt;
 </blockquote>
 </details>
 
-<p>我不确定对话使用的模型是哪个，界面上并不会显示自动选择的模型，“Claude 3 Opus”是我对话询问得到的回应。
+<p>我不确定对话使用的模型是哪个，界面上并不会显示自动选择的模型，“Claude 3 Opus”是我对话询问得到的回应。LLM工具应该令上下文透明可见，但这Cursor现在连用什么模型都不显示。
 
 <p>似乎模型编辑代码的原理是以<code>```⟨语言⟩:⟨文件名⟩</code>（例如<code>```javascript:src/node.js</code>）开头输出整个修改后的文件，然后经由附加步骤与原始文件比较并由UI呈现为差异视图。附加步骤大概也有模型参与，因为非常慢，一个百来行的文件在“应用修改”一步上要花好几秒。
 
