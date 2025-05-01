@@ -122,7 +122,6 @@ body>footer {
 	}
 
 	p,
-	h1,
 	h2,
 	h3,
 	h4,
@@ -1776,6 +1775,21 @@ math[display=block] {
 	}
 
 	article {
+		>h1 {
+			background: var(--bg1);
+			color: var(--fg1);
+			margin-block-end: 1pc;
+			margin-inline: -8px;
+			padding-block: 6pt;
+			padding-inline: max(8px, 50% + 8px - var(--textwidth) / 2);
+			text-wrap: balance;
+			font-size: 2em;
+			font-weight: normal;
+
+			&:first-child {
+				margin-block-start: -1pc;
+			}
+		}
 
 		>figure,
 		>math[display=block] {
