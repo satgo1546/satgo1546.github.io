@@ -1,0 +1,72 @@
+---
+title: 甩不掉的鼠标与拖不动的文件
+date: 2025-01-18
+dates: 2025-01-18, 2025-01-21
+excerpt: 欢迎来到Web。
+tags:
+- 实验
+- Windows
+---
+
+<p>有个困扰我多年的问题：到底什么情况会导致鼠标按下和放开的事件不成对？
+<p>无数实现拖拽的程序都按鼠标最终会放开的假设编写，结果用户遇到的情况总是不经意间的黏附，选区头不知何时就粘在鼠标上了，甩也甩不掉，只有再点一次才能解除绑定。</p>
+<p><video src="sample.mp4" controls></video></p>
+<p>我编写拖拽代码时总是担心产生这样的情况。但尝试了很多极端条件，例如一边打字一边按鼠标、一边使用键盘快捷键一边按鼠标、一边使用触摸板一边按鼠标、无线鼠标按到一半没电了、以按下的状态插上外接鼠标，各种方法都没法稳定复现。
+<p>mousedown和mouseup事件其实有相当多的保护措施。在Windows中，鼠标在某个窗口中按下后，即使后续鼠标移动到其他窗口，也仍是原先的窗口收到鼠标事件；在DOM中，窗口的对应物是元素。虽然<a href="https://www.w3.org/TR/uievents/">UI Events标准</a>只在注释里提到了这种行为，但这是事实上的标准。
+<blockquote lang=en>
+<div class=admonition><strong>NOTE:</strong> In some implementation environments, such as a browser, a <code>mouseup</code> event can be dispatched even if the pointing device has left the boundary of the user agent, e.g., if the user began a drag operation with a mouse button pressed.</div>
+</blockquote>
+<p>多数情况下，如果在按下鼠标时发生了意外（例如，其他程序弹出了消息框转移了焦点），虽然鼠标按钮物理上还没有放开，但是应用程序仍会收到mouseup事件，因为鼠标已不再归其捕获。
+<p>理论上，在相同元素上监听mousedown和mouseup事件计数，应该就能保持状态同步，事实却总是事与愿违，我感到很奇怪。
+<p>在因为其他原因翻Chrome工单列表时，发现了一条<a href="https://issues.chromium.org/364038449">浏览器检测鼠标的按钮长按存在问题。Browsers have problems detecting long presses of mouse buttons.</a>，是去年提交的Windows上的稳定复现方法：</p>
+<ol>
+<li>在开始菜单和页面的重叠区域内按下鼠标
+<li>按下并放开Win键，打开开始菜单
+<li>放开鼠标
+<li>按下并放开Win键，关闭开始菜单
+</ol>
+<p>这并不会导致选区头粘在鼠标上，但会吞掉mouseup事件。
+<p>打开并关闭开始菜单的本质是焦点转移，把Win键换成Alt+Tab有相同的效果。通过这些步骤，在Windows原生应用上也能复现鼠标松不开的问题。
+<p>我的困惑稍稍解开了一些。如果问题出在系统上，那就没法从应用侧解决了，这个恼人的问题将永远伴随Windows用户。
+<hr>
+<p>翻Chrome工单列表的原因是Chrome的拖放bug实在是太多了，我遇到的已经有好几个了：
+<ul>
+<li><a href="https://issues.chromium.org/40349733">图片拖不起来。</a>Firefox可以。
+<li><a href="https://issues.chromium.org/40853586">File对象拖不起来。</a>Firefox可以。
+<li><a href="https://issues.chromium.org/40799820">压缩包内文件放不下去。</a>这个基本没有程序幸免。
+<li><a href="https://issues.chromium.org/40068941">dropEffect在某些事件中丢失，且不能为link。</a>Firefox完全符合标准。
+</ul>
+<p>我想把文件从浏览器里面拖到外面，但标准不支持从浏览器里面拖出File对象。
+<figure lang=en>
+<blockquote>
+<div class=admonition><strong>Note:</strong> Dragging files can currently only happen from outside a navigable, for example from a file system manager application.</div>
+</blockquote>
+<figcaption>
+<a href="https://html.spec.whatwg.org/multipage/dnd.html">HTML Living Standard § 6.11.5 Processing model</a>
+</figcaption>
+</figure>
+<p>即使在Chrome页面内拖动，File对象也有bug。奇怪的是，<a href="https://ryanseddon.com/html5/gmail-dragout/">2010年Gmail就支持将附件拖出窗口了</a>。Gmail用了专有接口<code>DownloadURL</code>类型的数据，我试了试果然好用，比标准接口都好用，可惜只能用于Chrome。目前没有任何方法能将文件从Firefox中拖出来（<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=428919">工单</a>）。
+<p>原生系统中，复制到剪贴板、拖拽开始等操作都不会立即复制数据，实际数据传输在粘贴和放下时执行。HTML5拖拽要求数据必须在开始拖拽时提供（烂设计！），要避免过早复制大量数据，拖拽的对象只能是某种标识符。URL很合理，支持data和blob协议。Blob可以表示字节流，但是构造Blob只能引用完全加载到内存中的对象，只有通过网络请求和文件系统能得到不在内存中的Blob对象。service worker可以模拟网络的流式响应，<a href="https://github.com/jimmywarting/StreamSaver.js">这一步甚至有现成库</a>。
+<p>总结一下，要通过拖放保存大量数据到文件，大概需要下列步骤（未验证）：
+<ol>
+<li>注册service worker，确保其在后续文件保存之前可用。这不是个简单的步骤。
+<li>在dragstart事件中，通过同步XMLHttpRequest得到Blob，然后转换成blob URL。<a href="https://web.dev/case-studies/box-dnd-download">2010年Box用同步XMLHttpRequest获取短期下载链接</a>。不能使用fetch，因为数据必须在dragstart事件完成之前写入dataTransfer。
+<li>在dragstart事件中，执行<code>event.dataTransfer.setData('DownloadURL', url)</code>。这是非标准API，因此这一切只能在Chrome中运行。因为这里的URL不受service worker控制，所以必须转换为blob URL。
+<li>在service worker中响应文件数据。
+</ol>
+<p>现在明白那个听起来触发条件很变态的bug <a href="https://issues.chromium.org/41330320">Drag and Drop - setData with Download URL bypasses service worker.</a>是哪来的了，有种<a href="https://jlongster.com/future-sql-web">拼尽全力才能用上正常的SQLite的美感</a>。
+<ol>
+<li>通过WebAssembly执行emscripten编译的SQLite。
+<li>当发生读写时，在一个worker中，对SharedArrayBuffer使用Atomics.wait，强制阻塞地等待IndexedDB的异步操作完成，以对应C语义。（同步XMLHttpRequest和Atomics.wait乃文化瑰宝。）SharedArrayBuffer必须在跨域隔离的上下文中使用。
+<li>当连续读写时，在另一个worker中，对SharedArrayBuffer使用Atomics.wait，通过阻塞事件循环，防止IndexedDB事务按标准在下一轮事件循环前被强制结束，从而合并多个读写到单个事务。
+<li>通过IndexedDB的readwrite事务实现互斥锁并确保写入完整性。
+</ol>
+<p>欢迎来到Web。
+<hr>
+<p>Office的屎山里还留着这个对话框。</p>
+<img src=msword.webp width=380 height=200 alt="是否保留复制的最后一项？
+如果执行此操作，可能会花费较长时间才能退出。">
+<p>Office 97里，这个对话框是这样的：</p>
+<img src=clippy.webp alt="您将一幅图片放在了“剪贴板”中，是否希望在退出Word后此图片仍可用于其他应用程序？">
+<p><a href="https://devblogs.microsoft.com/oldnewthing/20210526-00/?p=105252" title="How ownership of the Windows clipboard is tracked in Win32">Raymond Chen解释过这个对话框的来头</a>：Office并不在复制时立即向剪贴板写入完整的序列化数据，而是拖延到需要粘贴到其他程序中时才做。正常退出Office时，会弹出上面的对话框，询问用户是否要将复制的内容完整写入剪贴板，以便死后其他程序还能取到。如果复制内容后强制结束Office，因为剪贴板中并没有完整数据，就无法粘贴。
+<p>Web应用受诸多限制，很容易死掉，因此剪贴板和拖放API都要求脚本在操作开始时立即提供完整数据。这也不能怪标准制定者不懂桌面传统和性能，委员会还要笑我不懂Web环境和安全。但正是受限的环境才更迫切地需要避免无谓的计算。
