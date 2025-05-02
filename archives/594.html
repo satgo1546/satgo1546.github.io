@@ -1,0 +1,95 @@
+---
+title: Lume是更好用的Eleventy
+date: 2024-12-31
+excerpt: 最后，我想说这是一个典型的博客谬误：在捣鼓网站基建上花的时间比写文章的时间还多。
+tags:
+- 进度报告
+- Lume
+- 静态站点生成器
+---
+
+<p>此前约半年间，我的博客一直基于Eleventy构建。选择Eleventy的原因并非它有多好用，而仅仅是因为我调查过的其他静态站点生成器都强加了不必要的限制以达到“简单”。
+<ul>
+<li>必须以指定的文件结构组织内容（Jekyll、Astro等）
+<li>必须使用指定的模板语言（Hugo、Zola等）
+<li>必须使用指定的标记语言（MkDocs、VitePress等）
+<li>必须携带脚本（Next.js、Nuxt等）
+</ul>
+<p>Eleventy没有以上限制，但也远没有达到我的预期：毫无设计，东拼西凑，不标类型，文档一坨。虽然Eleventy把接口稳定性作为卖点，但是我总有一种下一秒就会轰然散架的脆弱感，所以我仍一直在寻找更好的替代品。
+
+<p><a href="https://lume.land/">Lume</a>是Deno采用的生成器，几乎是Eleventy的精神续作。体验了不到一天，带来的愉悦就足够我决定迁移了。
+
+<table class=booktabs><thead><tr><th>项目<th>Eleventy 3.0.0<th>Lume 2.4.3<tbody>
+<tr><td>数据层叠<td>✗ 不含正文<br>✓ 默认深度合并<td>✓ 含正文<br>✗ 深度合并还没做
+<tr><td>渲染顺序<td>✓ 自动计算依赖图<td>✗ 手动指定
+<tr><td>静态资源<td>○ 可选的预览时复制<br>✗ 必须指定目录或扩展名<td>✗ 预览也必须复制<br>✓ 复制未处理文件
+<tr><td>复合模板引擎<td>○ 仅限搭配Markdown<td>✓ 任意
+<tr><td>JSX<td>✗ 支持程度跟没有一样<td>✓ 官方插件
+<tr><td>组件系统<td>✓ WebC官方插件<td>✓ 内置
+<tr><td>索引<td>○ 标签<td>○ 条件表达式DSL<br>✓ 函数判据
+<tr><td>批量生成页面<td>○ 单级数据分页，功能受限<td>✓ 生成器函数
+<tr><td>后处理<td>✗ PostHTML API暂未公开<td>✓ Deno DOM
+<tr><td>TypeScript<td>✗ 支持程度跟没有一样<td>✓ 开箱即用
+<tr><td>增量编译<td>✗ 实验性，常需重开<td>✗ 默认开启，粒度很粗
+</table>
+
+<svg width="384" height="384" viewBox="0 0 120 120">
+	<filter id="fire-blur">
+		<feGaussianBlur stdDeviation="10"/>
+		<feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" mode="matrix"/>
+		<feBlend in="SourceGraphic"/>
+	</filter>
+
+	<clipPath id="fire">
+		<circle cx="60" cy="60" r="60"/>
+	</clipPath>
+
+	<style type="text/css">
+		@keyframes firecircle {
+			from {
+				r: 25;
+				transform: translateY(0);
+				fill: hsl(0deg, 70%, 60%);
+			}
+
+			to {
+				r: 0;
+				transform: translateY(-110px);
+				fill: hsl(50deg, 100%, 80%);
+			}
+		}
+
+		.flame {
+			animation: firecircle 1.2s cubic-bezier(0.5, 0.07, 0.64, 1) infinite;
+			transform-origin: center;
+		}
+	</style>
+
+	<g clip-path="url(#fire)" filter="url(#fire-blur)">
+		<circle class="flame" cx="48" cy="105" r="25" style="animation-delay: -0.14s"/>
+		<circle class="flame" cx="51" cy="113" r="25" style="animation-delay: -0.28s"/>
+		<circle class="flame" cx="78" cy="113" r="25" style="animation-delay: -0.42s"/>
+		<circle class="flame" cx="58" cy="116" r="25" style="animation-delay: -0.56s"/>
+		<circle class="flame" cx="78" cy="116" r="25" style="animation-delay: -0.7s"/>
+		<circle class="flame" cx="73" cy="105" r="25" style="animation-delay: -0.84s"/>
+		<circle class="flame" cx="80" cy="117" r="25" style="animation-delay: -0.98s"/>
+		<circle class="flame" cx="41" cy="110" r="25" style="animation-delay: -1.12s"/>
+		<circle class="flame" cx="82" cy="115" r="25" style="animation-delay: -1.26s"/>
+		<circle class="flame" cx="58" cy="117" r="25" style="animation-delay: -1.4s"/>
+		<circle class="flame" cx="78" cy="117" r="25" style="animation-delay: -1.54s"/>
+		<circle class="flame" cx="42" cy="115" r="25" style="animation-delay: -1.68s"/>
+		<circle class="flame" cx="41" cy="116" r="25" style="animation-delay: -1.82s"/>
+		<circle class="flame" cx="61" cy="116" r="25" style="animation-delay: -1.96s"/>
+		<circle class="flame" cx="49" cy="111" r="25" style="animation-delay: -2.1s"/>
+	</g>
+</svg>
+
+<p>仍存在的问题：
+<ul>
+<li>出道三年，知名度低，生态缺乏，可能也跟绑定Deno有关。
+<li>集成的新模板引擎Vento并没有解决任何问题。能不能别惦记那b模板引擎了？
+<li>Lume CMS目前仍处于0.x的阶段，很简陋。
+<li>我一直想念Vue的模板语法，比JSX好写得多。在Eleventy中有WebC代餐。但现在可能不得不接受JSX的霸权了。
+</ul>
+
+<p>最后，我想说这是一个典型的博客谬误：在捣鼓网站基建上花的时间比写文章的时间还多。
