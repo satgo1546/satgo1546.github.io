@@ -40,7 +40,7 @@ tags:
 
 ## endoftime（初见）
 
-7月28日，我所在的队伍不负众望地在靠足以买完第三日全部meta的注意力买了卡在瞪汉字规律的任造化落骰-C后在比赛进程最后一天完赛。到此为止，P&KU3（上）主线流程中没有任何一处提到endoftime。
+7月28日，我所在的队伍不负众望地在靠足以买完第三日全部meta的注意力买了卡在瞪汉字规律的《任造化落骰-C》后在比赛进程最后一天完赛。到此为止，P&KU3（上）主线流程中没有任何一处提到endoftime。
 
 随着比赛进程的结束，endoftime页面也悄然发生了变化。
 
@@ -55,7 +55,7 @@ tags:
 	</figure>
 </figure>
 
-正面解出时空花园培养了全角英文的敏感度，错误页面成了汉字矩阵。字阵里面肯定藏了东西，但暂时还找不到密钥。除了废话增加了以外，还新增了文本“为什么抱有如此希望？为何这般清澈、透明、乐观豁达？”“其中可能没有你的名字”，页面底部的白色文字也改变了，宣告谜题正式开始。
+正面解出《时空花园》培养了全角英文的敏感度，错误页面成了汉字矩阵。字阵里面肯定藏了东西，但暂时还找不到密钥。除了废话增加了以外，还新增了文本“为什么抱有如此希望？为何这般清澈、透明、乐观豁达？”“其中可能没有你的名字”，页面底部的白色文字也改变了，宣告谜题正式开始。
 
 <blockquote><pre>时间正在流逝。
 在各处不同的宇宙和时间线，与你再见。</pre></blockquote>
@@ -74,14 +74,18 @@ P&KU公告中将比赛规则调整称为“宇宙变动”，宇宙指观测者�
 我们 P&KU3（中）再见！
 Afterparty 录像：​bilibili.com/video/BV1GE421w7PV/?t=2340</pre></blockquote>
 
-根据黑块的长度和间距可判断这是条形码。用[ZXing解码](https://zxing.org/w/decode.jspx)得“bitly/4c1VCIL”，指向<https://bit.ly/4c1VCIL>。该条码所用的Code 128格式明明支持编码所有ASCII字符，省略域名中的点的原因不明。
+根据黑块的长度和间距可判断幻灯片标题文本框的边框是条形码。
+
+<!----><img src="pnku3-afterparty-barcode.webp" width="534" height="32" style="image-rendering: pixelated; border: 8px solid white; box-sizing: content-box;">
+
+用[ZXing解码](https://zxing.org/w/decode.jspx)得“bitly/4c1VCIL”，指向<https://bit.ly/4c1VCIL>。该条码所用的Code 128格式明明支持编码所有ASCII字符，省略域名中的点的原因不明。
 
 该短网址指向<https://pastebin.com/MFUexT7h>，一个匿名用户于7月28日13:12:45上传的ASCII文本文件。该文件的特征为除最后一行外每行都有61个字符，以“M”开头；只有大写字母，没有小写字母；文件开头有密集的空格，但无法象形出图案或文字。通过字节值直方图可观测到所有正文皆在0x20～0x5F范围，空格和“M”数量最多，其他字节分布平均。这应又是某种二进制到纯文本的编码方式，有特征，但我不认识。搜索“M开头的编码”等无果，但搜索“0x20 0x5F编码”居然到达了[uuencode手册页](https://pubs.opengroup.org/onlinepubs/9799919799/utilities/uuencode.html)，由此判明了编码方式。
 
 CyberChef是真没用吧，Base91也没有，uuencode也没有。手动给文件开头加上`begin 644 -`，结尾加上`` ` ``、换行、`end`，然后喂给uudecode，得到了一张HEIC格式的图片。
 
 <figure>
-	<a href="MFUexT7h.heic"><img src="MFUexT7h.png"></a>
+	<a href="MFUexT7h.heic"><img src="MFUexT7h.png" width="512"></a>
 	<figcaption>⌛🪦：沙碑</figcaption>
 </figure>
 
@@ -89,20 +93,20 @@ CyberChef是真没用吧，Base91也没有，uuencode也没有。手动给文件
 
 ## endoftime（CCBC宇宙）
 
-每隔一段时间就有人提起endoftime，没有人知道它意味着什么。7月29日下午，在一波新的讨论中，Николай,III表示P&KU工作人员也不知道endoftime页面是用来干什么的，可以公开讨论该页面，但不能讨论其他东西。“P&KU3（上）已结束，可以讨论全部内容，但不能讨论全部内容。”于是我把我所知的谜题进度整理到共享表格中，众筹解开endoftime的谜团。几名玩家聚集在了表格里，加了一些猜想，一起一筹莫展。
+每隔一段时间就有人提起endoftime，没有人知道它意味着什么。7月29日下午，在一波新的讨论中，Nikolai表示P&KU工作人员也不知道endoftime页面是用来干什么的，可以公开讨论该页面，但不能讨论其他东西。“P&KU3（上）已结束，可以讨论全部内容，但不能讨论全部内容。”于是我把我所知的谜题进度整理到共享表格中，众筹解开endoftime的谜团。几名玩家聚集在了表格里，加了一些猜想，一起一筹莫展。
 
 谜题跨站以BlueCoin的一句“啊？”为嚆矢。7月31日下午，BlueCoin首先发现了满是乱码的<https://cipherpuzzles.com/endoftime/>，旋即被填入表格。冰枫凌很快通过[乱码恢复工具](http://www.mytju.com/classcode/tools/messycoderecover.asp)GBK转UTF-8复原了编码错误的文字。入侵CCBC的芈雨坏事做尽，从这番P&KU与CCBC梦幻联动开始，解谜变为了在各种网址后面尝试加上“endoftime”。但又尝试了喵谜和江湖解谜的网站，仍无果。
 
-<!----><img src="ie2.png">
-
 <figure>
-	<blockquote>
-		我，降临。<br>
-		无需顾虑，请将我的存在，公之于众。<br>
-		你也会将我铭记于心，对吗？
-	</blockquote>
+	<img src="ie2.png" width="320">
 	<figcaption>♪ 我 于此降临 纵目观测 晦暗不明的书信</figcaption>
 </figure>
+
+<blockquote>
+	我，降临。<br>
+	无需顾虑，请将我的存在，公之于众。<br>
+	你也会将我铭记于心，对吗？
+</blockquote>
 
 通过下载工具直接下载页面，可发现页面源代码以UTF-8编码，但`<meta HTTP-EQUIV="Content-Type" Content="text-html; charset=gb2312">`却指定了字符集为GB2312。冰枫凌认为乱码可能是个意外。
 
@@ -129,7 +133,7 @@ CCBC 15开赛后，终于得知endoftime出现在CCBC网站的原因：观莲游
 
 9月4日晚，距离Just Puzzle Hunt开赛还有不到三天，我发现了<https://justhunt.cn/endoftime/>。
 
-<!----><img src="ie3.png">
+<!----><img src="ie3.png" width="320">
 
 <blockquote><pre>如我们之前的约定，你公开了我的存在。
 我很开心，当看到依然有人偶尔提起我时。真的很开心。
@@ -383,7 +387,7 @@ capitalized on是利用的意思，但capitalize也表示大写，所以提取�
 来自一种&lt;最好的痛苦&gt;。
 （重申此题与endoftime无实际关联）</pre></blockquote>
 
-这个谜题直到一个多月后才被解开。
+这步谜题直到一个多月后才被解开。
 
 ## 【TODO：这个到底是不是无关干扰？】
 
@@ -391,7 +395,7 @@ capitalized on是利用的意思，但capitalize也表示大写，所以提取�
 
 9月30日晚21:05，苍穹玥夜发布了[《玥hunt内测组采访》](https://mp.weixin.qq.com/s/nbpqHuAMqyTGcrsdi5_uBQ)。这场hunt从网址公布到比赛开始只有不到四天的时间。21:16，Inferno在时间尽头研究小组中发出了<https://yuehunt.fun/endoftime>。
 
-<!----><img src="ie4.png">
+<!----><img src="ie4.png" width="320">
 
 此时，再去苍穹玥夜公众号后台回复endoftime，已只能得到“你好，本公众号不是计划的一部分。”的回复。
 
@@ -606,11 +610,11 @@ golden record和“深空”指向旅行者号携带的金唱片。鱼鳞的英�
 
 2024年随着Winfrid在年底的Puzzlers’ Day上一天奖励自己四次画上了句号，endoftime也荣居[2024中文解谜圈十大热点之首（刚编的）](https://mp.weixin.qq.com/s/dzAodemzL5tDVQhW729WUg "hungergame公众号文章《2024十大热点》")，实至名归。不过先别激动，2025可能还是它。2025年1月1日0:29，WYXkk发现CALS谜题零点发布的[#26 元旦谜](https://mp.weixin.qq.com/s/MBCnNDUasI0axgfuncpMNw)中出现了一帧endoftime。
 
-<!----><img src="2025, 1st.gif">
+<!----><img src="2025, 1st.gif" width="512">
 
 图像设定是每4秒闪烁一次，实际显示效果取决于查看器。用惊人的准确度截图或用GIF图像处理工具可将帧截出，其中含有信息图标和不一样的二维码。
 
-<!----><img src="2025, 1st.webp">
+<!----><img src="2025, 1st.webp" width="512">
 
 二维码指向<https://pastebin.com/WTtPWZxT>，是由访客上传的文本文件2025, 1st.txt。
 
@@ -747,15 +751,15 @@ AAA=
 
 向CALS谜题公众号发送endoftime，会收到下列图片。
 
-<!----><img src="cals.png">
+<!----><img src="cals.png" width="512" height="512">
 
 凌晨时分，进展缓慢，早上CAT-FISH一来就速通了。拉曲线可看出图像有低位隐写。按R + 2 = G的条件筛选像素，可得下列图像。
 
-<!----><img src="cals.webp">
+<!----><img src="cals.webp" width="512" height="512">
 
 图像提示使用电话键盘密码。顶部有明显的隐写数据，R通道已被用于提示电话，所以提取时只用G和B。按从左到右、从上到下的顺序依次提取像素的G和B第1位，按书写习惯8位一组译为字节，得到另一张PNG图片。
 
-<!----><img src="suzhou.png">
+<!----><img src="suzhou.png" width="512" height="512">
 
 这是用苏州码子表示的数独题。
 
@@ -815,7 +819,7 @@ AAA=
 
 ---
 
-在此之后，迎来了一段漫长的长草期。中文解谜活动欣欣向荣：[SECO](https://secopuzzle.com/)、[Cornsnaky's Snakeyear](https://cornsnaky.dearfad.com/)、[FDU](https://fduph25.fdupuzzle.fun/)……时间的尽头连着几个月却不见了踪影。
+在此之后，迎来了一段漫长的长草期。中文解谜活动欣欣向荣：[SECO](https://secopuzzle.com/)、[Cornsnaky's Snakeyear](https://cornsnaky.dearfad.com/)、[FDU](https://fduph25.fdupuzzle.fun/)……时间的尽头却连着几个月不见了踪影。抑或，所见到的一切都是时间的尽头……
 
 <figure>
 	<img src="时间的彼端.avif">

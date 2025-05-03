@@ -92,6 +92,24 @@ body>footer {
 	grid-area: foot;
 }
 
+@mixin narrow-elements {
+	p,
+	h2,
+	h3,
+	h4,
+	ul,
+	ol,
+	dl,
+	pre,
+	blockquote,
+	aside,
+	figcaption,
+	.admonition,
+	details {
+		@content;
+	}
+}
+
 :where(article) {
 	margin-block: 1pc;
 
@@ -121,19 +139,7 @@ body>footer {
 		margin-block-end: 6pt;
 	}
 
-	p,
-	h2,
-	h3,
-	h4,
-	ul,
-	ol,
-	dl,
-	pre,
-	blockquote,
-	aside,
-	figcaption,
-	.admonition,
-	details {
+	@include narrow-elements {
 		max-inline-size: var(--textwidth, none);
 		margin-inline: auto;
 	}
@@ -449,6 +455,10 @@ math[display=block] {
 	display: grid;
 	grid: auto-flow / 1fr 1fr;
 	column-gap: 1em;
+
+	@include narrow-elements {
+		margin-inline: 0;
+	}
 }
 
 // 防止索引
