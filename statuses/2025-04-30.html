@@ -1,0 +1,30 @@
+---
+tags:
+- MathML
+---
+
+<p><a href="https://temml.org/">Temml</a>生成的MathML里，<code>&lt;mo&gt;</code>都带lspace和rspace属性。我觉得太啰嗦就删了，结果发现斜杠两侧确实多出了间距。
+<table class=booktabs><thead><tr><th>预期<th>实际<tbody><tr>
+<td>
+
+<math displaystyle="true">
+	<mfrac>
+		<mi>a</mi>
+		<mrow><mi>b</mi><mo lspace="0" rspace="0">/</mo><mn>2</mn></mrow>
+	</mfrac>
+</math>
+
+<td>
+
+<math displaystyle="true">
+	<mfrac>
+		<mi>a</mi>
+		<mrow><mi>b</mi><mo lspace="0.2222222222222222em" rspace="0.2222222222222222em">/</mo><mn>2</mn></mrow>
+	</mfrac>
+</math>
+
+</table>
+
+<p>我觉得奇怪，运算符两侧的间距默认值由运算符决定，斜杠两侧应该默认没有空隙才对。我读了两遍<a href=https://w3c.github.io/mathml-core/#operator-tables>MathML Core标准中的相关部分</a>，也没看出为什么会有空隙。
+<p>搜了一下才发现这是个上古时期的标准bug，标准于去年11月刚刚修复（<a href=https://github.com/w3c/mathml-core/issues/260>工单</a>），浏览器还没跟进。
+<p>Chrome bug不嫌多，我又提了一个：<a href=https://issues.chromium.org/issues/414588528>MathML: too much space around slash operator /</a>。
