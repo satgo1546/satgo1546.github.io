@@ -16,7 +16,7 @@ tags:
 
 <i>那么就发出很大的声音掩盖过去吧！</i>
 
-https://cnhktrz3k5nc.hack-challenge.lug.ustc.edu.cn:13202/?similarity=114514
+<https://cnhktrz3k5nc.hack-challenge.lug.ustc.edu.cn:13202/?similarity=114514>
 
 ## 猫咪小测
 
@@ -72,7 +72,8 @@ setInterval(() => find('hack[', 1, 0, 1) && getSelection().focusNode.parentEleme
 
 <i>相信的心就是你的魔法！</i>
 
-https://acropalypse.app/
+<https://acropalypse.app/>
+
 ## 惜字如金2.0
 
 <i>这就是~~何日君再来~~puzzle hunt给我的自信。</i>
@@ -231,12 +232,12 @@ docker run -itv /:/a alpine cat /a$(readlink /flag)
 
 找错诺贝尔奖得主，不知道哪天公园有活动，没点进链接就没看到志愿者招募，在重新找对诺贝尔奖、枚举出~~1919年~~8月10日后得到了问卷编号。学术之旅以为是乘电车，出口当成上野站，纳闷道：学长莫非是残障人士，所以博物馆免票？
 
-> 1. 2023-08-10 https://www.uenopark.info/2023/ume-shu-2023/
-> 2. ICRR https://www.s.u-tokyo.ac.jp/en/gallery/nobelprize/
-> 3. S495584522 https://umeshu-matsuri.jp/tokyo_staff/
-> 4. 0 https://www.tnm.jp/modules/r_free_page/index.php?id=113
-> 5. 安田讲堂 https://statphys28.org/banquet.html
-> 6. 熊猫-秋田犬 https://plaza.rakuten.co.jp/ayumilife/diary/202308110000/
+> 1. 2023-08-10 <https://www.uenopark.info/2023/ume-shu-2023/>
+> 2. ICRR <https://www.s.u-tokyo.ac.jp/en/gallery/nobelprize/>
+> 3. S495584522 <https://umeshu-matsuri.jp/tokyo_staff/>
+> 4. 0 <https://www.tnm.jp/modules/r_free_page/index.php?id=113>
+> 5. 安田讲堂 <https://statphys28.org/banquet.html>
+> 6. 熊猫-秋田犬 <https://plaza.rakuten.co.jp/ayumilife/diary/202308110000/>
 
 ## 🪐 流式星球
 

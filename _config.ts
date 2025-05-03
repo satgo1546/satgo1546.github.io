@@ -13,7 +13,7 @@ const site = lume({
 	markdown: {
 		options: {
 			breaks: true,
-			linkify: true,
+			linkify: false,
 		},
 	},
 })
