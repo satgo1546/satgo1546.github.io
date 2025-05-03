@@ -1,0 +1,131 @@
+---
+title: 字体编辑器品鉴报告（2024/Windows）
+date: 2024-12-23
+dates: 2024-12-23 ~ 2024-12-24
+excerpt: 不是吧，难道FontForge已经算能打的了？
+tags:
+- 实验
+- 字体
+---
+
+<p>受够了FontForge折磨后，我开始寻找商业字体编辑器。然而，价高质低的产品也不在少数。不是吧，难道FontForge已经算能打的了？
+<p>本次目标是绘制熙笃会数字（Cistercian numerals）。
+
+<figure>
+<img src=cistercian.svg>
+<figcaption lang=en><a href="https://commons.wikimedia.org/wiki/File:Cistercian_digits_(vertical).svg">Cistercian digits</a> by Meteoorkip, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>, via Wikimedia Commons</figcaption>
+</figure>
+
+<p>叠加这些字符，可以用一个字符表示1~9999的数字。《巴别塔圣歌》中的数字语言很可能参考了这个系统。
+
+<figure>
+<svg width="71" height="105" viewBox="0 0 716 1050" stroke-width="50" stroke-linecap="round">
+<path d="M358 25V1025" stroke="var(--red)"/>
+<path d="M691 25L358 358" stroke="var(--yellow)"/>
+<path d="M358 25L25 358" stroke="var(--green)"/>
+<path d="M358 692H691" stroke="var(--cyan)"/>
+<path d="M25 1025H358" stroke="var(--blue)"/>
+</svg>
+<figcaption>
+<span style="color: var(--yellow)">1</span><span style="color: var(--green)">2</span><span style="color: var(--cyan)">3</span><span style="color: var(--blue)">4</span>
+</figcaption>
+</figure>
+
+<p>Unicode尚未编码这些字符（参照<a href="https://www.unicode.org/L2/L2020/20290-cistercian-digits.pdf">Background for Unicode consideration of Cistercian numerals</a>），此处采用私用区、重音符号的编码方案，各数位作为重音符号附着在竖线上，这样就不需要创建9999个字符了。</p>
+
+<table class=booktabs><thead><tr><th>码位<th>字符<tbody>
+<tr><td>U+FCC00<td><span style="color: var(--red)">竖线</span>
+<tr><td>U+FCC01~U+FCC09<td><span style="color: var(--yellow)">1~9</span>
+<tr><td>U+FCC11~U+FCC19<td><span style="color: var(--green)">10~90</span>
+<tr><td>U+FCC21~U+FCC29<td><span style="color: var(--cyan)">100~900</span>
+<tr><td>U+FCC31~U+FCC39<td><span style="color: var(--blue)">1000~9000</span>
+</table>
+
+<p>要做到正确渲染，需要：
+
+<ol>
+<li>在竖线字形中添加基锚点（base anchor），在数字字形中添加标记锚点。
+<li>在GDEF表中定义竖线字形为基（base）字形，数字字形为标记（mark）。
+<li>在GPOS表中定义mark特性，对应语言和锚点类型。
+</ol>
+
+<p>足够智能的字体编辑器应能在见证了1后自动完成2和3。
+<p>我只有Windows电脑，所以下列评测都为Windows上的体验。Mac用户请直接冲macOS独占的Glyphs，然后告诉我体验如何。光是看它的文档我都馋死了。</p>
+
+<h2>FontForge 2023-01-01</h2>
+<pre><i>自由软件</i></pre>
+<img src="fontforge.webp">
+<p>最专业的开源字体编辑器，是可以用来检查字体格式是否正确的程度。但代码是陈年屎山，UI更是<em>屎中屎</em>。做过字体相关处理的用户应该或多或少都已经体验过，且再也不想体验第二次了。
+<p>八年了仍未支持可变字体，彩色字体更不用提了。
+<p>Windows版本经常崩溃，务必做好备份，文件可能被吞掉。（可能Linux版也是。）SFD文件是纯文本，有时候文本编辑器比本体好用。
+<p>有一套特有的spiro曲线绘图工具，但因为交互是屎，手感很烂。画布上看起来有参考线，究竟有没有对齐就不好说了。
+<p>完整支持GUI编辑OpenType特性，这在商业字体编辑器中都属少见的。
+<p>文档很全，所有对话框都有解释。工具提示也会有大段详细说明。
+
+<h2>FontLab 8</h2>
+<pre><i>单版本买断US$499（学生US$335），有订阅选项</i></pre>
+<img src="fontlab.webp">
+<p>试用版需要填写电子邮件地址，但其实可以在<a href="https://download.fontlab.com/fontlab-8/upd-win64.php">https://download.fontlab.com/fontlab-8/upd-win64.php</a>直接下载到。
+<p>在半天内，遇到了近十个体验或渲染上的问题。
+<ul>
+<li>Qt 5版本老，存在DPI缩放bug，界面巨大无比，通过设置QT_SCALE_FACTOR环境变量解决。
+<li>Qt 5版本老，存在系统字体获取到宋体的bug，丑到没法看。<em>字体设计软件的界面字体丑到没法看</em>。通过修改注册表HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts\SimSun &amp; NSimSun (TrueType)字符串值为垃圾数据解决。
+<li>字形缩略图存在字符切去了1~2像素的问题，可能与DPI缩放有关。
+<img src=fontlab1.webp width=100 height=100>
+<li>重音符号刚编辑完时预览存在渲染异常，切换一下窗口又好了，疑似缓存清除不及时。
+<li>在Font Info &gt; Master Properties &gt; Guides中设置了参考线没有生效，但在画布上设置的参考线Copy to Font后也是加到这里，所以我应该没有操作错。
+<li>调整字距对（kerning pair）会导致预览文字自动换行位置发生变化。缩放预览窗口不能让一行容纳下更多字符，也没有找到其他能取消自动换行的办法。
+<li>在Windows上出现了“⌘+]”的快捷键。按<kbd><kbd>Ctrl</kbd>+<kbd>]</kbd></kbd>有效，但是很迷惑。
+<img src=fontlab2.webp width=366 height=116>
+<li>上面这个按钮没有对应的⌘+[快捷键，哦，我是说Ctrl+[，按了没反应。
+<li>不能通过多选的方式在状态栏上批量设置字符宽度，批量操作必须用Actions对话框或Glyph面板完成。
+<li>不能批量添加私用区空字形，只能一个一个添加。
+<li>默认不导出mark和mkmk特性，需要在导出选项中启用。
+<li>Windows上字体信息对话框是模态的，无法在开启对话框时移动和滚动帮助面板，尽管其上确有内容，却没法看到。
+</ul>
+
+<p>矢量绘图功能比较强大，有画笔、铅笔、速写、钢笔多种笔工具可用。只用了钢笔，手感流畅。缩放工具的手感很独特或诡异。
+<p>OpenType特性通过AFDKO特性语言描述，GUI只是代码输入框。
+<p>支持一键用上次配置导出，会自动将同名文件重命名后以原名写入，此功能能极大地加速测试反馈循环。
+
+<h2>FontCreator 15</h2>
+<pre><i>单版本买断制，标准版US$149，专业版US$199，家庭版是废物</i></pre>
+<img src=fontcreator.webp>
+<p>试用版邀请填写电子邮件地址，但可以跳过。不管怎样，下载地址是<a href="https://www.high-logic.com/FontCreatorSetup-x64.exe">https://www.high-logic.com/FontCreatorSetup-x64.exe</a>。
+<p>我用过FontCreator 4，那是纯原生Win32程序。那个版本没有专有格式，直接读写且只支持TrueType（Win32对OpenType的支持本就不好）。没有矢量绘图工具，形状不能布尔运算，拖动轮廓会闪瞎眼。现在这些问题都被解决了。
+<p>现在的15版看起来也是上古代码，画布以外的UI大概依旧是Win32，重绘速度很慢，完全重绘（最小化后恢复）需要整整一秒！
+<p>Windows原生软件的特色就是<em>乱</em>。界面塞满，工具栏三行，到处都是组件。二十年前的用户交互套上近年的皮肤，格格不入。简体中文翻译不全，且有多处错误。
+<p>矢量绘图工具仍然只有钢笔和圆形画笔，加上创建矩形和椭圆的形状工具。要注意的是，字体轮廓没有描边的说法，编辑器也没有提供描边工具，甚至不支持不闭合的曲线和非整数坐标点。在一般矢量图绘制工具中绘制线条的场合，在这里需要手工描边！
+<div class=row>
+<figure>
+<img src=fontcreator1.webp>
+<figcaption>你以为要画的</figcaption>
+</figure>
+<figure>
+<div class=row>
+<img src=fontcreator2.webp>
+<img src=fontcreator3.webp>
+</div>
+<figcaption>实际上要画的</figcaption>
+</figure>
+</div>
+<p>绘制字母倒其实没那么大关系，但这会严重加大数学符号类字形的制作难度。可以说在FontCreator中制作数学符号的唯一可靠方法就是用外部工具绘制，转换为轮廓后导入图片。
+<p>OpenType特性可GUI编辑，也可用AFDKO、VOLT、OTLFD语言编写，有内置代码编辑器。代码编辑器仅用于导入导出GUI中可设定的属性，并不会在项目文件中保留源代码，也因此可在三种特性语言间自由切换。</p>
+<img src=fontcreator0.webp>
+<p>按<kbd><kbd>F5</kbd></kbd>可临时安装字体，但字体名每次随机生成。此功能真能加速测试反馈循环吗？毕竟需要安装字体才能使用的软件一般也不支持动态更新字体列表。</p>
+<h2>不完整支持OpenType特性的字体编辑器</h2>
+<p>每个文种都有些微妙的麻烦在，完全不需要OpenType特性的大概只有图标字体了。不完整支持或不能可视化编辑OpenType特性的字体编辑器可以说是无法投入使用的，所以本次评测略去了对以下软件的详细体验。</p>
+<dl>
+<dt>Glyphr Studio 2<dd>开源的网页应用，目的在于学习，自2010年至今。因为只有一人维护，且以尽可能无依赖为目标，所以功能匮乏，开发进程缓慢。UI非常漂亮。导入导出速度很慢，无法处理大字体。仅支持kern和liga特性。
+<img src=glyphrstudio.webp>
+<dt>Birdfont 6.12<dd>半开源项目，单人自2012年开发至今。开源版只能导出TTF和两个死格式，导出OTF需要Plus版（US$9.99）。比FontForge还烂的UI，性能也很差，能用得下去的也是神人了。只能使用预置的OpenType特性名（与特性类型绑定），仅支持部分特性。
+<dt>Type 3.2<dd>在2019年最后一次更新加入了可变字体的支持后已停止开发，故降价销售（US$15）。OpenType特性仅能通过专有的FEAX语言添加，仅支持少数特性。
+<dt>Fonto&shy;grapher 5<dd>在2013年后已停止开发，但仍要价US$259。这个软件和下面的TypeTool现在隶属FontLab，但以前是独立的，所以并不是FontLab的换皮阉割版。矢量绘图工具栏有个莫名其妙的透视工具。仅支持AFDKO特性代码，没有kern以外的编辑能力。
+<dt>TypeTool 3<dd>在2013年后已停止开发，但仍要价US$49。无任何OpenType特性功能。官网的文字没有居中，上面的Fontographer也一样。
+<img src=typetool.webp>
+<dt>Fontra<dd>近年新成立的开源项目，基于浏览器前端的本机应用程序。立项的目的是解决RoboFont的上限问题，同时侧重可变字体。操作流畅，功能残缺，未来可期。目前无任何OpenType特性功能。
+</dl>
+<h2>结论</h2>
+<p>没有好用的。
+<p>啊咧，这就完了？也就是说，现在Windows上真正能用的字体编辑器也就只有三个，而FontForge甚至是其中之一。
+<p>如果想用免费软件，唯一有效选项是FontForge。如有大量自定义OpenType特性需求，且不需要在软件内绘制字形，则可选择FontCreator或FontForge。否则，应该选择FontLab。FontLab的综合体验最佳，但从Mac转来仍有不少水土不服的问题。</p>
