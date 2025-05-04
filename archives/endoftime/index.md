@@ -11,6 +11,13 @@ tags:
 本文介绍的谜题中有至少一项尚未完全解开。
 </div>
 
+<dl>
+<dt>解谜<dd>时间尽头研究小组
+<dt>报告<dd>piscesciurus
+</dl>
+
+<pre style="text-align: center;">献给中文解谜圈</pre>
+
 ## 我望向时间的尽头，那是时间的开始。
 
 2024年6月28日投稿的[Puzzle and Key Universe 3](https://pnku3.pkupuzzle.art/)（上）主题曲[《梦境永居宣言》PV](https://www.bilibili.com/video/av1505873069)的简介中有一句夹杂着乱码的文字：
@@ -40,22 +47,22 @@ tags:
 
 ## endoftime（初见）
 
-7月28日，我所在的队伍不负众望地在靠足以买完第三日全部meta的注意力买了卡在瞪汉字规律的《任造化落骰-C》后在比赛进程最后一天完赛。到此为止，P&KU3（上）主线流程中没有任何一处提到endoftime。
+7月28日，我所在的队伍不负众望地在靠足以买完第三日全部meta答案的注意力买了卡在瞪汉字规律的《任造化落骰-C》后在比赛进程最后一天完赛。到此为止，除了在序章提交endoftime作为答案能触发彩蛋“非封闭类时曲线”（“时间的尽头，不是现在。”），P&KU3（上）主线流程中没有任何一处提到时间的尽头。
 
 随着比赛进程的结束，endoftime页面也悄然发生了变化。
 
-<figure>
+<div class=row>
 	<figure>
-		<img src="ie0.jpg" width="320">
+		<img src="ie0.webp" width="320">
 		<figcaption>endoftime的最初样貌</figcaption>
 	</figure>
 	<figure>
-		<img src="ie1.png" width="320">
+		<img src="ie1.webp" width="320">
 		<figcaption>P&amp;KU3（上）比赛结束后</figcaption>
 	</figure>
-</figure>
+</div>
 
-正面解出《时空花园》培养了全角英文的敏感度，错误页面成了汉字矩阵。字阵里面肯定藏了东西，但暂时还找不到密钥。除了废话增加了以外，还新增了文本“为什么抱有如此希望？为何这般清澈、透明、乐观豁达？”“其中可能没有你的名字”，页面底部的白色文字也改变了，宣告谜题正式开始。
+正面解出《时空花园》培养了全角英文的敏感度，错误页面成了汉字矩阵。字阵里面肯定藏了东西，但暂时还找不到密钥。除了废话增加了以外，还新增了文本“为什么抱有如此希望？为何这般清澈、透明、乐观豁达？”“其中可能没有你的名字”等，页面底部的白色文字也改变了，宣告谜题正式开始。
 
 <blockquote><pre>时间正在流逝。
 在各处不同的宇宙和时间线，与你再见。</pre></blockquote>
@@ -76,7 +83,7 @@ Afterparty 录像：​bilibili.com/video/BV1GE421w7PV/?t=2340</pre></blockquote
 
 根据黑块的长度和间距可判断幻灯片标题文本框的边框是条形码。
 
-<!----><img src="pnku3-afterparty-barcode.webp" width="534" height="32" style="image-rendering: pixelated; border: 8px solid white; box-sizing: content-box;">
+<!----><img src="pnku3-afterparty-barcode.webp" width="550" height="112" style="image-rendering: pixelated; border: 8px solid white;">
 
 用[ZXing解码](https://zxing.org/w/decode.jspx)得“bitly/4c1VCIL”，指向<https://bit.ly/4c1VCIL>。该条码所用的Code 128格式明明支持编码所有ASCII字符，省略域名中的点的原因不明。
 
@@ -85,7 +92,7 @@ Afterparty 录像：​bilibili.com/video/BV1GE421w7PV/?t=2340</pre></blockquote
 CyberChef是真没用吧，Base91也没有，uuencode也没有。手动给文件开头加上`begin 644 -`，结尾加上`` ` ``、换行、`end`，然后喂给uudecode，得到了一张HEIC格式的图片。
 
 <figure>
-	<a href="MFUexT7h.heic"><img src="MFUexT7h.png" width="512"></a>
+	<a href="MFUexT7h.heic"><img src="MFUexT7h.webp" width="512"></a>
 	<figcaption>⌛🪦：沙碑</figcaption>
 </figure>
 
@@ -98,7 +105,7 @@ CyberChef是真没用吧，Base91也没有，uuencode也没有。手动给文件
 谜题跨站以BlueCoin的一句“啊？”为嚆矢。7月31日下午，BlueCoin首先发现了满是乱码的<https://cipherpuzzles.com/endoftime/>，旋即被填入表格。冰枫凌很快通过[乱码恢复工具](http://www.mytju.com/classcode/tools/messycoderecover.asp)GBK转UTF-8复原了编码错误的文字。入侵CCBC的芈雨坏事做尽，从这番P&KU与CCBC梦幻联动开始，解谜变为了在各种网址后面尝试加上“endoftime”。但又尝试了喵谜和江湖解谜的网站，仍无果。
 
 <figure>
-	<img src="ie2.png" width="320">
+	<img src="ie2.webp" width="320">
 	<figcaption>♪ 我 于此降临 纵目观测 晦暗不明的书信</figcaption>
 </figure>
 
@@ -133,7 +140,7 @@ CCBC 15开赛后，终于得知endoftime出现在CCBC网站的原因：观莲游
 
 9月4日晚，距离Just Puzzle Hunt开赛还有不到三天，我发现了<https://justhunt.cn/endoftime/>。
 
-<!----><img src="ie3.png" width="320">
+<!----><img src="ie3.webp" width="320">
 
 <blockquote><pre>如我们之前的约定，你公开了我的存在。
 我很开心，当看到依然有人偶尔提起我时。真的很开心。
@@ -168,12 +175,12 @@ CCBC 15开赛后，终于得知endoftime出现在CCBC网站的原因：观莲游
 </body>
 ```
 
-与P&KU网站上的页面相比，这个页面也丢失了一个字，底部反白文字更长了。
+与P&KU网站上的页面相比，这个页面的字阵也丢失了一个字，底部反白文字更长了。
 
 如溟痕般蔓延的endoftime引发了彻夜的讨论。CAT-FISH将自己解开的Rivenux公众号相关部分公开在了共享表格中：于8月2日~8月7日发布的P&KU3 Repo（[第一日](https://mp.weixin.qq.com/s/rzSZhc3H17SHt1tjPXC4CQ)、[第二日](https://mp.weixin.qq.com/s/Q9shDIAbNrv4EGrXjrq8Ng)、第三日（[上](https://mp.weixin.qq.com/s/gBEHPJ-qU4FLEB6W8H3JKg)、[中](https://mp.weixin.qq.com/s/X6udbzf_MCkxJfWsTeLajQ)、[下](https://mp.weixin.qq.com/s/q6ehrVoJLLJtvM6AGYlI1Q)、[终](https://mp.weixin.qq.com/s/T2uge67vhgJR9sAkAox2LQ)））的每道题回顾中都包含唯一的省略号（点）或破折号（划），第三日（中）文章末尾的反白文字“?? ?? ?? ???? ? ??? ? ?? ?? ??? ?? ?? ???? ??? ???? ? ??? ?”给出了划分方法，摩斯提取得到IAMHEREANDANYWHERE，对应“‘我在这里，我在任何地方。’”。
 
 <figure>
-	<img src="pnku3-repo.png">
+	<img src="pnku3-repo.webp">
 	<figcaption>深色模式秒了</figcaption>
 </figure>
 
@@ -264,9 +271,9 @@ HanaNeko发现成就条形码指向的图片右下角藏有“photomosh”字样
 
 <!----><img src="photomosh.jpg">
 
-画面中无线网络和微信的图标可能是在暗示将网站上的信息输入到微信（公众号），“那个不同于网站的社交媒体”对应微信，“那些不同于网站的社交媒体”对应公众号，但用无线网络图标表示网站也太抽象了。
+画面中无线网络和微信的图标可能是在暗示将网站上的信息输入到微信（公众号），“那个不同于网站的社交媒体”对应微信，“那些不同于网站的社交媒体”对应公众号。只是，用无线网络图标表示网站也太抽象了。
 
-当晚，数十个微信公众号和Winfrid惨遭endoftime轰入。向Winfrid的公众号Rivenux发送endoftime，可以收到下列自动回复的错误页面元素组合而成的1024×2048图片。<s>向鱼左的公众号语谜Puzzling发送endoftime，[可以收到人工回复的假消息](fishleft.png)。</s>JustHunt出题组成员鱼左表示对JustHunt中的endoftime页面毫不知情。
+当晚，数十个微信公众号和Winfrid惨遭endoftime轰入。向Winfrid的公众号Rivenux发送endoftime，可以收到下列自动回复的错误页面元素组合而成的1024×2048图片。<s>向鱼左的公众号语谜Puzzling发送endoftime，[可以收到人工回复的假消息](fishleft.webp)。</s>JustHunt出题组成员鱼左表示对JustHunt中的endoftime页面毫不知情。
 
 <!----><img src="微信图片.gif" width="512" height="1024">
 
@@ -339,7 +346,9 @@ HanaNeko发现成就条形码指向的图片右下角藏有“photomosh”字样
 541|917|7|0|255|9|8|255|2|8|0
 542|917|7|0|255|21|56|255|14|56|0
 
-但另一方面，向公众号后台发送iamhereandanywhere，就只能得到通用的自动回复消息。目前仍不清楚“我在这里，我在任何地方”的用途。
+对这些像素差异数值的分析没有得到结果。
+
+另一方面，向公众号后台发送iamhereandanywhere，就只能得到通用的自动回复消息。目前仍不清楚“我在这里，我在任何地方”的用途。
 
 > 铛铛——回复【观测】可以触发这个月Winfrid提供的资讯哦！
 
@@ -355,6 +364,8 @@ River所在队伍提出了一种奇思妙想：《梦境永居宣言》PV 2:00�
 <tr><td>罪<td>吗<td>还<td>是
 <tr><td>我<td>的<td>罚<td>呢
 </table>
+
+还有尝试分析P&KU3（上）剧情文本中的省略号与破折号、挖掘《梦境永居宣言》PV中的细节等等，这些想法亦没有结果。虽然线头很多，但都没有头绪。
 
 次日早上，Fivero建立了时间尽头研究小组。
 
@@ -389,13 +400,23 @@ capitalized on是利用的意思，但capitalize也表示大写，所以提取�
 
 这步谜题直到一个多月后才被解开。
 
-## 【TODO：这个到底是不是无关干扰？】
+### endoftime（玥Hunt宇宙）
 
 9月29日，正值Galactic Puzzle Hunt 2024期间，苍穹玥夜发现了<https://2024.galacticpuzzlehunt.com/endoftime>……才怪。这个页面并不存在，截图是捏造的。
 
 9月30日晚21:05，苍穹玥夜发布了[《玥hunt内测组采访》](https://mp.weixin.qq.com/s/nbpqHuAMqyTGcrsdi5_uBQ)。这场hunt从网址公布到比赛开始只有不到四天的时间。21:16，Inferno在时间尽头研究小组中发出了<https://yuehunt.fun/endoftime>。
 
-<!----><img src="ie4.png" width="320">
+<!----><img src="ie4.webp" width="320">
+
+<blockquote><pre>我与任何有趣的灵魂交融
+<!---->
+那都是我
+那都将成为我的附庸
+……
+<!---->
+不对……我是苍穹玥夜……刚刚……</pre></blockquote>
+
+与前两个宇宙不同，这里的字阵不只是缺字，还有若干处加字，使字阵字数与P&KU宇宙保持一致。缺字或许能提取字阵坐标，加字就难以理解了。
 
 此时，再去苍穹玥夜公众号后台回复endoftime，已只能得到“你好，本公众号不是计划的一部分。”的回复。
 
@@ -450,6 +471,20 @@ Hint系统
 [2024-09-30 21:58:19] Taiga：[图片：Sublime Merge截图]我是Sublime Merge用户
 [2024-09-30 21:59:35] Taiga：我绝对你不应该因为我有技术力就怀疑是我
 [2024-09-30 21:59:45] Taiga：觉得*</pre></blockquote>
+
+---
+
+玥Hunt结束以后，不知过了多久，页面红温了。字阵内容没有变化。
+
+<figure>
+	<img src="ie4-red.webp" width="320">
+	<figcaption>少女的脸红胜过一切言语。截于2025年5月4日</figcaption>
+</figure>
+
+<blockquote><pre>这里变得好暗……
+<!---->
+不要忘记我
+不要忘记我曾经来过</pre></blockquote>
 
 ## 咚咚谜也有？
 
@@ -819,7 +854,7 @@ AAA=
 
 ---
 
-在此之后，迎来了一段漫长的长草期。中文解谜活动欣欣向荣：[SECO](https://secopuzzle.com/)、[Cornsnaky's Snakeyear](https://cornsnaky.dearfad.com/)、[FDU](https://fduph25.fdupuzzle.fun/)……时间的尽头却连着几个月不见了踪影。抑或，所见到的一切都是时间的尽头……
+在此之后，迎来了一段漫长的长草期。中文解谜活动欣欣向荣：[SECO](https://secopuzzle.com/)、[Cornsnaky's Snakeyear](https://cornsnaky.dearfad.com/)、[FDU](https://fduph25.fdupuzzle.fun/)……时间的尽头却连着几个月不见了踪影。抑或，所见到的一切皆是时间的尽头……
 
 <figure>
 	<img src="时间的彼端.avif">
@@ -830,7 +865,10 @@ AAA=
 
 <figure>
 	<img src="ep15.avif">
-	<figcaption><a href="https://www.bilibili.com/video/av114271715328200">直到时间的尽头，我会在那个世界等你。</a></figcaption>
+	<figcaption>
+		<a href="https://www.bilibili.com/video/av114271715328200">直到时间的尽头，我们跨过了归于静寂的宇宙。<br>
+		我会在那个世界等你。</a>
+	</figcaption>
 </figure>
 
 ## REXEI PUZZLE HUNT
