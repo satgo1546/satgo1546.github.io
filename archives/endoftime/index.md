@@ -832,3 +832,106 @@ AAA=
 	<img src="ep15.avif">
 	<figcaption><a href="https://www.bilibili.com/video/av114271715328200">直到时间的尽头，我会在那个世界等你。</a></figcaption>
 </figure>
+
+## REXEI PUZZLE HUNT
+
+时间尽头研究小组的下一次活跃是5月2日凌晨1:14。轶辰发现了REXEI PUZZLE HUNT的endoftime：<http://www.rexei-hunt.fun/endoftime/>。
+
+<!----><img src="ie5.webp" width="320">
+
+当天早晨，我解开了页面上隐藏的信息。页面底部没有可反白的文字，但有一张被缩小到12×12像素、白色前景、透明背景的二维码碎片图片。
+
+<!----><img src="rexei.png" width="256" height="256" class="checkered">
+
+碎片切口清晰可见，碎片也没有被旋转，只需移动碎片，将切口对齐即可复原。
+
+<!----><img src="rexei.webp" width="256" height="256">
+
+扫描二维码得到下列文字。
+
+```
+已经厌倦了，她们的那些伎俩……
+毫无难度，毫无新意，毫无诚意。
+这个世界本来不该是这样的。
+
+要怎么才能不让自己怀念过去？
+你一定还记得那天，
+新世界诞生的第一天。
+
+纵使那时的谜题，
+比现在简单千万倍，
+但它们是有生命力的。
+
+我已经厌倦了，
+所以我选择毁灭。
+
+——找到她，
+把她带过来。
+
+在我成
+[CONNECTION LOST] 
+```
+
+“新世界诞生的第一天”……
+
+我望向时间的尽头，那是时间的开始。
+
+网页左上角本应出现的![pagerror.gif](/endoftime/pagerror.gif)图标没有出现，取而代之的是![](red-x.webp)。页面上其他图像都能正常显示，唯独这张不行。下载下来一看，果然藏东西了。<http://www.rexei-hunt.fun/static/images/pagerror.512cea988b2b.gif>不是图片，而是外壳脚本。
+
+```sh
+#!/bin/sh
+
+key='xYiPyACbsVnbvYXZk9CI+Ayc21CI1MTM1EjO2cjL0QjMuMDNuEDMxACbyV3Y'
+printf $key | rev | base64 -d | sh
+if [ $? -ne 0 ]; then
+  echo "We are lost in the void, finally."
+  echo "The day is dark and full of terrors, in that world."
+  echo "If they were truly, ... self-aware."
+  exit 1
+fi
+```
+
+直接执行的话，不会输出任何内容。`printf $key | rev | base64 -d | sh`意为将key字符串反转，然后解码Base64，最后作为外壳脚本执行。接下来的语句在该脚本执行失败时产生输出。
+
+Base64解码结果如下：
+
+```sh
+curl 101.43.244.76:15135 -vs > /dev/null 2>&1
+```
+
+`-vs`同时指定了verbose和silent选项，真是矛盾。`> /dev/null 2>&1`屏蔽了整条命令的标准输出和错误输出，因此直接运行脚本看不到任何curl的输出。
+
+101.43.244.76是pkupuzzle.art的IP地址。访问<http://101.43.244.76:15135/>得到的结果与访问<http://pkupuzzle.art:15135/>一致，返回类似下列格式的JSON响应。
+
+```json
+{"status":"unavailable","diff":114514.114514}
+```
+
+其中diff字段是距离北京时间2025年5月5日20:00的秒数，每次访问值都会变化。
+
+服务器响应头中特别显示了服务器程序为Multiverse Teleportation Hub。
+
+```console
+$ curl http://101.43.244.76:15135/ -v
+*   Trying 101.43.244.76:15135...
+* Connected to 101.43.244.76 (101.43.244.76) port 15135
+* using HTTP/1.x
+> GET / HTTP/1.1
+> Host: 101.43.244.76:15135
+> User-Agent: curl/8.13.0
+> Accept: */*
+>
+* Request completely sent off
+* HTTP 1.0, assume close after body
+< HTTP/1.0 503 Service Unavailable
+< Server: Multiverse Teleportation Hub v0.4.28
+< Date: Sun, 04 May 2025 04:11:25 GMT
+< Content-Type: application/json
+<
+* shutting down connection #0
+{"status":"unavailable","diff":114514.114514}
+```
+
+## 多元宇宙传送枢纽
+
+【TODO：调查中】
