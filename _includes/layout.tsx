@@ -4,6 +4,7 @@ export default (data: Lume.Data) => {
 		<header>
 			<hgroup>
 				<h1><a href="/" title="satgo1546’s ocean" rel="home">satgo1546’s ocean</a></h1>
+				<h2>Any sufficiently primitive magic is indistinguishable from technology.</h2>
 			</hgroup>
 			<nav class="main-navigation">
 				<label class="menu-toggle"><input type="checkbox" hidden />菜单</label>
@@ -13,6 +14,7 @@ export default (data: Lume.Data) => {
 					<li><a href="/tags/">标签</a></li>
 					{/* <li>
 						<a href="/pages/about/">关于</a>
+						博客是巨大的草稿箱
 						<ul>
 							<li><a href="https://dearti.me/satgo1546">第二时光</a></li>
 							<li><a href="https://github.com/satgo1546">GitHub</a></li>

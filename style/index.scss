@@ -1660,7 +1660,7 @@ math[display=block] {
 
 	@media screen {
 		body {
-			margin-top: 8rem !important;
+			margin-top: 10rem !important;
 		}
 	}
 
@@ -1757,6 +1757,12 @@ math[display=block] {
 		padding: 8px;
 		background: var(--bg0);
 		scrollbar-color: auto;
+	}
+
+	body>header {
+		h2 {
+			font: inherit;
+		}
 	}
 
 	.menu-toggle {
@@ -1911,6 +1917,14 @@ math[display=block] {
 	}
 
 	text-decoration-thickness: .4pt;
+
+	body>header {
+		h2 {
+			font: inherit;
+			font-style: italic;
+			text-align: right;
+		}
+	}
 
 	.token.symbol,
 	.token.punctuation {
