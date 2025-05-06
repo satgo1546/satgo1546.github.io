@@ -72,6 +72,11 @@
 	font-display: swap;
 }
 
+@font-palette-values --caliente-wood {
+	font-family: sats-symbol;
+	override-colors: 28 #995e33, 29 #f9e7d2;
+}
+
 :root {
 	--monospace: sats-symbol, monospace, monospace;
 }
@@ -455,6 +460,7 @@ math[display=block] {
 	display: grid;
 	grid: auto-flow / 1fr 1fr;
 	column-gap: 1em;
+	max-inline-size: calc(var(--textwidth, 62.5%) * 1.6);
 
 	@include narrow-elements {
 		margin-inline: 0;
@@ -1730,6 +1736,8 @@ math[display=block] {
 		--textwidth: 42pc;
 		scrollbar-color: var(--fg1) var(--bg1);
 	}
+
+	font-palette: --caliente-wood;
 
 	body {
 		display: grid;
