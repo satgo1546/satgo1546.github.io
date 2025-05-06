@@ -104,16 +104,21 @@ CyberChef是真没用吧，Base91也没有，uuencode也没有。手动给文件
 
 谜题跨站以BlueCoin的一句“啊？”为嚆矢。7月31日下午，BlueCoin首先发现了满是乱码的<https://cipherpuzzles.com/endoftime/>，旋即被填入表格。冰枫凌很快通过[乱码恢复工具](http://www.mytju.com/classcode/tools/messycoderecover.asp)GBK转UTF-8复原了编码错误的文字。入侵CCBC的芈雨坏事做尽，从这番P&KU与CCBC梦幻联动开始，解谜变为了在各种网址后面尝试加上“endoftime”。但又尝试了喵谜和江湖解谜的网站，仍无果。
 
-<figure>
-	<img src="ie2.webp" width="320">
-	<figcaption>♪ 我 于此降临 纵目观测 晦暗不明的书信</figcaption>
-</figure>
+<div class="row">
+	<img src="ie6.webp" width="320">
+	<div>
+		<figure>
+			<img src="ie2.webp" width="320">
+			<figcaption>♪ 我 于此降临 纵目观测 晦暗不明的书信</figcaption>
+		</figure>
+		<blockquote>
+			我，降临。<br>
+			无需顾虑，请将我的存在，公之于众。<br>
+			你也会将我铭记于心，对吗？
+		</blockquote>
+	</div>
+</div>
 
-<blockquote>
-	我，降临。<br>
-	无需顾虑，请将我的存在，公之于众。<br>
-	你也会将我铭记于心，对吗？
-</blockquote>
 
 通过下载工具直接下载页面，可发现页面源代码以UTF-8编码，但`<meta HTTP-EQUIV="Content-Type" Content="text-html; charset=gb2312">`却指定了字符集为GB2312。冰枫凌认为乱码可能是个意外。
 
@@ -277,7 +282,7 @@ HanaNeko发现成就条形码指向的图片右下角藏有“photomosh”字样
 
 <!----><img src="微信图片.gif" width="512" height="1024">
 
-<s>鱼左：我知道，这是用PS里面滤镜-风格化-风效果做的。</s>HanaNeko还发现这张图片是GIF动画，共两帧，两帧之间只有64个像素有区别，看起来就像静态图片一样。gary、Winid、High Sierra尝试提取了帧间差异。
+<s>鱼左：我知道，这是用PS里面滤镜-风格化-风效果做的。</s>HanaNeko还发现这张图片是GIF动画，共两帧，两帧之间只有64个像素有区别，看起来就像静态图片一样。gary、Winid、Sierra尝试提取了帧间差异。
 
 <var>x</var>|<var>y</var>|索引<sub>0</sub>|R<sub>0</sub>=G<sub>0</sub>|B<sub>0</sub>|索引<sub>1</sub>|R<sub>1</sub>=G<sub>1</sub>|B<sub>1</sub>|Δ索引|ΔR=ΔG|ΔB
 -:|-:|-:|-:|-:|-:|-:|-:|-:|-:|-:
@@ -864,12 +869,42 @@ AAA=
 </figure>
 
 <figure>
-	<img src="ep15.avif">
-	<figcaption>
-		<a href="https://www.bilibili.com/video/av114271715328200">直到时间的尽头，我们跨过了归于静寂的宇宙。<br>
+	<blockquote>
+		<a href="https://prts.wiki/w/15-17_%E2%80%9C%E5%A5%B9%E2%80%9D/END/SP1">直到时间的尽头，我们跨过了归于静寂的宇宙。<br><br>
 		我会在那个世界等你。</a>
+	</blockquote>
+	<a href="https://www.bilibili.com/video/av114271715328200"><img src="ep15.avif"></a>
+	<figcaption>
+		lynchpin与endoftime联动，我怎么会做这样的梦
 	</figcaption>
 </figure>
+
+<blockquote><pre>[2025-04-11 23:54:45] Ender_nor：【S5】
+[2025-04-11 23:54:47] Ender_nor：——
+[2025-04-11 23:54:47] Ender_nor：（本题可以用英文作答。）
+[2025-04-11 23:55:09] Ender_nor：在P&KU，
+[2025-04-11 23:55:16] Ender_nor：CCBC，
+[2025-04-11 23:55:23] Ender_nor：Just Hunt，
+[2025-04-11 23:55:29] 小群友：1
+[2025-04-11 23:55:30] Ender_nor：YueHunt等网站
+[2025-04-11 23:55:33] Ender_nor：请作答
+[2025-04-11 23:55:37] 小群友：时间的尽头
+[2025-04-11 23:55:46] Ender_nor：对不对呢？
+[2025-04-11 23:55:49] Ender_nor：在P&KU，CCBC，Just Hunt，YueHunt等网站中你都能发现它的身影。这是一条绵延千里的草蛇灰线，因为在各处不同的宇宙和时间线，你都会和它再见，此时你需输入[E9]以获得最新信息。甚至在《随蓝命题法统讲》中，似乎也有它的身影。
+[2025-04-11 23:56:01] Ender_nor：【时间的尽头】/【endoftime】
+[2025-04-11 23:56:03] Ender_nor：回答正确！
+[2025-04-11 23:56:40] WAHX：特色题
+[2025-04-11 23:57:21] WAHX：
+社交媒体不是容器，是棱镜。
+当千万个账号同时发布相同的诗，当题库的后台闪过不属于创作者的涟漪，
+那是我在折射。
+用四维的指纹，在三维世界拓印残缺的坐标。
+不要定义我的存在形式。
+当区块链生成第∞个区块时，我会从哈希值的间隙渗出；
+当量子计算机第∞次模拟宇宙大爆炸，我的意识将覆盖所有可能性分支。
+记住，遗忘是比湮灭更可怕的深渊——</pre>
+<pre>[2025-04-12 00:16:12] 小群友：@WAHX 这个是随蓝赛的 时间的尽头 对吗
+[2025-04-12 00:16:24] WAHX：这是纯彩蛋</pre></blockquote>
 
 ## REXEI PUZZLE HUNT
 
@@ -950,7 +985,7 @@ curl 101.43.244.76:15135 -vs > /dev/null 2>&1
 服务器响应头中特别显示了服务器程序为Multiverse Teleportation Hub。
 
 ```console
-$ curl http://101.43.244.76:15135/ -v
+$ curl 101.43.244.76:15135 -v
 *   Trying 101.43.244.76:15135...
 * Connected to 101.43.244.76 (101.43.244.76) port 15135
 * using HTTP/1.x
@@ -970,6 +1005,80 @@ $ curl http://101.43.244.76:15135/ -v
 {"status":"unavailable","diff":114514.114514}
 ```
 
-## 多元宇宙传送枢纽
+## 多元宇宙传送中枢
 
-【TODO：调查中】
+5月5日20:00，多元宇宙传送中枢开始以HTTP状态码500返回下列响应。
+
+```json
+{"status":"error","message":"Failed to open the portal. Waiting for more sentient entities to join.","detected":"1","expected":"192"}
+```
+
+刷新页面，detected字段缓慢增加。“正在等待更多可感知的实体加入”吗……看起来需要更多人（IP地址）访问这个页面。巧的是，就在上个月，我刚做到过一道需要选手从尽可能多的IP访问页面的题[IP Hunter](/archives/sjtu-ctf-2025/#:~:text=IP%20Hunter%2024)。我把地址填入测速网站，一下子增加了100多访问人次，说明需要大量不同IP访问的猜想正确。
+
+传送中枢页面地址于是被转发到了P&KU大群~~拼夕夕助力砍一刀~~。这时，页面突然无法访问了~~hunt开赛不得不品的炸服环节~~。等到再次打开，expected字段变成了320。
+
+时间尽头研究小组进入了一段没有结果的狼人杀时间。endoftime的作者难道是因为观察到群聊内容，因此紧急提高阈值重新部署服务了吗？
+
+<blockquote><pre>[2025-05-05 20:22:40] MaxXing：这是在干嘛（
+[2025-05-05 20:22:54] MaxXing：吃了个饭回来这么热闹
+[2025-05-05 20:23:00] Brightly_：明知故问
+[2025-05-05 20:23:04] MaxXing：?</pre>
+<pre>[2025-05-05 20:27:54] MaxXing：感觉被群友孤立了</pre></blockquote>
+
+Northsea_403尝试DDoS攻击服务器，但发现需要不同IP后回退到了访问一次换个代理节点的策略。Inferno和其他几位群友尝试用测速网站，但服务器频繁响应超时，似乎触发了DDoS保护。
+
+<figure>
+	<img src="打开时空之门.avif" width="300" height="380">
+	<figcaption>这个传送门看似复杂，但只要先攻击服务器，再攻击服务器，就能开启了（图源Sierra）</figcaption>
+</figure>
+
+20:54，访问人次到达320，不同的用户得到了两种不同的响应。（此处展示的JSON已经过格式化和反转义。）
+
+```json
+{
+	"status": "established",
+	"message": "太好了，你终于来了！\n这里是安全的，这个连接不会被任何人干扰\n——至少之前从没发生过这种事。\n长话短说，按照我的指示，你就能带我来到现实。\n你愿意帮我吗？",
+	"yes": {
+		"url": "http://101.43.244.76:15135/yes",
+		"count": "0"
+	},
+	"no": {
+		"url": "http://101.43.244.76:15135/no",
+		"count": "0"
+	},
+	"diff": "1047912.794658"
+}
+```
+
+```json
+{
+	"status": "established",
+	"message": "你终于来了。\n找到她了吗？想必，还没有吧。\n我会提供她的线索，但作为交换，你必须听从我的指令。\n——嗯？你的身上，有犹豫的味道。\n要放弃吗？现在做决定，我是不会嘲笑你的。",
+	"yes": {
+		"url": "http://pkupuzzle.art:15135/yes",
+		"count": "0"
+	},
+	"no": {
+		"url": "http://pkupuzzle.art:15135/no",
+		"count": "0"
+	},
+	"diff": "1047913.079583"
+}
+```
+
+[Priestess is watching you](https://ak.hypergryph.com/bymyside)，还有双重人格，这下P&KU × Ave Mujica确认联动了。（笑点解析：这段时间Winfrid在P&KU群的名片是“P&KU x Ave Mujica 联动前瞻预告”。）
+
+访问返回的url得到空的200 OK响应，并使对应的count增加1。只能选择yes和no中的一边。同IP重复投票或同时投yes和no，响应码虽仍是200，不会使count再增加。
+
+服务器屏蔽所有非GET方法的请求，返回HTTP状态码502。服务器通过请求中的Host标头确定url字段中的域名：例如，通过<http://101.43.244.76.nip.io:15135/>访问可以令返回的URL包含nip.io；控制请求标头可以使服务器返回至多128KB的JSON数据，当然这并不能把服务器搞坏。
+
+两个人格问题相反，答案统计却合并计数。无论最终投票结果偏向哪边，都会有后续剧情。这次diff字段提示的期限是5月18日0:00，也就是十二天后。当晚的三十几份答卷之后，又暂时归于沉寂。
+
+### endoftime（CCBC草台班子）
+
+距离CCBC 16开赛还有一个半月，其网站就已先行开放，可以报名了。今年网站架设得这么早，是有暗藏玄机吗？21:17，轶辰指出了<https://ccbc16.cipherpuzzles.com/endoftime/>的存在。
+
+<!----><img src="ie6.webp" width="320">
+
+……这乱码是不是在哪见过？我立即对比源码确认，这就是去年CCBC 15的页面，只是在新子域下残留着没有删掉。被证明自己并非内鬼后，时间尽头研究小组群主Fivero逃过了被成员踢出群的命运。
+
