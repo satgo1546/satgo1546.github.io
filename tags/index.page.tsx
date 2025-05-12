@@ -18,7 +18,7 @@ export default (data: Lume.Data) => {
 		<p>这些标签只有一篇文章在用。</p>
 		<ul>
 			{[...tags.entries()].map(([tag, [page, morePages]]) => !morePages && <li>
-				<a href={page.url} title={page.title}>{tag}</a>
+				<a href={page.url} title={data.htmlToPlainText(page.title!)}>{tag}</a>
 				{tag in data.tagDescriptions && <div dangerouslySetInnerHTML={{ __html: data.tagDescriptions[tag] }} />}
 			</li>)}
 		</ul>

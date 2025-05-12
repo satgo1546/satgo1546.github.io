@@ -33,6 +33,7 @@ jobs:
         with:
           deno-version: vx.x.x
       - run: |
+          sed -i 's/@v[0-9]\+\.[0-9]\+\.[0-9]\+//g' deno.json
           deno --version
           deno info _config.ts || true
           deno task lume

@@ -1,7 +1,7 @@
 import lume from 'lume/mod.ts'
 import { getCurrentVersion } from 'lume/core/utils/lume_version.ts'
 import feed from 'lume/plugins/feed.ts'
-import jsxPreact from './jsx.ts'
+import jsx from 'lume/plugins/jsx.ts'
 import nav from 'lume/plugins/nav.ts'
 import redirects from 'lume/plugins/redirects.ts'
 import sass from 'lume/plugins/sass.ts'
@@ -19,8 +19,8 @@ const site = lume({
 })
 site.hooks.addMarkdownItRule('table_open', () => '<table class="booktabs">')
 site.loadPages(['.html'], {})
-site.copyRemainingFiles()
-site.use(jsxPreact)
+site.add('')
+site.use(jsx())
 site.use(sass({
 	options: {
 		silenceDeprecations: ['mixed-decls'],
@@ -41,6 +41,7 @@ declare global {
 			sourcePath: string,
 			slugify: typeof slugify,
 			tagUrl: (tag: string) => string,
+			htmlToPlainText: (content: string) => string,
 		}
 	}
 }
@@ -84,6 +85,13 @@ site.preprocess([".html"], pages => {
 const slugify = (content: string) => content.replace(/[\\\/:*?"<>| !@#$%^&`'{}-]+/g, '-').replace(/^-|-$/g, '')
 site.data('slugify', slugify)
 site.data('tagUrl', (tag: string) => `/tags/${slugify(tag)}/`)
+// For use in metadata fields such as title that should allow HTML but require plaintext in some places.
+// This does not cover everything, but I do not write fancy entities in title and description anyway.
+site.data('htmlToPlainText', (content: string) =>
+	content.replace(/<[^>]*>/g, '')
+		.replaceAll('&lt;', '<').replaceAll('&gt;', '>')
+		.replaceAll('&amp;', '&')
+)
 
 site.use(highlightPlugin)
 site.use(feed({

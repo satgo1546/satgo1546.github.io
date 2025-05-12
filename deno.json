@@ -1,24 +1,32 @@
 {
   "imports": {
-    "lume/": "https://deno.land/x/lume/"
+    "lume/": "https://deno.land/x/lume@v3.0.1/",
+    "lume/jsx-runtime": "https://deno.land/x/ssx@v0.1.9/jsx-runtime.ts"
   },
   "lock": false,
   "tasks": {
     "lume": "echo \"import 'lume/cli.ts'\" | deno run -A -",
-    "dev": "deno task lume -s"
+    "build": "deno task lume",
+    "serve": "deno task lume -s"
   },
   "lint": {
     "rules": {
       "exclude": [
         "jsx-key"
       ]
-    }
+    },
+    "plugins": [
+      "https://deno.land/x/lume@v3.0.1/lint.ts"
+    ]
   },
   "compilerOptions": {
     "types": [
       "lume/types.ts"
     ],
     "jsx": "precompile",
-    "jsxImportSource": "npm:preact"
-  }
+    "jsxImportSource": "lume"
+  },
+  "unstable": [
+    "temporal"
+  ]
 }
