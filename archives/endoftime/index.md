@@ -16,20 +16,20 @@ tags:
 <dt>报告<dd>piscesciurus
 </dl>
 
-<pre style="text-align: center;">献给中文解谜圈</pre>
+<pre style="text-align: center;">献给中文解谜社区</pre>
 
 ## 我望向时间的尽头，那是时间的开始。
 
 2024年6月28日投稿的[Puzzle and Key Universe 3](https://pnku3.pkupuzzle.art/)（上）主题曲[《梦境永居宣言》PV](https://www.bilibili.com/video/av1505873069)的简介中有一句夹杂着乱码的文字：
 
-> 我望l5VKJ向p时nEq间的6尽sx3头，那P4是k[y[O,_时间的Y1T$开始。/[8我8j望向
+> 我望l5VKJ向p时n`Eq间的6尽sx3头，那P4是k[y[O,_时间的Y1T$开始。/[8我8j望向
 
-将其中的中文和非中文分离，中文为“我望向时间的尽头，那是时间的开始。我望向”，剩余文字为“`l5VKJpnEq6sx3P4k[y[O,_Y1T$/[88j`”。虽然一眼就能看出这串字符有藏东西，但是把CyberChef支持的Base系列解码流程全试一遍也没有结果。
+将其中的中文和非中文分离，中文为“我望向时间的尽头，那是时间的开始。我望向”，剩余文字为“``l5VKJpn`Eq6sx3P4k[y[O,_Y1T$/[88j``”。虽然一眼就能看出这串字符有藏东西，但是把CyberChef支持的Base系列解码流程全试一遍也没有结果。
 
 6月29日凌晨，Bella解开了这段编码文本中的谜题，发在了CCBC群。
 
-<blockquote><pre>PV简介中的谜题：我望l5VKJ向p时nEq间的6尽sx3头，那P4是k[y[O,_时间的Y1T$开始。/[8我8j望向
-删除汉字，得到 l5VKJpnEq6sx3P4k[y[O,_Y1T$/[88j
+<blockquote><pre>PV简介中的谜题：我望l5VKJ向p时n`Eq间的6尽sx3头，那P4是k[y[O,_时间的Y1T$开始。/[8我8j望向
+删除汉字，得到 l5VKJpn`Eq6sx3P4k[y[O,_Y1T$/[88j
 用base91解码，得到 http://？？？/endoftime
 访问 <a href="https://pkupuzzle.art/endoftime/">https://pkupuzzle.art/endoftime/</a> 是一个伪装的错误页面（这年头了还有人用IE吗）
 页面最下方可以找到反白的文字：时间还未开始，请等待。</pre></blockquote>
@@ -1032,7 +1032,7 @@ Northsea_403尝试DDoS攻击服务器，但发现需要不同IP后回退到了�
 	<figcaption>这个传送门看似复杂，但只要先攻击服务器，再攻击服务器，就能开启了（图源Sierra）</figcaption>
 </figure>
 
-20:54，访问人次到达320，不同的用户得到了两种不同的响应。（此处展示的JSON已经过格式化和反转义。）
+20:54，访问人次到达320，不同的用户得到了两种不同的响应。（此处展示的JSON已经过格式化和反转义，下同。）
 
 ```json
 {
@@ -1068,7 +1068,7 @@ Northsea_403尝试DDoS攻击服务器，但发现需要不同IP后回退到了�
 
 [Priestess is watching you](https://ak.hypergryph.com/bymyside)，还有双重人格，这下P&KU × Ave Mujica确认联动了。（笑点解析：这段时间Winfrid在P&KU群的名片是“P&KU x Ave Mujica 联动前瞻预告”。）
 
-访问返回的url得到空的200 OK响应，并使对应的count增加1。只能选择yes和no中的一边。同IP重复投票或同时投yes和no，响应码虽仍是200，不会使count再增加。
+此时，访问返回的url得到空的200 OK响应，并使对应的count增加1。只能选择yes和no中的一边。同IP重复投票或同时投yes和no，响应码虽仍是200，不会使count再增加。在计票期间某时刻，投票端点的响应被偷偷改为了空的JSON对象`{}`。
 
 服务器屏蔽所有非GET方法的请求，返回HTTP状态码502。服务器通过请求中的Host标头确定url字段中的域名：例如，通过<http://101.43.244.76.nip.io:15135/>访问可以令返回的URL包含nip.io；控制请求标头可以使服务器返回至多128KB的JSON数据，当然这并不能把服务器搞坏。
 
@@ -1081,4 +1081,52 @@ Northsea_403尝试DDoS攻击服务器，但发现需要不同IP后回退到了�
 <!----><img src="ie6.webp" width="320">
 
 ……这乱码是不是在哪见过？我立即对比源码确认，这就是去年CCBC 15的页面，只是在新子域下残留着没有删掉。被证明自己并非内鬼后，时间尽头研究小组群主Fivero逃过了被成员踢出群的命运。
+
+## 我们仍未知道那天所投出的票的结果。
+
+5月17日晚20时左右，票数达到了42:42。平票的话，会解锁隐藏剧情吗？随着零点的迫近，众人紧盯着票数变化。
+
+不出意外的话，就要出意外了。23:57，面对变化的票数，小群友和oscar等人紧张刺激地刷票。零点一到，投票接口立刻关闭，传送门变成了下面的样子。
+
+```json
+{
+	"status": "unreachable",
+	"message": "你留恋过去，你惧怕未来。\n你不愿失去，正因此，你也无法得到。\n也许，不再会有人来到现实了——\n也不再有人帮你找到她。"
+}
+```
+
+以上是通过IP地址（或非pkupuzzle.art域名）访问的结果。无论访问者自己投票给哪一边，无论有没有投过票，响应都是如此。这究竟是两分支中的哪一条线？票数不再显示，已经不得而知。看起来，或许选哪条线，也没有那么重要了……
+
+以下是通过pkupuzzle.art（或其任意子域名）访问的结果。
+
+```json
+{
+	"status": "new-start",
+	"message": "这个地方……好熟悉。\n你从这里找到了我，至少最开始是这样的。\n那么，你还记得来时的路吗？"
+}
+```
+
+“来时的路”指的是什么，又要怎样才能记得呢？此时，P&KU网站、REXEI网站、Rivenux公众号、《梦境永居宣言》的endoftime要素都没有发生变化。
+
+5月18日8:40到9:30之间，服务器又更新了，追加了计票结果和host字段。
+
+```json
+{
+	"status": "voting-result-tie",
+	"message": "你留恋过去，你惧怕未来。\n你不愿失去，正因此，你也无法得到。\n也许，不再会有人来到现实了——\n也不再有人帮你找到她。",
+	"host": "101.43.244.76:15135"
+}
+```
+
+```json
+{
+	"status": "new-start",
+	"message": "这个地方……好熟悉。\n你从这里找到了我，至少最开始是这样的。\n那么，你还记得来时的路吗？",
+	"host": "pkupuzzle.art:15135"
+}
+```
+
+这暗示了Host标头确实具有含义。
+
+
 
