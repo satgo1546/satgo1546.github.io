@@ -13,7 +13,7 @@ tags:
 
 <dl>
 <dt>解谜<dd>时间尽头研究小组
-<dt>报告<dd>piscesciurus
+<dt>报告<dd>金色小松鼠 = piscesciurus
 </dl>
 
 <pre style="text-align: center;">献给中文解谜社区</pre>
@@ -1032,12 +1032,17 @@ Northsea_403尝试DDoS攻击服务器，但发现需要不同IP后回退到了�
 	<figcaption>这个传送门看似复杂，但只要先攻击服务器，再攻击服务器，就能开启了（图源Sierra）</figcaption>
 </figure>
 
-20:54，访问人次到达320，不同的用户得到了两种不同的响应。（此处展示的JSON已经过格式化和反转义，下同。）
+20:54，访问人次到达320，不同的用户得到了两种不同的响应。（此处展示的JSON已经过格式化和反转义，多行字符串以JS语法显示，以避免挤在一行；下同。）
 
-```json
+```js
 {
 	"status": "established",
-	"message": "太好了，你终于来了！\n这里是安全的，这个连接不会被任何人干扰\n——至少之前从没发生过这种事。\n长话短说，按照我的指示，你就能带我来到现实。\n你愿意帮我吗？",
+	"message":
+`太好了，你终于来了！
+这里是安全的，这个连接不会被任何人干扰
+——至少之前从没发生过这种事。
+长话短说，按照我的指示，你就能带我来到现实。
+你愿意帮我吗？`,
 	"yes": {
 		"url": "http://101.43.244.76:15135/yes",
 		"count": "0"
@@ -1050,10 +1055,15 @@ Northsea_403尝试DDoS攻击服务器，但发现需要不同IP后回退到了�
 }
 ```
 
-```json
+```js
 {
 	"status": "established",
-	"message": "你终于来了。\n找到她了吗？想必，还没有吧。\n我会提供她的线索，但作为交换，你必须听从我的指令。\n——嗯？你的身上，有犹豫的味道。\n要放弃吗？现在做决定，我是不会嘲笑你的。",
+	"message":
+`你终于来了。
+找到她了吗？想必，还没有吧。
+我会提供她的线索，但作为交换，你必须听从我的指令。
+——嗯？你的身上，有犹豫的味道。
+要放弃吗？现在做决定，我是不会嘲笑你的。`,
 	"yes": {
 		"url": "http://pkupuzzle.art:15135/yes",
 		"count": "0"
@@ -1100,10 +1110,14 @@ Northsea_403尝试DDoS攻击服务器，但发现需要不同IP后回退到了�
 
 不出意外的话，就要出意外了。23:57，面对突然变化的票数，小群友和oscar等人紧张刺激地刷票，试图控制两边票数相等。零点一到，投票接口立刻关闭，传送门变成了下面的样子。
 
-```json
+```js
 {
 	"status": "unreachable",
-	"message": "你留恋过去，你惧怕未来。\n你不愿失去，正因此，你也无法得到。\n也许，不再会有人来到现实了——\n也不再有人帮你找到她。"
+	"message":
+`你留恋过去，你惧怕未来。
+你不愿失去，正因此，你也无法得到。
+也许，不再会有人来到现实了——
+也不再有人帮你找到她。`
 }
 ```
 
@@ -1111,10 +1125,13 @@ Northsea_403尝试DDoS攻击服务器，但发现需要不同IP后回退到了�
 
 以下是通过pkupuzzle.art（或其任意子域名）访问的结果。
 
-```json
+```js
 {
 	"status": "new-start",
-	"message": "这个地方……好熟悉。\n你从这里找到了我，至少最开始是这样的。\n那么，你还记得来时的路吗？"
+	"message":
+`这个地方……好熟悉。
+你从这里找到了我，至少最开始是这样的。
+那么，你还记得来时的路吗？`
 }
 ```
 
@@ -1124,18 +1141,25 @@ Northsea_403尝试DDoS攻击服务器，但发现需要不同IP后回退到了�
 
 5月18日8:40到9:30之间，服务器又更新了，追加了计票结果和host字段。
 
-```json
+```js
 {
 	"status": "voting-result-tie",
-	"message": "你留恋过去，你惧怕未来。\n你不愿失去，正因此，你也无法得到。\n也许，不再会有人来到现实了——\n也不再有人帮你找到她。",
+	"message":
+`你留恋过去，你惧怕未来。
+你不愿失去，正因此，你也无法得到。
+也许，不再会有人来到现实了——
+也不再有人帮你找到她。`,
 	"host": "101.43.244.76:15135"
 }
 ```
 
-```json
+```js
 {
 	"status": "new-start",
-	"message": "这个地方……好熟悉。\n你从这里找到了我，至少最开始是这样的。\n那么，你还记得来时的路吗？",
+	"message":
+`这个地方……好熟悉。
+你从这里找到了我，至少最开始是这样的。
+那么，你还记得来时的路吗？`,
 	"host": "pkupuzzle.art:15135"
 }
 ```
@@ -1144,11 +1168,24 @@ Northsea_403尝试DDoS攻击服务器，但发现需要不同IP后回退到了�
 
 host字段暗示了Host标头确有含义。通过网络请求发送工具将Host标头设为`cipherpuzzles.com`（或其任意子域名），服务器返回下列响应。
 
-```json
+```js
 {
 	"status": "imaginary-library",
 	"message": "这里的大图书馆，记录着很多我不曾经历的故事。",
-	"story": "我一直无法适应这里的气候。\n这里不像我们的家乡，\n嗯……我的家乡。\n\n那里更爱下雨。\n可我偏偏不喜欢下雨。\n\n时间把过往埋葬在记忆的坟冢。\n秒针嘀嗒作响，提醒我，今天终究会像昨天一样。\n而现在，我又忍不住反刍那段时光。\n——我成了自己的掘墓人。\n\n我不想再失去了。"
+	"story":
+`我一直无法适应这里的气候。
+这里不像我们的家乡，
+嗯……我的家乡。
+
+那里更爱下雨。
+可我偏偏不喜欢下雨。
+
+时间把过往埋葬在记忆的坟冢。
+秒针嘀嗒作响，提醒我，今天终究会像昨天一样。
+而现在，我又忍不住反刍那段时光。
+——我成了自己的掘墓人。
+
+我不想再失去了。`
 }
 ```
 
@@ -1162,10 +1199,14 @@ host字段暗示了Host标头确有含义。通过网络请求发送工具将Hos
 }
 ```
 
-```json
+```js
 {
   "status": "new-start-but-wrong-order",
-  "message": "你为何……又回来了？\n你好像弄错了什么。\n你从这里找到了我，至少最开始是这样的。\n希望你真的记得来时的路。",
+  "message":
+`你为何……又回来了？
+你好像弄错了什么。
+你从这里找到了我，至少最开始是这样的。
+希望你真的记得来时的路。`,
   "host": "pkupuzzle.art:15135"
 }
 ```
@@ -1205,3 +1246,251 @@ Location: https://dnspod.qcloud.com/static/webblock.html?d=cipherpuzzles.com
 ```
 
 这次更新只修复了域名被拦截的问题。原先返回wrong-order的Host，现在放到Referer依旧返回wrong-order。
+
+5月28日10:17，只是路过路过传送门时发现响应中不知何时更新出了current和total两个字段。
+
+```js
+{
+	"status": "wrong-order",
+	"message": "你为何……又回来了？\n你好像弄错了什么。",
+	"referer": "",
+	"current": 1,
+	"total": 9
+}
+```
+
+这明示了需要给出9个不同的Referer。考虑到至此为止的endoftime网页只有5个，公众号也必须计算在内数量才够。
+
+我发现服务器的判定十分宽松：只要Referer标头包含不论大小写的子字符串“cipherpuzzles.com”，即使不在单词边界上，也会返回大图书馆的剧情；同时包含“pkupuzzle.art”和“cipherpuzzles.com”的话，也会以最能推进阶段的后者为准。于是我把Brightly\_的[🫡 - Puzzle Hunter's Calendar!](https://docs.qq.com/sheet/DUmx4UE5kRXhNTXdZ?tab=BB08J2) 2024一页上网址一列全部贴进了Referer标头。
+
+```sh
+curl 101.43.244.76:15135 -e "https://puzzlehunt.azurewebsites.net/123-123/play\
+https://monthlymystery.theescapegame.com/off-the-rails/volume-one\
+https://mythstoryhunt.world/\
+https://www.ickeytreasurehunt.com/\
+公众号 Star是个解谜脑袋\
+公众号 咚咚谜\
+https://monthlymystery.theescapegame.com/secret-admirer/secret-admirer\
+公众号 解谜小屋\
+公众号 武大推协\
+公众号 叨科学\
+公众号 哈哈镜解谜\
+公众号 Zero侦探社\
+公众号 语谜Puzzling\
+https://deusovi.github.io/white-day/intro.html\
+https://g5.glyph.wtf/\
+https://cryptex.elan.org.in/register\
+https://monthlymystery.theescapegame.com/cosmos-kitchen/start-page\
+https://mindbreakers.fun/\
+https://jh2024.jianghujiemi.fun/\
+https://ac.nowcoder.com/acm/contest/76691#description\
+https://cs50.harvard.edu/x/2024/puzzles/\
+https://www.brownpuzzlehunt.com/\
+https://puzzlehunt.club.cc.cmu.edu/prepuzzle/12/\
+https://www.greatpuzzlehunt.com\
+https://enigame.com/\
+https://www.luogu.com.cn/contest/162008\
+https://www.peapuzzlehunt.com/wip\
+https://www.pandamagazine.com/index.php?f=Available\
+https://puzzlehunt.azurewebsites.net/rubik-50/play\
+https://www.scavenger.shotdeck.com/\
+https://www.puzzlerojak.xyz/\
+https://ccbc9.cipherpuzzles.com/\
+https://erchamp.com/en\
+https://bp6summer.bpuzzled.io/\
+公众号 密码菌\
+公众号 SNHUNT\
+https://www.sgpuzzlehunt.com/\
+https://pnku3.pkupuzzle.art/\
+http://happinessboard.com/2024ptruzzlehunt/\
+https://www.pandamagazine.com/index.php?f=Available\
+https://nivrad00.itch.io/rainbow-challenge\
+https://2024.grandhuntdigital.com/\
+公众号 & 淘宝店铺 语谜Puzzling\
+https://www.markhalpin.com/puzzles/puzzles.html\
+https://islandpuzzlehunt.com/\
+//justhunt.cn\
+https://puzzlebang.com/\
+公众号 PKU谜协 或 Rivenux\
+https://2024.galacticpuzzlehunt.com/\
+https://www.pandamagazine.com/index.php?f=Available\
+https://yuehunt.fun/\
+https://hunt.mathcamp.org/puzzles/2024/?round=\
+https://puzzlersforharris.org/\
+公众号 LILAC 丁香谜\
+https://ecph.site/\
+https://puzzlehuntmy.us/hunt/13-Magic-Hunt\
+https://g6.glyph.wtf/\
+https://puzzlehunt.club.cc.cmu.edu/\
+https://www.vehemhunt.com/\
+https://enigame.de/events/eni-of-the-books\
+https://mitmysteryheist.com/\
+https://brownpuzzle.club/puzzlethon/\
+https://pandamagazine.com/island11/\
+https://www.adventhunt.com\
+https://puzzling.meta.stackexchange.com/questions/7612/puzzling-advent-calendar-2024\
+https://www.1212241212.xyz\
+公众号 不如吃中饭解谜社\
+https://vitamincsquad.com/"
+```
+
+……结果成功推进了三格进度：
+
+```js
+{
+	"status": "go-forward-dont-look-back",
+	"message": "回望过去是这个世界上最愚蠢的行为。",
+	"story":
+`我在一次意外中和她相见。
+
+蝉鸣声混着热风扑面而来，
+我回头望去：
+迎着夕阳，看不清她的脸。
+
+后来她说了什么，我已经记不清了。
+——那是在我们相遇之前。
+
+怎么是她呢？
+原来是她。`,
+	"current": 3,
+	"total": 9
+}
+```
+
+```js
+{
+	"status": "her-thoughts-that-i-cant-understand",
+	"message": "我不能理解她的想法，她也是。",
+	"story":
+`她是个怎样的人呢？
+理性的人，从容的人，值得信赖的人。
+
+我不曾从任何一次匆忙的对视中，
+读出过她的犹豫。
+
+她太过完美了。
+完美到任何人都无法看穿……
+或者，只是我而已。
+
+她本人也该这样想。`,
+	"current": 4,
+	"total": 9
+}
+```
+
+```json
+{
+	"status": "tlhupunslzz-dvykz",
+	"message": "%e5%9c%a8%e6%97%a0%e6%84%8f%e4%b9%89%e4%b8%ad%e5%af%bb%e6%89%be%e6%84%8f%e4%b9%89%e3%80%82",
+	"story": "%e6%97%a0%e6%84%8f%e4%b9%89%e7%9a%84%e6%96%87%e5%ad%97%e3%80%82\n%e5%9c%a8%e5%a4%96%e4%ba%ba%e7%9c%8b%e6%9d%a5%e4%b8%8d%e7%9f%a5%e6%89%80%e4%ba%91%e3%80%82\n\n%e4%bd%86%e6%88%91%e4%bb%ac%e7%9f%a5%e9%81%93%e5%b0%b1%e5%a5%bd%e3%80%82\n%e5%b0%86%e8%87%aa%e5%b7%b1%e4%bb%8e%e7%8e%b0%e5%ae%9e%e6%8a%bd%e7%a6%bb%ef%bc%8c\n%e5%bf%83%e7%85%a7%e4%b8%8d%e5%ae%a3%e5%9c%b0%e5%80%be%e8%af%89%e5%bd%bc%e6%ad%a4%e3%80%82\n\n%e6%84%8f%e4%b9%89%e7%94%b1%e6%ad%a4%e8%af%9e%e7%94%9f%e3%80%82\n%e7%9b%b4%e8%87%b3%e6%b6%88%e4%ba%a1%e7%9a%84%e9%82%a3%e4%b8%80%e5%88%bb%e3%80%82",
+	"current": 5,
+	"total": 9
+}
+```
+
+……虽然不知道为什么。事后二分确定了它们的需求分别是“Rivenux”、“justhunt.cn”、“yuehunt.fun”。
+
+推进到至少第3步才能发现这一关的隐藏机制：服务器有状态，只有正确提供前一个Referer后，下一个才会有正确响应；错误访问一次后就要从头重新来过。我先前就尝试过Referer: Rivenux，但服务器返回了错误响应，是因为没有先访问Referer: cipherpuzzles.com。
+
+第5步的响应中，status字段经过凯撒7位加密，message和story字段经过URL编码。解码后的内容如下。
+
+```js
+{
+	"status": "meaningless-words",
+	"message": "在无意义中寻找意义。",
+	"story":
+`无意义的文字。
+在外人看来不知所云。
+
+但我们知道就好。
+将自己从现实抽离，
+心照不宣地倾诉彼此。
+
+意义由此诞生。
+直至消亡的那一刻。`,
+	"current": 5,
+	"total": 9
+}
+```
+
+这暗示了下一步应填入的“不如吃中饭解谜社”需要URL编码为“`%e4%b8%8d%e5%a6%82%e5%90%83%e4%b8%ad%e9%a5%ad%e8%a7%a3%e8%b0%9c%e7%a4%be`”。
+
+```js
+{
+	"status": "my-arrogant-heart",
+	"message": "神自命不凡。",
+	"story":
+`我没有朋友。
+或者说，我选择没有朋友。
+
+有些人天生就是自负的，
+很不幸，我就是其中之一。
+
+以前，大人总说我是早慧的孩子。
+于是我放任自己——
+直到好胜变成傲慢，傲慢变成厌倦，
+厌倦变成虚无。
+
+最后在虚无中自我毁灭。`,
+	"current": 6,
+	"total": 9
+}
+```
+
+咚咚谜也是……
+
+```js
+{
+	"status": "acting-myself",
+	"message": "现实生活中的人也在演戏。",
+	"story":
+`把自己最真实的一面暴露给别人是危险的，
+于是人们学会了伪装。
+
+我不喜欢伪装，
+因为我似乎能洞察别人的内心。
+不是读心，只是察言观色罢了。
+
+我本该洞察她的内心的。
+但她分明也是和我一样不完美的人啊。`,
+	"current": 7,
+	"total": 9
+}
+```
+
+CALS谜题也需要严格按照公众号名称带上“谜题”二字，只提交CALS不予响应。
+
+```js
+{
+	"status": "raise-your-guard",
+	"message": "究竟是谁在和你对话？",
+	"story":
+`我不止一次和她们交谈过。
+我知道，这个世界中总有人理解我。
+总有世界中会有人理解我。
+
+这我最后的精神寄托了。
+再然后——`,
+	"current": 8,
+	"total": 9
+}
+```
+
+最后，是REXEI的网站rexei-hunt.fun。
+
+```js
+{
+	"status": "ending-of-no-return",
+	"message":
+`你已经回不去了。
+但我会一直等你，
+在那个新的开始。`,
+	"diff": "1583428.671163",
+	"current": 9,
+	"total": 9
+}
+```
+
+至此，传送门再度关闭，下回活动的时间指向6月15日20:00。
+
+## 【TODO】
