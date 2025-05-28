@@ -9,6 +9,9 @@ import highlightPlugin from './highlight.ts'
 
 const site = lume({
 	location: new URL('https://satgo1546.github.io/'),
+	server: {
+		debugBar: false,
+	},
 }, {
 	markdown: {
 		options: {
