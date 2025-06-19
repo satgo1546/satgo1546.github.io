@@ -22,8 +22,8 @@
 		scrollbar-gutter: stable;
 	}
 
-	ul,
-	ol {
+	ul:not(article *),
+	ol:not(article *) {
 		list-style: none;
 	}
 
@@ -183,7 +183,6 @@ body>footer {
 
 	ol {
 		padding-inline-start: 2em;
-		list-style-type: decimal;
 	}
 
 	dl {
