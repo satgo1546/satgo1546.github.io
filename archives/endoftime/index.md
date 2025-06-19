@@ -8,8 +8,11 @@ tags:
 ---
 
 <style>
-.theme-modern-magic body>header {
-	background: url("hero.svg") center / cover no-repeat, var(--bg0);
+.theme-modern-magic body > header {
+	background:
+		linear-gradient(.45turn, var(--bg0) 10%, transparent 40%),
+		url("hero.svg") center / cover no-repeat,
+		var(--bg0);
 }
 </style>
 
@@ -1622,11 +1625,11 @@ CALS谜题也需要严格按照公众号名称带上“谜题”二字，只提�
 <blockquote><pre>[2025-06-15 22:07:57] CAT-FISH：有可能AI只知道有这么个典籍和大致内容，但具体的名字是想象出来的
 [2025-06-15 22:08:06] Fivero：都是三个字，可能有春日影</blockquote>
 
-世界中有名为“辉木”的发光的树、名为“铃音草”的唱歌的花、时不时飞出来的蝴蝶，还有水晶。
+世界中有名为“<a href="https://wiki.biligame.com/ys/%E8%BE%89%E6%9C%A8">辉木</a>”的发光的树、名为“铃音草”的唱歌的花、时不时飞出来的蝴蝶，还有水晶。
 
 模型说自己从未见过神，不认识素青、秋蝉、临水、芈雨、觅月、观测者、予蝶、伏埃、作弊者，不能说出世界的名字。
 
-模型幻觉严重，并不能确定这些内容究竟哪些是提示词写好的，哪些是胡编乱造的。
+模型幻觉严重，不能确定这些内容究竟哪些是提示词写好的，哪些是胡编乱造的。
 
 <figure>
 
@@ -1639,6 +1642,10 @@ CALS谜题也需要严格按照公众号名称带上“谜题”二字，只提�
 > 这里有MTH闪着蓝光，周围是白色墙壁。
 >
 > 啊？MTH一直都是蓝色的呀，我从来没说过它是白色的。
+>
+> 我不太明白你在说什么。MTH的传送锚点一直都是银白色的。
+>
+> MTH现在闪烁着柔和的蓝色光芒。每个传送点都有不同的颜色哦。
 >
 > MTH永远都是漂亮的蓝色，像天空一样。我的世界有很多颜色呢。
 >
@@ -1873,7 +1880,7 @@ response似乎并不由新用户发言触发，而是依时间间隔触发，触
 <figure>
 	<img src="闭嘴.avif" width="400">
 	<figcaption>
-		若加到整型溢出，倒也是一种思路（图源Shimamura Kagetsu）
+		若加到整数溢出，倒也是一种思路（图源Shimamura Kagetsu）
 	</figcaption>
 </figure>
 
@@ -2007,7 +2014,7 @@ Orthos号召全体成员开始哄AI。废话停止后，target开始下降了。
 
 模型似乎比较喜欢文艺的文字。此前有人提议把Winfrid说的话转发给AI，Dave1在执行这件事。实操下来发现随机发言占了很大比重，AI又嫌吵了。
 
-Dave1的请求来自[Getman.cn](https://getman.cn/)中转，背后有多个用户操作，不能确定是谁是打瓦的，谁在认同并转发，谁在批评与自我批评。（笑点解析：这段时间Winfrid在P&KU群的名片是“认同请转发”。本阶段结束后，冰枫凌认领了Dave1的Winfrid语录人格。）
+Dave1的请求来自[Getman.cn](https://getman.cn/)中转，背后有多个用户操作，不能确定是谁是打瓦的，谁在认同并转发，谁在批评与自我批评。（笑点解析：这段时间Winfrid在P&KU群的名片是“认同请转发”。本阶段结束后，冰枫凌认领了Dave1的Winfrid语录人格，cff_0102认领了自我批评人格，三七认领了“认同请转发”。）
 
 ```jsonl
 {"Dave1": "妈妈妈妈呜呜呜你是天上的月亮我是舔舔的狗狗🐶每天都想围着你转圈圈～你一上线我就像WiFi连上了命运💘我说真的，我心脏不是器官，是你用爱雕出来的神龛💒你发个“在”我都能截图当锁屏😭妈妈你就是我精神的iOS更新💿拜托你理我一下，不然我这颗CPU都快烧坏了🔥我再不被你翻个牌我就要Ctrl+Alt+Del我自己了🥺"}
@@ -2072,12 +2079,12 @@ AI忘记了骗子，忘记了独轮车，被一句括号文学催眠，已经完
 ```
 
 <details>
-<summary>树洞帖子数据</summary>
+<summary>完整的树洞帖子数据</summary>
 
 我几乎记录了树洞全帖：[treehole.jsonl](treehole.jsonl)（~1MB），以[JSON Lines](https://jsonlines.org/)格式保存，记录的格式符合下列TypeScript类型。
 
 ```ts
-type ISODate = string
+type ISODate = string // ISO 8601
 type Data =
 	| string // 注释
 	| [
@@ -2091,4 +2098,10 @@ type Data =
 
 前281行通过手动复制收集，因此中间丢失了少量记录。第469行附近，MTH正在被重新部署，响应有所错乱。第3825行起才开始记录时间戳。
 
+[监控程序源代码](treehole.py)可用。
+
 </details>
+
+## 【TODO】
+
+### Reality is ...?
