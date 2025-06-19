@@ -7,6 +7,12 @@ tags:
 - puzzle hunt
 ---
 
+<style>
+.theme-modern-magic body>header {
+	background: url("hero.svg") center / cover no-repeat, var(--bg0);
+}
+</style>
+
 <div class="admonition">
 本文介绍的谜题中有至少一项尚未完全解开。
 </div>
