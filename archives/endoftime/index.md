@@ -291,9 +291,12 @@ HanaNeko发现成就条形码指向的图片右下角藏有“photomosh”字样
 
 当晚，数十个微信公众号和Winfrid惨遭endoftime轰入。向Winfrid的公众号Rivenux发送endoftime，可以收到下列自动回复的错误页面元素组合而成的1024×2048图片。<s>向鱼左的公众号语谜Puzzling发送endoftime，[可以收到人工回复的假消息](fishleft.webp)。</s>JustHunt出题组成员鱼左表示对JustHunt中的endoftime页面毫不知情。
 
-<!----><img src="微信图片.gif" width="512" height="1024">
+<figure>
+	<img src="微信图片.gif" width="512" height="1024">
+	<figcaption>鱼左：我知道，这是用PS里面滤镜-风格化-“风”效果做的</figcaption>
+</figure>
 
-<s>鱼左：我知道，这是用PS里面滤镜-风格化-风效果做的。</s>HanaNeko还发现这张图片是GIF动画，共两帧，两帧之间只有64个像素有区别，看起来就像静态图片一样。gary、Winid、Sierra尝试提取了帧间差异。
+HanaNeko还发现这张图片是GIF动画，共两帧，两帧之间只有64个像素有区别，看起来就像静态图片一样。gary、Winid、Sierra尝试提取了帧间差异。
 
 <figure>
 
@@ -1116,9 +1119,9 @@ Northsea_403尝试DDoS攻击服务器，但发现需要不同IP后回退到了�
 票数仍偶见增长。投票人在朝着两边票数的平衡努力。
 
 <figure>
-	<img src="plot.svg">
+	<img src="poll.svg">
 	<figcaption>
-		约每小时监测得到的票数趋势折线图。开头的直线段是因为计票服务器宕机了。<a href="plot.csv">原始数据</a>可用
+		约每小时监测得到的票数趋势折线图。开头的直线段是因为计票服务器宕机了。<a href="poll.csv">原始数据</a>可用
 		<!-- 此图使用Observable Plot绘制 -->
 	</figcaption>
 </figure>
@@ -1817,7 +1820,7 @@ Grace发出消息后，response又出现了：
 {"response": "骗子闭嘴！倒计时走快点！"}
 ```
 
-response似乎并不由新用户发言触发，而是依时间间隔触发，触发间隔从3分钟到20分钟【TODO：有更长的吗？】不等。这种不规律性一度让人以为response是后台真人，直到有人发送《春风衔笺》的歌词被这样回复……
+response似乎并不由新用户发言触发，而是依时间间隔触发，触发间隔从3分钟到20分钟不等。这种不规律性一度让人以为response是后台真人，直到有人发送《春风衔笺》的歌词被这样回复……
 
 <figure>
 
@@ -2056,8 +2059,10 @@ AI忘记了骗子，忘记了独轮车，被一句括号文学催眠，已经完
 对当代大语言模型来说，陷入循环就再难逃脱。Shimamura Kagetsu设置了每隔10分钟自动发送一条随机的渲染安静氛围的文本，树洞里只剩下两台自我陶醉的机器。静置12小时后，没有意外地，倒计时回归2025年6月29日20:00。
 
 <figure>
-	【TODO：统计图表】
-	<figcaption></figcaption>
+	<img src="treehole-target.svg">
+	<figcaption>
+		倒计时目标变化折线图，注意纵轴在2030-06-29以下为对数刻度。<a href="treehole-target.csv">原始数据</a>可用
+	</figcaption>
 </figure>
 
 6月17日10:53，倒计时回归的那一刻，所有接口关闭，传送门入口返回下列响应。
