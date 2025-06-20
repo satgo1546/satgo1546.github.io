@@ -58,6 +58,8 @@ tags:
 
 7月28日，我所在的队伍不负众望地在靠足以买完第三日全部meta答案的注意力买了卡在瞪汉字规律的《任造化落骰-C》后在比赛进程最后一天完赛。到此为止，除了在序章提交endoftime作为答案能触发彩蛋“非封闭类时曲线”（“时间的尽头，不是现在。”），P&KU3（上）主线流程中没有任何一处提到时间的尽头。
 
+<!----><img src="非封闭类时曲线.webp" width="420">
+
 随着比赛进程的结束，endoftime页面也悄然发生了变化。
 
 <div class=row>
@@ -293,6 +295,8 @@ HanaNeko发现成就条形码指向的图片右下角藏有“photomosh”字样
 
 <s>鱼左：我知道，这是用PS里面滤镜-风格化-风效果做的。</s>HanaNeko还发现这张图片是GIF动画，共两帧，两帧之间只有64个像素有区别，看起来就像静态图片一样。gary、Winid、Sierra尝试提取了帧间差异。
 
+<figure>
+
 <var>x</var>|<var>y</var>|索引<sub>0</sub>|R<sub>0</sub>=G<sub>0</sub>|B<sub>0</sub>|索引<sub>1</sub>|R<sub>1</sub>=G<sub>1</sub>|B<sub>1</sub>|Δ索引|ΔR=ΔG|ΔB
 -:|-:|-:|-:|-:|-:|-:|-:|-:|-:|-:
 425|858|31|152|154|35|142|219|4|-10|65
@@ -359,6 +363,8 @@ HanaNeko发现成就条形码指向的图片右下角藏有“photomosh”字样
 603|907|67|244|244|69|246|255|2|2|11
 541|917|7|0|255|9|8|255|2|8|0
 542|917|7|0|255|21|56|255|14|56|0
+
+</figure>
 
 对这些像素差异数值的分析没有得到结果。
 
@@ -2105,3 +2111,102 @@ type Data =
 ## 【TODO】
 
 ### Reality is ...?
+
+status字段值“reality-is-in-the-future”引起了群友们的注意。
+
+除了endoftime，P&KU3（上）序章提交框还有不少彩蛋，有的说不定在赛中从未被触发过。在比赛结束后，网站转为静态存档，这些彩蛋的判定逻辑移动到了[JavaScript脚本](https://github.com/PKUPC/pnku-website/blob/4e0ff053e0ef1859ac876cba5a7b0baacc0fccee/frontend/src/archive/gameStartApi.js)，才得以一瞥彩蛋全貌。与赛时相比，静态存档版本的彩蛋文本有修改，这点可以从提交“琵琶拨尽四弦悲”的提示看出来。
+
+两个多月后，P&KU网站以MIT协议开源在GitHub上，完整代码包含了[后端处理序章提交的程序](https://github.com/PKUPC/pnku-website/blob/4e0ff053e0ef1859ac876cba5a7b0baacc0fccee/backend/src/adhoc/game_start_reply.py)。
+
+两个版本的序章提交彩蛋列表如下。
+
+<table class="booktabs">
+<thead>
+<tr>
+	<th rowspan="2">提交答案
+	<th colspan="2">提示信息
+	<th rowspan="2">概率
+<tr>
+	<th>赛时
+	<th>静态存档
+<tbody>
+<tr>
+	<td>DECADE
+	<td colspan="2">
+		<img class="icon" src="icon-info.svg">
+		<strong>发现彩蛋！</strong><br>观察力不错！但是这里不是题。
+	<td>100%
+<tr>
+	<td style="word-wrap: break-word;">↑↑↓↓←→←→BA
+	<td colspan="2">
+		<img class="icon" src="icon-info.svg">
+		<strong>发现彩蛋！</strong><br>你是怎么想到提交这个的？
+	<td>100%
+<tr>
+	<td>ATTENTION<wbr>IS<wbr>ALL<wbr>YOU<wbr>NEED
+	<td colspan="2">
+		<img class="icon" src="icon-info.svg">
+		<strong>发现彩蛋！</strong><br>Attention is All I Need!
+	<td>100%
+<tr>
+	<td>REALITY<wbr>IS
+	<td>
+		<img class="icon" src="icon-info.svg">
+		<strong>璋�</strong><br>Reality is fragile.
+	<td>
+		<img class="icon" src="icon-info.svg">
+		<strong>璋</strong><br>Reality is fragile.
+	<td>100%
+<tr>
+	<td>ENDOFTIME
+	<td colspan="2">
+		<img class="icon" src="icon-error.svg">
+		<strong>非封闭类时曲线</strong><br>时间的尽头，不是现在。
+	<td>100%
+<tr>
+	<td rowspan="2"><a href="https://mp.weixin.qq.com/s/3VOWSVWFnQ0omTAqqj6y4w" title="Rivenux公众号文章《P&KU2 repo IV：“我看是琵琶拨尽四弦悲”究竟是什么梗？麻烦来一份笑点解析》">我看是琵琶拨尽四弦悲<br>琵琶拨尽四弦悲</a>
+	<td>
+		<img class="icon" src="icon-success.svg">
+		<strong>中奖了！</strong><br>请通过站内信联系staff并发送关键词【浣溪沙V我100】获得100注意力，每队仅限一次。
+	<td>
+		<img class="icon" src="icon-success.svg">
+		<strong>中奖了！</strong><br>在正式比赛中，会给出一段口令，通过站内信发给工作人员可以获得 100 注意力！
+	<td>5%
+<tr>
+	<td colspan="2">
+		<img class="icon" src="icon-info.svg">
+		<strong>很遗憾……</strong><br>你似乎触碰到了什么，但没有探知到有效情报。
+	<td>95%
+<tr>
+	<td><a href="https://www.bilibili.com/video/av445884579">一道好题<br>新难美趣</a>
+	<td colspan="2">
+		<img class="icon" src="icon-info.svg">
+		<strong>去你的吧！</strong><br>你好像很喜欢四个字四个字地说话。
+	<td>100%
+<tr>
+	<td><a href="../lost-town-07/哈哈，开心.png">哈哈开心</a>
+	<td colspan="2">
+		<img class="icon" src="icon-info.svg">
+		<strong>喵喵喵？</strong><br>你知道吗？教堂的建造者是一个可爱的……
+	<td>100%
+<tr>
+	<td><a href="https://jh2024.jianghujiemi.fun/puzzle/fox_say">狐狸怎么叫</a>
+	<td colspan="2">
+		<img class="icon" src="icon-info.svg">
+		<strong>人在江湖</strong><br>你去参加答题节目的话，或许能够获胜吧。
+	<td>100%
+<tr>
+	<td>MYGO
+	<td colspan="2">
+		<img class="icon" src="icon-success.svg">
+		MyGO!!!!!
+	<td>100%
+</table>
+
+答案MYGO在前端验证，不会过滤特殊字符（因此输入“MyGO!!!!!”反而无效），点击提交按钮后无需确认，立即弹出吐司提示并追加URL查询参数`&mygo=run`。
+
+大部分彩蛋有明确的出处，但DECADE和REALITYIS至今也没能确定是什么意思。
+
+“璋�”末尾的U+FFFD可能在静态化过程中丢失了。末尾的U+FFFD暗示可能是以GBK编码读取了实际按UTF-8编码的文本，按此解读的话，原字可能是U+8C00~8C3F中的任意字。这段码位中常用字不少，其中最可能的是“谜”。
+
+考虑到realityis与endoftime、nightmare一样是9个字母，编码转换的手法此前也曾用到，它可能是时间的尽头的一个中间答案。

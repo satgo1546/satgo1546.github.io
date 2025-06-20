@@ -132,7 +132,7 @@ body>footer {
 	aside,
 	figure,
 	table,
-	:is(img, svg):not(p :not(p>:only-child)),
+	:is(img, svg):not(p :not(p>:only-child), .icon),
 	math[display=block]:not(p *),
 	video,
 	audio,
@@ -496,6 +496,14 @@ math[display=block] {
 	code:not(pre>*)::after {
 		content: "`";
 	}
+}
+
+// 行内小图标，用于<img>和<svg>等
+.icon {
+	display: inline-block;
+	block-size: 1em;
+	inline-size: auto;
+	vertical-align: -.15em;
 }
 
 //=============================================================================
