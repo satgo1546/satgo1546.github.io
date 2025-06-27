@@ -31,7 +31,7 @@ export default (data: Lume.Data) => {
 			</article>
 			<footer class="entry-meta">
 				<a href="." title="链向本文的固定链接" rel="bookmark">{data.dates || '固定链接'}</a>
-				<a class="comments-link" href="javascript:alert('还没做')">发表评论</a>
+				{data.githubDiscussionNumber && <a class="comments-link" href={'https://github.com/satgo1546/satgo1546.github.io/discussions/' + data.githubDiscussionNumber}>发表评论</a>}
 				<a href={'https://github.com/satgo1546/satgo1546.github.io/blob/main'
 					+ data.sourcePath.replace(/\[\d+\]\.page\./, '.page.')}>查看源代码</a>
 				{!!data.tags.length && <ul>
@@ -44,23 +44,10 @@ export default (data: Lume.Data) => {
 					})}
 				</ul>}
 			</footer>
-			<div class="comments-area">
-				{!!data.comments?.length && <>
-					<h2 class="comments-title">《title》上有comments.length条评论</h2>
-					<ol class="commentlist">
-						<li class="pingback">
-							<p>Pingback引用通告： <a href="https://github.com/" rel="external nofollow" class="url">外部某页面引用了此页面</a></p>
-						</li>
-						{/*<CommentItem v-for="item in frontmatter.comments" :item />*/}
-					</ol>
-				</>}
-				{/*<div class="comment-respond">
-					<h3>发表评论</h3>
-					<form>
-						<input type="submit" value="发表评论" />
-					</form>
-				</div>*/}
-			</div>
+			{data.githubDiscussionNumber && <div class="comments-area">
+				<script defer src="/script/discussions.js" data-n={data.githubDiscussionNumber} />
+				<a href={'https://github.com/satgo1546/satgo1546.github.io/discussions/' + data.githubDiscussionNumber}>在GitHub上查看评论</a>。
+			</div>}
 		</main>
 
 		<aside>

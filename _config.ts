@@ -6,6 +6,7 @@ import nav from 'lume/plugins/nav.ts'
 import redirects from 'lume/plugins/redirects.ts'
 import sass from 'lume/plugins/sass.ts'
 import highlightPlugin from './highlight.ts'
+import discussionsPlugin from './discussions.ts'
 
 const site = lume({
 	location: new URL('https://satgo1546.github.io/'),
@@ -109,6 +110,7 @@ site.use(feed({
 		generator: true,
 	},
 }))
+site.use(discussionsPlugin)
 site.use(nav())
 site.use(redirects())
 
