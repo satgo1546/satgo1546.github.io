@@ -46,7 +46,7 @@ export default (data: Lume.Data) => {
 			</footer>
 			{data.githubDiscussionNumber && <div class="comments-area">
 				<script defer src="/script/discussions.js" data-n={data.githubDiscussionNumber} />
-				<a href={'https://github.com/satgo1546/satgo1546.github.io/discussions/' + data.githubDiscussionNumber}>在GitHub上查看评论</a>。
+				<a href={'https://github.com/satgo1546/satgo1546.github.io/discussions/' + data.githubDiscussionNumber}>在GitHub上查看和发表评论</a>。
 			</div>}
 		</main>
 

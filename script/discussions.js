@@ -89,7 +89,7 @@
 				items = map.null.children
 			}
 			if (items.length) {
-				container.replaceChildren(
+				container.prepend(
 					h('h2', { className: 'comments-title' }, [
 						'《',
 						...document.querySelector('article > h1')?.cloneNode(true).childNodes ?? '',
@@ -98,7 +98,7 @@
 					h('ol', { className: 'commentlist' }, items.map(render)),
 				)
 			} else {
-				container.textContent = ''
+				container.prepend('没有评论。')
 			}
 		} catch (error) {
 			container.prepend(
