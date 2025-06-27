@@ -15,6 +15,10 @@ export default (data: Lume.Data) => {
 		<link rel="shortcut icon" type="image/svg" href="/style/favicon.svg" />
 		<link rel="stylesheet" href="/style/index.css" />
 		<link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+		{data.githubDiscussionNumber && <>
+			<link rel="preconnect" href="https://api.github.com" crossorigin="use-credentials" />
+			<link rel="dns-prefetch" href="https://api.github.com" />
+		</>}
 		<body>
 			{data.children}
 		</body>
