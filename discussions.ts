@@ -77,7 +77,7 @@ mutation ($body: String!) {
 			if (mapping[pathname]) {
 				page.data.githubDiscussionNumber = mapping[pathname]
 			} else if (pathname.startsWith('/archives/') || pathname.startsWith('/statuses/')) {
-				const number = (await GHGQLAPI(`
+				const { id, number } = (await GHGQLAPI(`
 mutation ($title: String!, $body: String!) {
 	createDiscussion(input: {
 		repositoryId: "R_kgDOAZWfwA",
@@ -85,12 +85,29 @@ mutation ($title: String!, $body: String!) {
 		title: $title,
 		body: $body
 	}) {
-		discussion { number }
+		discussion {
+			id
+			number
+		}
 	}
 }
 `, { title: pathname, body: `SHA-1("\`${pathname}\`") = \`${await sha1(pathname)}\`\n` },
-				)).createDiscussion.discussion.number
+				)).createDiscussion.discussion
 				console.log(`Created discussion #${number} for ${pathname}`)
+				try {
+					await GHGQLAPI(`
+mutation ($discussionId: ID!) {
+	addLabelsToLabelable(input: {
+		labelableId: $discussionId,
+		labelIds: ["LA_kwDOAZWfwM8AAAACD3or7Q"]
+	}) {
+		__typename
+	}
+}
+`, { discussionId: id })
+				} catch (error) {
+					console.log(`Error attaching label to discussion ID ${id} (#${number})`, error)
+				}
 				mapping[pathname] = number
 				mappingDirty = true
 			}
