@@ -49,7 +49,10 @@ query MyQuery {
 		console.log('Discussion mapping before build:', JSON.stringify(mapping, undefined, 2))
 	})
 	site.addEventListener('afterBuild', async () => {
-		if (!mappingDirty) return
+		if (!mappingDirty) {
+			console.log('Discussion mapping unchanged after build')
+			return
+		}
 		console.log('Discussion mapping after build:', JSON.stringify(mapping, undefined, 2))
 		await GHGQLAPI(`
 mutation ($body: String!) {
@@ -63,12 +66,12 @@ mutation ($body: String!) {
 `, {
 			body: Object.entries(mapping)
 				.sort(([a], [b]) => +(a > b) - +(a < b))
-				.map(([pathname, number]) => `[${pathname}](${number})`)
+				.map(([pathname, number]) => `- [${pathname}](${number})`)
 				.join('\n') || '<!---->'
 		})
 		mappingDirty = false
 	})
-	site.process(['.html'], async (pages: Lume.Page[]) => {
+	site.preprocess(['.html'], async (pages: Lume.Page[]) => {
 		for (const page of pages) {
 			const pathname = page.data.url
 			if (mapping[pathname]) {
