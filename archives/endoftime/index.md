@@ -2214,7 +2214,7 @@ status字段值“reality-is-in-the-future”引起了群友们的注意。
 
 Sierra指出在网站完整源代码中能搜索到另一处decade，位于[实用函数mixHslaWithWhite的注释中](https://github.com/PKUPC/pnku-website/blob/4e0ff053e0ef1859ac876cba5a7b0baacc0fccee/frontend/src/utils.ts#L169)：
 
-```js
+```ts
 // ADHOC
 // p 是一个特殊参数，用于给 team_id 为 0 的整点花活
 // decade: 222, 202, 222
@@ -2230,6 +2230,6 @@ export function mixHslaWithWhite(h: number, s: number, l: number, a: number, p?:
 
 该函数意在将队伍ID为0的队伍（也就是工作人员）颜色显示为<span style="background: #decade; color: black">#DECADE</span>。然而，这个函数从未被调用，在构建时被剔除，代码最终没能抵达前端；工作人员队伍也没有通过其他手段显示为该颜色。decade可能是个无法触发的彩蛋。
 
-“璋�”末尾的U+FFFD可能在静态化过程中丢失了。末尾的U+FFFD暗示可能是以GBK编码读取了实际按UTF-8编码的文本，按此解读的话，原字可能是U+8C00~8C3F中的任意字。这段码位中常用字不少，其中最可能的是“谜”。
+“璋�”末尾的U+FFFD可能在静态化过程中丢失了。末尾的U+FFFD暗示可能是以GBK编码读取了实际按UTF-8编码的文本，按此解读的话，原字可能是U+8C00~8C3F中的任意字。这段码位中常用字不少，其中最可能的是“谜”，还有“谁”“谋”“谎”“谬”“谷”等。
 
 考虑到realityis与endoftime、nightmare一样是9个字母，编码转换的手法此前也曾用到，它可能是时间的尽头的一个中间答案。
