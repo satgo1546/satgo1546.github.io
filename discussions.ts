@@ -66,8 +66,8 @@ mutation ($body: String!) {
 `, {
 			body: Object.entries(mapping)
 				.sort(([a], [b]) => +(a > b) - +(a < b))
-				.map(([pathname, number]) => `- [${pathname}](${number})`)
-				.join('\n') || '<!---->'
+				.map(([pathname, number]) => `[${pathname}](${number})`)
+				.join('\n\n') || '<!---->'
 		})
 		mappingDirty = false
 	})
@@ -108,7 +108,7 @@ mutation ($discussionId: ID!) {
 				} catch (error) {
 					console.log(`Error attaching label to discussion ID ${id} (#${number})`, error)
 				}
-				mapping[pathname] = number
+				page.data.githubDiscussionNumber = mapping[pathname] = number
 				mappingDirty = true
 			}
 		}
