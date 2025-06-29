@@ -1,6 +1,5 @@
-// @ts-check
+import { type ThemeRegistration } from 'npm:@shikijs/types'
 
-/** @satisfies {import('@shikijs/types').ThemeRegistration} */
 const theme = {
 	name: 'web',
 	displayName: 'WEB-like',
@@ -90,7 +89,7 @@ const theme = {
 			settings: { foreground: 'token punctuation' },
 		},
 	],
-}
+} satisfies ThemeRegistration
 
 // Monospace has the highest priority.
 // We don't have !important in TextMate, so we generate every possible overriding declaration.

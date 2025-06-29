@@ -1,6 +1,6 @@
 import { ensureDir } from 'jsr:@std/fs@1.0.9'
 import { codeToTokens, bundledLanguages, BundledLanguage } from 'npm:shiki'
-import theme from './style/tm-theme.js'
+import theme from './style/tm-theme.ts'
 
 const Cache = {
 	ofCache: new Map<string, string>,

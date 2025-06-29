@@ -24,6 +24,8 @@ const site = lume({
 site.hooks.addMarkdownItRule('table_open', () => '<table class="booktabs">')
 site.loadPages(['.html'], {})
 site.add('')
+site.ignore(path => path.endsWith('.ts') && !path.endsWith('.page.ts')
+	&& !path.startsWith('/archives/') && !path.startsWith('/statuses/'))
 site.use(jsx())
 site.use(sass({
 	options: {
