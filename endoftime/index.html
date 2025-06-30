@@ -54,7 +54,23 @@ a:visited {
 		这里找不到新的线索，只陈列着逝去的时间。<br>
 		<br>
 		欢迎来到<a href="/archives/endoftime/">档案馆</a>。
-	<form action="http://pkupuzzle.art:15135/" method="POST" enctype="text/plain">
-		<input name="=" required placeholder="向 MTH 发送消息。">
+	<form action="http://pkupuzzle.art:15135/" method="POST" enctype="text/plain" onsubmit="
+		if (location.protocol === 'http:') {
+			event.preventDefault()
+			const pre = document.createElement('pre')
+			this.after(pre)
+			fetch(this.action, { method: 'POST', body: pre.textContent = this[0].value })
+				.then(response => (pre.textContent += '\n' + response.status + ' ' + response.statusText, response.json()))
+				.then(json => pre.textContent += '\n' + JSON.stringify(json, undefined, 2))
+				.catch(error => pre.textContent += '\n' + error)
+			this.reset()
+		}
+	">
+		<input name="=" placeholder="向 MTH 发送消息。" style="width: 100%">
 	</form>
+	<script>
+		if (location.protocol === 'https:') {
+			document.forms[0][0].placeholder = '这里太安全了……与 MTH 连接受限。'
+		}
+	</script>
 </table>
