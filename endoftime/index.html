@@ -70,7 +70,8 @@ a:visited {
 	</form>
 	<script>
 		if (location.protocol === 'https:') {
-			document.forms[0][0].placeholder = '这里太安全了……与 MTH 连接受限。'
+			document.write('因浏览器安全策略限制，发送的消息前后将包含额外的符号。<br>通过不安全的http://协议访问或使用此页面的本地副本以解除此限制。')
+			document.forms[0][0].placeholder = '==这里太安全了……与 MTH 连接受限。\\r\\n'
 		}
 	</script>
 </table>
