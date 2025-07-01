@@ -2059,7 +2059,7 @@ AI忘记了骗子，忘记了独轮车，被一句括号文学催眠，已经完
 对当代大语言模型来说，陷入循环就再难逃脱。Shimamura Kagetsu设置了每隔10分钟自动发送一条随机的渲染安静氛围的文本，树洞里只剩下两台自我陶醉的机器。静置12小时后，没有意外地，倒计时回归2025年6月29日20:00。
 
 <figure>
-	<img src="treehole-target.svg">
+	<img src="treehole-target.svg" width="558" height="379">
 	<figcaption>
 		倒计时目标变化折线图，注意纵轴在2030-06-29以下为对数刻度。<a href="treehole-target.csv">原始数据</a>可用
 	</figcaption>
@@ -2112,8 +2112,6 @@ type Data =
 [监控程序源代码](treehole.py)可用。
 
 </details>
-
-## 【TODO】
 
 ### Reality is ...?
 
@@ -2233,3 +2231,550 @@ export function mixHslaWithWhite(h: number, s: number, l: number, a: number, p?:
 “璋�”末尾的U+FFFD可能在静态化过程中丢失了。末尾的U+FFFD暗示可能是以GBK编码读取了实际按UTF-8编码的文本，按此解读的话，原字可能是U+8C00~8C3F中的任意字。这段码位中常用字不少，其中最可能的是“谜”，还有“谁”“谋”“谎”“谬”“谷”等。
 
 考虑到realityis与endoftime、nightmare一样是9个字母，编码转换的手法此前也曾用到，它可能是时间的尽头的一个中间答案。
+
+## 灵境胡同
+
+### 15 and no tie
+
+6月29日20:00，MTH准时开启，又是熟悉的投票环节。投票方法与计票逻辑与先前类似，此处不再赘述。
+
+本阶段追加了不可平票的限制：总票数达标但最高票选项有多个时，不会进入下一组投票，直至平衡被打破。
+
+```json
+{
+	"message": "又见面了，陌生人。我已等候你多时。",
+	"choices": [
+		{
+			"text": "你是谁？",
+			"path": "/whoareyou",
+			"count": 0
+		},
+		{
+			"text": "苦苦等待的人是我才对吧？",
+			"path": "/imtheonewhoswaiting",
+			"count": 0
+		},
+		{
+			"text": "我不想见到你。",
+			"path": "/idontwannaseeyou",
+			"count": 0
+		}
+	],
+	"last_choice": null,
+	"total": 0,
+	"expected": "15 and no tie"
+}
+```
+
+```js
+{
+	"message":
+`很遗憾，由于 MTH 并非纯粹的机械构造，它也是具备生物节律的：
+它会从外界摄取能量，也会在休眠中自我恢复，甚至会……哈哈，和你说这个干嘛。
+连通不同的宇宙需要巨大的能量。即使只是传递数比特的信息，MTH 也必须在此后进行休整，更别说传递实体
+——这在我们看来，几乎是不可能的。
+因此，无论是这端的我还是那端的你，都不得不等待。`,
+	"choices": [
+		{
+			"text": "在等待之后呢？我现在能做什么事吗？",
+			"path": "/whatcanido",
+			"count": 0
+		},
+		{
+			"text": "那么，你又是谁？",
+			"path": "/whoareyou",
+			"count": 0
+		}
+	],
+	"last_choice": "/imtheonewhoswaiting",
+	"total": 0,
+	"expected": "15 and no tie"
+}
+```
+
+```json
+{
+	"message": "你难道不认识我吗？直视我的眼睛。",
+	"choices": [
+		{
+			"text": "你原来是……她？！",
+			"path": "/youareher",
+			"count": 0
+		},
+		{
+			"text": "可是我什么都看不到啊。",
+			"path": "/icantseeanything",
+			"count": 0
+		}
+	],
+	"last_choice": "/whoareyou",
+	"total": 0,
+	"expected": "15 and no tie"
+}
+```
+
+```json
+{
+	"message": "/eyes",
+	"choices": [
+		{
+			"text": "你原来是……她？！",
+			"path": "/youareher",
+			"count": 0
+		},
+		{
+			"text": "抱歉，我脸盲。",
+			"path": "/imfaceblind",
+			"count": 0
+		}
+	],
+	"last_choice": "/icantseeanything",
+	"total": 0,
+	"expected": "15 and no tie"
+}
+```
+
+仅在此投票开启期间，访问/eyes可获得一张文件名为eyes.heic的图片：
+
+<figure>
+	<a href="eyes.heic"><img src="eyes.webp" width="140" height="29"></a>
+	<figcaption>干什么！</figcaption>
+</figure>
+
+这是在《梦境永居宣言》PV中出现的金发少女的双眼——
+
+<!----><img src="eyes.avif">
+
+事实上，由于剧情实在太谜语人，直到这张图片之前，都不确定endoftime剧情与P&KU正篇间的关系。这张图片明确了endoftime也属于P&KU世界观，现在通过MTH连接对话的是金发少女。
+
+但玩家们能认出来这件事丝毫不影响选项“抱歉，我脸盲。”得票数遥遥领先。
+
+```js
+{
+	"message":
+`这种玩笑，实在是让人笑不出来。
+我是谁并不重要，不过我现在有一件重要的事情要托付给你，这件事情只有你能完成。
+——虽然占卜的结果如此，但你不像能胜任这件事的样子。你真的是我要找的那个人吗？
+在此之前，看起来你有一些心事。你为何再度连接 MTH？`,
+	"choices": [
+		{
+			"text": "我要唤醒神。",
+			"path": "/awakengod",
+			"count": 5
+		},
+		{
+			"text": "我要批判神。",
+			"path": "/criticizegod",
+			"count": 5
+		},
+		{
+			"text": "因为 MTH 就在那里。",
+			"path": "/becausemthisthere",
+			"count": 0
+		},
+		{
+			"text": "请先说你的事。",
+			"path": "/tellmefirst",
+			"count": 5
+		}
+	],
+	"last_choice": "/imfaceblind",
+	"total": 15,
+	"expected": "15 and no tie"
+}
+```
+
+20:24，5∶5∶5的平衡被投给第四个选项的一票打破，进入了下一阶段。
+
+### MTH意识接入模块
+
+```js
+{
+	"status": "observers-absence",
+	"message":
+`在我所处的世界，神构成了宇宙的一部分，她的记忆则是其中的一座座建筑。
+每座建筑都被散落的谜题封锁，好在我已经解开了其中的绝大部分。
+但这一座，仅靠我自己，实在无能为力。
+虽然我不能将你传送至此，但我可以将你的意识接入 MTH。
+请你用意识，操纵虚拟实体，找到藏匿在神记忆中的线索吧。
+祝你成功。不过如果失败的话，我们可能永远也无法将神唤醒……`,
+	"access": "/access"
+}
+```
+
+GET /access返回下列信息。
+
+```json
+{
+	"message": "MTH 意识接入模块已就绪。",
+	"actions": [
+		{
+			"path": "/access",
+			"description": "意识接入模块控制台"
+		},
+		{
+			"path": [
+				"/operator1",
+				"/operator2",
+				"/operator3",
+				"/operator4"
+			],
+			"description": "接入操作者"
+		},
+		{
+			"path": "/director",
+			"description": "接入指引者"
+		},
+		{
+			"path": "/logout",
+			"description": "断开意识端口连接"
+		},
+		{
+			"path": "/fragments",
+			"description": "碎片图鉴"
+		},
+		{
+			"path": "/help",
+			"description": "寻求帮助"
+		}
+	]
+}
+```
+
+GET /fragments：
+
+```json
+{
+	"collect_rate": "0.00%",
+	"collected": []
+}
+```
+
+GET /help：
+
+```json
+{
+	"operator_actions": [
+		{
+			"path": "/turnleft",
+			"description": "向左转"
+		},
+		{
+			"path": "/turnright",
+			"description": "向右转"
+		},
+		{
+			"path": "/go",
+			"description": "前进"
+		},
+		{
+			"path": "/goahead",
+			"description": "一路前进"
+		},
+		{
+			"path": "/back",
+			"description": "后退"
+		},
+		{
+			"path": "/check",
+			"description": "检查"
+		}
+	],
+	"director_actions": [
+	]
+}
+```
+
+/access、/fragments、/help接口总是可用，返回值与访问者身份无关。
+
+其余接口必须作为指引者或操作者调用。通过GET /director和GET /operator#将当前IP绑定对应身份，GET /logout解除绑定。每个IP同时只能拥有一个身份，且不能与其他IP身份重复。试图绑定已有其他IP占据的身份会收到响应<code class="language-json">{"payload": "", "error": "你已断开意识端口连接，请重新接入"}</code>。同一IP可先解除与当前身份的绑定，再绑定其他身份，达到更换身份的效果；不先解除绑定就试图绑定其他身份会收到响应<code class="language-json">{"payload": "⟨Base64⟩", "error": "请先断开意识端口连接"}</code>。
+
+绑定身份后，以及执行/help所列动作后，返回类似下列响应。
+
+<figure>
+
+```json
+{
+  "payload": "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",
+  "error": "成功移动"
+}
+```
+
+<figcaption>发生错误，错误原因：成功</figcaption>
+</figure>
+
+其中payload字段是动态生成的Base64编码的有损压缩WebP图片。
+
+### VR设备也会加载3D迷宫屏幕保护程序吗？
+
+<div class="row">
+	<figure>
+		<img src="director.webp" width="320" height="434">
+		<figcaption>指引者图片示例</figcaption>
+	</figure>
+	<figure>
+		<img src="operator.webp" width="320" height="240">
+		<figcaption>操作者图片示例</figcaption>
+	</figure>
+</div>
+
+<blockquote>[2025-06-29 20:29:12] 金色小松鼠：注意到director视图就像一个巨大的[图片：pagerror.gif]</blockquote>
+
+结合解码得到的图片和帮助，这是一个迷宫。
+
+操作者身处迷宫内，只能看到可视范围内的墙壁，通过访问/help所列动作端点移动和检查。指引者能看到已探索的地图俯视图，但不能亲自探索。
+
+信息被分散在五名玩家间，Sierra果断启动了群语音，Brightly_建议换用支持屏幕共享的腾讯会议。很快，十几名群成员聚集在Brightly_的会议室。指引者Lαsting开始了屏幕共享，操作者Sierra、冰枫凌、Little Thinker、圆周率、花落等合作探明了基本机制和最初的可通行区域。
+
+<dl>
+<dt><span class="icon" style="width: 1em; background: #000; border: thin solid #fff;"></span>
+<dd>墙壁
+<dt><span class="icon" style="width: 1em; background: #fff; border: thin solid #000;"></span>
+<dd>地面（可通行）
+<dt><span class="icon" style="width: 1em; border: transparent solid .5em; border-bottom: #b20 solid 1em; border-top: none;"></span>
+<dd>操作者及其朝向（初始状态，左上角、右上角、左下角、右下角的<span class="icon" style="width: 1em; border: transparent solid .5em; border-bottom: #b20 solid 1em; border-top: none;"></span>分别对应操作者1~4）
+<dt><span class="icon" style="width: 1em; background: conic-gradient(#117 0 .25turn, #11c 0 .5turn, #11a 0 .75turn, #11c 0);"></span>
+<dd>未探索区域（操作者移动轨迹周围九格视为已探索）
+</dl>
+
+<!----><img src="director1.avif" width="320" height="434">
+
+操作者2~4面前都只有一条路可走，路的尽头从指引者视角来看是写着数字的墙壁，无法继续。操作者1占着连接不放却不移动，进度一度卡死。
+
+全网呼叫操作者1的同时，Sierra极速编写了一个简化请求与图像解码的网页工具。
+
+<figure>
+	<img src="eot.html.webp" width="512">
+	<figcaption>eot.html</figcaption>
+</figure>
+
+服务器在本阶段追加了`Access-Control-Allow-Origin: *`、`Access-Control-Allow-Methods: *`、`Access-Control-Allow-Headers: *`响应头，请求工具才得以以网页的形式存在。
+
+有了操作面板，操作效率大幅提升，请求频率大幅提升，触发服务端限流的频率也随之大幅提升，操作者们频频发出对土豆服务器的抱怨。
+
+### MTH笑传之踩踩板
+
+操作者1位可能触发了超时自动释放，被冰枫凌成功连接。探索遇到了新的地图元素。
+
+操作者1|操作者4
+-|-
+![](director2.avif)|![](director4.avif)
+![](director3.avif)|![](director5.avif)
+
+<dl>
+<dt><svg class="icon" viewBox="0 0 16 16">
+  <rect width="16" height="16" stroke="#fff" stroke-width="2"/>
+  <text x="8" y="12" fill="#fff" font-size="10" text-anchor="middle">1</text>
+</svg>
+<dd>关闭的门（数字表示还需按下的对应的压力板数量，开启时暂时消失）
+<dt><svg class="icon" viewBox="0 0 16 16">
+	<circle cx="8" cy="8" r="5" fill="#4c8"/>
+</svg>
+<dd>压力板（可通行，有操作者处在同一格内视为按下；与门对应）
+<dt><svg class="icon" viewBox="0 0 2 2">
+	<path d="M1 0 2 1 1 2 0 1" fill="#18d"/>
+</svg>
+<dd>碎片（可通行，处在同一格内时访问/check拾取，拾取后消失）
+</dl>
+
+关于门上数字的含义，玩家们有所争议。一说数字与操作者编号有关。注意到场上数字1最多，按下某个压力板后最多只能开启一扇标有1的门，操作者1遇到了标有1的门，这些线索表明数字与操作者编号有关的可能性不大。
+
+一说数字表示还需按下的压力板数量。标有1的门在按下某个压力板后即消失，标有4的门在按下某个压力板后标记变为3，解释得通。奇怪的是操作者总共也只有4个，即使按下了4个压力板开启了标有4的门，也无人可去了。
+
+压力板上没有任何标记，不尝试按下就不能确认它与哪个门对应。有的压力板按下后地图没有任何变化，可能是因为它对应的门位于未探索区域。
+
+几乎所有场合，请求/check都只会返回<code class="language-json">{"payload": "⟨Base64⟩", "error": "无事发生"}</code>，只有处于碎片格上才会返回关于碎片已拾取的信息。/fragments的响应记载了已获得的所有碎片内容。这些散落的碎片拼凑出的是P&KU系列的核心——女女关系性。
+
+```js
+{
+	"collect_rate": "8.16%",
+	"collected": [
+		{
+			"id": 10,
+			"collect_time": "2025-06-29T21:05:52.361992",
+			"contents":
+`“……生活在寂静的深海。”
+当我回过神后，她正在念着旁边的解说牌。`
+		},
+		{
+			"id": 15,
+			"collect_time": "2025-06-29T21:05:46.894963",
+			"contents":
+`再往前，是一段玻璃隧道。我们的四周连同穹顶，都被海水包围。成群的水母从我们的头顶掠过，在隧道渐变的灯光下，散发出朦胧却迷人的荧光。
+真是浪漫的画面，连我都忍不住感叹。
+“你知道吗？”我对她说，“这些光鲜亮丽的水母，看似内心与外表一样脆弱，可它们甚至没有一颗真正的心脏。”
+“它们也几乎不能自主行动。水母只能任由海水裹挟，在漫无目的中随波逐流。”
+“它们会试图寻找自我吗？在被操纵的命运之下，也许表面上的优雅，就是它们最后的防线了吧。”`
+		},
+		{
+			"id": 21,
+			"collect_time": "2025-06-29T21:04:55.429344",
+			"contents":
+"游园活动的最后一项，是海豚表演。"
+		},
+		{
+			"id": 23,
+			"collect_time": "2025-06-29T21:03:50.888428",
+			"contents":
+"我望向她的侧脸，而她安静地看着水池里的海豚和驯兽师。也许她只是累了。"
+		}
+	]
+}
+```
+
+<blockquote><pre>[腾讯会议语音]
+[2025-06-29 21:28:18] Orthos：我看了一下碎片，我觉得除了女同之外，我看不出别的东西来。</pre></blockquote>
+
+按collect_rate字段显示的进度计算，碎片共有49片。
+
+### 合流
+
+Sierra接连更新了4个版本的工具，现在制约探索速度的唯一因素是服务器限流了。跑得快的选手时不时会撞到墙上晕过去，需要看广告等待复活。
+
+<figure>
+	<img src="eot4.html.webp" width="512">
+	<figcaption>eot v0.4.html</figcaption>
+</figure>
+
+探索中发现了多处按下后只能开启自己活动范围内的门的压力板。
+
+<div class="row">
+	<img src="director7.avif" width="128" height="112">
+	<img src="director8.avif" width="128" height="112">
+</div>
+
+操作者一离开压力板，门就会关闭，因此无法自己使用。
+
+随着已探索区域扩大，操作者之间连通了。
+
+<!----><img src="director6.avif" width="320" height="434">
+
+这样一来，压力板可由一个操作者按下，帮助另一个操作者通过门。
+
+<div class="row">
+	<img src="director9.avif" width="128" height="112">
+	<img src="director10.avif" width="128" height="112">
+	<img src="director11.avif" width="128" height="112">
+</div>
+
+操作者视图看不到其他操作者，但尝试移动到已有操作者占据的格子会触发错误<code class="language-json">{"payload": "⟨Base64⟩", "error": "你被其他操作者挡住了，无法移动"}</code>。
+
+更多的探索后，可以确定迷宫地图确实描绘了![pagerror.gif](/endoftime/pagerror.gif)<span></span>，连配色都还原了。
+
+<div class="row">
+	<img src="director12.avif" width="320" height="434">
+	<figure>
+		<img src="operator1.avif" width="320" height="240">
+		<figcaption>一眼望不到头的长廊。操作者视图的直线视野也有限</figcaption>
+	</figure>
+</div>
+
+此外还发现了由两块压力板同时控制的或门和能同时开启两扇门的压力板。假设失效，门与压力板的对应关系可能需要重新确认。
+
+已探索区域越来越大，移动和检查压力板对应门的过程变得冗长。经过了一段漫长的探索，标有1的门基本都被开启过了，场上只笼罩着几片被标有3和4的门堵住的乌云。
+
+<!----><img src="director13.avif" width="320" height="434">
+
+<blockquote><pre>[腾讯会议语音]
+[2025-06-29 23:14:27] 冰枫凌：马上结束了倒是。
+[2025-06-29 23:14:30] Sierra：真结束吗？</pre></blockquote>
+
+### 深入
+
+因为先前探索时没有记录，不知道这些未开启过的门对应哪些压力板。22:42，Sierra把已探索区域的可通行地面数据导入到共享表格，众人开始团建绘制门与压力板的对应关系。表格记录了信息，也提供了统一的坐标系，诸如“i脖子”“坑上面”之类奇怪的地名得以被更准确的单元格参照替代。
+
+又经过一段漫长的绘制流程，开门的计划变得清晰起来。
+
+迷宫机关密布，为了开启地图右下角标有3的门，操作者2只能作出一些必要的牺牲。
+
+<figure>
+	<img src="director14.avif" width="144" height="112">
+	<figcaption>厕所挂机中</figcaption>
+</figure>
+
+23:24，地图右下角的标有3的门被打开，操作者3进入，一路抵达地图左下角，按下压力板，开启了“i”字底部标有1的门。
+
+操作者2进入“i”，立刻被迫再次作出了一些必要的牺牲。
+
+<figure>
+	<div class="row">
+		<img src="director15.avif" width="336" height="874">
+	</div>
+	<figcaption>玩ARG太菜被关起来了</figcaption>
+</figure>
+
+“i”内部有凭目前为止的理论无法解释的门与压力板机制扩展，这一点不尝试就无法确认，所以操作者2的困境并非毫无意义。
+
+问题不大，还有两个操作者可以行动，先后进入了“i”内部。
+
+<blockquote><pre>[腾讯会议语音]
+[2025-06-29 23:30:12] Lαsting：我觉得这个板能踩，因为它前面不是一个封死的地方。
+[2025-06-29 23:30:46] Sierra：我要踩这个吗？你告诉我，我要踩这个吗？
+[2025-06-29 23:30:47] Lαsting：我觉得踩了问题不会很大，因为里面还有东西的。
+[2025-06-29 23:30:51] 冰枫凌：踩一下吧，来都来了。
+[2025-06-29 23:30:55] Sierra：截图，截图，截图。……OK，你让我踩的。
+[2025-06-29 23:30:58] Lαsting：卧槽，无语了。
+</pre></blockquote>
+
+<figure>
+	<div class="row">
+		<img src="director16.avif" width="112" height="112">
+		<img src="director17.avif" width="112" height="112">
+	</div>
+	<figcaption>每个操作者都要重复一遍吗？绝望的轮回</figcaption>
+</figure>
+
+……只剩一个操作者可以移动了。
+
+<figure>
+	<img src="director18.avif" width="320" height="434">
+	<figcaption>“围困”</figcaption>
+</figure>
+
+23:32，Sierra接过了Lαsting的<ruby>指引者<rt>监控室老大爷</ruby>身份。
+
+“i”内部是移动的迷宫，结构变幻莫测。虽然不清楚困人压力板的具体机制，但是不按的话也没有其他继续的方法了。按下压力板，操作者自己虽会被困，但能开启其他门，或是解放一定数量的其他被困操作者，还可能大幅改变“i”内的墙壁设置。
+
+在这里还发现了按下后能使门标记数字减少超过1的压力板、标有18甚至79的门，以及在“i”顶部发现的最后一种地图元素。
+
+<dl>
+<dt><span class="icon" style="width: 1em; background: #88e; border: thin solid #fff;"></span>
+<dd>终点（可通行；共有4个，4个操作者全部处于终点格内时，意识连接结束）
+</dl>
+
+<!----><img src="director19.avif">
+
+23:49，迷宫完成了。
+
+### 继续？
+
+意识接入模块提供的接口立即全部关闭，MTH再次进入投票环节。
+
+```js
+{
+	"message":
+`终于完成了。你看到了什么？
+等等……碎片好像还没有全部收集完毕。
+不过，在你接入期间，MTH 的能量恢复了不少。
+因此，如果你选择再次回到神的记忆中，MTH 能为为你提供额外的帮助。
+要继续吗？`,
+	"choices": [
+		{
+			"text": "继续。",
+			"path": "/continue",
+			"count": 0
+		},
+		{
+			"text": "不了，谢谢。",
+			"path": "/nothanks",
+			"count": 0
+		}
+	],
+	"last_choice": "/tellmefirst",
+	"total": 0,
+	"expected": "25 and no tie"
+}
+```
+
+【TODO】
+
