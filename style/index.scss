@@ -1741,6 +1741,7 @@ math[display=block] {
 		font: 12pt/1.25 sats-symbol, "【TODO：某个字体】", sans-serif;
 		padding: 8px;
 		--textwidth: 42pc;
+		accent-color: var(--fg1);
 		scrollbar-color: var(--fg1) var(--bg1);
 	}
 

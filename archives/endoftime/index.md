@@ -27,7 +27,7 @@ tags:
 
 <pre style="text-align: center;">献给中文解谜社区</pre>
 
-## 我望向时间的尽头，那是时间的开始。
+## 梦开始的地方
 
 2024年6月28日投稿的[Puzzle and Key Universe 3](https://pnku3.pkupuzzle.art/)（上）主题曲[《梦境永居宣言》PV](https://www.bilibili.com/video/av1505873069)的简介中有一句夹杂着乱码的文字：
 
@@ -1221,13 +1221,13 @@ host字段暗示了Host标头确有含义。通过网络请求发送工具将Hos
 
 ```js
 {
-  "status": "new-start-but-wrong-order",
-  "message":
+	"status": "new-start-but-wrong-order",
+	"message":
 `你为何……又回来了？
 你好像弄错了什么。
 你从这里找到了我，至少最开始是这样的。
 希望你真的记得来时的路。`,
-  "host": "pkupuzzle.art:15135"
+	"host": "pkupuzzle.art:15135"
 }
 ```
 
@@ -2495,8 +2495,8 @@ GET /help：
 
 ```json
 {
-  "payload": "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",
-  "error": "成功移动"
+	"payload": "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",
+	"error": "成功移动"
 }
 ```
 
@@ -2522,7 +2522,7 @@ GET /help：
 
 结合解码得到的图片和帮助，这是一个迷宫。
 
-操作者身处迷宫内，只能看到可视范围内的墙壁，通过访问/help所列动作端点移动和检查。指引者能看到已探索的地图俯视图，但不能亲自探索。
+操作者身处迷宫内，只能看到可视范围内的墙壁，通过访问/help所列动作端点移动和检查。指引者能看到已探索的地图俯视图，但不能亲自探索，尝试检查会返回错误“你还没有接入任何意识端口”。
 
 信息被分散在五名玩家间，Sierra果断启动了群语音，Brightly_建议换用支持屏幕共享的腾讯会议。很快，十几名群成员聚集在Brightly_的会议室。指引者Lαsting开始了屏幕共享，操作者Sierra、冰枫凌、Little Thinker、圆周率、花落等合作探明了基本机制和最初的可通行区域。
 
@@ -2534,7 +2534,7 @@ GET /help：
 <dt><span class="icon" style="width: 1em; border: transparent solid .5em; border-bottom: #b20 solid 1em; border-top: none;"></span>
 <dd>操作者及其朝向（初始状态，左上角、右上角、左下角、右下角的<span class="icon" style="width: 1em; border: transparent solid .5em; border-bottom: #b20 solid 1em; border-top: none;"></span>分别对应操作者1~4）
 <dt><span class="icon" style="width: 1em; background: conic-gradient(#117 0 .25turn, #11c 0 .5turn, #11a 0 .75turn, #11c 0);"></span>
-<dd>未探索区域（操作者移动轨迹周围九格视为已探索）
+<dd>未探索区域（操作者移动轨迹周围九格视为已探索，含/goahead直行沿途）
 </dl>
 
 <!----><img src="director1.avif" width="320" height="434">
@@ -2563,8 +2563,8 @@ GET /help：
 
 <dl>
 <dt><svg class="icon" viewBox="0 0 16 16">
-  <rect width="16" height="16" stroke="#fff" stroke-width="2"/>
-  <text x="8" y="12" fill="#fff" font-size="10" text-anchor="middle">1</text>
+	<rect width="16" height="16" stroke="#fff" stroke-width="2"/>
+	<text x="8" y="12" fill="#fff" font-size="10" text-anchor="middle">1</text>
 </svg>
 <dd>关闭的门（数字表示还需按下的对应的压力板数量，开启时暂时消失）
 <dt><svg class="icon" viewBox="0 0 16 16">
@@ -2577,13 +2577,17 @@ GET /help：
 <dd>碎片（可通行，处在同一格内时访问/check拾取，拾取后消失）
 </dl>
 
+这些元素在操作者视角都不可见。地图不支持显示重叠元素，操作者与压力板或碎片重叠时，地图上该格只显示操作者。
+
 关于门上数字的含义，玩家们有所争议。一说数字与操作者编号有关。注意到场上数字1最多，按下某个压力板后最多只能开启一扇标有1的门，操作者1遇到了标有1的门，这些线索表明数字与操作者编号有关的可能性不大。
 
 一说数字表示还需按下的压力板数量。标有1的门在按下某个压力板后即消失，标有4的门在按下某个压力板后标记变为3，解释得通。奇怪的是操作者总共也只有4个，即使按下了4个压力板开启了标有4的门，也无人可去了。
 
+如果操作者站在门所在格时门关闭，后续动作将返回错误“你被困在了墙里。怎会如此？”。
+
 压力板上没有任何标记，不尝试按下就不能确认它与哪个门对应。有的压力板按下后地图没有任何变化，可能是因为它对应的门位于未探索区域。
 
-几乎所有场合，请求/check都只会返回<code class="language-json">{"payload": "⟨Base64⟩", "error": "无事发生"}</code>，只有处于碎片格上才会返回关于碎片已拾取的信息。/fragments的响应记载了已获得的所有碎片内容。这些散落的碎片拼凑出的是P&KU系列的核心——女女关系性。
+几乎所有场合，请求/check检查都只会返回“无事发生”，只有处于碎片格上才会返回关于碎片已拾取的信息。/fragments的响应记载了已获得的所有碎片内容。这些散落的碎片拼凑出的是P&KU系列的核心——女女关系性。
 
 ```js
 {
@@ -2629,11 +2633,11 @@ GET /help：
 
 ### 合流
 
-Sierra接连更新了4个版本的工具，现在制约探索速度的唯一因素是服务器限流了。跑得快的选手时不时会撞到墙上晕过去，需要看广告等待复活。
+Sierra接连更新了4个版本的可视化请求工具，现在制约探索速度的唯一因素是服务器限流了。跑得快的选手时不时会撞到墙上晕过去，需要看广告等待复活。
 
 <figure>
 	<img src="eot4.html.webp" width="512">
-	<figcaption>eot v0.4.html</figcaption>
+	<figcaption>搞半天原来还要玩家自己拼工作台</figcaption>
 </figure>
 
 探索中发现了多处按下后只能开启自己活动范围内的门的压力板。
@@ -2657,7 +2661,7 @@ Sierra接连更新了4个版本的工具，现在制约探索速度的唯一因�
 	<img src="director11.avif" width="128" height="112">
 </div>
 
-操作者视图看不到其他操作者，但尝试移动到已有操作者占据的格子会触发错误<code class="language-json">{"payload": "⟨Base64⟩", "error": "你被其他操作者挡住了，无法移动"}</code>。
+操作者视图看不到其他操作者，但尝试移动到已有操作者占据的格子会触发错误“你被其他操作者挡住了，无法移动”。
 
 更多的探索后，可以确定迷宫地图确实描绘了![pagerror.gif](/endoftime/pagerror.gif)<span></span>，连配色都还原了。
 
@@ -2671,9 +2675,253 @@ Sierra接连更新了4个版本的工具，现在制约探索速度的唯一因�
 
 此外还发现了由两块压力板同时控制的或门和能同时开启两扇门的压力板。假设失效，门与压力板的对应关系可能需要重新确认。
 
-已探索区域越来越大，移动和检查压力板对应门的过程变得冗长。经过了一段漫长的探索，标有1的门基本都被开启过了，场上只笼罩着几片被标有3和4的门堵住的乌云。
+已探索区域越来越大，移动和检查压力板对应门的过程变得冗长。22:06，操作者进入了地图顶部的长廊，捡到了地图左上角ID为0的碎片。至此，已知的标有1的门都被开启过了。经过漫长的探索，场上只笼罩着几片被标有3和4的门堵住的乌云。
 
 <!----><img src="director13.avif" width="320" height="434">
+
+碎片收集进度达到了73.47%。
+
+```js
+{
+	"collect_rate": "73.47%",
+	"collected": [
+		{
+			"id": 0,
+			"collect_time": "2025-06-29T22:06:00.498098",
+			"contents":
+"不知道从何时起，我开始分不清幻想和现实。"
+		},
+		{
+			"id": 1,
+			"collect_time": "2025-06-29T21:10:02.265702",
+			"contents":
+"夏天，阴晴不定，湿热的空气。在六月末的江南，这些事情最常见不过。"
+		},
+		{
+			"id": 2,
+			"collect_time": "2025-06-29T21:24:52.871949",
+			"contents":
+"期末考已经结束，紧接着是暑假——说是暑假，其实休息日也不过几天。高中生的假期，总会因为各种借口打折扣。"
+		},
+		{
+			"id": 3,
+			"collect_time": "2025-06-29T21:23:18.884056",
+			"contents":
+`她的假期更少。前几天她向我抱怨，父母给自己报了额外的补习班，因为自己的成绩又下降了。
+所以……这几天又要见不到她了。`
+		},
+		{
+			"id": 4,
+			"collect_time": "2025-06-29T21:10:25.112054",
+			"contents":
+"那些只能消磨时间的日子里，如果我能待在家中，就绝不会出门。"
+		},
+		{
+			"id": 6,
+			"collect_time": "2025-06-29T21:11:00.490990",
+			"contents":
+`不过今天是个例外：她要和我一起去水族馆。一如既往，是她主动邀约。
+我已经忘了自己是怎么抵达目的地的了，只记得我迟到了十多分钟，而她就站在公交站牌下。
+“渴吗？我买了水。”
+不光是水，其实门票也在她身上。她似乎一直是我生活中那个大姐姐一样的角色。`
+		},
+		{
+			"id": 7,
+			"collect_time": "2025-06-29T21:18:40.855724",
+			"contents":
+"而我只是缄默。在生活中，比起她，我却更像那个观测者。"
+		},
+		{
+			"id": 8,
+			"collect_time": "2025-06-29T21:08:43.811643",
+			"contents":
+`“快来看这个！”
+她蹦蹦跳跳，举着手机，好像要把展厅里的所有动物都拍摄一遍。
+嗯……包括我。
+“深海动物好丑！”“这种鱼居然会发光诶！”“好大的乌贼！”
+她边看边碎碎念，虽然声音不大，但句末的那些感叹号听起来分外明显。
+我转过头去，面朝玻璃。玻璃后是一片深沉的黑暗，而玻璃上的倒影让我出神。`
+		},
+		{
+			"id": 10,
+			"collect_time": "2025-06-29T21:05:52.361992",
+			"contents":
+`“……生活在寂静的深海。”
+当我回过神后，她正在念着旁边的解说牌。`
+		},
+		{
+			"id": 11,
+			"collect_time": "2025-06-29T21:25:47.273362",
+			"contents":
+"深海怎么会是寂静的呢？"
+		},
+		{
+			"id": 12,
+			"collect_time": "2025-06-29T21:30:10.926548",
+			"contents":
+"无人在意的角落，海底火山在喷发，抹香鲸的呼喊顺着洋流越传越远。它们的声音，只是没被绝大多数人听到罢了。"
+		},
+		{
+			"id": 13,
+			"collect_time": "2025-06-29T21:17:24.275861",
+			"contents":
+"她看着我。原来刚刚的声音并非来自我的内心，我好像把这些话都说了出来。"
+		},
+		{
+			"id": 15,
+			"collect_time": "2025-06-29T21:05:46.894963",
+			"contents":
+`再往前，是一段玻璃隧道。我们的四周连同穹顶，都被海水包围。成群的水母从我们的头顶掠过，在隧道渐变的灯光下，散发出朦胧却迷人的荧光。
+真是浪漫的画面，连我都忍不住感叹。
+“你知道吗？”我对她说，“这些光鲜亮丽的水母，看似内心与外表一样脆弱，可它们甚至没有一颗真正的心脏。”
+“它们也几乎不能自主行动。水母只能任由海水裹挟，在漫无目的中随波逐流。”
+“它们会试图寻找自我吗？在被操纵的命运之下，也许表面上的优雅，就是它们最后的防线了吧。”`
+		},
+		{
+			"id": 17,
+			"collect_time": "2025-06-29T21:19:38.480053",
+			"contents":
+"我意犹未尽，还想再补充些什么。直到转头看向她时，我才发现她已经陷入了沉默。"
+		},
+		{
+			"id": 18,
+			"collect_time": "2025-06-29T21:35:59.168565",
+			"contents":
+`“是啊。”
+“它们也不会感到自卑。”`
+		},
+		{
+			"id": 19,
+			"collect_time": "2025-06-29T21:40:57.977197",
+			"contents":
+"良久，她终于回话了，言语的基底带着她一贯的理性。”"
+		},
+		{
+			"id": 20,
+			"collect_time": "2025-06-29T21:40:42.628545",
+			"contents":
+"在此之后，我们虽然保持同行，但一路无言。"
+		},
+		{
+			"id": 21,
+			"collect_time": "2025-06-29T21:04:55.429344",
+			"contents":
+"游园活动的最后一项，是海豚表演。"
+		},
+		{
+			"id": 22,
+			"collect_time": "2025-06-29T21:35:06.122529",
+			"contents":
+`海豚有感情，有社会性，甚至有自我意识——和这个世界上的大部分人一样。
+海豚被捕杀、被食用。它们聪明却不绝顶，因此，它们遭受着苦难——和这个世界上的大部分人一样。
+那些被驯养的海豚，正在为了吃顿饱饭努力奔波着，它们对观众们报以微笑——和这个世界上的大部分人一样。`
+		},
+		{
+			"id": 23,
+			"collect_time": "2025-06-29T21:03:50.888428",
+			"contents":
+"我望向她的侧脸，而她安静地看着水池里的海豚和驯兽师。也许她只是累了。"
+		},
+		{
+			"id": 24,
+			"collect_time": "2025-06-29T21:41:36.617349",
+			"contents":
+"其实她早就注意到了我的目光，我清楚。"
+		},
+		{
+			"id": 25,
+			"collect_time": "2025-06-29T21:54:33.773254",
+			"contents":
+"但她似乎在赌气，故意让自己保持在一个雕像般的姿态，静坐着，仿佛这里只有我和她。"
+		},
+		{
+			"id": 27,
+			"collect_time": "2025-06-29T22:11:45.624323",
+			"contents":
+"而我们会在这里僵持到永远。"
+		},
+		{
+			"id": 28,
+			"collect_time": "2025-06-29T21:51:27.120849",
+			"contents":
+"水池中的海豚一跃而起，用尖嘴精准戳中离水面足有一层楼高的小球，现场的观众山呼海啸。"
+		},
+		{
+			"id": 29,
+			"collect_time": "2025-06-29T21:52:39.736733",
+			"contents":
+"我又看向她，她若有所思。"
+		},
+		{
+			"id": 30,
+			"collect_time": "2025-06-29T21:46:43.549957",
+			"contents":
+"可能被驯养的海豚才是这个世界的常态吧。为了得到认可，做出人们期待的动作。"
+		},
+		{
+			"id": 32,
+			"collect_time": "2025-06-29T21:50:44.369977",
+			"contents":
+"但这真的是什么可耻的缺陷吗？"
+		},
+		{
+			"id": 33,
+			"collect_time": "2025-06-29T21:47:57.087025",
+			"contents":
+"我想，这不过是一种无奈的生存方式。"
+		},
+		{
+			"id": 34,
+			"collect_time": "2025-06-29T21:08:45.141265",
+			"contents":
+"散场后，我终于下定决心，拉起无精打采的她走向角落，将一枚徽章郑重地塞进了她的手中。"
+		},
+		{
+			"id": 35,
+			"collect_time": "2025-06-29T21:57:58.069852",
+			"contents":
+"徽章上刻画着三只水母。从种类来看，似乎是灯塔水母。"
+		},
+		{
+			"id": 36,
+			"collect_time": "2025-06-29T22:06:39.322550",
+			"contents":
+"“其实水母，远比我想象的坚韧。在深海的压力下，它们也能维持自己的优雅。”"
+		},
+		{
+			"id": 37,
+			"collect_time": "2025-06-29T21:58:30.162178",
+			"contents":
+"“……所以，脆弱的表象后，其实藏着无比坚实的内核。”"
+		},
+		{
+			"id": 38,
+			"collect_time": "2025-06-29T21:59:44.880218",
+			"contents":
+"“它们无法选择大海，但还是可以选择如何漂浮。”"
+		},
+		{
+			"id": 39,
+			"collect_time": "2025-06-29T21:09:47.237596",
+			"contents":
+`她看着手心的水母徽章，露出了久违的笑容。
+回家的路上，我们的影子被夕阳拉得很长。现在这些触手可及的日常，在未来，会不会成为我们美好回忆的一部分呢？`
+		},
+		{
+			"id": 40,
+			"collect_time": "2025-06-29T22:01:28.283855",
+			"contents":
+"而那些风波，也会成为美好回忆中的小小点缀吧。"
+		},
+		{
+			"id": 41,
+			"collect_time": "2025-06-29T21:55:14.706557",
+			"contents":
+"但愿如此。"
+		}
+	]
+}
+```
 
 <blockquote><pre>[腾讯会议语音]
 [2025-06-29 23:14:27] 冰枫凌：马上结束了倒是。
@@ -2692,7 +2940,11 @@ Sierra接连更新了4个版本的工具，现在制约探索速度的唯一因�
 	<figcaption>厕所挂机中</figcaption>
 </figure>
 
-23:24，地图右下角的标有3的门被打开，操作者3进入，一路抵达地图左下角，按下压力板，开启了“i”字底部标有1的门。
+23:24，地图右下角的标有3的门被打开，操作者3进入了地图最底部。
+
+奇怪的是，同样是横向长直道，地图最顶部的道可执行/goahead一路到底，在这条最底部的道上做同样的操作却会报错“你被其他操作者挡住了，无法移动”。可一步一步前进，也没有碰撞到其他实体。
+
+操作者3抵达地图左下角，按下压力板——“i”字底部标有1的门开启了。
 
 操作者2进入“i”，立刻被迫再次作出了一些必要的牺牲。
 
@@ -2713,8 +2965,7 @@ Sierra接连更新了4个版本的工具，现在制约探索速度的唯一因�
 [2025-06-29 23:30:47] Lαsting：我觉得踩了问题不会很大，因为里面还有东西的。
 [2025-06-29 23:30:51] 冰枫凌：踩一下吧，来都来了。
 [2025-06-29 23:30:55] Sierra：截图，截图，截图。……OK，你让我踩的。
-[2025-06-29 23:30:58] Lαsting：卧槽，无语了。
-</pre></blockquote>
+[2025-06-29 23:30:58] Lαsting：卧槽，无语了。</pre></blockquote>
 
 <figure>
 	<div class="row">
@@ -2733,9 +2984,9 @@ Sierra接连更新了4个版本的工具，现在制约探索速度的唯一因�
 
 23:32，Sierra接过了Lαsting的<ruby>指引者<rt>监控室老大爷</ruby>身份。
 
-“i”内部是移动的迷宫，结构变幻莫测。虽然不清楚困人压力板的具体机制，但是不按的话也没有其他继续的方法了。按下压力板，操作者自己虽会被困，但能开启其他门，或是解放一定数量的其他被困操作者，还可能大幅改变“i”内的墙壁设置。
+“i”内部是移动的迷宫，结构变幻莫测。虽然不清楚困人压力板的具体机制，但是不按的话也没有其他继续的方法了。按下压力板，操作者自己虽会被困，但能开启其他门，或是解放一定数量的其他被困操作者，还可能大幅改变“i”内的墙壁设置。因为总有操作者被困，每一步能执行的动作可能性很少，采取“哪里亮了点哪里”的策略就能继续下去。
 
-在这里还发现了按下后能使门标记数字减少超过1的压力板、标有18甚至79的门，以及在“i”顶部发现的最后一种地图元素。
+在这里还发现了按下后能使门标记数字减少超过1的压力板、使门标记数字增加的压力板、标有18甚至79的门，以及在“i”顶部发现的最后一种地图元素。
 
 <dl>
 <dt><span class="icon" style="width: 1em; background: #88e; border: thin solid #fff;"></span>
@@ -2775,6 +3026,637 @@ Sierra接连更新了4个版本的工具，现在制约探索速度的唯一因�
 	"expected": "25 and no tie"
 }
 ```
+
+此时碎片收集进度为42/49，ID 0~41齐备，缺失的碎片应是42~48号。虽然地图可见范围内不存在未收集的碎片，但是地图上还留有三块被标有4的门阻隔的未探索区域。MTH给出了二周目的选项。
+
+<blockquote><pre>[腾讯会议语音]
+[2025-06-29 23:49:11] Lαsting：那肯定继续啊。这都走到这里了，哪有什么不回去的道理？
+[2025-06-29 23:49:47] 只是路过：为什么会有一个“不了，谢谢”？难道我们还能拒绝吗？
+[2025-06-29 23:49:52] Lαsting：<a href="https://prts.wiki/w/ISW-DF_%E4%B8%8D%E5%AE%B9%E6%8B%92%E7%BB%9D">不容拒绝</a>……
+[2025-06-29 23:50:13] Lαsting：只能继续了，都搞到这个份上了。</pre></blockquote>
+
+纵然已入深夜，在P&KU群友助力之下，集齐25人投票只花了2分钟。
+
+```js
+{
+	"message":
+`很好，我知道你会继续的。
+现在 MTH 可以帮助你锁定感应器状态。
+而且，MTH 还可以将你传送到建筑中的各处。
+期待你的好消息。`,
+	"access": "/access"
+}
+```
+
+### 二周目
+
+再次潜入意识，未探索区域已全部翻开，地图上出现了新的标记。
+
+<!----><img src="director20.avif" width="320" height="434">
+
+<dl>
+<dt><svg class="icon" viewBox="0 0 8 8">
+	<path d="M4 0V8M0 4H8" stroke="#d92"/>
+</svg>
+<dd>传送点（/teleport1~4分别对应地图左上角、右上角、左下角、右下角的传送点）
+</dl>
+
+奇怪的是，理应缺少的7片碎片，在地图上只能看到3片。
+
+/help追加了新的动作。
+
+```json
+{
+	"operator_actions": [
+		{
+			"path": "/turnleft",
+			"description": "向左转"
+		},
+		{
+			"path": "/turnright",
+			"description": "向右转"
+		},
+		{
+			"path": "/go",
+			"description": "前进"
+		},
+		{
+			"path": "/goahead",
+			"description": "一路前进"
+		},
+		{
+			"path": "/back",
+			"description": "后退"
+		},
+		{
+			"path": "/check",
+			"description": "检查"
+		},
+		{
+			"path": "/lock",
+			"description": "锁定/解锁感应器"
+		}
+	],
+	"director_actions": [
+		{
+			"path": [
+				"/teleport1",
+				"/teleport2",
+				"/teleport3",
+				"/teleport4"
+			],
+			"description": "将所有人传送至传送点"
+		},
+		{
+			"path": "/teleportspawn",
+			"description": "将所有人传送至起点"
+		}
+	]
+}
+```
+
+“感应器”是MTH对压力板的称呼。操作者移动到感应器所在格，然后访问/lock，将得到“感应器已锁定”的响应，此后即使离开感应器，感应器仍保持活动状态。在感应器上再次锁定则解除锁定。感应器的锁定状态在地图上无法区分。感应器锁定功能使得开启标有4的门之后继续探索成为可能。
+
+传送系能力须由指引者发动。
+
+出于谨慎与移动方便考虑，操作者们一开始仍在按一周目路径逐个锁定感应器。
+
+24:02，指引者访问/teleport3，返回“已传送所有操作者”，所有操作者无视碰撞地重叠在传送点所在格。没想到的是，检查返回“这里是传送点……等等，所有感应器的锁定状态似乎都被重置了？”。传送似乎会重置感应器状态，所有锁定感应器的努力全部木大。
+
+更糟糕的是，传送使操作者脱离了一周目的流程，操作者们发现<i>门不能从这一侧打开</i>。无奈只能将所有人传送回起点。不过这回，感应器锁定状态没有全部重置。重置的触发与否难道与传送目的地有关？
+
+24:20，地图上三扇标有4的门同时开启。收集到了新碎片，ID是……27.3？！……0.2、0.1？！合着这ID不一定是整数啊。
+
+碎片收集进度91.84% = 45/49，可地图上已经没有剩余的碎片了。
+
+### 大海捞针
+
+在前往地图左下角控制“i”底部门的感应器，穿过长廊时，操作者发现地图最底部中央的墙壁是活动的，在三格外能看到有岔路，但走近岔路又消失了。
+
+<div class="row">
+	<img src="operator2.avif" width="320" height="240">
+	<img src="operator4.avif" width="320" height="240">
+</div>
+
+墙壁消失状态在地图上不可见，地图上那一格也未标有数字。起初，玩家们以为这只是操作者视图渲染bug。但二周目还能复现上述情况，再加上这条路被故意设定禁止直走到底，此事必有蹊跷。操作者尝试撞墙，无法进入；在门外检查也无事发生。
+
+“i”内的机关没有变化。跟一周目一样，按顺序触发感应器（不必锁定），最终可清空“i”内墙壁，前往终点……终点，不在这里。
+
+<div class="row">
+	<img src="director21.avif" width="320" height="434">
+	<img src="director22.avif" width="320" height="434">
+</div>
+
+24:38，4个操作者站在本应是终点的格子上面面相觑。
+
+操作者们尝试了许多操作：面对面互相检查，无事发生；锁定了几个“i”内的感应器后，操作者们成功把自己锁在“i”内出不去了，只好传送回起点；4个操作者各自前往与自身编号一致的传送点，这才发现感应器锁定状态被重置不是传送动作本身所致，而是检查传送点带来的效果。不检查就不知道有重置功能，检查了就要被迫重置。设计成这样就是为了坑一下玩家吗？
+
+地图上没有碎片，终点也无事发生，不知该如何继续，万策尽了。
+
+思维逐渐发散。考虑到地图不支持显示重叠的元素，猜测可能有碎片与感应器重叠，地图只显示感应器。
+
+<blockquote><pre>[2025-06-29 24:39:29] Orthos：有没有可能有些碎片在按钮上被覆盖了
+[2025-06-29 24:39:56] 只是路过：那也太阴了吧
+[2025-06-29 24:40:12] 冰枫凌：那也太阴了吧</pre></blockquote>
+
+更让人在意的是地图底部中央的幽灵门，就好像写明了这里有线索，却怎么也无法开启。
+
+为了确认，<s>指引者开始同时做数回和打炉石，</s>操作者们又走了一遍迷宫。
+
+<blockquote><pre>[腾讯会议语音]
+[2025-06-29 25:21:14] Lαsting：这玩意操作手感跟幻境一样，但是地图比幻境他妈大了不知道多少倍，无语了。
+[2025-06-29 25:21:21] 冰枫凌：诶，等会。和幻境一样，这个图……呃，算了，不像。
+[2025-06-29 25:21:28] Lαsting：你不会想在这个图里搞一笔画吧？有点异想天开了。
+[2025-06-29 25:21:40] 冰枫凌：确实，这么一想确实，有点不太靠谱。
+[2025-06-29 25:21:43] Lαsting：我觉得在这个图里搞一笔画，那出题人真的要请高人了。
+[2025-06-29 25:21:53] 冰枫凌：已经要请高人了，也不怕再高一点。
+[2025-06-29 25:22:02] Lαsting：还真是。</pre></blockquote>
+
+<figure>
+<blockquote><pre>[腾讯会议语音]
+[2025-06-29 25:24:21] Lαsting：大海捞针：在这么大的地图上，找4个不知道存不存在的碎片。</pre></blockquote>
+<div><!-- 打断blockquote + figcaption --></div>
+<figcaption><a href="https://www.bilibili.com/video/av113010085593784">大海捞针</a>是6小时，本阶段会议录屏也是6小时</figure>
+</figure>
+
+### 地图之外
+
+自上次走完迷宫又过了近一个小时，地图底部的长廊已经走了三回啊三回。每个途径的操作者都看到了忽隐忽现的岔路，却都没能调查出什么来。
+
+有了感应器锁定机制，多个操作者得以聚集在长廊。25:30，操作者们发现，当有操作者保持在能观测到岔路的位置，岔路就不会坍缩，其他操作者就能进入幽灵门。
+
+<figure>
+	<div class="row">
+		<img src="director23.avif" width="320" height="164">
+		<img src="operator3.avif" width="320" height="240">
+	</div>
+	<figcaption>操作者首次观测到并进入幽灵门内的珍贵影像资料</figcaption>
+</figure>
+
+继续前进，一个操作者离开了地图边缘，就此从地图上消失了。其余操作者也紧随其后。25:35，地图上再也观测不到操作者。
+
+<figure>
+	<img src="director24.avif" width="320" height="434">
+	<figcaption>感觉真安静啊，街上也没有意识接入的人</figcaption>
+</figure>
+
+没有了指引者的帮助，只能一格格手工绘制地图，每走一步就检查一下有没有碎片。
+
+很快，最先进入幽灵门的操作者被困在了四面都是墙壁的一格空间里。其余操作者也紧随其后，接连被困。操作者们意识到，幽灵门内的机关排列与一周目探索过的“i”完全一致，这意味着终点就在深处。
+
+因为从地图上看不到哪里亮了，策略从“哪里亮了点哪里”变成了“把自己关起来”。因为知道终点有能使墙壁消失的感应器，寻找碎片的任务推迟到抵达终点前也没关系。
+
+又过了近一小时，操作者抵达了终点处的感应器。短暂的扫地收集过后，最后一片碎片也于26:35收录到图鉴中了，收集率达到100.00%。
+
+<div>
+<div style="position: sticky; top: 0; display: flex; gap: 1em; background: var(--bg0);">
+	<label for="fragmentSlider"><strong>穿梭</strong></label>
+	<output style="font-variant-numeric: tabular-nums;"></output>
+	<input id="fragmentSlider" type="range" min="1751202231" max="1751222137" step="any" value="1751209200" list="fragmentTimes" style="flex: 1;">
+</div>
+
+<datalist id="fragmentTimes">
+<option>1751202231</option>
+<option>1751202296</option>
+<option>1751202347</option>
+<option>1751202353</option>
+<option>1751202524</option>
+<option>1751202526</option>
+<option>1751202588</option>
+<option>1751202603</option>
+<option>1751202626</option>
+<option>1751202661</option>
+<option>1751203045</option>
+<option>1751203121</option>
+<option>1751203179</option>
+<option>1751203399</option>
+<option>1751203493</option>
+<option>1751203548</option>
+<option>1751203811</option>
+<option>1751204107</option>
+<option>1751204160</option>
+<option>1751204443</option>
+<option>1751204458</option>
+<option>1751204497</option>
+<option>1751204804</option>
+<option>1751204878</option>
+<option>1751205045</option>
+<option>1751205088</option>
+<option>1751205160</option>
+<option>1751205274</option>
+<option>1751205315</option>
+<option>1751205479</option>
+<option>1751205511</option>
+<option>1751205585</option>
+<option>1751205689</option>
+<option>1751205961</option>
+<option>1751206000</option>
+<option>1751206306</option>
+<option>1751210579</option>
+<option>1751210728</option>
+<option>1751211038</option>
+<option>1751211625</option>
+<option>1751211860</option>
+<option>1751211907</option>
+<option>1751214059</option>
+<option>1751214252</option>
+<option>1751214379</option>
+<option>1751218534</option>
+<option>1751219519</option>
+<option>1751220608</option>
+<option>1751222137</option>
+</datalist>
+
+<table class="booktabs">
+<thead>
+<tr>
+<th>ID
+<th style="white-space: nowrap;">收集时间
+<th>碎片内容
+
+<tbody>
+<tr>
+<td>0
+<td><time datetime="2025-06-29T22:06:00.498098+08:00">22:06:00</time>
+<td>
+<p>不知道从何时起，我开始分不清幻想和现实。
+
+<tr>
+<td>0.1
+<td><time datetime="2025-06-30T00:26:18.654542+08:00">24:26:18</time>
+<td>
+<p>对我来说，这好像已经是很久、很久以前的事了。
+
+<tr>
+<td>0.2
+<td><time datetime="2025-06-30T00:24:11.630830+08:00">24:24:11</time>
+<td>
+<p>现在室友们都在上课，我习惯性地锁上宿舍门，就像以前的我一样。
+<p>人的习惯是最难改变的。听着过去常听的歌，音乐也会把自己的内心，重新装进自己过去的躯壳里。
+<p>——只不过，那个曾经滚烫炽热的躯壳，再也无法点燃自己冰冷的心。
+<p>我戴上耳机，开始翻看高中时的日记：
+
+<tr>
+<td>1
+<td><time datetime="2025-06-29T21:10:02.265702+08:00">21:10:02</time>
+<td>
+<p>夏天，阴晴不定，湿热的空气。在六月末的江南，这些事情最常见不过。
+
+<tr>
+<td>2
+<td><time datetime="2025-06-29T21:24:52.871949+08:00">21:24:52</time>
+<td>
+<p>期末考已经结束，紧接着是暑假——说是暑假，其实休息日也不过几天。高中生的假期，总会因为各种借口打折扣。
+
+<tr>
+<td>3
+<td><time datetime="2025-06-29T21:23:18.884056+08:00">21:23:18</time>
+<td>
+<p>她的假期更少。前几天她向我抱怨，父母给自己报了额外的补习班，因为自己的成绩又下降了。
+<p>所以……这几天又要见不到她了。
+
+<tr>
+<td>4
+<td><time datetime="2025-06-29T21:10:25.112054+08:00">21:10:25</time>
+<td>
+<p>那些只能消磨时间的日子里，如果我能待在家中，就绝不会出门。
+
+<tr>
+<td>5
+<td><time datetime="2025-06-29T23:22:58.179543+08:00">23:22:58</time>
+<td>
+<p>锁上卧室，把自己和现实隔开的那一刻，我才真正能和另外的我对话。
+<p>如果离现实越远，离幻想就会越近吧？我总是这样想，然后沉溺在饰演那些角色们的悲剧之中。
+<p>看着卧室镜中自己的倒影：那分明是个金发女生——我知道，现在我已经病入膏肓了。
+
+<tr>
+<td>6
+<td><time datetime="2025-06-29T21:11:00.490990+08:00">21:11:00</time>
+<td>
+<p>不过今天是个例外：她要和我一起去水族馆。一如既往，是她主动邀约。
+<p>我已经忘了自己是怎么抵达目的地的了，只记得我迟到了十多分钟，而她就站在公交站牌下。
+<p>“渴吗？我买了水。”
+<p>不光是水，其实门票也在她身上。她似乎一直是我生活中那个大姐姐一样的角色。
+
+<tr>
+<td>7
+<td><time datetime="2025-06-29T21:18:40.855724+08:00">21:18:40</time>
+<td>
+<p>而我只是缄默。在生活中，比起她，我却更像那个观测者。
+
+<tr>
+<td>8
+<td><time datetime="2025-06-29T21:08:43.811643+08:00">21:08:43</time>
+<td>
+<p>“快来看这个！”
+<p>她蹦蹦跳跳，举着手机，好像要把展厅里的所有动物都拍摄一遍。
+<p>嗯……包括我。
+<p>“深海动物好丑！”“这种鱼居然会发光诶！”“好大的乌贼！”
+<p>她边看边碎碎念，虽然声音不大，但句末的那些感叹号听起来分外明显。
+<p>我转过头去，面朝玻璃。玻璃后是一片深沉的黑暗，而玻璃上的倒影让我出神。
+
+<tr>
+<td>9
+<td><time datetime="2025-06-29T23:30:37.762024+08:00">23:30:37</time>
+<td>
+<p>展厅顶灯兀自亮着，薄纱般昏黄的光晕中，我酒红的头发也被镀上一层金色。
+<p>等等，这不是我！
+
+<tr>
+<td>10
+<td><time datetime="2025-06-29T21:05:52.361992+08:00">21:05:52</time>
+<td>
+<p>“……生活在寂静的深海。”
+<p>当我回过神后，她正在念着旁边的解说牌。
+
+<tr>
+<td>11
+<td><time datetime="2025-06-29T21:25:47.273362+08:00">21:25:47</time>
+<td>
+<p>深海怎么会是寂静的呢？
+
+<tr>
+<td>12
+<td><time datetime="2025-06-29T21:30:10.926548+08:00">21:30:10</time>
+<td>
+<p>无人在意的角落，海底火山在喷发，抹香鲸的呼喊顺着洋流越传越远。它们的声音，只是没被绝大多数人听到罢了。
+
+<tr>
+<td>13
+<td><time datetime="2025-06-29T21:17:24.275861+08:00">21:17:24</time>
+<td>
+<p>她看着我。原来刚刚的声音并非来自我的内心，我好像把这些话都说了出来。
+
+<tr>
+<td>14
+<td><time datetime="2025-06-29T23:25:27.693360+08:00">23:25:27</time>
+<td>
+<p>白衣少女站在她的身边，也好奇地看着我。
+
+<tr>
+<td>15
+<td><time datetime="2025-06-29T21:05:46.894963+08:00">21:05:46</time>
+<td>
+<p>再往前，是一段玻璃隧道。我们的四周连同穹顶，都被海水包围。成群的水母从我们的头顶掠过，在隧道渐变的灯光下，散发出朦胧却迷人的荧光。
+<p>真是浪漫的画面，连我都忍不住感叹。
+<p>“你知道吗？”我对她说，“这些光鲜亮丽的水母，看似内心与外表一样脆弱，可它们甚至没有一颗真正的心脏。”
+<p>“它们也几乎不能自主行动。水母只能任由海水裹挟，在漫无目的中随波逐流。”
+<p>“它们会试图寻找自我吗？在被操纵的命运之下，也许表面上的优雅，就是它们最后的防线了吧。”
+
+<tr>
+<td>16
+<td><time datetime="2025-06-29T23:40:24.068121+08:00">23:40:24</time>
+<td>
+<p>最后一段话几乎是脱口而出，可我觉得，只有之前的话语才是我的本意。
+<p>直到现在，我才意识到，我已被我创造出来的角色完全掏空。
+<p>并不是我分不清幻想和现实，而是我身上幻想的力量，强大到足以击穿现实。
+<p>现实，太脆弱了。
+
+<tr>
+<td>17
+<td><time datetime="2025-06-29T21:19:38.480053+08:00">21:19:38</time>
+<td>
+<p>我意犹未尽，还想再补充些什么。直到转头看向她时，我才发现她已经陷入了沉默。
+
+<tr>
+<td>18
+<td><time datetime="2025-06-29T21:35:59.168565+08:00">21:35:59</time>
+<td>
+<p>“是啊。”
+<p>“它们也不会感到自卑。”
+
+<tr>
+<td>19
+<td><time datetime="2025-06-29T21:40:57.977197+08:00">21:40:57</time>
+<td>
+<p>良久，她终于回话了，言语的基底带着她一贯的理性。”
+
+<tr>
+<td>20
+<td><time datetime="2025-06-29T21:40:42.628545+08:00">21:40:42</time>
+<td>
+<p>在此之后，我们虽然保持同行，但一路无言。
+
+<tr>
+<td>21
+<td><time datetime="2025-06-29T21:04:55.429344+08:00">21:04:55</time>
+<td>
+<p>游园活动的最后一项，是海豚表演。
+
+<tr>
+<td>22
+<td><time datetime="2025-06-29T21:35:06.122529+08:00">21:35:06</time>
+<td>
+<p>海豚有感情，有社会性，甚至有自我意识——和这个世界上的大部分人一样。
+<p>海豚被捕杀、被食用。它们聪明却不绝顶，因此，它们遭受着苦难——和这个世界上的大部分人一样。
+<p>那些被驯养的海豚，正在为了吃顿饱饭努力奔波着，它们对观众们报以微笑——和这个世界上的大部分人一样。
+
+<tr>
+<td>23
+<td><time datetime="2025-06-29T21:03:50.888428+08:00">21:03:50</time>
+<td>
+<p>我望向她的侧脸，而她安静地看着水池里的海豚和驯兽师。也许她只是累了。
+
+<tr>
+<td>24
+<td><time datetime="2025-06-29T21:41:36.617349+08:00">21:41:36</time>
+<td>
+<p>其实她早就注意到了我的目光，我清楚。
+
+<tr>
+<td>25
+<td><time datetime="2025-06-29T21:54:33.773254+08:00">21:54:33</time>
+<td>
+<p>但她似乎在赌气，故意让自己保持在一个雕像般的姿态，静坐着，仿佛这里只有我和她。
+
+<tr>
+<td>26
+<td><time datetime="2025-06-29T23:44:19.986776+08:00">23:44:19</time>
+<td>
+<p>还有她们。那个金发少女和白衣少女。
+
+<tr>
+<td>27
+<td><time datetime="2025-06-29T22:11:45.624323+08:00">22:11:45</time>
+<td>
+<p>而我们会在这里僵持到永远。
+
+<tr>
+<td>27.3
+<td><time datetime="2025-06-30T00:20:58.209742+08:00">24:20:58</time>
+<td>
+<p>最后我终于明白，她并不是赌气，而是有些害怕了。
+
+<tr>
+<td>28
+<td><time datetime="2025-06-29T21:51:27.120849+08:00">21:51:27</time>
+<td>
+<p>水池中的海豚一跃而起，用尖嘴精准戳中离水面足有一层楼高的小球，现场的观众山呼海啸。
+
+<tr>
+<td>29
+<td><time datetime="2025-06-29T21:52:39.736733+08:00">21:52:39</time>
+<td>
+<p>我又看向她，她若有所思。
+
+<tr>
+<td>30
+<td><time datetime="2025-06-29T21:46:43.549957+08:00">21:46:43</time>
+<td>
+<p>可能被驯养的海豚才是这个世界的常态吧。为了得到认可，做出人们期待的动作。
+
+<tr>
+<td>31
+<td><time datetime="2025-06-29T23:45:06.101974+08:00">23:45:06</time>
+<td>
+<p>——金发少女开口说道。这次，她的声音似乎只有我自己能听见。
+<p>旁边的白衣少女，已经和现实中的她融为了一体。少女转过头来，说：
+
+<tr>
+<td>32
+<td><time datetime="2025-06-29T21:50:44.369977+08:00">21:50:44</time>
+<td>
+<p>但这真的是什么可耻的缺陷吗？
+
+<tr>
+<td>33
+<td><time datetime="2025-06-29T21:47:57.087025+08:00">21:47:57</time>
+<td>
+<p>我想，这不过是一种无奈的生存方式。
+
+<tr>
+<td>34
+<td><time datetime="2025-06-29T21:08:45.141265+08:00">21:08:45</time>
+<td>
+<p>散场后，我终于下定决心，拉起无精打采的她走向角落，将一枚徽章郑重地塞进了她的手中。
+
+<tr>
+<td>35
+<td><time datetime="2025-06-29T21:57:58.069852+08:00">21:57:58</time>
+<td>
+<p>徽章上刻画着三只水母。从种类来看，似乎是灯塔水母。
+
+<tr>
+<td>35.4
+<td><time datetime="2025-06-30T01:35:33.957855+08:00">25:35:33</time>
+<td>
+<p>——它们可以通过分化转移实现理论上的“永生”。
+<p>灯塔水母拥有抵抗时间的能力，但重生的个体只是细胞的重组，不携带任何记忆。如果它们有记忆的话。
+<p>所以与其说这是永生，倒不如说是无尽的轮回。
+<p>可实际上，在野外，灯塔水母最多只能活一两年。它们或是被天敌捕食，或是因环境的变化而丧命。
+<p>因此，打破轮回的办法，只能出现在轮回之外。
+
+<tr>
+<td>36
+<td><time datetime="2025-06-29T22:06:39.322550+08:00">22:06:39</time>
+<td>
+<p>“其实水母，远比我想象的坚韧。在深海的压力下，它们也能维持自己的优雅。”
+
+<tr>
+<td>37
+<td><time datetime="2025-06-29T21:58:30.162178+08:00">21:58:30</time>
+<td>
+<p>“……所以，脆弱的表象后，其实藏着无比坚实的内核。”
+
+<tr>
+<td>38
+<td><time datetime="2025-06-29T21:59:44.880218+08:00">21:59:44</time>
+<td>
+<p>“它们无法选择大海，但还是可以选择如何漂浮。”
+
+<tr>
+<td>39
+<td><time datetime="2025-06-29T21:09:47.237596+08:00">21:09:47</time>
+<td>
+<p>她看着手心的水母徽章，露出了久违的笑容。
+<p>回家的路上，我们的影子被夕阳拉得很长。现在这些触手可及的日常，在未来，会不会成为我们美好回忆的一部分呢？
+
+<tr>
+<td>40
+<td><time datetime="2025-06-29T22:01:28.283855+08:00">22:01:28</time>
+<td>
+<p>而那些风波，也会成为美好回忆中的小小点缀吧。
+
+<tr>
+<td>41
+<td><time datetime="2025-06-29T21:55:14.706557+08:00">21:55:14</time>
+<td>
+<p>但愿如此。
+
+<tr>
+<td>41.5
+<td><time datetime="2025-06-30T01:51:58.802680+08:00">25:51:58</time>
+<td>
+<p>事与愿违。
+<p>这是她离开的第几个年头？我不想再去回忆。
+<p>当时的她表现得似乎非常决绝。但在我看来，她自己无疑也在承受和我一样的痛苦。
+<p>她不辞而别后，我的生活没有发生任何变化。
+<p>我考上了约定中的大学，还像从前那样：沉默不语、出门会忘记带水、用自己的偏执揣度周遭事物。
+<p>以及，渴望被需要我的那个人所需要。
+
+<tr>
+<td>41.6
+<td><time datetime="2025-06-30T02:35:36.567618+08:00">26:35:36</time>
+<td>
+<p>我最后送给她的礼物，她应该也没有打开过吧。那些谜题，也会随着记忆一同封存。
+
+<tr>
+<td>41.7
+<td><time datetime="2025-06-30T02:10:07.472692+08:00">26:10:07</time>
+<td>
+<p>我合上日记，靠在椅背上。
+<p>“那个白衣的少女呢？”
+<p>我对旁边的金发少女说。
+<p>她看着我，不作回答，只是微笑。
+<p>忽然，响起了敲门声。
+</table>
+
+<script>
+fragmentSlider.oninput = function () {
+	const t = this.value - 1751126400
+	this.previousElementSibling.textContent = (t / 3600 | 0) + ':' + ('0' + (t / 60 | 0) % 60).slice(-2) + ':' + ('0' + t % 60).slice(-2)
+	for (const el of this.parentElement.parentElement.querySelector('tbody').children) {
+		const dt = new Date(el.querySelector('time').dateTime) - this.value * 1000
+		el.style.visibility = dt > 0 ? 'collapse' : ''
+		el.style.backgroundImage = `linear-gradient(var(--bg1) ${dt * .1}%, transparent ${100000 + dt * .1}%)`
+	}
+}
+fragmentSlider.oninput()
+</script>
+</div>
+
+意识接入还没有结束，还需要前往终点。
+
+26:40，操作者们全部在终点就位。除/fragments外，意识接入模块提供的端点关闭。MTH返回下列响应。
+
+```js
+{
+	"status": "just-imagine-or-not",
+	"message":
+`谢谢你，你帮了我个大忙。
+没想到，神的故事竟然如此令人动容。
+
+只是我一直很好奇，神所说的“她”……
+到底叫什么名字？
+
+[MTH suspended]`,
+	"her_name": [],
+	"diff": 5419141.152575
+}
+```
+
+倒计时指向两个月后的8月31日20:00。
+
+<figure>
+
+> 操作员们正在使用一个虚拟游戏来探索一个迷宫。他们需要通过点击屏幕上的按钮来移动角色，并在迷宫中寻找出口。在探索过程中，他们发现了一些神秘的碎片和门，以及一些无法解释的现象。此外，他们还讨论了如何编写脚本来自动生成游戏内容，以及如何通过实时更新地图来帮助玩家更好地理解游戏环境。最后，他们决定继续探索迷宫，寻找更多的线索和解决方案。
+
+<figcaption>腾讯会议生成的智能总结</figcaption>
+</figure>
+
+MTH设计师小时候出门上学，视野被迷雾覆盖，能见度只有一格。路牌显示的是Base64，解码器得自己编。好不容易找到学校，发现校门没有开，需要拜托几十格外的门卫按住开关才能打开。门卫一松手，设计师就被困在了墙里动弹不得。学校教室排布错综复杂，从一间教室走到另一间教室要绕一大圈。课间，设计师在走廊上跑得太快，违反校规第429条，被教导主任当场抓住，原地罚站面壁思过。设计师刚一进厕所，门就从外面锁上了，过了一个小时才有同学帮忙把门打开，结果马上又被锁在另一个隔间里，需要再锁三个人才能放出来，一出来发现厕所隔间全部消失了。第二天，设计师传送到学校，刚看了一眼教室门牌，就发现自己写好的作业变成了一片空白。想进入教室，却发现门不能从这一侧打开。无奈，只好传送回家重写作业。好不容易补完作业，到学校打开教室门，却发现同学们都不见了，找遍全校都找不到。这才发现，教导主任叫学生不要在走廊上奔跑，是想告诉学生不要只顾向目标一路前进，也要留意欣赏沿途的风景和隐藏门，因为隐藏门符合量子力学，只有被观测到打开了才能进入。隐藏门内，一处任何地图都没有标出的地下室，正是老师同学们所在之处。地下室没有灯，只能摸黑上课，时不时会撞到看不见的同学。最后，设计师又一次被独自关在厕所里，这时，忽然响起了敲门声……
+
+### “她”
 
 【TODO】
 
