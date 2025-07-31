@@ -346,7 +346,19 @@ ProcessIdleTasks
 
 ## 代码片段
 
-### 用Free Pascal产生DLL
+### <span title="在JS界，像这样短到不应有库的程序，有一个专门的名字：left-pad。">JavaScript</span>
+
+#### SHA-256
+
+也可用于SHA-1、SHA-384、SHA-512。
+
+```js
+const sha256 = async x => Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(x))), b => b.toString(16).padStart(2, '0')).join('')
+```
+
+### Free Pascal
+
+#### 生成动态链接库
 
 ```pascal
 library pxx;
@@ -360,7 +372,9 @@ begin
 end.
 ```
 
-### 把stdin/stdout改成二进制模式
+### C
+
+#### 把stdin/stdout改成二进制模式
 
 ```c
 #ifdef _WIN32
@@ -400,4 +414,4 @@ int main() {
   - Web search: if you set `WebTemplate1` (or `WebTemplate2`) setting in the INI to `https://google.com/search?q=%s` and then press Ctrl+Shift+1-2 with non-empty selection - you will be navigated to that URL (`%s` replaced with a selection string, not URL-encoded).
   - If Replace's dialog Replace With is `^c` - clipboard contents is used instead of this string.
   - If the program is started with `/B` flag, it enters "Pasteboard mode" where new content on the clipboard is automatically added to the buffer.
-  - `[Custom Colors]` INI section is used to fill the "Custom colors" control of Fore/Back color pickers in Customize Schemes. #149
+  - `[Custom Colors]` INI section is used to fill the "Custom colors" control of Fore/Back color pickers in Customize Schemes.
