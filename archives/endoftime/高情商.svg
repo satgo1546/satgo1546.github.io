@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 550">
+<path fill="#fff" d="m0 0h420v550H0z"/>
+<g fill="#2a4">
+<path d="m383 516h-10l-14-13v-16a8 8 0 0 0 0-16v-72h-72v104l14 13h-43V391h125v125z"/>
+<path d="m326 516h-12l-6.7-6a1 1 0 015.4-6z"/>
+<path d="m370 152v20l13 31h-40l13-31v-20h14z"/>
+<circle cx="312" cy="413" r="8"/>
+<circle cx="363" cy="136" r="8"/>
+<circle cx="247" cy="136" r="8"/>
+</g>
+<g fill="none">
+<rect x="16.5" y="16.5" width="387" height="247" stroke="#000" stroke-width="3" rx="18"/>
+<rect x="16.5" y="286.5" width="387" height="247" stroke="#000" stroke-width="3" rx="18"/>
+<g stroke="#2a4" stroke-linecap="round" stroke-linejoin="round">
+<path stroke-width="9" d="m287 445h13l14-17h27l10 15m-46 54 24-50m30 32h-23l-3-27-9-22-9 4 8 18-1-18"/>
+<path stroke-width="8" d="m346 183 5-12v-20h24v20l5 12m-22 47v-31h10v31m-135-47v-32h28v32m-19 47v-77m10 77v-77m-5 0v39"/>
+<path stroke="#fff" stroke-width="3" d="m356.5 128h5m3 0h5"/>
+</g>
+<g stroke="#2a4" stroke-miterlimit="16">
+<path d="m356 128 .5-1.5v1.5h4l.5-4 .5 4m8.5 0-.5-1.5v1.5h-4l-.5-4-.5 4"/>
+<path stroke-width="3" d="m274 178.5 60-.5m-60-12v24m60-24v24"/>
+<path stroke-width="4" d="m269 133c0-7 9-6 9-1s-4.6 4-4.6 8.4m-2.4 4h4.5"/>
+</g>
+</g>
+<g font-size="16">
+<text x="56" y="166">✗ 强烈的距离感</text>
+<text x="56" y="190">✗ 对状况一无所知</text>
+<text x="56" y="447">✓ 高效沟通</text>
+<text x="56" y="471">✓ 清楚表达诉求</text>
+<g font-weight="bold" text-anchor="middle">
+<text x="210" y="327" font-size="24">改为</text>
+<text x="210" y="83" font-size="40">“你是谁？”</text>
+<text x="210" y="372" font-size="40">“我不想见到你。”</text>
+</g>
+</g>
+</svg>

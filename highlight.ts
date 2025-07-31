@@ -31,6 +31,10 @@ const Cache = {
 export default function (site: Lume.Site) {
 	site.process(['.html'], async (pages: Lume.Page[]) => {
 		for (const page of pages) {
+			// The HTML goes through a serialization roundtrip once the DOM is touched, even if nothing is changed.
+			// Avoid touching DOM of pages that have `layout` explicitly set to null.
+			if (!page.data.layout) continue
+
 			const article = page.document!.getElementsByTagName('article')[0]
 			if (!article) continue
 
