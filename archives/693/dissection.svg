@@ -1,0 +1,53 @@
+<svg viewBox="0 0 222 132" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica">
+<rect width="222" height="132" fill="white"/>
+<rect x="43" y="12" width="130" height="24" fill="#ffcccc"/>
+<rect y="24" width="130" height="24" fill="#ffcccc"/>
+<rect y="48" width="173" height="24" fill="#ccffcc"/>
+<rect x="141" y="36" width="32" height="12" fill="#ccffcc"/>
+<rect y="72" width="54" height="12" fill="#ccffcc"/>
+<rect x="87" y="96" width="43" height="12" fill="#ffffcc"/>
+<rect x="54" y="84" width="119" height="12" fill="#ffccff"/>
+<rect y="96" width="76" height="12" fill="#ffccff"/>
+<rect x="65" y="72" width="108" height="12" fill="#ccccff"/>
+<rect y="84" width="54" height="12" fill="#ccccff"/>
+<rect x="130" y="96" width="43" height="24" fill="#ccffff"/>
+<rect y="108" width="130" height="24" fill="#ccffff"/>
+<text font-family="Courier" font-size="12" letter-spacing=".3em">
+<tspan x="2" y="21">0078e68ed0059991</tspan>
+<tspan x="2" y="33">5904d235d958e666</tspan>
+<tspan x="2" y="45">79921025f723 f9e</tspan>
+<tspan x="2" y="57">7acd46c5a03e19d8</tspan>
+<tspan x="2" y="69">c23379f66bdd29d2</tspan>
+<tspan x="2" y="81">448d7 refs/heads</tspan>
+<tspan x="2" y="93">/main&#xa0;&#xa0;report-st</tspan>
+<tspan x="2" y="105">atus-v2 0000PACK</tspan>
+</text>
+<text font-family="Courier" font-size="6">
+<tspan x="55" y="89">N</tspan>
+<tspan x="58" y="92">U</tspan>
+<tspan x="61" y="95">L</tspan>
+<tspan x="77" y="102">L</tspan>
+<tspan x="81" y="106">F</tspan>
+</text>
+<text font-family="Courier" font-size="10" letter-spacing="-.15em">
+<tspan x="0" y="116">00&#x2004;00&#x2004;00&#x2004;02&#x2004;00&#x2004;00&#x2004;00&#x2004;00&#x2004;02&#x2004;9D&#x2004;08&#x2004;82&#x2004;3B&#x2004;D8&#x2004;A8&#x2004;EA</tspan>
+<tspan x="0" y="128">B5&#x2004;10&#x2004;AD&#x2004;6A&#x2004;C7&#x2004;5C&#x2004;82&#x2004;3C&#x2004;FD&#x2004;3E&#x2004;D3&#x2004;1E</tspan>
+</text>
+<path fill="none" d="M11 23H1V13H11" stroke="black" stroke-width="2"/>
+<path fill="none" d="M76 107H86V97H76" stroke="black" stroke-width="2"/>
+<path fill="none" d="m73 9h-6v-6h6" stroke="black" stroke-width="1.5"/>
+<path fill="none" d="m103 9h6v-6h-6" stroke="black" stroke-width="1.5"/>
+<text font-size="8" x="66" y="9" text-anchor="end">78₁₆ = len(</text>
+<text font-size="8" x="88" y="9" text-anchor="middle">pkt-line</text>
+<text font-size="8" x="110" y="9">)</text>
+<text fill="#ff6666" font-size="8" x="178" y="33">old SHA-1</text>
+<text fill="#66cc66" font-size="8" x="178" y="57">new SHA-1</text>
+<text fill="#6666ff" font-size="8" x="178" y="81">ref name</text>
+<text fill="#ff66ff" font-size="3">
+<tspan x="178" y="87">without which the</tspan>
+<tspan x="178" y="91">server won’t even respond</tspan>
+<tspan x="178" y="95">with error messages</tspan>
+</text>
+<text fill="#cccc66" font-size="8" x="178" y="105">separator</text>
+<text fill="#66cccc" font-size="8" x="178" y="117">empty pack</text>
+</svg>

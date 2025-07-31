@@ -1,0 +1,19 @@
+<svg viewBox="0 0 188 70" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica">
+<rect width="188" height="70" fill="white"/>
+<rect x="14" y="18" width="31" height="31" fill="#FFCCCC"/>
+<path d="M140 70H63V52L111 36V18H188V36L140 52Z" fill="#CCCCFF"/>
+<path d="M188 70H149V52L53 36V18H92V36L188 52Z" fill="#CCFFCC"/>
+<text font-family="Courier" font-size="16">
+<tspan x="39" y="13">9E</tspan>
+<tspan x="135" y="13">0D</tspan>
+<tspan x="5" y="31">1001 1110 0000 1101</tspan>
+<tspan x="63" y="65">000 1101 1110</tspan>
+</text>
+<text font-size="8" x="98" y="16">last byte</text>
+<text font-size="8" x="0" y="16">more</text>
+<text font-size="8" x="15" y="47">commit</text>
+<text font-size="6" x="15" y="40">type</text>
+<text font-size="6" x="61" y="59" text-anchor="end">decompressed length</text>
+<text font-size="8" x="61" y="67" text-anchor="end">DE₁₆</text>
+<path d="M10 10V7H38M106 10V7H134M87 10V7H59M183 10V7H155" fill="none" stroke="black"/>
+</svg>
