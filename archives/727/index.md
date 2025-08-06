@@ -133,6 +133,8 @@ static int add_cache_entry(struct cache_entry *ce)
 
 <img src="proposal-title-goes-here.webp" width="500" height="115">
 
+我通过奇怪的方法实现了按码点排序，在这个LLM时代写了一条[StackOverflow答案](https://stackoverflow.com/a/79723284 "How to sort strings in JavaScript by code point values?")。
+
 火上浇油，雪上加霜，Git还有自己的怪癖。光靠观察很难发现的一个细节是，文件夹名隐含尾缀斜杠，同名文件和文件夹排列顺序不同。[这也是魔法芝士的一个侧面……](https://news.ycombinator.com/item?id=44589059 "🙀")
 
 ```console
@@ -185,7 +187,7 @@ Linux的文件系统很简单：文件名无关文本编码，允许除了NUL和
 
 其他哪个操作系统都见不到这些特性。默认了系统优秀性质的程序，到了其他系统上必然漏洞频出，Git也不例外。
 
-十天糊的不可移植文物，要花十年弥补跨平台支持。适用于Linux的Git于2005年启用；可直到2015年，Git for Windows才发布[首个版本2.5.0](https://github.com/git-for-windows/git/releases/tag/v2.5.0.windows.1)。如今，又是十年过去，Git迎来了二十周年。直到现在，许多根本设计上不兼容带来的问题仍困扰着Windows用户。为什么100644变成了100755？为什么CRLF进库了？为什么读写数据库很慢？在Windows彻底被Linux同化之前，这些问题将永远相随。
+十天糊的不可移植文物，要花十年弥补跨平台支持。适用于Linux的Git于2005年启用；可直到2015年，Git for Windows才发布[首个版本2.5.0](https://github.com/git-for-windows/git/releases/tag/v2.5.0.windows.1)。如今，又是十年过去，[Git迎来了二十周年](https://github.blog/open-source/git/git-turns-20-a-qa-with-linus-torvalds/ "Git turns 20: A Q&A with Linus Torvalds")。直到现在，许多根本设计上不兼容带来的问题仍困扰着Windows用户。为什么100644变成了100755？为什么CRLF进库了？为什么读写数据库很慢？在Windows彻底被Linux同化之前，这些问题将永远相随。
 
 这是一个只存在十天的世界。
 
