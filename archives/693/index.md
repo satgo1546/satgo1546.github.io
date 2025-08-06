@@ -7,6 +7,7 @@ tags:
 - 实验
 - Git
 - GitHub
+- Git仓库作为API端点
 ---
 
 你是否在Git服务中遇到过这样的不便？许多“高级”操作都必须克隆到本地仓库中进行，例如修订提交消息（amend）、移动分支指向（update-ref）、创建空分支（switch --orphan）等，甚至只是一次性提交多个文件的修改都无法在线完成。仓库可能很大，临时克隆要花不少时间。
@@ -142,3 +143,5 @@ GitHub的一些附加服务背后也由完整的Git仓库支撑，例如gist和w
 <img src="github-gist.webp" width="312">
 
 <img src="github-wiki.webp" width="320">
+
+这类仓库可能通过钩子施加了额外限制。例如，gist服务器会拒绝存在文件夹的提交。
