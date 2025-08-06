@@ -336,6 +336,12 @@ ProcessIdleTasks
   rundll32 shell32.dll,Options_RunDLL 1
   ```
 
+全空Git提交
+
+```sh
+printf 'tree 4b825dc642cb6eb9a060e54bf8d69288fbee4904\nauthor  <> 0 +0000\ncommitter  <> 0 +0000\n\n' | git hash-object -t commit -w --stdin > .git/refs/heads/main
+```
+
 ## 指令
 
 在CSGO和Portal中飞
@@ -348,12 +354,59 @@ ProcessIdleTasks
 
 ### <span title="在JS界，像这样短到不应有库的程序，有一个专门的名字：left-pad。">JavaScript</span>
 
-#### SHA-256
-
-也可用于SHA-1、SHA-384、SHA-512。
+<dl>
+<dt>比较Uint8Array<dd>
 
 ```js
+indexedDB.cmp(a, b)
+```
+
+<dt>拼接Uint8Array<dd>
+
+```js
+new Uint8Array(await new Blob([a, b, c]).arrayBuffer())
+```
+
+</dl>
+
+#### Base64编码
+
+```js
+/**
+ * @param {BlobPart} x
+ * @returns {Promise<string>}
+ */
+const b64encode = async x => (await new Promise(r => Object.assign(new FileReader, {onload: r}).readAsDataURL(new Blob([x])))).target.result.slice(37)
+```
+
+#### Base64解码
+
+```js
+/**
+ * @param {string} x
+ * @returns {Promise<Uint8Array>}
+ */
+const b64decode = async x => new Uint8Array(await (await fetch('data:;base64,' + x)).arrayBuffer())
+```
+
+#### SHA-256（SHA-1/SHA-384/SHA-512）
+
+```js
+/**
+ * @param {string} x
+ * @returns {Promise<string>}
+ */
 const sha256 = async x => Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(x))), b => b.toString(16).padStart(2, '0')).join('')
+```
+
+#### 解压zlib（压缩zlib/压缩gzip/解压gzip）
+
+```js
+/**
+ * @param {BodyInit} x
+ * @returns {Promise<Uint8Array>}
+ */
+const unzlib = async x => new Uint8Array(await new Response(new Response(x).body.pipeThrough(new DecompressionStream('deflate'))).arrayBuffer())
 ```
 
 ### Free Pascal
