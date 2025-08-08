@@ -482,6 +482,8 @@ Chrysl还发现了路口北能进，东面有加农炮，加农炮上有钥匙�
 
 据出题人Ted Zyzsdy所说，这个程序是C++编写的，而网页上的版本是由<s><a href="https://www.bilibili.com/video/av112918918139886">bili_71344523985</a></s> [Nano](https://nano.ac/posts/66848e61/)移植的，所以最初上线时有运行结果不一致的问题。因为使用了C++ STL，所以更难逆向。
 
+**2025-08-08更新**：在比赛结束半年后，网页版本源代码[发布在了存档仓库](https://github.com/cipherpuzzles/CCBCArchive/blob/main/public/ccbc15/scripts/c15-dreamland.yaml)，[存档](https://archive.cipherpuzzles.com/index.html#/problem?c=ccbc15/problems/5/43)能正常使用了。
+
 ## CCBC 11 #25
 
 ### 成就：幻境DLC
