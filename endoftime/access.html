@@ -1,0 +1,310 @@
+---
+layout: ~
+templateEngine: vto
+---
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<meta charset="utf-8">
+<title>MTH 意识接入模块模拟器</title>
+<meta name="color-scheme" content="light">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+	canvas {
+		display: block;
+	}
+
+	#help {
+		margin-bottom: 10px;
+		display: table;
+		font-size: 12px;
+		width: 324px;
+	}
+
+	#help>a {
+		display: table-row;
+	}
+
+	#help>a:hover {
+		background-color: #00f1;
+	}
+
+	#help>a>* {
+		display: table-cell;
+	}
+
+	#operatorCanvas {
+		width: 320px;
+		height: 240px;
+		border: 2px inset silver;
+	}
+</style>
+<canvas id="directorCanvas"></canvas>
+<div style="
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	padding: 15px;
+	background: #fff8;
+	backdrop-filter: blur(10px);
+">
+	<output id="response"></output>
+	<div id="help"></div>
+	<canvas id="operatorCanvas" width="640" height="480"></canvas>
+</div>
+<script type="application/json" id="levelDataScript">
+{{ include './mth.ldtk' }}
+</script>
+<script>
+	/** @type {CanvasRenderingContext2D} */
+	const directorCtx = directorCanvas.getContext('2d', { alpha: false })
+	/** @type {CanvasRenderingContext2D} */
+	const operatorCtx = operatorCanvas.getContext('2d', { alpha: false })
+
+	const level = JSON.parse(levelDataScript.text).levels[0]
+	directorCanvas.width = level.pxWid
+	directorCanvas.height = level.pxHei
+	const intGrid = level.layerInstances.find(layer => layer.__identifier === 'IntGrid')
+	const entities = {
+		detector: {},
+		gate: {},
+		checkpoint: [],
+		fragment: {},
+		operator: [],
+	}
+	const entitiesByCoordinate = {}
+	for (const entity of level.layerInstances.find(layer => layer.__identifier === 'Entities').entityInstances) {
+		if (Array.isArray(entities[entity.__identifier])) {
+			entities[entity.__identifier].push(entity)
+		} else {
+			entities[entity.__identifier][entity.iid] = entity
+		}
+		entitiesByCoordinate[entity.__grid] = entity
+		for (const { __identifier, __value } of entity.fieldInstances) {
+			entity[__identifier] = __value
+		}
+	}
+	const inventory = {} // 已拾取的碎片
+	const lockedDetectors = {}
+
+	directorCtx.font = '9px sans-serif'
+	directorCtx.textAlign = 'center'
+	directorCtx.textBaseline = 'bottom'
+	const wallFillStyle = directorCtx.createRadialGradient(
+		directorCanvas.width / 2, directorCanvas.height / 2, 0,
+		directorCanvas.width / 2, directorCanvas.height / 2, Math.min(directorCanvas.width, directorCanvas.height) / 2
+	)
+	wallFillStyle.addColorStop(0, 'silver')
+	wallFillStyle.addColorStop(1, 'black')
+
+	const redraw = () => {
+		directorCtx.fillStyle = 'white'
+		directorCtx.fillRect(0, 0, directorCanvas.width, directorCanvas.height)
+
+		directorCtx.fillStyle = wallFillStyle
+		const { __gridSize } = intGrid
+		for (let y = 0, { __cWid, __cHei, intGridCsv } = intGrid; y < __cHei; y++) {
+			for (let x = 0; x < __cWid; x++) {
+				if (intGridCsv[y * __cWid + x]) {
+					directorCtx.fillRect(x * __gridSize + 1, y * __gridSize + 1, __gridSize - 1, __gridSize - 1)
+				}
+			}
+		}
+
+		for (const iid in entities.gate) {
+			const { px: [x, y], width, height, weight, visible } = entities.gate[iid]
+			if (visible && weight <= 0) continue
+			directorCtx.fillStyle = wallFillStyle
+			directorCtx.fillRect(x + 1, y + 1, width - 1, height - 1)
+			directorCtx.fillStyle = 'white'
+			directorCtx.fillText(weight, x + width / 2, y + height * .9)
+		}
+		directorCtx.fillStyle = '#4c8'
+		for (const iid in entities.detector) {
+			const { px: [x, y], width, height, visible } = entities.detector[iid]
+			if (!visible) continue
+			directorCtx.beginPath()
+			directorCtx.ellipse(x + width / 2 + .5, y + height / 2 + .5, width * .3, height * .3, 0, 0, Math.PI * 2)
+			directorCtx.fill()
+		}
+		directorCtx.fillStyle = '#d92'
+		for (const { px: [x, y], width, height } of entities.checkpoint) {
+			directorCtx.fillRect(x + width / 2, y, 2, height + 1)
+			directorCtx.fillRect(x, y + height / 2, width + 1, 2)
+		}
+		directorCtx.fillStyle = '#18d'
+		for (const iid in entities.fragment) {
+			const { px: [x, y], width, height, visible } = entities.fragment[iid]
+			if (!visible) continue
+			directorCtx.beginPath()
+			directorCtx.moveTo(x + width / 2 + .5, y + .5)
+			directorCtx.lineTo(x + width + .5, y + height / 2 + .5)
+			directorCtx.lineTo(x + width / 2 + .5, y + height + .5)
+			directorCtx.lineTo(x + .5, y + height / 2 + .5)
+			directorCtx.fill()
+		}
+		entities.operator.forEach(({ __grid: [x, y], direction }, index) => {
+			directorCtx.fillStyle = 'white'
+			directorCtx.fillRect(x * __gridSize, y * __gridSize, __gridSize + 1, __gridSize + 1)
+			directorCtx.fillStyle = activeOperatorIndex === index ? '#f75' : '#b20'
+			directorCtx.strokeStyle = activeOperatorIndex === index ? '#b20' : 'transparent'
+			directorCtx.translate((x + .5) * __gridSize + .5, (y + .5) * __gridSize + .5)
+			directorCtx.rotate(Math.PI / 2 * ['up', 'right', 'down', 'left'].indexOf(direction))
+			directorCtx.beginPath()
+			directorCtx.moveTo(-__gridSize / 2, __gridSize / 2)
+			directorCtx.lineTo(__gridSize / 2, __gridSize / 2)
+			directorCtx.lineTo(0, -__gridSize / 2)
+			directorCtx.closePath()
+			directorCtx.fill()
+			directorCtx.stroke()
+			directorCtx.resetTransform()
+		})
+	}
+
+	let activeOperatorIndex = 0
+	const getActiveOperator = () => entities.operator[activeOperatorIndex]
+	const tileIsPassable = (x, y) => {
+		if (intGrid.intGridCsv[intGrid.__cWid * y + x]) return false
+		const gate = entitiesByCoordinate[x + ',' + y]
+		return !(gate?.__identifier === 'gate' && gate.weight > 0)
+	}
+	const tileIsOperator = (x, y) => entities.operator.some(({ __grid: [x1, y1] }) => x === x1 && y === y1)
+	const actions = [
+		...entities.operator.map((_, i) => ({
+			name: '接入操作者' + (i + 1),
+			endpoint: i < 4 ? '/operator' + (i + 1) : undefined,
+			keys: [String(i + 1)],
+			displayKeys: i < 9 ? String(i + 1) : undefined,
+			run() { activeOperatorIndex = i },
+		})),
+		{
+			name: '向左转', endpoint: '/turnleft', keys: ['a', 'A'], displayKeys: 'a', run() {
+				if (!tileIsPassable(...getActiveOperator().__grid)) return '你被困在了墙里。怎会如此？'
+				getActiveOperator().direction = { up: 'left', right: 'up', down: 'right', left: 'down' }[getActiveOperator().direction]
+			}
+		},
+		{
+			name: '向右转', endpoint: '/turnright', keys: ['d', 'D'], displayKeys: 'd', run() {
+				if (!tileIsPassable(...getActiveOperator().__grid)) return '你被困在了墙里。怎会如此？'
+				getActiveOperator().direction = { up: 'right', right: 'down', down: 'left', left: 'up' }[getActiveOperator().direction]
+			}
+		},
+		{
+			name: '前进', endpoint: '/go', keys: ['w'], displayKeys: 'w', run() {
+				if (!tileIsPassable(...getActiveOperator().__grid)) return '你被困在了墙里。怎会如此？'
+				const x1 = getActiveOperator().__grid[0] + { up: 0, right: 1, down: 0, left: -1 }[getActiveOperator().direction]
+				const y1 = getActiveOperator().__grid[1] + { up: -1, right: 0, down: 1, left: 0 }[getActiveOperator().direction]
+				if (!tileIsPassable(x1, y1)) return '（撞墙？）'
+				if (tileIsOperator(x1, y1)) return '你被其他操作者挡住了，无法移动'
+				getActiveOperator().__grid = [x1, y1]
+			}
+		},
+		{
+			name: '一路前进', endpoint: '/goahead', keys: ['W'], displayKeys: 'W', run() {
+				if (!tileIsPassable(...getActiveOperator().__grid)) return '你被困在了墙里。怎会如此？'
+				const [dx, dy] = { up: [0, -1], right: [1, 0], down: [0, 1], left: [-1, 0] }[getActiveOperator().direction]
+				const [x0, y0] = getActiveOperator().__grid
+				let x = x0, y = y0
+				while (tileIsPassable(x + dx, y + dy) && !tileIsOperator(x + dx, y + dy)) {
+					x += dx
+					y += dy
+				}
+				if (x === x0 && y === y0) {
+					return tileIsOperator(x + dx, y + dy) ? '你被其他操作者挡住了，无法移动' : '（撞墙？）'
+				}
+				getActiveOperator().__grid = [x, y]
+			}
+		},
+		{
+			name: '后退', endpoint: '/back', keys: ['s'], displayKeys: 's', run() {
+				if (!tileIsPassable(...getActiveOperator().__grid)) return '你被困在了墙里。怎会如此？'
+			}
+		},
+		{
+			name: '检查', endpoint: '/check', keys: [' ', 'Enter'], displayKeys: '␣/↵', run() {
+				const entity = entitiesByCoordinate[getActiveOperator().__grid]
+				if (entity.__identifier === 'fragment' && !inventory[entity.id]) {
+					inventory[entity.id] = 1
+					return '碎片已拾取（查看/fragments？）'
+				} else if (entity.__identifier === 'checkpoint') {
+					lockedDetectors = {}
+					return '这里是传送点……等等，所有感应器的锁定状态似乎都被重置了？'
+				}
+				return '无事发生'
+			}
+		},
+		{
+			name: '锁定/解锁感应器', endpoint: '/lock', keys: ['e', 'E'], displayKeys: 'e', run() {
+				const entity = entitiesByCoordinate[getActiveOperator().__grid]
+				if (entity.__identifier === 'detector') {
+					if (lockedDetectors[entity.iid]) {
+						lockedDetectors[entity.iid] = false
+						return '感应器已解锁'
+					} else {
+						lockedDetectors[entity.iid] = true
+						return '感应器已锁定'
+					}
+				}
+				return '无事发生'
+			}
+		},
+		{
+			name: '向左移动', keys: ['ArrowLeft', 'h', 'H'], displayKeys: '←/h', run() {
+				if (!tileIsPassable(...getActiveOperator().__grid)) return '你被困在了墙里。怎会如此？'
+			}
+		},
+		{
+			name: '向下移动', keys: ['ArrowDown', 'j', 'J'], displayKeys: '↓/j', run() {
+				if (!tileIsPassable(...getActiveOperator().__grid)) return '你被困在了墙里。怎会如此？'
+			}
+		},
+		{
+			name: '向上移动', keys: ['ArrowUp', 'k', 'K'], displayKeys: '↑/k', run() {
+				if (!tileIsPassable(...getActiveOperator().__grid)) return '你被困在了墙里。怎会如此？'
+			}
+		},
+		{
+			name: '向右移动', keys: ['ArrowRight', 'l', 'L'], displayKeys: '→/l', run() {
+				if (!tileIsPassable(...getActiveOperator().__grid)) return '你被困在了墙里。怎会如此？'
+			}
+		},
+		...entities.checkpoint.map(({ __grid: [x, y] }, i) => ({
+			name: '将所有人传送至传送点' + (i + 1),
+			endpoint: i < 4 ? '/teleport' + (i + 1) : undefined,
+			run() {
+				for (const operator of entities.operator) {
+					operator.__grid = [x, y]
+					operator.direction = 'up'
+				}
+			},
+		})),
+		{
+			name: '将所有人传送至起点', endpoint: '/teleportspawn', run() {
+				for (const operator of entities.operator) {
+					operator.__grid = operator.px.map(x => x / intGrid.__gridSize | 0)
+					operator.direction = operator.fieldInstances.find(field => field.__identifier === 'direction').__value
+				}
+			}
+		},
+	]
+
+	help.append(...actions.map(({ name, endpoint, displayKeys }, index) => {
+		const a = document.createElement('a')
+		a.href = `javascript:redraw(actions[${index}].run())`
+		a.appendChild(document.createElement('kbd')).textContent = displayKeys
+		a.appendChild(document.createElement('span')).textContent = name
+		a.appendChild(document.createElement('code')).textContent = endpoint
+		return a
+	}))
+
+	onkeydown = event => {
+		console.log(event.key)
+		const action = actions.find(action => action.keys?.includes(event.key))
+		if (action) {
+			response.textContent = action.run()
+			redraw()
+			event.preventDefault()
+		}
+	}
+
+	redraw()
+</script>
