@@ -29,7 +29,6 @@ site.ignore(path => path.endsWith('.ts') && !path.endsWith('.page.ts')
 site.use(jsx())
 site.use(sass({
 	options: {
-		silenceDeprecations: ['mixed-decls'],
 	},
 }))
 site.scopedUpdates(
