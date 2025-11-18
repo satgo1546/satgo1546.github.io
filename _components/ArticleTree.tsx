@@ -5,7 +5,7 @@ export default function ArticleTree(props: { pages: NavData[] }) {
 		throw new Error('received object instead of array for `pages`; wrap nav.menu result into an array if you are using it')
 	}
 	return <ul class="articles">
-		{props.pages.map(({ data, children }) => <li>
+		{props.pages.map(({ data, children }) => <li lang={data.lang}>
 			{data.url ? <>
 				<a href={data.url} dangerouslySetInnerHTML={{ __html: String(data.title) }} />
 				<time datetime={data.date.toISOString().slice(0, 10)}>{data.dates}</time>
