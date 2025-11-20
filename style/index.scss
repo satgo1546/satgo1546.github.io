@@ -1720,7 +1720,7 @@ math[display=block] {
 	--fg1: #b53d00;
 	--bg1: #ffcc80;
 
-	&.dark {
+	@media (prefers-color-scheme: dark) {
 		--fg0: #edb;
 		--bg0: #210;
 		--fg1: #fa5;
