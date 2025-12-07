@@ -1874,6 +1874,12 @@ math[display=block] {
 		}
 	}
 
+	table-of-contents {
+		ol ol {
+			margin-inline-start: .5em;
+		}
+	}
+
 	.commentlist .children {
 		margin-inline-start: 2pc;
 	}

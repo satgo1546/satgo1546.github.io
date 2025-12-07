@@ -28,6 +28,7 @@ export default (data: Lume.Data) => {
 			<article lang={data.lang}>
 				<h1 dangerouslySetInnerHTML={{ __html: String(data.title) }} />
 				{data.children}
+				<script defer src="/script/toc.js" />
 			</article>
 			<footer class="entry-meta">
 				<a href="." title="链向本文的固定链接" rel="bookmark">{data.dates || '固定链接'}</a>
