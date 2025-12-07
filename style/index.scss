@@ -1878,6 +1878,41 @@ math[display=block] {
 		ol ol {
 			margin-inline-start: .5em;
 		}
+
+		@media (max-width: 639.99px) {
+			position: fixed;
+			left: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 50%;
+			max-height: 100%;
+
+			&:hover {
+				overflow: auto;
+				border: 3px solid var(--fg1);
+				border-left: none;
+				padding: 8px;
+				background: var(--bg0);
+			}
+
+			&:not(:hover) {
+				width: 8px;
+				font-size: 0;
+
+				h3 {
+					display: none;
+				}
+
+				ol ol {
+					padding-right: 2px;
+				}
+
+				li {
+					border-top: 2px solid var(--fg1);
+					margin-top: 6px;
+				}
+			}
+		}
 	}
 
 	.commentlist .children {
