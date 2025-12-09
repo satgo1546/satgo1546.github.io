@@ -85,6 +85,13 @@ site.preprocess([".html"], pages => {
 		)) {
 			throw new Error('wrong data type in ' + page.sourcePath)
 		}
+		// Ensure it is possible to concatenate 'https://satgo1546.github.io' and `page.data.url` to get the canonical URL.
+		if (
+			new URL(page.data.url, site.options.location).toString()
+			!== site.options.location.toString().slice(0, -1) + page.data.url
+		) {
+			throw new Error(`unexpected edge case of url in ${page.sourcePath} (${page.data.url})`)
+		}
 	}
 })
 const slugify = (content: string) => content.replace(/[\\\/:*?"<>| !@#$%^&`'{}-]+/g, '-').replace(/^-|-$/g, '')
