@@ -2,7 +2,7 @@ export const layout = 'base.tsx'
 export default (data: Lume.Data) => {
 	return <>
 		<header>
-			<hgroup>
+			<hgroup lang="en">
 				<h1><a href="/" title="satgo1546’s ocean" rel="home">satgo1546’s ocean</a></h1>
 				<h2>Any sufficiently primitive magic is indistinguishable from technology.</h2>
 			</hgroup>
