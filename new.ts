@@ -33,7 +33,7 @@ if (/^\d+\/\d+$/.test(spec)) {
 	})).json()
 	date = post.updated_at.slice(0, 10)
 	const createdAt = post.created_at.slice(0, 10)
-	dates = createdAt === date ? date : `${createdAt} ~ ${date}`
+	dates = createdAt === date ? `"${date}"` : `${createdAt} ~ ${date}`
 	content = post.raw.trim() + '\n'
 	const map = new Map<string, string>
 	for (const [uploadURL, shortName] of content.matchAll(/upload:\/\/(\w+.\w+)/g)) {
