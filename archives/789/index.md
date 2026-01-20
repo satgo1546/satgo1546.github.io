@@ -6,7 +6,7 @@ excerpt: 五个选项只有一个有用这种事难道不是常识吗？
 tags:
 - 实验
 - Windows
-- FASM
+- fasm
 ---
 
 书接<a href="/archives/599/" title="替换双击网页时打开的file:/// URL为localhost">上回</a> 😾
@@ -79,15 +79,15 @@ Python的启动器程序的思路很好：既然只有EXE能用，那就创造EX
 
 <img src="FASMW.webp" alt="flat assembler" width="128" height="128" style="image-rendering: pixelated;">
 
-FASM虽是汇编器，其1MB的发行包里的示例程序却覆盖了Windows动态链接库、资源、COM、DirectDraw、OpenGL等主题，用百余行汇编代码挑战GUI编程，令我大开眼界。它甚至自带一个支持多标签页和代码高亮的汇编代码编辑器，而这个编辑器本身也是由万余行汇编写就。
+fasm虽是汇编器，其1MB的发行包里的示例程序却覆盖了Windows动态链接库、资源、COM、DirectDraw、OpenGL等主题，用百余行汇编代码挑战GUI编程，令我大开眼界。它甚至自带一个支持多标签页和代码高亮的汇编代码编辑器，而这个编辑器本身也是由万余行汇编写就。
 
 <img src="opengl.webp" alt="OPENGL">
 
 <img src="hello.webp" alt="HELLO">
 
-FASM自带一些Windows支持，能直接编译到EXE，弹MessageBox所需的代码量并不比C语言多。这种开箱即用的体验虽然很原始，但对我的微小需求来说，已经甩开安装就要花几个小时的Visual Studio不知多远了。
+fasm自带一些Windows支持，能直接编译到EXE，弹MessageBox所需的代码量并不比C语言多。这种开箱即用的体验虽然很原始，但对我的微小需求来说，已经甩开安装就要花几个小时的Visual Studio不知多远了。
 
-我写了[不到80行代码](https://github.com/Salenzo/Utilities/blob/aab67880b26359ffd80e33cbeb0cabdcb501ee09/shellexecute.asm)，做出了转发命令行参数到另一个程序、自带名称和图标的快捷方式，[可执行文件](https://salenzo.github.io/Utilities/shellexecute.exe)只有4KB。之后如果需要修改快捷方式的名称、图标、目标的话，用Resource Hacker修改资源就足够，用FASM重新编译也可以，甚至用十六进制编辑器直接覆盖相关字符串都行。
+我写了[不到80行代码](https://github.com/Salenzo/Utilities/blob/aab67880b26359ffd80e33cbeb0cabdcb501ee09/shellexecute.asm)，做出了转发命令行参数到另一个程序、自带名称和图标的快捷方式，[可执行文件](https://salenzo.github.io/Utilities/shellexecute.exe)只有4KB。之后如果需要修改快捷方式的名称、图标、目标的话，用Resource Hacker修改资源就足够，用fasm重新编译也可以，甚至用十六进制编辑器直接覆盖相关字符串都行。
 
 <img src="shellexecute.webp" alt="ShellExecute">
 
