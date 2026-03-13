@@ -5,6 +5,7 @@ dates: 2026-03-12 ~ 2026-03-13
 excerpt: 我研究了一下Python的async，结论是别研究 😾
 tags:
 - 闲聊
+- Python
 ---
 
 还在用Flask吗？快来试试最新最热的FastAPI吧。我研究了一下Python的async，结论是别研究 😾
