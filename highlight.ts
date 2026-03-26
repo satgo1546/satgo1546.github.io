@@ -48,18 +48,17 @@ export default function (site: Lume.Site) {
 					node.classList.remove('language-diff')
 					continue
 				}
-				if (node.childNodes.length > 1) {
-					console.warn('non-plaintext code span')
-				}
 				if (!Object.hasOwn(bundledLanguages, lang)) {
 					console.warn('unknown language ', lang)
 					continue
 				}
 
-				// Note that we have not checked whether the child is a text node or a comment node.
+				// TODO: Keep markup
+				// https://prismjs.com/plugins/keep-markup/
+				// Note that for the single-child case, we have not checked whether it is a text node or a comment node.
 				// It is expected that both are accepted.
 				// https://prismjs.com/plugins/unescaped-markup/
-				const source = (node.childNodes[0]?.textContent ?? '').replace(/^\n|\n[ \t]*$/g, '')
+				const source = ((node.childNodes.length > 1 ? node : node.childNodes[0])?.textContent ?? '').replace(/^\n|\n[ \t]*$/g, '')
 				const cached = await Cache.get(source, lang)
 				if (cached) {
 					node.innerHTML = cached
