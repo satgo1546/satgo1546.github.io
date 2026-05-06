@@ -35,6 +35,6 @@ Rust的啰嗦程度堪比古典Java，这实在是不符合我的风格。还好
 
 ## 延伸阅读
 
-[Crafting “Crafting Interpreters”](https://journal.stuffwithstuff.com/2020/04/05/crafting-crafting-interpreters/)&emsp;关于本书成书幕后，以及写书在作者人生艰难变故时期成为了精神支柱的事。
+<a href=https://journal.stuffwithstuff.com/2020/04/05/crafting-crafting-interpreters/ lang=en>Crafting “Crafting Interpreters”</a>&emsp;关于本书成书幕后，以及写书在作者人生艰难变故时期成为了精神支柱的事。
 
 [作者在Hacker News上的回帖](https://news.ycombinator.com/item?id=40956138)对接下来考虑讲解静态类型的情况作了描述。
