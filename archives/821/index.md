@@ -1,8 +1,8 @@
 ---
 title: 慢报：Python 3.15新增内置类sentinel
 date: 2026-05-04
-dates: 2026-05-03 ~ 2026-05-05
-excerpt: 为了统一这些用法，并方便后两者（美观输出、类型检查）实现，嫌builtins里的东西还不够多的Python往全局加了个sentinel类。
+dates: 2026-05-03 ~ 2026-05-06
+excerpt: "为了统一这些用法，并方便后两者（美观输出、类型检查）实现，嫌builtins里的东西还不够多的Python往全局加了个sentinel类。<br>xkcd #927……"
 tags:
 - 闲聊
 - Python
