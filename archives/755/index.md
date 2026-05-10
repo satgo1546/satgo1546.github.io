@@ -7,6 +7,8 @@ lang: en
 tags:
 - 进度报告
 - Crafting Interpreters 阅读笔记
+- 编译原理
+- 编程语言
 ---
 
 <pre>a.k.a. my take on <cite>Crafting Interpreters</cite>, part III</pre>

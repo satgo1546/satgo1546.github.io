@@ -6,11 +6,15 @@ excerpt: ……这种艺术未免过于超前了。最后我选择不做了 🐖
 tags:
 - 进度报告
 - Crafting Interpreters 阅读笔记
+- 编译原理
+- 编程语言
 ---
 
 看到隔壁[@KinnariyaMamaTanha](https://kinnari-blog.vercel.app/posts/plox/)跟着[《Crafting Interpreters》](https://craftinginterpreters.com/)写了[plox](https://github.com/KinnariyaMamaTanha/plox)，我也想写 🐖
 
 [在GitHub上查看代码。](https://github.com/satgo1546/plat/tree/loxjs)
+
+<div class=admonition>“第2部分”确是本系列的首篇文章，“第2部分”指的是《Crafting Interpreters》的第II部分。</div>
 
 <dl class=long>
 
