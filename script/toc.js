@@ -1,6 +1,6 @@
 // This is a script instead of precomputation because I don’t have stable ids for header elements.
 {
-	const headings = document.currentScript.parentElement.querySelectorAll('h1, h2, h3, h4, h5, h6')
+	const headings = document.currentScript.parentElement.querySelectorAll(':is(h1, h2, h3, h4, h5, h6):not(blockquote *)')
 	if (headings.length > 1) {
 		const toc = document.createElement('table-of-contents')
 		toc.appendChild(document.createElement('h3')).textContent = '本页目录'

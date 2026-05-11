@@ -226,6 +226,15 @@ body>footer {
 		padding-inline: 2em;
 	}
 
+	blockquote.long {
+		font-style: inherit;
+		border-left: 1px solid var(--fg1);
+		border-right: 1px solid var(--fg1);
+		background:
+			top left / 1em 1px linear-gradient(var(--fg1), var(--fg1)) no-repeat,
+			bottom right / 1em 1px linear-gradient(var(--fg1), var(--fg1)) no-repeat;
+	}
+
 	hr {
 		line-height: 1;
 		text-align: center;
@@ -417,7 +426,7 @@ code:not([class*="language-"]),
 	font-family: var(--monospace);
 }
 
-pre>code {
+pre>code:only-child {
 	display: block;
 	overflow: auto;
 	text-overflow: clip;
@@ -1841,7 +1850,7 @@ math[display=block] {
 			inset-inline-start: 0;
 		}
 
-		pre>code {
+		pre>code:only-child {
 			display: block;
 			border-block: 1px solid var(--fg1);
 			padding-block: 8px;
