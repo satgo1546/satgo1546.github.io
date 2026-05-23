@@ -1,7 +1,7 @@
 ---
 title: Linux程序兼容性疑难解答（Everything与SpaceSniffer篇）
 date: 2026-05-18
-dates: 2026-05-13 ~ 2026-05-18
+dates: 2026-05-13 ~ 2026-05-18, 2026-05-23
 excerpt: 虽然不停地暴力扫盘并不是解决实时性问题的真正方法，但已经足以应对大部分先查询后使用的场景了。
 tags:
 - 闲聊
@@ -42,7 +42,7 @@ tags:
 
 根本原因在于，新时代的硬盘已经不像以前那么慢了。在机械硬盘上如此之快，体现了Everything的实力；在固态硬盘上要达到同样的效率，只需要回归暴力。NVMe固态硬盘的顺序读取速度量级可达GB/s，随机读取性能也不差。更重要的是，如今的固态硬盘支持并行处理。
 
-fd使用的递归遍历核心代码来自ripgrep作者BurntSushi开发的[`ignore` crate](https://crates.io/crates/ignore)中的WalkParallel对象。我写了个用它统计文件数量的小程序测试了一下，结果发现，只要当调包侠，就可以把遍历全盘的耗时压到2秒以内。
+fd使用的递归遍历核心代码来自ripgrep作者BurntSushi开发的[`ignore` crate](https://crates.io/crates/ignore)中的WalkParallel对象。我写了个用它统计文件数量的小程序测试了一下，结果发现，只要当调包侠，就可以把遍历全盘的耗时压到1秒以内。
 
 <details>
 	<summary>代码</summary>
@@ -54,8 +54,8 @@ use std::sync::atomic::{AtomicUsize, Ordering};
 
 fn main() {
     let count = Arc::new(AtomicUsize::new(0));
-    WalkBuilder::new(".")
-        .hidden(false)
+    WalkBuilder::new("/")
+        .standard_filters(false)
         .build_parallel()
         .run(|| {
             let count = Arc::clone(&count);
