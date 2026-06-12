@@ -45,9 +45,9 @@ const dates = (await Promise.allSettled([
 	'https://www.huaweicloud.com/', // 不让用也得让用 😾
 	'https://time.is/',
 ].map(async url => {
-	await fetch(url) // 先建立连接
+	await fetch(url, { cache: 'no-store' }) // 先建立连接
 	const local = performance.now()
-	const dateHeader = (await fetch(url)).headers.get('date')
+	const dateHeader = (await fetch(url, { cache: 'no-store' })).headers.get('date')
 	let remote = Date.parse(dateHeader)
 	if (Number.isNaN(remote)) throw new Error('no date')
 	remote -= (performance.now() - local) / 2
