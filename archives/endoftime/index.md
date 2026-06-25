@@ -4063,6 +4063,85 @@ btw,期待endoftime的下一步动作。]
 
 ### 通路
 
-2026年6月20日12:00，P&KU3（中）主题曲《通路》发布。
+2026年6月20日12:00，P&KU3（中）主题曲[《通路》](https://www.bilibili.com/video/BV1XSjB63EjM)发布。
 
-【TODO】
+<figure>
+	<img src="通路.webp" width="256" height="256">
+	<figcaption>
+		<a href="https://mp.weixin.qq.com/s/QTDfJ2EB4mYg438MN2WNPw" title="【P&KU3】“告知我那悲剧的轨迹”">《通路》专辑封面</a>包含26块碎片
+	</figcaption>
+</figure>
+
+Winfrid的评论置顶：
+
+<blockquote><pre>一年一度的主题曲！
+这次也只做了点微小的工作，希望大家来欣赏其他Staff们的神迹</pre></blockquote>
+
+一年一度……吗？
+
+PV一如既往地隐藏了许多细节：0:00开始来自英文维基百科[Crime](https://en.wikipedia.org/w/index.php?title=Crime&oldid=1360078127)条目的剪贴块、0:12一闪而过的“50264B5533”（“P&KU3”的十六进制ASCII码）、0:19排列成⠏⠯⠅⠥⠉（盲文“pandkuc”，可解读为丢失转义符的“P&KU3” ~~文盲驭蝶不懂盲文~~）飘过画面的缺角矩形<svg class="icon" width="25" height="33" viewBox="0 0 25 33"><path d="M6.5 1L1 6.5V32H24V1H6.5Z" fill="none" stroke="currentColor" stroke-width="2"/></svg>、2:22起文件上无意义的文字“<span lang=en>Do you know that this is just placeholder text? Below are some fun random numbers.</span>”与重复出现的随机数.1728394506、贯穿视频始终但因画质模糊难以辨认的条形码……
+
+PV发布的1小时后，βinαry star发现，1:19 ~ 1:42的电吉他间奏部分，视频每秒60帧的版本和每秒30帧的版本画面上出现的文字不同。<s>P&KU出现了首道必须开通第三方网站会员才能做的题。</s>
+
+<table class="booktabs">
+<thead>
+<tr>
+<th>30FPS
+<th>60FPS
+
+<tbody>
+<tr>
+<td>
+<pre>我看到了她的结局。
+其实她也早就看到了自己的结局，比<strong>我</strong>还早。
+——在那些人消失之前。</pre>
+<td>
+<pre><strong>我</strong>看到了她的结局。
+其实她也看到了那个结局，在提交申请<strong>之</strong>前。
+——<strong>只</strong>是她不愿意相信。</pre>
+
+<tr>
+<td>
+<pre>她说要离开这里，搬到新的地方去。
+带着她喜欢的花，<strong>不</strong>知名的种<strong>子</strong>。
+<strong>但她</strong>无法带走所有的回忆。</pre>
+<td>
+<pre>她再一次失<strong>败了</strong>，一切都没有改变。
+带着悲伤、执念、和全新的自我。
+一同迷失在溃<strong>烂的</strong>现实中。</pre>
+
+<tr>
+<td>
+<pre>遗忘，遗忘像空气一样弥漫。
+阴霾之下，那些已经逝去的人……
+也<strong>在</strong>雾中随风飘散。</pre>
+<td>
+<pre>遗忘，遗忘像空气一样弥漫。
+阴霾之下，那些已经逝去的人……
+也在<strong>风</strong>中烟消云<strong>散</strong>。</pre>
+
+<tr>
+<td>
+<pre>那些人还会被想起吗？
+在城市的废墟下，在信纸的余烬里，在<strong>潜意识</strong>的<strong>梦</strong>中。
+她们的灵魂最终都会归于平静。</pre>
+<td>
+<pre>她没能斩断那些因果。
+在城市的废墟下，在信纸<strong>的</strong>余烬里，在七<strong>日的</strong>幻梦中。
+所以她只能将残<strong>存</strong>的<strong>那</strong>些带走。</pre>
+
+<tr>
+<td>
+<pre>本该团聚<strong>的</strong>人却只能错过。
+俗套的悲剧，正于所<strong>有时</strong>间线上演。
+——我想，这就是因果。</pre>
+<td>
+<pre>活在遗<strong>憾</strong>里，是最痛苦的。
+也许彻底死亡，<strong>要</strong>比长眠于此更好。
+可故<strong>事</strong>，不该这样结束。</pre>
+
+</table>
+
+B站重编码用户上传的120FPS的视频时，30FPS（360P ~ 1080P）的版本取每4帧中的第2帧，60FPS（1080P 60帧）的版本取每4帧中的第1和第3帧。利用这一点，能使同一个视频在不同清晰度下呈现出不同的内容。在B站上可以找到更详细的[相关教程](https://www.bilibili.com/video/av1905215440 "大会员看热巴，没会员只能看凤姐~特殊剪辑，一个视频包含两个视频流，两个音频流，附原理讲解和制作工具。")。
+
+意识到按粗体字符串长短摩斯提取不成立后，Sierra注意到两个版本的文本每行包含标点在内的字符数一致，交叠~~信纸的孔洞~~后，按粗体字符位置提取可得“我还在这里所有雾散的意识都归聚于我”和“请和我一同在七日的梦里长眠”。
