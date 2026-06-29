@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 282 60">
+<path d="M0 0h282v60H0"/>
+<image xlink:href="data:image/webp;base64,UklGRjgAAABXRUJQVlA4TCwAAAAvCQEAAMX8R/Q/lnC3PO1tb1NoQhqGErLGNWF7uxtKWF7ShOT1pAnT2d64Bg==" x="8" y="8" width="266" height="32" preserveAspectRatio="none" style="image-rendering: pixelated;"/>
+<g fill="white" font-family="monospace" font-size="12" text-anchor="middle">
+<text x="24.5" y="55">P</text>
+<text x="35.5" y="55">u</text>
+<text x="46.5" y="55">z</text>
+<text x="57.5" y="55">z</text>
+<text x="68.5" y="55">l</text>
+<text x="79.5" y="55">e</text>
+<text x="90.5" y="55">a</text>
+<text x="101.5" y="55">n</text>
+<text x="112.5" y="55">d</text>
+<text x="123.5" y="55">K</text>
+<text x="134.5" y="55">e</text>
+<text x="145.5" y="55">y</text>
+<text x="156.5" y="55">U</text>
+<text x="167.5" y="55">n</text>
+<text x="178.5" y="55">i</text>
+<text x="189.5" y="55">v</text>
+<text x="200.5" y="55">e</text>
+<text x="211.5" y="55">r</text>
+<text x="222.5" y="55">s</text>
+<text x="233.5" y="55">e</text>
+<text x="244.5" y="55">3</text>
+</g>
+<path fill="gray" d="M8 41h266v2H8"/>
+<path fill="silver" d="M19 41h11v2H19M41 41h11v2H41M63 41h11v2H63M85 41h11v2H85M107 41h11v2h-11M129 41h11v2h-11M151 41h11v2h-11M173 41h11v2h-11M195 41h11v2h-11M217 41h11v2h-11M239 41h11v2h-11M261 41h11v2h-11"/>
+</svg>
