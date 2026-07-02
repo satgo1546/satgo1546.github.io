@@ -9,7 +9,7 @@ import { execSync } from 'node:child_process'
 import secrets from './secrets.json' with { type: 'json' }
 
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
-const spec = await rl.question('/t/topic/? ')
+const spec = /\d+\/\d+/.exec(await rl.question('/t/topic/? '))?.[0]
 rl.close()
 
 let id = 0
@@ -24,7 +24,7 @@ let date = new Date().toISOString().slice(0, 10)
 let dates = '~ ' + date
 let content = ''
 
-if (/^\d+\/\d+$/.test(spec)) {
+if (spec) {
 	const post = await (await fetch(new URL(`/posts/by_number/${spec}.json`, secrets.DISCOURSE_INSTANCE), {
 		headers: {
 			Accept: 'application/json',
@@ -45,6 +45,9 @@ if (/^\d+\/\d+$/.test(spec)) {
 		})
 		const match = response.headers.get('Content-Disposition')?.match(/\bfilename\s*\*=\s*UTF-8''([^\s;]*)/)
 		let filename = match ? decodeURIComponent(match[1]) : shortName
+		if (map.size && filename.startsWith('image.')) {
+			filename = `image${map.size}${filename.slice(5)}`
+		}
 		if (/\.png$/i.test(filename)) {
 			filename = filename.replace(/\.png$/, '.webp')
 			const tempfile = crypto.randomUUID()
