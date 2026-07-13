@@ -255,7 +255,8 @@ body>footer {
 
 	figure {
 		padding-block-start: 6pt;
-		overflow: auto;
+		overflow-block: hidden;
+		overflow-inline: auto;
 	}
 
 	table {
