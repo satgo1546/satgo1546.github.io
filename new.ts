@@ -62,6 +62,13 @@ if (spec) {
 		map.set(uploadURL, filename)
 	}
 	content = content.replace(/upload:\/\/\w+.\w+/g, uploadURL => map.get(uploadURL)!)
+	content = content.replace(/!\[([^|\]]*)\|(\d+)x(\d+)(?:, ?(\d+)%)?\]\(([^()]+)\)/g, (_, alt, width, height, scale, url) => {
+		scale ||= 100
+		width = Math.round(width * scale / 100)
+		height = Math.round(height * scale / 100)
+		// Technically, alt needs escaping, but well.
+		return `<img src="${url}" width="${width}" height="${height}"${alt && ` alt="${alt}"`}>`
+	})
 }
 
 await fs.writeFile(`archives/${id}/index.md`, `---
